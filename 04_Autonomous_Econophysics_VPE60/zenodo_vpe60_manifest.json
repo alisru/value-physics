@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The Architecture of Autonomous Econophysics: The Project Manager Role, Multi-Agent Governance, and the Empirical Evolution of Value Physics via Gemini Spark Schedules",
+  "version": "1.0.0",
+  "deliverable_id": "VPE-60",
+  "target_manuscript": "ARI-VPE-TREATISE-2026-60",
+  "publication_date": "2026-10-09",
+  "doi_target": "10.5281/zenodo.1755060",
+  "creators": [
+    {
+      "name": "Hamilton, Jarrod Lyndsay",
+      "affiliation": "Alethekanon Research Institute, Division 2: Econophysics & Value Physics Research Unit",
+      "location": "Australia",
+      "orcid": "0009-0004-4112-9214"
+    }
+  ],
+  "description": "Master operational treatise, repository architecture, and methodology specification for Value Physics \u2014 Division 2: Econophysics & Value Physics Research Unit. Documents the organizational protocols, multi-agent research triad, asynchronous Gemini Spark scheduled execution triggers, the five-role division of cognitive labor, the single canonical ledger governance, and the historical empirical evolution of the Universal Price Equation (UPE).",
+  "license": {
+    "manuscript_and_data": "CC-BY-4.0",
+    "software_and_code": "MIT"
+  },
+  "keywords": [
+    "Autonomous Econophysics",
+    "Value Physics",
+    "Multi-Agent Governance",
+    "Gemini Spark",
+    "Universal Price Equation",
+    "Epistemic Auditing",
+    "Econophysics",
+    "Macroeconomic Modeling",
+    "Stock-Flow Consistency"
+  ],
+  "repository_files": [
+    {
+      "filename": "VPE-60_Autonomous_Econophysics.pdf",
+      "mime_type": "application/pdf",
+      "description": "Complete compiled 15-page operational treatise and methodology specification proof."
+    },
+    {
+      "filename": "VPE-60_Autonomous_Econophysics.md",
+      "mime_type": "text/markdown",
+      "description": "Full GitHub-Flavored Markdown manuscript."
+    },
+    {
+      "filename": "VPE-60_Autonomous_Econophysics.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "description": "Original master document."
+    }
+  ],
+  "author_disclaimer": "The conceptual ontology, foundational equations, and analytical architecture of Value Physics represent the original intellectual work of Jarrod Lyndsay Hamilton. The author holds no formal academic credentials in economics; theoretical connections were established through self-directed study. Due to memory impairments, the author may not actively retain specific textual details or citations; readers are encouraged to evaluate the mathematical mechanics, computational solvers, and empirical calibrations directly on their own intrinsic merits. AI tooling (Google Gemini / Gemini Spark) was utilized under the author's direct guidance for computational implementation, code verification, and document preparation."
+}

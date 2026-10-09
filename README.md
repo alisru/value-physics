@@ -39,10 +39,10 @@ value-physics/
 │   ├── vpe49_latex_package.zip             # Self-contained LaTeX submission bundle
 │   └── zenodo_v2.7.0_manifest.json         # Zenodo deposit manifest
 │
-├── tools/zenodo/                           # Zenodo REST API Upload & Automation Engine
-│   ├── zenodo_uploader.py                  # CLI tool for automated depositions (Sandbox/Prod)
-│   ├── README.md                           # Tool usage documentation
-│   └── .env.example                        # API token configuration template
+├── 04_Autonomous_Econophysics_VPE60/      # VPE-60: Multi-Agent Governance & Autonomous Methodology
+│   ├── VPE-60_Autonomous_Econophysics.pdf  # 15-page operational treatise & methodology proof
+│   ├── VPE-60_Autonomous_Econophysics.md   # Markdown edition
+│   └── zenodo_vpe60_manifest.json          # Zenodo deposit manifest
 │
 ├── .zenodo.json                            # Zenodo automated GitHub Release metadata
 ├── CITATION.cff                            # Citation File Format (CFF)
@@ -86,6 +86,12 @@ python 02_Physics_of_Economic_Value_VPE21/test_value_physics.py
 ```bash
 python 03_Thermodynamic_State_Space_VPE49/work_antiwork_dynamics.py
 ```
+
+---
+
+### 4. VPE-60: The Architecture of Autonomous Econophysics
+* **Deliverable ID:** `VPE-60` / `ARI-VPE-TREATISE-2026-60`
+* **What it does:** Master operational treatise and methodology specification documenting the development protocols of Value Physics. Analyzes the five-role division of cognitive labor (Project Manager, Lead Researcher, Epistemic Auditor / Checker, Computational Engineer, and Literature Linker), asynchronous Gemini Spark scheduled execution triggers, the single canonical spreadsheet ledger, the 15-point Epistemic Audit Sign-Off Protocol, and the historical evolution of the Universal Price Equation (UPE).
 
 ---
 
