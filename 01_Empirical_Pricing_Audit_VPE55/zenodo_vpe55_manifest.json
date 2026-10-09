@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Replication Package: Empirical Case Study: Real-World Pricing and RRP/D Fairness Audit — Food, Fuel, Energy, and Shelter Materials",
+  "version": "1.0.0",
+  "deliverable_id": "VPE-56",
+  "target_manuscript": "VPE-55 (ARI-VPE-EMP-2026-03)",
+  "publication_date": "2026-10-06",
+  "doi_target": "10.5281/zenodo.1755001",
+  "creators": [
+    {
+      "name": "Hamilton, Jarrod Lyndsay",
+      "affiliation": "Alethekanon Research Institute, Division 2: Societal Economics & Macro-Micro Simulation",
+      "location": "Australia",
+      "orcid": "0009-0004-4112-9214"
+    }
+  ],
+  "description": "Complete computational replication archive, LaTeX publication source, 300 DPI vector figures, and standalone empirical Python solvers for the Universal Price Equation (UPE) fairness audit across twelve Australian physical necessities spanning Food, Agriculture, Liquid Fuels, Power Utilities, Municipal Water/Sanitation, Building Materials, and Road Freight Logistics.",
+  "license": {
+    "manuscript_and_data": "CC-BY-4.0",
+    "software_and_code": "MIT"
+  },
+  "keywords": [
+    "Universal Price Equation",
+    "Value Physics",
+    "Recommended Retail Price based on Difficulty",
+    "RRP/D",
+    "Extractive Drag",
+    "Biophysical Economics",
+    "Cambridge Capital Controversy",
+    "Fair Pricing Audit",
+    "Supply Chain Sclerosis"
+  ],
+  "jel_classifications": [
+    "D43",
+    "L11",
+    "Q01",
+    "Q40",
+    "R41"
+  ],
+  "repository_files": [
+    {
+      "filename": "manuscript_vpe55.tex",
+      "mime_type": "application/x-tex",
+      "description": "Full publication-grade LaTeX manuscript for Ecological Economics (10 pages, 0 errors)."
+    },
+    {
+      "filename": "references_vpe55.bib",
+      "mime_type": "text/x-bibtex",
+      "description": "Complete BibTeX database containing all foundational and governmental citations."
+    },
+    {
+      "filename": "manuscript_vpe55.pdf",
+      "mime_type": "application/pdf",
+      "description": "Pre-flight compiled PDF proof generated under pdflatex on TeX Live 2022/Debian."
+    },
+    {
+      "filename": "vpe55_latex_package.zip",
+      "mime_type": "application/zip",
+      "description": "Complete self-contained submission archive including figures, style shim, and bibtex."
+    },
+    {
+      "filename": "figure1_biophysical_breakdown.png",
+      "mime_type": "image/png",
+      "resolution": "300 DPI",
+      "description": "Figure 1: Normalized biophysical cost decomposition across 12 commodities."
+    },
+    {
+      "filename": "figure2_sclerosis_spectrum.png",
+      "mime_type": "image/png",
+      "resolution": "300 DPI",
+      "description": "Figure 2: The Sclerosis Spectrum plotting Extractive Drag (Ra) vs. Fairness Index."
+    },
+    {
+      "filename": "rrp_fairness_audit.py",
+      "mime_type": "text/x-python",
+      "deliverable_id": "VPE-54",
+      "description": "Standalone executable Python solver computing forward UPE prices and reverse RRP audits across 12 goods."
+    },
+    {
+      "filename": "upe_pricing_engine.py",
+      "mime_type": "text/x-python",
+      "deliverable_id": "VPE-53",
+      "description": "Core Universal Price Equation forward pricing mathematical library."
+    },
+    {
+      "filename": "test_rrp_fairness_audit.py",
+      "mime_type": "text/x-python",
+      "description": "Automated unit test suite verifying mathematical boundary constraints and parameter completeness (5/5 pass)."
+    },
+    {
+      "filename": "cover_letter_vpe55.md",
+      "mime_type": "text/markdown",
+      "description": "Editorial submission cover letter to the Editor-in-Chief of Ecological Economics."
+    }
+  ],
+  "replication_instructions": "To replicate all paper results: 1. Ensure Python 3.10+ is installed. 2. Execute `python3 rrp_fairness_audit.py` to output the exact 12-commodity matrix. 3. Execute `python3 test_rrp_fairness_audit.py` to run unit verification. 4. Execute `pdflatex manuscript_vpe55.tex` followed by `bibtex manuscript_vpe55` and two passes of `pdflatex` to generate the camera-ready PDF proof."
+}

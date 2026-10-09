@@ -1,0 +1,39 @@
+{
+  "title": "Value Physics: Computational Replication Archive, Empirical Pricing Audits, and Theoretical Foundations",
+  "description": "<p>Comprehensive computational replication archive, empirical pricing solvers, non-linear state-space ODE models, and publication LaTeX manuscripts for Value Physics — Alethekanon Research Institute, Division 2: Societal Economics & Macro-Micro Simulation. Includes: (1) Empirical Case Study & RRP/D Fairness Audit across 14 Australian necessities (VPE-55); (2) The Physics of Economic Value: Thermodynamic Exergy, Metabolic Labor, and Stock-Flow Consistent Modeling (VPE-21); (3) Thermodynamic Work-Antiwork State-Space Dynamics (VPE-49).</p><p><strong>Author Epistemic Statement & Positionality:</strong> The governing equations and ontological architecture of the Universal Price Equation (UPE) and Value Physics are the original intellectual creations of Jarrod Lyndsay Hamilton. The author possesses no formal academic training or credentials in economics; the theoretical connections to economic literature were established by reading and synthesizing accessible sources. Due to documented cognitive memory impairment, the author may not actively retain specific textual details, academic citations, or literature specifics from the research process. Readers and reviewers are encouraged to take secondary literature interpretations with a grain of salt and evaluate the mathematical mechanisms, simulation code, and empirical derivations directly on their own intrinsic merits.</p><p><strong>AI Assistance Disclosure:</strong> AI tooling (Google Gemini / Gemini Spark) was utilized under the author's direct supervision as an assistive technology for computational implementation, automated unit testing, code verification, and LaTeX manuscript typesetting.</p>",
+  "notes": "Author Epistemic & AI Disclosure: The foundational UPE equations and concepts are the original work of Jarrod Lyndsay Hamilton, who holds no formal credentials in economics. AI assistance (Google Gemini / Gemini Spark) aided in code implementation and typesetting. Due to memory impairments, the author may not retain specific literature details; readers should evaluate mathematical and empirical models on their own intrinsic merits.",
+  "creators": [
+    {
+      "name": "Hamilton, Jarrod Lyndsay",
+      "affiliation": "Alethekanon Research Institute, Division 2: Societal Economics & Macro-Micro Simulation",
+      "orcid": "0009-0004-4112-9214"
+    }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "Value Physics",
+    "Universal Price Equation",
+    "Thermodynamic Economics",
+    "Stock-Flow Consistent Modeling",
+    "Econophysics",
+    "Ecological Economics",
+    "Fair Pricing Audit",
+    "Recommended Retail Price based on Difficulty",
+    "RRP/D",
+    "Extractive Drag",
+    "Biophysical Economics"
+  ],
+  "upload_type": "software",
+  "communities": [
+    {
+      "identifier": "alethekanon-research-institute"
+    },
+    {
+      "identifier": "econophysics"
+    },
+    {
+      "identifier": "ecological-economics"
+    }
+  ]
+}

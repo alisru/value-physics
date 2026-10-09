@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Replication Package: The Physics of Economic Value: Thermodynamic Work-Antiwork State-Space Dynamics and Kinetic Equilibrium",
+  "version": "1.0.0",
+  "deliverable_id": "VPE-21",
+  "target_manuscript": "ARI-VPE-JRNL-2026-01 (Ecological Economics)",
+  "publication_date": "2026-10-07",
+  "doi_target": "10.5281/zenodo.1755021",
+  "creators": [
+    {
+      "name": "Hamilton, Jarrod Lyndsay",
+      "affiliation": "Alethekanon Research Institute, Division 2: Societal Economics & Macro-Micro Simulation",
+      "location": "Australia",
+      "orcid": "0009-0004-4112-9214"
+    }
+  ],
+  "description": "Full open-source computational replication package, 15-page camera-ready LaTeX source, and 156-week empirical Stock-Flow Consistent (SFC) dynamic simulation code for The Physics of Economic Value.",
+  "license": {
+    "manuscript_and_data": "CC-BY-4.0",
+    "software_and_code": "MIT"
+  },
+  "keywords": [
+    "Econophysics",
+    "Value Physics",
+    "Stock-Flow Consistent Modeling",
+    "Exergoeconomics",
+    "Cost Channel of Monetary Policy",
+    "Universal Price Equation",
+    "Non-Usurious Credit",
+    "Ecological Economics"
+  ],
+  "jel_classifications": [
+    "B52",
+    "E12",
+    "E43",
+    "E52",
+    "Q01",
+    "Q57"
+  ],
+  "repository_files": [
+    {
+      "filename": "manuscript_vpe21.tex",
+      "mime_type": "application/x-tex",
+      "description": "Full publication-grade LaTeX manuscript for Ecological Economics (15 pages, 0 errors)."
+    },
+    {
+      "filename": "references_vpe21.bib",
+      "mime_type": "text/x-bibtex",
+      "description": "Complete BibTeX database containing all foundational citations."
+    },
+    {
+      "filename": "vpe21_latex_package.zip",
+      "mime_type": "application/zip",
+      "description": "Self-contained LaTeX publication bundle."
+    },
+    {
+      "filename": "sfc_model.py",
+      "mime_type": "text/x-python",
+      "deliverable_id": "VPE-18",
+      "description": "156-week empirical Stock-Flow Consistent simulation validating Theorem 5 debt bifurcation under macro shocks."
+    },
+    {
+      "filename": "test_value_physics.py",
+      "mime_type": "text/x-python",
+      "deliverable_id": "VPE-39",
+      "description": "Master unit test verification suite (24/24 unit tests pass)."
+    },
+    {
+      "filename": "cover_letter_ecolecon.md",
+      "mime_type": "text/markdown",
+      "description": "Editorial submission cover letter to the Editor-in-Chief of Ecological Economics."
+    }
+  ],
+  "replication_instructions": "To replicate all paper results: 1. Ensure Python 3.10+ is installed. 2. Run `python3 sfc_model.py` to reproduce the 156-week SFC balance sheet closures. 3. Run `python3 test_value_physics.py` to verify unit test suite. 4. Execute `pdflatex manuscript_vpe21.tex` followed by `bibtex manuscript_vpe21` and two passes of `pdflatex` to generate the 15-page camera-ready PDF proof."
+}
