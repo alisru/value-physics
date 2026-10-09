@@ -24,16 +24,5 @@
     "Extractive Drag",
     "Biophysical Economics"
   ],
-  "upload_type": "software",
-  "communities": [
-    {
-      "identifier": "alethekanon-research-institute"
-    },
-    {
-      "identifier": "econophysics"
-    },
-    {
-      "identifier": "ecological-economics"
-    }
-  ]
+  "upload_type": "software"
 }
