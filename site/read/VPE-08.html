@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-08: The Bread of Life: Isomorphic Information Treatise — Value Physics Reader</title>
+  <meta name="description" content="8-stage bread lifecycle mapped to Information Theory, Actualism, TS_0 invariant">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-08</span>
+      <span class="doc-badge-cat">Isomorphic Process Treatise</span>
+      <span class="doc-badge-status">Foundational Treatise</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-07.html" class="nav-arrow-btn">&larr; Prev (VPE-07)</a>
+      <a href="VPE-09.html" class="nav-arrow-btn">Next (VPE-09) &rarr;</a>
+      <a href="../deliverables/VPE-08_The_Bread_of_Life_Isomorphic_Information.docx" target="_blank" class="nav-download-btn">Download DOCX (11 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">The Bread of Life: Isomorphic Information Treatise</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 8-stage bread lifecycle mapped to Information Theory, Actualism, TS_0 invariant
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">The Bread of Life: Comprehensive Isomorphic Information-Process Treatise</h2>
+<p class="doc-p"><strong>Mapping the 8-Stage Physical Bread Lifecycle to Information Theory, Actualism, the 7 Planes of Reality, and Value Physics</strong></p>
+<p class="doc-p">Executive Overview</p>
+<p class="doc-p">In Deuteronomy 8:3 and Matthew 4:4, the relationship between physical sustenance and divine communication is established as a direct functional equivalent: <em>&quot;Man shall not live by bread alone, but by every word that comes from the mouth of God.&quot;</em> This treatise expands the original eight stages of bread production by integrating the complete <strong>7-Plane Econophysics Isomorphisms</strong>, establishing bread as the canonical reference invariant ($TS_0$) that unifies thermodynamic exergy, biological labor, cognitive transmission, and sacrificial distribution.</p>
+<h3 class="doc-h3">The 8 Canonical Stages &amp; Their Complete Multi-Planar Isomorphisms</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage &amp; Physical Process</th>
+<th>Information Theory Isomorphism</th>
+<th>Actualism &amp; Theological Isomorphism</th>
+<th>Value Physics &amp; Token Equivalent</th>
+</tr>
+<tr>
+<th>1. Pollination &amp; Sowing<br>(Plant / Conception)</th>
+<th>Collapse of high-entropy environmental noise into a deterministic genetic packet (seed).</th>
+<th>True Moral Zero ($Q_2, \psi = 0$): The plant takes nutrients without alternative pathways to decline, establishing the moral ground state.</th>
+<th>$T_3$ (Physical exergy) + $T_6$ (Historical substrate $R_n$): Sunk natural capital investment.</th>
+</tr>
+<tr>
+<th>2. Growth &amp; Photosynthesis<br>(Grain Agronomy)</th>
+<th>Thermodynamic inversion: translating solar electromagnetic flux into stable chemical starch bonds.</th>
+<th>Language Processing: The living community binds abstract divine encounter into structured written codices.</th>
+<th>$T_5$ (Logical technique) + $T_2$ (Purpose): Conversion of natural potential into storable human energy ($P_e$).</th>
+</tr>
+<tr>
+<th>3. Harvest &amp; Winnowing<br>(Threshing / Silo)</th>
+<th>Entropy filtering: mechanical separation of protective but indigestible chaff from dense nutrient berries.</th>
+<th>Canonization: The rigorous spiritual wind of history separating ephemeral cultural chaff from invariant truth.</th>
+<th>$T_6$ (Moral discernment) + $T_3$ (Spatial freight): Elimination of waste, isolation of pure payload ($TS_0$).</th>
+</tr>
+<tr>
+<th>4. Milling &amp; Reduction<br>(Flour Crushing)</th>
+<th>Deconstruction to granular modularity: crushing cellular bran walls into universally accessible 2D flour powder.</th>
+<th>Lineage Severance &amp; Exegesis: Biological genetic lineage is terminated ($Q_6$ severed) to enable universal cross-cultural distribution.</th>
+<th>$T_5$ (Algorithmic reduction) + $T_3$ (Grinding exergy): High-speed pneumatic roller processing.</th>
+</tr>
+<tr>
+<th>5. Hydration &amp; Leaven<br>(Union &amp; Starter)</th>
+<th>Dynamic re-activation: water hydrates protein chains while wild starter introduces living biological memetics.</th>
+<th>Union of Word and Spirit ($Q_6 q_6$): Rebirth of lineage through social covenant (salt) and living conscious breath (water/starter).</th>
+<th>$T_6$ (Ancestral starter lineage) + $T_7$ (Biological activation): The living starter as continuous memory.</th>
+</tr>
+<tr>
+<th>6. Kneading &amp; Fermentation<br>(Gluten Matrix &amp; Rise)</th>
+<th>Shear stress alignment ($\sigma_{ij}$): folding chaotic polymers into an elastic matrix that traps expanding $\text{CO}_2$ gas chambers.</th>
+<th>Mental &amp; Spiritual Friction: Dialectical wrestling with truth that expands internal consciousness into multi-dimensional inspiration.</th>
+<th>$T_5$ (Trade skill $s=4.5$) + $T_3$ (Metabolic METs $e=3.4$): Physical work building emergent structural space.</th>
+</tr>
+<tr>
+<th>7. Thermal Baking<br>(Crust &amp; Solidification)</th>
+<th>Irreversible phase shift: starch gelatinization, protein coagulation, and caramelized protective crust boundary ($\text{CoB} = 1\infty$).</th>
+<th>Crystallization in the Crucible: The heat of historical trial driving off shifting subjectivity and fixing truth into a permanent loaf.</th>
+<th>$T_3$ (Thermal deck exergy $P_e$) + $T_4$ (Crust aesthetic $P_4$): Irreversible thermodynamic state fixation.</th>
+</tr>
+<tr>
+<th>8. The Breaking &amp; Distribution<br>(Sacrifice &amp; Sustenance)</th>
+<th>Quantized distribution ($A^+$): intentional dismantling of the monolithic whole to deliver discrete life-packets to network nodes.</th>
+<th>The Lyrical Inversion ($Q_4$) &amp; Eucharist: &quot;This is My body broken for you.&quot; Purposeful sacrificial giving achieving zero residue ($TS_0$).</th>
+<th>$\mathbf{WEST} \longrightarrow \mathbf{EAST}$ Conversion: Full reciprocation, total urgency relief ($U \to 0$), zero parasitic toll ($\mathbf{WORST} \to 0$).</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">Deep Isomorphic Insights Added to the Corpus</h3>
+<h4 class="doc-h4">1. The Sacrificial Lyrical Inversion at the Breaking</h4>
+<p class="doc-p">A completed, unbroken loaf of bread is an aesthetic monument, but a biological failure if left intact. The <strong>Breaking</strong> is the unique transition in reality where dismantling an organized structure is not an act of vandalism, but the ultimate expression of love and life-giving. By fracturing the solid boundary, stored potential information is unlocked into shared kinetic sustenance.</p>
+<h4 class="doc-h4">2. Sourdough Starter as Living Software Lineage</h4>
+<p class="doc-p">Unlike commercial dehydrated yeast (an industrial abstraction), wild sourdough starter is an unbroken chain of living biological information passed down through daily feeding. In Value Physics, the starter represents $T_6$ (Ancestral Moral Investment)—a physical proof that value cannot be created ex nihilo by sovereign decree; it must be inherited, maintained, and continually fed through biological time ($tv$).</p>
+<h4 class="doc-h4">3. The Crust-to-Crumb Duality as Boundary Layer Physics</h4>
+<p class="doc-p">The crust represents the non-Archimedean boundary layer ($\text{CoB} = 1\infty$) that absorbs the extreme thermal entropy of the oven to create an airtight seal, preserving the soft, hydrated crumb within. In social architecture, this maps to the necessary civic and legal boundaries ($P_3, P_1$) that protect internal domestic peace, cultural joy, and care ($P_4, P_7$).</p>
+<p class="doc-p">Compiled and integrated into the Universal Price Equation and Value Physics Research Archive.</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-07.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-07: The Grand Translation to Modern Economic Theory</div>
+</a>
+
+        
+<a href="VPE-09.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-09: Achilles-Setup-Check: Relational Spacetime &amp; Coordinates</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

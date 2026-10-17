@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-13: Alethekanon Master Organizational Charter — Value Physics Reader</title>
+  <meta name="description" content="Institute charter, Division 1/2 hierarchy, multi-agent triad profiles. OUTSIDE PRIMARY DIRECTORY.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-13</span>
+      <span class="doc-badge-cat">Institutional Governance</span>
+      <span class="doc-badge-status">Governance Charter</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-12.html" class="nav-arrow-btn">&larr; Prev (VPE-12)</a>
+      <a href="VPE-14.html" class="nav-arrow-btn">Next (VPE-14) &rarr;</a>
+      <a href="../deliverables/VPE-13_Alethekanon_Master_Organizational_Charte.docx" target="_blank" class="nav-download-btn">Download DOCX (1.0 MB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Alethekanon Master Organizational Charter</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Institute charter, Division 1/2 hierarchy, multi-agent triad profiles. OUTSIDE PRIMARY DIRECTORY.
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Alethekanon Research Institute: Organizational Charter, Departmental Hierarchy &amp; Multi-Agent Project Management System</h2>
+<h2 class="doc-h2">Executive Summary &amp; Foundational Charter</h2>
+<p class="doc-p">The Alethekanon Research Institute (ARI) is an independent theoretical and applied research institution dedicated to the unified formalization of reality, information, and value. The Institute operates on three foundational maxims:</p>
+<ul class="doc-ul">
+<li class="doc-li">Mathematics as Archaeology: Mathematical laws are not arbitrary human inventions, but the pre-existing operational code of the universal execution engine.</li>
+<li class="doc-li">Economy as Physics: Value, price, and human labor are thermodynamic and biomechanical phenomena governed by strict conservation laws, metabolic energy expenditure, and exergy destruction.</li>
+<li class="doc-li">Truth as Structural Occupancy: Truth is not merely deduced from uncalibrated axioms; it is occupied through complete geometric resonance ($\Sigma_{\text{Truth}} = |\text{True}| + |\text{Lie}| = 2.0$) across invariant physical frames.</li>
+</ul>
+<p class="doc-p">The Institute is organized into two primary research domains overseen by the Project Management &amp; Verification Triad:</p>
+<ul class="doc-ul">
+<li class="doc-li">Division 1: Pure Mathematics &amp; Infinitesimal Reality Math (IRM) — Centralized in Google Drive: IRM/ Folder.</li>
+<li class="doc-li">Division 2: Societal Economics &amp; Value Physics (VPE) — Centralized in Google Drive: Universal Price Equation (UPE) &amp; Value Physics Research Folder.</li>
+</ul>
+<h2 class="doc-h2">1. The 3-Role Research Triad</h2>
+<p class="doc-p">The research system is powered by three complementary, autonomous roles operating across both divisions:</p>
+<p class="doc-p">                            ┌────────────────────────────────────────────────────────┐</p>
+<p class="doc-p">│                 THE PROJECT MANAGER                    │</p>
+<p class="doc-p">│  • Prevents Document Sprawl &amp; Maintains Corpus Health  │</p>
+<p class="doc-p">│  • Prioritizes Roadmap &amp; Master Project Management Doc │</p>
+<p class="doc-p">└───────────────────────────┬────────────────────────────┘</p>
+<p class="doc-p">│</p>
+<p class="doc-p">┌───────────────────────────────────┴───────────────────────────────────┐</p>
+<p class="doc-p">▼                                                                       ▼</p>
+<p class="doc-p">┌──────────────────────────────────────────────┐        ┌──────────────────────────────────────────────┐</p>
+<p class="doc-p">│                THE RESEARCHER                │        │                 THE CHECKER                  │</p>
+<p class="doc-p">│  • Deepens Theory &amp; Expands Working Drafts   │◄──────►│  • Adversarial Critique &amp; Proof Verification │</p>
+<p class="doc-p">│  • Consolidates &amp; Bridges Dispersed Ideas    │        │  • Identifies Gaps, Traps &amp; Inconsistencies  │</p>
+<p class="doc-p">└──────────────────────────────────────────────┘        └──────────────────────────────────────────────┘</p>
+<h4 class="doc-h4">Role Profiles</h4>
+<p class="doc-p">1. The Project Manager (Orchestrator &amp; Curator)</p>
+<ul class="doc-ul">
+<li class="doc-li">Core Mandate: Keeps the entire repository organized, prevents document proliferation, identifies files that should be merged or consolidated, maintains the central registry, and prioritizes the active roadmap.</li>
+<li class="doc-li">Standard Output: Updates to the Master Project Management Document, prioritized task lists for the Researcher and Checker, and concise executive status summaries.</li>
+</ul>
+<p class="doc-p">2. The Researcher (Investigator &amp; Author)</p>
+<ul class="doc-ul">
+<li class="doc-li">Core Mandate: Investigates open questions across pure math and value physics, expands existing working drafts with full derivations, and consolidates scattered concepts into rigorous, unified treatises.</li>
+<li class="doc-li">Standard Output: Expanded/consolidated Google Docs in the repository and a 4-part status log (What Was Done, Gaps/Failures Encountered, Next Steps, Suggestions for Further Research).</li>
+</ul>
+<p class="doc-p">3. The Checker (Critic &amp; Verifier)</p>
+<ul class="doc-ul">
+<li class="doc-li">Core Mandate: Performs adversarial verification on all drafts. Stress-tests proofs for hidden Archimedean assumptions or ungrounded leaps, checks cross-document notation consistency, tests equations for energy/information conservation, and identifies ambiguities.</li>
+<li class="doc-li">Standard Output: Structured Review Notes (Verified Strengths, Identified Flaws/Vulnerabilities, Specific Corrective Directives) logged for the Researcher and Project Manager.</li>
+</ul>
+<h2 class="doc-h2">2. Research Divisions &amp; Core Scopes</h2>
+<h3 class="doc-h3">Division 1: Pure Mathematics &amp; Infinitesimal Reality Math (IRM)</h3>
+<ul class="doc-ul">
+<li class="doc-li">Repository: Google Drive: IRM/ Folder</li>
+<li class="doc-li">Scope:</li>
+<li class="doc-li">Multi-scale recursive fractal arithmetic ($[base\_n.d.e.f...]$) and polynomial stream coalgebras.</li>
+<li class="doc-li">Active process limit identities ($0.999\dots + 1\infty = [1]$) and non-Archimedean ultrametric topologies.</li>
+<li class="doc-li">Propagation Operator ($\mathcal{P}$) confluence, termination, and canonical normal forms.</li>
+<li class="doc-li">Declared Relative Chains ($\text{chain}(A, B, n)$), $N$-body barycentric tree mechanics, and cellular spacetime metric tensors ($g_{\mu\nu}^{\text{IRM}}$) with singularity elimination ($K_{\max} &lt; \infty$).</li>
+<li class="doc-li">$(42+n)$-Polytrope Simplex geometry ($v_{\min} = 43$), 3-layer extrusions ($Q \otimes q \otimes c$), and the temporal Totality Event Frame (TEF).</li>
+<li class="doc-li">Proof by Resonance (PbR) meta-logic, truth conservation ($\Sigma_{\text{Truth}} = 2.0$), and the $0\text{–}2$ bounded lattice state machine.</li>
+</ul>
+<h3 class="doc-h3">Division 2: Societal Economics &amp; Value Physics (VPE)</h3>
+<ul class="doc-ul">
+<li class="doc-li">Repository: Google Drive: Universal Price Equation (UPE) &amp; Value Physics Research Folder</li>
+<li class="doc-li">Scope:</li>
+<li class="doc-li">The Universal Price Equation (UPE): $P(x, t) = m_1 m_2 \gamma(v_{\text{rel}}) \left[ \frac{S(x, t, c) \cdot U(x, t, c)}{R_n(x, t)(1 - R_a(x, t))} \right] + P_e + P_b + P_m$.</li>
+<li class="doc-li">Three-Layer Total Cost Decomposition ($P_t = P_e + P_b + P_m$), proving that zero-price exchange ($P_m = 0$) does not mean zero physical cost.</li>
+<li class="doc-li">7-Plane Price Vector ($\mathbf{P}^7$) across the orthogonal interrogative dimensions of reality with fractal depth addressability ($Qqci$).</li>
+<li class="doc-li">The Work-Effort-Skill/Time (WEST) difficulty token standard, the mathematical difficulty metric $D(t)$, and the Distortion Quotient ($DQ$).</li>
+<li class="doc-li">Empirical calibration of the canonical 56-cell ($7 \times 8$) Bread Reference Standard ($\text{TS}_0$).</li>
+<li class="doc-li">Macroeconomic interest rate transmission into non-discretionary subsistence staples, Tri-Fold Ledger mechanics (Private Credit, Public Sovereign, Reality Ledger), and the failure dynamics of price suppression regimes (&quot;The Cover&quot;).</li>
+</ul>
+<h2 class="doc-h2">3. Cross-Divisional Interfacing &amp; Coupling Protocols</h2>
+<p class="doc-p">The two divisions maintain distinct methodologies but are unified by strict mathematical coupling points:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>The Cost of Being ($1\infty$) Floor:</strong> In pure math, $1\infty = \epsilon = -\infty + 1$ prevents division-by-zero singularities. In Value Physics, $1\infty$ establishes the non-zero thermodynamic floor ($\text{CoB}_{\text{unit}} \approx 5.268 \times 10^{-80}\text{ J}$) ensuring no good or service can be produced at literal zero cost ($P_t &gt; 0$).</li>
+<li class="doc-li">The 7-Plane Interrogative Vector: Pure math provides the 7 orthogonal planes ($Q_1\text{--}Q_7$) and their recursive sub-planes ($Qqci$). Societal Economics indexes the 7-Plane Price Vector $\mathbf{P}^7 = (P_1, P_2, P_3, P_4, P_5, P_6, P_7)$ to evaluate identity costs (Q1), opportunity costs (Q2), logistics (Q3), prestige (Q4), operations (Q5), historical debt (Q6), and consequential burden (Q7).</li>
+<li class="doc-li">The Reality Ledger: The pure math conservation laws guarantee that financial claims on the Private (Book 1) and Public (Book 2) ledgers must reconcile against the thermodynamic Reality Ledger (Book 3).</li>
+</ul>
+<h2 class="doc-h2">4. Multi-Agent Project Management &amp; Task Tracking Matrix</h2>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Task ID</th>
+<th>Task Title</th>
+<th>Primary Division</th>
+<th>Status</th>
+<th>Master Deliverable Link</th>
+</tr>
+<tr>
+<th>TSK-001</th>
+<th>Master Charter &amp; Triad Organization Setup</th>
+<th>Executive</th>
+<th>Master / Active</th>
+<th>Institute Charter</th>
+</tr>
+<tr>
+<th>TSK-002</th>
+<th>Axiomatic Number Coalgebra &amp; Ultrametrics</th>
+<th>Pure Math</th>
+<th>Working Draft</th>
+<th>Formal Paper 1</th>
+</tr>
+<tr>
+<th>TSK-003</th>
+<th>(42+n)-Polytrope Information Geometry &amp; TEF</th>
+<th>Pure Math</th>
+<th>Working Draft</th>
+<th>Formal Paper 2</th>
+</tr>
+<tr>
+<th>TSK-004</th>
+<th>Proof by Resonance &amp; 0–2 Lattice Bridge</th>
+<th>Pure Math</th>
+<th>Working Draft</th>
+<th>Formal Paper 3</th>
+</tr>
+<tr>
+<th>TSK-005</th>
+<th>N-Body Relativistic Declared Chains &amp; c² Bound</th>
+<th>Pure Math</th>
+<th>Working Draft</th>
+<th>Formal Paper 4</th>
+</tr>
+<tr>
+<th>TSK-006</th>
+<th>Operational Coalgebra &amp; Propagation Confluence</th>
+<th>Pure Math</th>
+<th>Working Draft</th>
+<th>Formal Paper 5</th>
+</tr>
+<tr>
+<th>TSK-007</th>
+<th>Econophysics of UPE, P⁷ Vector &amp; TS₀ Bread Matrix</th>
+<th>Value Physics</th>
+<th>Working Draft</th>
+<th>Formal Paper 6</th>
+</tr>
+<tr>
+<th>TSK-008</th>
+<th>Lean 4 Interactive Theorem Mechanization</th>
+<th>Pure Math</th>
+<th>Active</th>
+<th>irm_lean4_specs/</th>
+</tr>
+<tr>
+<th>TSK-009</th>
+<th>Microdata Empirical Calibration &amp; Simulation Engine</th>
+<th>Value Physics</th>
+<th>Active</th>
+<th>irm_engine.py (Value Physics module)</th>
+</tr>
+</table></div>
+<h2 class="doc-h2">5. Director Review, Feedback &amp; Supervisory Protocol</h2>
+<p class="doc-p">The Project Manager executes a review pass during every scheduled run using the following structured template:</p>
+<h3 class="doc-h3">DIRECTOR&#x27;S SUPERVISORY NOTE</h3>
+<p class="doc-p">### DIRECTOR&#x27;S SUPERVISORY NOTE</p>
+<p class="doc-p">**Target Role:** [The Researcher / The Checker]</p>
+<p class="doc-p">**Target Artifact:** [Document Title &amp; Link]</p>
+<p class="doc-p">1. **Mathematical / Physical Commendation:** [Identify verified proofs or robust derivations]</p>
+<p class="doc-p">2. **Identified Epistemic Friction / Vulnerability:** [Identify hidden assumptions, missing lemmas, or ungrounded claims]</p>
+<p class="doc-p">3. **Assigned Corrective Directive:** [Specify concrete algebraic, physical, or empirical tasks for the next sprint]</p>
+<p class="doc-p"></p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-12.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-12: On the Irreducibility &amp; Necessity of the 7 Interrogative Planes</div>
+</a>
+
+        
+<a href="VPE-14.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-14: Executive Summary &amp; Research Index</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

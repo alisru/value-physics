@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-11: Research Treatise: Cohesive Village Simulation (7 Guilds) — Value Physics Reader</title>
+  <meta name="description" content="600-citizen village across 7 guilds, Tri-Fold Ledger, 104-week audit">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-11</span>
+      <span class="doc-badge-cat">Meso-Scale Simulation Treatise</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-10.html" class="nav-arrow-btn">&larr; Prev (VPE-10)</a>
+      <a href="VPE-12.html" class="nav-arrow-btn">Next (VPE-12) &rarr;</a>
+      <a href="../deliverables/VPE-11_Research_Treatise_Cohesive_Village_Simul.docx" target="_blank" class="nav-download-btn">Download DOCX (462 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Research Treatise: Cohesive Village Simulation (7 Guilds)</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 600-citizen village across 7 guilds, Tri-Fold Ledger, 104-week audit
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Research Treatise: The Cohesive Village Micro-Economy Simulation — Closed-Loop Value Physics, Tri-Fold Ledger Architecture, and Fair-Pricing Protocol</h2>
+<p class="doc-p"><strong>Formalizing Meso-Scale Economic Autonomy, Multi-Guild Difficulty Accounting, and 7x4 Survival Matrix Coherence</strong></p>
+<p class="doc-p">Executive Abstract</p>
+<p class="doc-p">Modern regional communities face systemic extraction under neoclassical financialization: selling raw physical commodities at severely discounted farmgate prices ($DQ \approx 0.13$) while importing processed sustenance, energy, and debt at inflated monopolistic rates ($DQ \ge 4.7$). This structural mismatch drains regional liquidity, induces mortgage distress, and degrades natural substrates ($R_n$).</p>
+<p class="doc-p">This research treatise formalizes the <strong>Cohesive Village Micro-Economy</strong>—a meso-scale computational architecture of 600 individuals across 7 functional guilds. By implementing the <strong>Tri-Fold Ledger System</strong> (Book 1 Private Mutual Credit, Book 2 Public Sovereign Ledger, and Book 3 Reality Ledger), the <strong>WEST Token Difficulty Metric</strong>, and <strong>Statutory Debt Bifurcation</strong>, the village achieves complete thermodynamic and financial autonomy, maintaining a 100% Viability Index ($\Phi = 1.000$) through compound energy shocks and multi-year climate droughts.</p>
+<h3 class="doc-h3">1. Theoretical Audit &amp; Solutions for Identified Gaps</h3>
+<p class="doc-p">Auditing the core corpus—including Research Candidate: Formalization of the Universal Price Equation (UPE) &amp; 7-Plane Price Vector (P^7) and The 7x4 Survival Matrix Framework—identified four under-developed areas required to operate a full village simulation:</p>
+<h4 class="doc-h4">1.1 Multi-Commodity Invariant Geometric Base Price Vector ($\mathbf{P}_H$)</h4>
+<p class="doc-p">Extending the single-commodity bread model ($TS_0$) into a full meso-scale survival basket across the 5 essential physical needs:</p>
+<p class="doc-p">P_H,k = WEST_Tokens_k · [ (κ_energy · P_e,k + κ_labor · P_b,k) / R_n,k ]P_H = [ P_H,food (Bread/Produce), P_H,energy (kWh Microgrid), P_H,shelter (Rammed Earth/Timber), P_H,health (Care/Medicine), P_H,tools (Machinery/Maintenance) ]^T</p>
+<p class="doc-p">Every internal transaction clears at $\mathbf{P}_H$, ensuring that all guild exchanges are strictly indexed to verified physical difficulty ($D(t)$) without speculative markup.</p>
+<h4 class="doc-h4">1.2 The Village Tri-Fold Settlement Engine</h4>
+<p class="doc-p">Formalized the explicit state transitions across the three accounting books:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Book 3 (The Reality Ledger):</strong> Tracks physical hours $t$, training skill $s(t)$, metabolic exertion $e(t)$ in METs, danger $d(t)$, and attention $c(t)$. Validates that every issued token corresponds to real thermodynamic or biomechanical transformation.</li>
+<li class="doc-li"><strong>Book 2 (Public Sovereign Ledger):</strong> Issues local village credit units strictly pegged 1:1 to verified Book 3 difficulty tokens. Manages public capital infrastructure, common water/solar grids, and strategic physical reserves ($TS_0$).</li>
+<li class="doc-li"><strong>Book 1 (Private Micro-Credit):</strong> Governs bilateral member exchange with 0% real compound usury. Any temporary overdraft is settled through future labor contribution or linear amortization (Theorem 5: Asymptotic Obligation).</li>
+</ul>
+<h4 class="doc-h4">1.3 Dynamic Village Viability Index ($\Phi_{\text{village}}(t)$)</h4>
+<p class="doc-p">Derived from the $7 \times 4$ Survival Matrix, the systemic persistence of the village is defined as the multiplicative product of fulfillment across all 7 Planes of Reality:</p>
+<p class="doc-p">Φ_village(t) = ∏_{p=1}^7 V_p(t) = V_Metaphysical · V_Possible · V_Physical · V_Lyrical · V_Logical · V_Historical · V_Emotive</p>
+<p class="doc-p">If any single survival plane drops to zero (e.g., severe caloric starvation on Plane 3, or total institutional despair/burnout on Plane 7), $\Phi_{\text{village}} \to 0$, triggering a phase-shift collapse. In the Cohesive Village, surplus labor ($I_a - D_a$) is continuously allocated to replenish buffers across all planes.</p>
+<h4 class="doc-h4">1.4 Multi-Guild Difficulty Calibration</h4>
+<p class="doc-p">Calibrated baseline $WEST$ difficulty coefficients across the village&#x27;s productive workforce:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Guild Designation</th>
+<th>Headcount</th>
+<th>Skill ($s$)</th>
+<th>Exertion ($e$)</th>
+<th>Danger ($d$) &amp; Cognition ($c$)</th>
+<th>WEST Token Rate / Hour</th>
+</tr>
+<tr>
+<th>1. Agriculture &amp; Soil Regeneration</th>
+<th>120</th>
+<th>$s=4.0$</th>
+<th>$e=3.2\text{ MET}$</th>
+<th>$d=0.35, c=0.30$</th>
+<th>1.45 Tokens/hr</th>
+</tr>
+<tr>
+<th>2. Energy &amp; Water Harvesting</th>
+<th>40</th>
+<th>$s=5.0$</th>
+<th>$e=2.5\text{ MET}$</th>
+<th>$d=0.25, c=0.45$</th>
+<th>1.50 Tokens/hr</th>
+</tr>
+<tr>
+<th>3. Food Processing &amp; Baking</th>
+<th>60</th>
+<th>$s=4.5$</th>
+<th>$e=3.4\text{ MET}$</th>
+<th>$d=0.25, c=0.40$</th>
+<th>1.62 Tokens/hr</th>
+</tr>
+<tr>
+<th>4. Construction &amp; Building Trades</th>
+<th>80</th>
+<th>$s=4.2$</th>
+<th>$e=3.8\text{ MET}$</th>
+<th>$d=0.30, c=0.35$</th>
+<th>1.58 Tokens/hr</th>
+</tr>
+<tr>
+<th>5. Healthcare &amp; Education</th>
+<th>80</th>
+<th>$s=6.0$</th>
+<th>$e=2.0\text{ MET}$</th>
+<th>$d=0.10, c=0.75$</th>
+<th>1.75 Tokens/hr</th>
+</tr>
+<tr>
+<th>6. Logistics &amp; Central Depot</th>
+<th>40</th>
+<th>$s=3.0$</th>
+<th>$e=2.5\text{ MET}$</th>
+<th>$d=0.15, c=0.25$</th>
+<th>1.15 Tokens/hr</th>
+</tr>
+<tr>
+<th>7. Civic Planning &amp; Ledger Audit</th>
+<th>30</th>
+<th>$s=6.5$</th>
+<th>$e=1.2\text{ MET}$</th>
+<th>$d=0.00, c=0.85$</th>
+<th>1.35 Tokens/hr</th>
+</tr>
+<tr>
+<th>Dependents (Supported by Surplus)</th>
+<th>150</th>
+<th>—</th>
+<th>—</th>
+<th>—</th>
+<th>Unconditional Caloric Dividend</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">2. Simulation Execution: 104-Week Comparative Audit</h3>
+<p class="doc-p">The simulation modeled a 600-person village over a 2-year horizon (104 weeks), subject to a <strong>350 bps central bank rate hike</strong> (week 26), a <strong>100% diesel fuel shock</strong> (week 52), and a <strong>20-week agricultural drought</strong> (weeks 65–85):</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>System Metric &amp; State Variable</th>
+<th>Extractive Neoclassical Regime</th>
+<th>Cohesive Village Protocol ($DQ=1.0$)</th>
+<th>Net Structural Transformation</th>
+</tr>
+<tr>
+<th>Ending Village Liquid Cash</th>
+<th>$0.00 AUD (Total liquidity drain)</th>
+<th>$2,940,000 AUD (Sovereign Infrastructure Fund)</th>
+<th>+$2.94M AUD (Surplus retained locally)</th>
+</tr>
+<tr>
+<th>Ending Debt Burden</th>
+<th>$19,842,375 AUD (Runaway compounding usury)</th>
+<th>$4,200,000 AUD (Linear principal reduction)</th>
+<th>-$15.64M AUD (Eliminated compounding interest traps)</th>
+</tr>
+<tr>
+<th>Strategic Grain Buffer Stock</th>
+<th>966.1 tonnes (Depleted, vulnerable)</th>
+<th>2,523.7 tonnes (50-year caloric security)</th>
+<th>+1,557.6 t (Complete drought immunity)</th>
+</tr>
+<tr>
+<th>Systemic Viability Index ($\Phi$)</th>
+<th>0.100 (Critical systemic failure)</th>
+<th>1.000 (Full 7-Plane Coherence)</th>
+<th>+0.900 (100% biological &amp; social persistence)</th>
+</tr>
+<tr>
+<th>Health &amp; Care Burnout Debt</th>
+<th>15,592.4 Index Units (Severe care crisis)</th>
+<th>0.0 Units (Fully compensated care)</th>
+<th>-15,592.4 (Eliminated social entropy)</th>
+</tr>
+<tr>
+<th>Property Foreclosures</th>
+<th>73 Homes / Farms (12.2% of village)</th>
+<th>0 Foreclosures (Inherent housing security)</th>
+<th>-73 Foreclosures (100% shelter security)</th>
+</tr>
+<tr>
+<th>Internal Loaf Price</th>
+<th>$4.50 → $5.80 AUD (Extractive markup)</th>
+<th>$1.15 AUD (True physical cost floor)</th>
+<th>-$4.65 AUD (-80.2%) (Zero supermarket toll)</th>
+</tr>
+<tr>
+<th>Cumulative Reality Gap ($\Delta R$)</th>
+<th>$18,347,050 AUD (Unpaid physical debt)</th>
+<th>$0.00 AUD (Exact thermodynamic balance)</th>
+<th>-$18.35M AUD (Thermodynamic truth restored)</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">3. Structural Analysis: Why the Cohesive Village Succeeds</h3>
+<h4 class="doc-h4">3.1 Elimination of the &quot;Welfare-to-Corporate Extraction Circuit&quot;</h4>
+<p class="doc-p">As documented in The Welfare-to-Corporate Subsidy Extraction Matrix, conventional regional towns bleed their purchasing power into supermarket duopolies, utility monopolies, and mortgage banks. In the Cohesive Village, essential sustenance (bread, milk, vegetables, housing, and solar power) is produced and cleared locally using Book 2 sovereign credits. External fiat is reserved exclusively for non-local capital equipment (e.g., medical diagnostics, precision electronics), resulting in a massive net positive external trade balance ($+\$2.94\text{M AUD}$).</p>
+<h4 class="doc-h4">3.2 Real Surplus Reinvestment ($I_a - D_a$)</h4>
+<p class="doc-p">Under The Cover, extractive economies borrow nominal claims to simulate prosperity while real physical surplus is squeezed to zero. In the Cohesive Village:</p>
+<ul class="doc-ul">
+<li class="doc-li">Physical surplus ($I_a - D_a$) is clearly visible in the Reality Ledger as surplus grain (2,523 tonnes) and stored microgrid kilowatt-hours.</li>
+<li class="doc-li">This surplus directly funds the unconditional support of 150 dependents (elders, children, disabled citizens), community cultural festivals (Plane 4 Lyrical Refreshment), and continuous infrastructure maintenance (Plane 6 Historical Lineage).</li>
+</ul>
+<h4 class="doc-h4">3.3 Complete Neutralization of Macroeconomic Interest Rate Hikes</h4>
+<p class="doc-p">Because the village implements <strong>Statutory Debt Bifurcation (Theorem 5)</strong>, the RBA&#x27;s 350 bps rate hike had <strong>zero inflationary impact</strong> on internal village sustenance. Housing and equipment debt amortized strictly linearly at $2,884.62/week, insulating families from mortgage stress and eliminating bank foreclosures entirely.</p>
+<h3 class="doc-h3">4. Actionable Master Blueprint for Village Deployment</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Establish the Village Sovereign Clearinghouse &amp; Tri-Fold Node:</strong>Deploy an open-source, local offline-capable Tri-Fold Ledger node. Book 3 logs verified physical hours and difficulty vectors $D(t)$; Book 2 issues local non-inflationary village credits; Book 1 settles bilateral micro-debts at 0% usury.</li>
+<li class="doc-li"><strong>Capitalize the Strategic Physical Buffers ($TS_0$ Silo &amp; Microgrid):</strong>Construct a community grain storage silo (minimum 500t capacity) and a solar/battery/micro-hydro grid (minimum 25 kWh per household). This creates hard physical resistance against national supply chain bottlenecks and energy price spikes.</li>
+<li class="doc-li"><strong>Charter the 7 Productive Guilds:</strong>Organize regional trade, farming, building, healthcare, and educational workers into structured guilds operating under the $WEST$ Token difficulty schedule, guaranteeing that all labor is compensated in proportion to real physical exertion and skill.</li>
+<li class="doc-li"><strong>Enforce the ACCC Invariant Price Standard ($DQ = 1.0$):</strong>Mandate that all internal community stores clear essential goods at $P_H$, eliminating slotting fees, advertising markups, and unearned retail tolls ($R_a \le 0.12$).</li>
+</ul>
+<p class="doc-p">Compiled from Value Physics Research &amp; Meso-Scale Cohesive Village Simulation Engine.</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-10.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-10: Research Paper: The Economics and Value Physics of Bread</div>
+</a>
+
+        
+<a href="VPE-12.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-12: On the Irreducibility &amp; Necessity of the 7 Interrogative Planes</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

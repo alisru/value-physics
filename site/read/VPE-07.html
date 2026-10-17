@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-07: The Grand Translation to Modern Economic Theory — Value Physics Reader</title>
+  <meta name="description" content="Bridges to Neoclassical, Sraffian, Bioeconomic, Post-Keynesian SFC and Austrian schools">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-07</span>
+      <span class="doc-badge-cat">Cross-Disciplinary Theoretical Suite</span>
+      <span class="doc-badge-status">Foundational Treatise</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-06.html" class="nav-arrow-btn">&larr; Prev (VPE-06)</a>
+      <a href="VPE-08.html" class="nav-arrow-btn">Next (VPE-08) &rarr;</a>
+      <a href="../deliverables/VPE-07_The_Grand_Translation_to_Modern_Economic.docx" target="_blank" class="nav-download-btn">Download DOCX (18 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">The Grand Translation to Modern Economic Theory</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Bridges to Neoclassical, Sraffian, Bioeconomic, Post-Keynesian SFC and Austrian schools
+          </div>
+          <div class="article-data-pills"><span class="data-pill">156-week SFC matrix calibrated to ABARES/ABS/RBA/ACCC/AEMO</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">The Grand Translation: Bridging Value Physics, the Cardinal Token Matrix, and the Reality Tensor to Modern Economic Theory</h2>
+<p class="doc-p"><strong>Establishing an Invariant Physical Spine for Neoclassical, Classical Sraffian, Bioeconomic, Post-Keynesian/MMT, and Austrian Paradigms</strong></p>
+<p class="doc-p">Executive Abstract</p>
+<p class="doc-p">Modern economics is fractured across competing schools of thought: Neoclassical marginalism assumes frictionless equilibrium; Classical Sraffian economics tracks physical inputs but lacks thermodynamic entropy constraints; Modern Monetary Theory (MMT) models sovereign nominal balance sheets while remaining substrate-blind; and Austrian economics emphasizes subjective time-preference without objective biomechanical grounding.</p>
+<p class="doc-p">This treatise provides the <strong>Grand Translation Suite</strong>. We derive the exact mathematical mapping connecting the <strong>Cardinal Token Matrix (WEST, EAST, BEST, WORST)</strong>, the <strong>Universal Price Equation (UPE)</strong>, and the <strong>Reality Tensor (R)</strong> to standard economic variables. By replacing abstract nominal scalars with multi-dimensional reality tensors, Value Physics provides modern economics with an <strong>objective physical spine</strong> grounded in thermodynamic exergy ($P_e$), human metabolic difficulty ($P_b$), and natural replenishment ($R_n$).</p>
+<h3 class="doc-h3">1. Exact Translation Equations: The Cardinal Tokens and the Reality Tensor</h3>
+<h4 class="doc-h4">1.1 The Master Universal Price Equation Decomposed</h4>
+<p class="doc-p">The spatiotemporal Universal Price Equation (UPE) is formulated as:</p>
+<p class="doc-p">P(x, t) = m_1 · R(x, t, c) · m_2 · γ(v_rel) + P_e + P_b</p>
+<p class="doc-p">where the <strong>Dimensionless Reality Tensor (R)</strong> is:</p>
+<p class="doc-p">R(x, t, c) = [ S(x, t, c) · U(x, t) ] / [ R_n(x, t) · (1 - R_a(x, t)) ]</p>
+<h4 class="doc-h4">1.2 Translation Mapping into the Cardinal Token Matrix</h4>
+<p class="doc-p">Each variable in the Reality Tensor and UPE translates directly into the four cardinal perspectives of token physics:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>UPE / Reality Tensor Variable</th>
+<th>Physical Meaning in Econophysics</th>
+<th>Cardinal Token Translation</th>
+<th>Exact Mathematical Equivalence</th>
+</tr>
+<tr>
+<th>Biomechanical Labor ($P_b$) &amp; Exergy ($P_e$)</th>
+<th>Sunk biological metabolic ATP and thermodynamic joules destroyed.</th>
+<th>WEST (Work-Effort-Skill/Time)</th>
+<th>WEST = ∫ s(t)·e(t)·[1+d(t)]·[1+c(t)] dt</th>
+</tr>
+<tr>
+<th>Urgency ($U$) &amp; Biological Need ($N_x$)</th>
+<th>Contraction of state-space / rate of biological decay per unit time.</th>
+<th>EAST (Effect-Actual-Service/Time)</th>
+<th>EAST = ∫ ΔU_relief(t)·N_x(t)·ψ(t) dt</th>
+</tr>
+<tr>
+<th>Natural Replenishment ($R_n$) &amp; Access ($A^+$)</th>
+<th>Substrate well-depth, open protocol carry-capacity expansion.</th>
+<th>BEST (Beneficent-Ecological-Social/Time)</th>
+<th>BEST = ∫ (dR_n/dt + ΔCommons + I_a - D_a) dt</th>
+</tr>
+<tr>
+<th>Extraction Toll ($R_a$), Coercion ($\gamma$), &amp; Gap ($\Delta R$)</th>
+<th>Unearned rentier markup, monopoly enclosure ($A^-$), and reality debt.</th>
+<th>WORST (Waste-Overload-Rent/Scarcity-Toll)</th>
+<th>WORST = ∫ [ R_a·P_m + (γ-1)P_H + dΔR/dt ] dt</th>
+</tr>
+</table></div>
+<h4 class="doc-h4">1.3 The Unified Token-UPE Transformation Equation</h4>
+<p class="doc-p">Expressing nominal market price ($P_m$) as a functional transformation of the Cardinal Tokens:</p>
+<p class="doc-p">P_m = WEST · [ (1 + WORST_rate) / (1 + BEST_offset) ] · [ EAST_urgency / EAST_parity ] · γ(v_rel)</p>
+<p class="doc-p">When an economy achieves true difficulty parity ($DQ = 1.0, \text{WORST} \to 0, \gamma = 1.0$):</p>
+<p class="doc-p">P_m ≡ P_H = WEST Tokens · [ (κ_energy · P_e + κ_labor · P_b) / R_n ]</p>
+<h3 class="doc-h3">2. Translating Neoclassical Economics: Grounding Marginalism in Physical Reality</h3>
+<p class="doc-p">Neoclassical economics posits that price is an equilibrium scalar determined by the intersection of Marshallian Supply and Demand curves ($P^* = S(q) \cap D(q)$) under utility-maximization and cost-minimization.</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Neoclassical Concept</th>
+<th>Standard Neoclassical Formula</th>
+<th>Value Physics Translation &amp; Transformation</th>
+<th>Physical Critique &amp; Unconcealed Constraint</th>
+</tr>
+<tr>
+<th>Marginal Cost ($MC$)</th>
+<th>MC = dC(q) / dq</th>
+<th>MC = d(WEST)/dq + dP_e/dq + dP_b/dq + dWORST/dq</th>
+<th>Neoclassical $MC$ treats labor as homogenous dollar wages. Value Physics proves $MC$ is a vector of metabolic METs ($e$), training density ($s$), and exergy destruction ($P_e$).</th>
+</tr>
+<tr>
+<th>Marginal Utility ($MU$)</th>
+<th>MU = ∂U(x_1,...x_n) / ∂x_i</th>
+<th>MU = [ α·N_x / (t_dead - t) ] + β·W_x ≡ EAST(t)</th>
+<th>Utility is not subjective hedonic bliss. It is the rate of existential urgency collapse ($\Delta U \to 0$) governed by biological Need ($N_x$).</th>
+</tr>
+<tr>
+<th>Price Elasticity of Demand (ε)</th>
+<th>ε = (% Δ Q) / (% Δ P)</th>
+<th>ε(v_rel) = ε_0 · sqrt(1 - v_rel^2) ≡ ε_0 / γ</th>
+<th>Under acute existential urgency ($v_{\text{rel}} \to 1.0$), elasticity collapses to zero ($\epsilon \to 0$). Price sensitivity vanishes, enabling pure rentier extraction.</th>
+</tr>
+<tr>
+<th>Consumer / Producer Surplus</th>
+<th>CS = ∫ (P_demand - P*) dq</th>
+<th>CS = EAST_relief - P_H<br>Rentier Toll = WORST = P_m - P_H</th>
+<th>Surplus is partitioned into genuine life-enhancement ($\text{EAST} - P_H$) versus unearned monopoly tolling ($\text{WORST}$).</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">3. Translating Classical Sraffian &amp; Leontief Input-Output Economics</h3>
+<p class="doc-p">Piero Sraffa (1960) and Wassily Leontief formalized prices as physical input-output coefficients in a multi-sector reproduction matrix: $\mathbf{p} = \mathbf{p}\mathbf{A}(1+r) + w\mathbf{l}$. Value Physics upgrades Sraffa by introducing the <strong>Thermodynamic Exergy Vector ($P_e$)</strong> and the <strong>WEST Difficulty Tensor</strong>.</p>
+<h4 class="doc-h4">3.1 The Value Physics Upgraded Sraffa Equation</h4>
+<p class="doc-p">In standard Sraffian theory, $\mathbf{l}$ is a scalar vector of clock-hours. In Value Physics:</p>
+<p class="doc-p">p = p · A_physical · (1 + BEST_rate) + w · WEST_tensor + P_e + WORST_toll</p>
+<p class="doc-p">where:</p>
+<ul class="doc-ul">
+<li class="doc-li">$\mathbf{A}_{\text{physical}}$: Physical input requirements (e.g., $584\text{g}$ grain + $10.83\text{ MJ}$ exergy per loaf).</li>
+<li class="doc-li">$\mathbf{WEST}_{\text{tensor}}$: Multi-dimensional difficulty vector replacing crude labor time ($\mathbf{l} \to s \cdot e \cdot [1+d][1+c]$).</li>
+<li class="doc-li">$\text{BEST}_{\text{rate}}$: Legitimate capital maintenance and substrate replenishment rate ($R_n \uparrow$).</li>
+<li class="doc-li">$\text{WORST}_{\text{toll}}$: Sraffa&#x27;s unearned &quot;surplus rate&quot; $r_{\text{unearned}}$ isolated as pure parasitic rentier extraction ($R_a$).</li>
+</ul>
+<h4 class="doc-h4">3.2 The Sraffian Standard Commodity as the $TS_0$ Bread Floor</h4>
+<p class="doc-p">Sraffa searched for an &quot;Invariant Standard Commodity&quot; to measure distribution without price feedback distortion. Value Physics proves that the <strong>8-Stage Canonical Bread Reference Process ($TS_0$)</strong> is the unique physical standard commodity: it spans the entire arc from latent taking (Plant) to purposeful giving (Distribution) with full accounting across all 7 Interrogative Planes.</p>
+<h3 class="doc-h3">4. Translating Ecological Economics &amp; Georgescu-Roegen Bioeconomics</h3>
+<p class="doc-p">Nicholas Georgescu-Roegen (1971) introduced the <strong>Entropy Law</strong> and the <strong>Fund-Flow Model</strong> to economics, demonstrating that economic production is a physical engine degrading low-entropy matter-energy into high-entropy waste.</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Bioeconomic Concept</th>
+<th>Georgescu-Roegen Formulation</th>
+<th>Value Physics Translation</th>
+<th>Mathematical Realization</th>
+</tr>
+<tr>
+<th>Flow-Fund Duality</th>
+<th>Funds (Land, Labor, Capital) vs. Flows (Raw Materials, Energy, Waste).</th>
+<th>Substrate Fund ($R_n$) vs. Exergy Flows ($P_e, P_b$)</th>
+<th>Fund = R_n(t)<br>Flow = d(WEST)/dt + dP_e/dt</th>
+</tr>
+<tr>
+<th>Entropy Degradation</th>
+<th>ΔS_universe &gt; 0 (Irreversible dissipation of exergy).</th>
+<th>Thermodynamic Cost Layer ($P_e$)</th>
+<th>P_e = T_0 · ΔS_irreversible</th>
+</tr>
+<tr>
+<th>Fund Depletion vs. Replenishment</th>
+<th>Over-extraction reduces fund service capacity.</th>
+<th>The Well Principle: $R_n$ vs. $R_a$</th>
+<th>dR_n/dt = r·R_n(1 - R_n/K) - δ·R_n + BEST - WORST</th>
+</tr>
+<tr>
+<th>Cradle-to-Grave Cost</th>
+<th>Total ecological throughput cost.</th>
+<th>Three-Layer Total Cost ($P_t$)</th>
+<th>P_t = P_e + P_b + P_m</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">5. Translating Modern Monetary Theory (MMT) &amp; Post-Keynesian SFC Models</h3>
+<p class="doc-p">Modern Monetary Theory (Mitchell, Wray, Kelton) and Post-Keynesian Stock-Flow Consistent (SFC) modeling (Godley-Lavoie) correctly analyze the accounting identities between the state and private sectors: <strong>Private Net Savings ≡ Government Deficit</strong>.</p>
+<h4 class="doc-h4">5.1 The MMT Fatal Omission: The Dual-Ledger Sandbox</h4>
+<p class="doc-p">As formalized in Research Candidate: Value Physics vs. MMT, MMT operates entirely within a dual-ledger sandbox (Book 1 Private Bank Credit + Book 2 Sovereign Currency Issuance). It assumes that because sovereign tokens can be typed into existence at zero financial cost, physical resources will automatically organize if nominal funds are provided.</p>
+<h4 class="doc-h4">5.2 The Tri-Fold Translation Engine</h4>
+<p class="doc-p">Value Physics integrates MMT by forcing Book 2 (Sovereign Keystrokes) to reconcile with <strong>Book 3 (The Reality Ledger)</strong>:</p>
+<p class="doc-p">[ BOOK 1: Private Ledger ]   &lt;---&gt;   [ BOOK 2: Public Ledger ]   &lt;---&gt;   [ BOOK 3: REALITY LEDGER ](Commercial Bank Credit)            (MMT Sovereign Deficit)             (Thermodynamic Physics)Deposits - Loans = 0                Public Deficit = Private Surplus     WEST Tokens = ∫ s·e·(1+d)(1+c) dt                                                                        Reality Tensor: S, U, R_n, R_a</p>
+<p class="doc-p"><strong>The Translation Rule:</strong> Sovereign token issuance (Δ Book 2) is non-inflationary if and only if it matches an expansion in verified physical substrate carrying capacity (Δ Book 3 &amp;implies; BEST ↑, R_n ↑). When sovereign spending expands without increasing physical well-depth (R_n), it drives localized contextual scarcity (S_c ↑), forcing nominal prices to accelerate through the Reality Tensor (R ↑).</p>
+<h3 class="doc-h3">6. Translating Austrian Economics: Urgency Spacetime and Information Entropy</h3>
+<p class="doc-p">Austrian economics (Mises, Hayek, Kirzner) emphasizes subjective value, time-preference, entrepreneurial discovery, and the decentralized price mechanism as an informational coordinator.</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Austrian Concept</th>
+<th>Austrian Theoretical Definition</th>
+<th>Value Physics Translation</th>
+<th>Physical Grounding</th>
+</tr>
+<tr>
+<th>Time Preference (ρ)</th>
+<th>Subjective valuation of present goods over future goods.</th>
+<th>The Urgency Velocity Vector: $U(t)$</th>
+<th>U(t) = 1 - exp(-λ / (t_deadline - t))<br>Time preference is the physical rate of state-space decay.</th>
+</tr>
+<tr>
+<th>Price as an Information Signal</th>
+<th>Decentralized telecommunications system coordinating dispersed knowledge.</th>
+<th>Negative Value Gradient: $\mathbf{V} = -\nabla P$</th>
+<th>Value flows down pressure gradients. Under &quot;The Cover&quot;, price signals become corrupted by stored Reality Gap debt (Δ R).</th>
+</tr>
+<tr>
+<th>Cantillon Effect &amp; Malinvestment</th>
+<th>Unequal distribution of new fiat credit distorts capital structure.</th>
+<th>Distortion Quotient Divergence ($DQ \gg 1.0$)</th>
+<th>Fiat liquidity inflates Quadrant IV speculative claims, starving Quadrant I physical infrastructure of maintenance (R_n ↓).</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">7. The Master Translation Lexicon &amp; Unified Equation Suite</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Standard Economic Variable / Concept</th>
+<th>Value Physics Formalism</th>
+<th>Token Equivalent</th>
+<th>Unified Transformation Formula</th>
+</tr>
+<tr>
+<th>Labor Input ($L$)</th>
+<th>Biomechanical Exertion Vector P_b</th>
+<th>WEST Tokens</th>
+<th>L → ∫ s(t)·e(t)·[1+d(t)]·[1+c(t)] dt</th>
+</tr>
+<tr>
+<th>Consumer Utility ($U(q)$)</th>
+<th>Biological Need Satisfaction / Urgency Relief</th>
+<th>EAST Tokens</th>
+<th>U(q) → ΔU_relief · N_x</th>
+</tr>
+<tr>
+<th>Capital Maintenance &amp; Public Good ($G$)</th>
+<th>Substrate Replenishment &amp; Surplus Investment</th>
+<th>BEST Tokens</th>
+<th>G → I_a - D_a ≡ dR_n/dt + ΔCommons</th>
+</tr>
+<tr>
+<th>Economic Rent / Monopoly Markup (Π_rent)</th>
+<th>Artificial Toll &amp; Coercive Asymmetry</th>
+<th>WORST Tokens</th>
+<th>Π_rent → [ R_a / (1 - R_a) ]·P_H + (γ - 1)·P_H</th>
+</tr>
+<tr>
+<th>Market Clearing Price ($P^*$)</th>
+<th>7-Plane Price Tensor P^7</th>
+<th>P_H + WORST</th>
+<th>P* = (P_you/P_soc)·R·(P_other/P_soc)·γ + P_e + P_b</th>
+</tr>
+<tr>
+<th>Consumer Price Index (CPI Inflation)</th>
+<th>Planar Strain Velocity &amp; Reality Gap Integral</th>
+<th>Δ R(t) Derivative</th>
+<th>Inflation → ∂P^7 / ∂t = C·(dWORST/dt) + ∇ P_e</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">8. References &amp; Corpus Synthesis</h3>
+<ul class="doc-ul">
+<li class="doc-li">Research Candidate: Formalization of the Universal Price Equation (UPE) &amp; 7-Plane Price Vector (P^7)</li>
+<li class="doc-li">The Cardinal Value Matrix: WEST, EAST, BEST, and WORST Perspectives on Token Physics</li>
+<li class="doc-li">Research Treatise: The Cohesive Village Micro-Economy Simulation</li>
+<li class="doc-li">The Economics and Value Physics of Bread</li>
+<li class="doc-li">Research Candidate: Value Physics vs. MMT</li>
+<li class="doc-li">The Cover</li>
+<li class="doc-li">The Well Principle</li>
+<li class="doc-li">The Physics of Value: A Definitive Treatise on Currency, Simulacra, and the Reality Tensor</li>
+<li class="doc-li">Georgescu-Roegen, N. (1971). <em>The Entropy Law and the Economic Process</em>. Harvard University Press.</li>
+<li class="doc-li">Sraffa, P. (1960). <em>Production of Commodities by Means of Commodities</em>. Cambridge University Press.</li>
+<li class="doc-li">Leontief, W. (1986). <em>Input-Output Economics</em>. Oxford University Press.</li>
+<li class="doc-li">Godley, W., &amp; Lavoie, M. (2007). <em>Monetary Economics: An Integrated Approach to Credit, Money, Income, Production and Wealth</em>. Palgrave Macmillan.</li>
+<li class="doc-li">von Mises, L. (1949). <em>Human Action: A Treatise on Economics</em>. Yale University Press.</li>
+</ul>
+<p class="doc-p">Compiled from Value Physics Research, Econophysics Mathematical Translations, and Multi-Paradigm Syntheses.</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-06.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-06: The 7-Plane Token Spectrum Architecture</div>
+</a>
+
+        
+<a href="VPE-08.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-08: The Bread of Life: Isomorphic Information Treatise</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

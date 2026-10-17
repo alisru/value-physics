@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-31: [ARCHIVED COPY] Value Physics Master Excel Ledger (superseded 2026-08-28) — Value Physics Reader</title>
+  <meta name="description" content="Prior ledger. 56-cell tab contradicted FP6 (4 electricity / 2 water stages); LOG-VPE-023 and AUD-VPE-009 missing; LOG-VPE-024 column shift; Leontief source column offset.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-31</span>
+      <span class="doc-badge-cat">Superseded Control Document</span>
+      <span class="doc-badge-status">Archived</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-30.html" class="nav-arrow-btn">&larr; Prev (VPE-30)</a>
+      <a href="VPE-32.html" class="nav-arrow-btn">Next (VPE-32) &rarr;</a>
+      <a href="../deliverables/VPE-31_ARCHIVED_COPY_Value_Physics_Master_Excel.xlsx" target="_blank" class="nav-download-btn">Download XLSX (41 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">[ARCHIVED COPY] Value Physics Master Excel Ledger (superseded 2026-08-28)</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Prior ledger. 56-cell tab contradicted FP6 (4 electricity / 2 water stages); LOG-VPE-023 and AUD-VPE-009 missing; LOG-VPE-024 column shift; Leontief source column offset.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">56-cell multi-sector input-output supply chain matrix</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h3 class="doc-h3">Worksheet: Deliverables Registry</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Value Physics Research Repository — Master Deliverables Registry</th>
+</tr>
+<tr>
+<td>Alethekanon Research Institute | Division 2: Societal Economics &amp; Value Physics | Directory ID: 1ido8K-WwFst-DLzvOuyMB3uNKXPkPAyi</td>
+</tr>
+<tr>
+<td>Doc ID</td>
+<td>Document Title</td>
+<td>Formal Category / Role</td>
+<td>Theoretical &amp; Empirical Scope</td>
+<td>Lifecycle Status</td>
+<td>NotebookLM Sync</td>
+<td>Google Drive Direct Link</td>
+</tr>
+<tr>
+<td>VPE-01</td>
+<td>Formal Paper 6: Value Physics &amp; The Universal Price Tensor</td>
+<td>Master Theoretical Treatise</td>
+<td>Spatiotemporal Scarcity S(x,t,c), 3-Layer Cost (Pe+Pb+Pm), P^7 Vector, Lorentz Coercion γ, 56-Cell Bread TS_0, Energy &amp; Water Matrices, Theorem 5 Debt Bifurcation</td>
+<td>Remediated &amp; Verified (Master Draft)</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1PYHxIgClDslPH-sOiNEL5nJtPMPAh9Mfm6yk5bt1Lc4/edit</td>
+</tr>
+<tr>
+<td>VPE-02</td>
+<td>Technical Whitepaper: The Tri-Fold Cryptographic Ledger</td>
+<td>Cryptographic Protocol Whitepaper</td>
+<td>Proof-of-Difficulty (PoD) consensus state machine, Book 1/2/3 accounting, 1,000-run Monte Carlo stochastic stress testing (100% solvency)</td>
+<td>Complete / Validated</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1biBhmIb114Tdb1DkxrqCnxXwngSgnVAjl0ztmcFMBYo/edit</td>
+</tr>
+<tr>
+<td>VPE-03</td>
+<td>Econometric Paper: Stock-Flow Consistent Micro-Economy Modeling</td>
+<td>Econometric SFC Empirical Treatise</td>
+<td>156-week dynamic SFC matrix for NSW broadacre farming calibrated against ABARES, ABS, RBA, ACCC, and AEMO datasets</td>
+<td>Complete / Empirical Master</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1vMrZ-UfWr9uv3Uw_nO17yuh5XAbxiVweDIcsINFbMO8/edit</td>
+</tr>
+<tr>
+<td>VPE-04</td>
+<td>Research Report: Multi-Commodity Cohesive Village Simulation</td>
+<td>Dynamic Multi-Sector Simulation</td>
+<td>Meso-scale 600-citizen village simulation across 5 core sectors (Food, Energy, Water, Shelter, Care) under 3-year compound crises</td>
+<td>Complete / Modeled</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1H3LS1DBxUY6crJl6S887MwwNcNmhg3-oWkmg3JKY0rU/edit</td>
+</tr>
+<tr>
+<td>VPE-05</td>
+<td>The Cardinal Value Matrix: WEST, EAST, BEST, WORST</td>
+<td>Foundational Conceptual Treatise</td>
+<td>4-quadrant token geometry, Need/Want tensor dynamics (Px = αNx + βWx), and Reciprocal Closure Conservation Law</td>
+<td>Foundational Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1dgnWZVDQHgKs_35bncktB-L2hxp_hnNrszlO09zgx4c/edit</td>
+</tr>
+<tr>
+<td>VPE-06</td>
+<td>The 7-Plane Token Spectrum Architecture</td>
+<td>Foundational Currency Architecture</td>
+<td>Multi-spectral currency vector (T), planar action profiles, and elimination of Plane Misidentification Errors</td>
+<td>Foundational Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1awluVDkDagymqiFV-WbYhehXp8kstoYIHbdcGf8V4Xo/edit</td>
+</tr>
+<tr>
+<td>VPE-07</td>
+<td>The Grand Translation to Modern Economic Theory</td>
+<td>Cross-Disciplinary Theoretical Suite</td>
+<td>Mathematical bridges to Neoclassical, Classical Sraffian, Bioeconomic (Georgescu-Roegen), Post-Keynesian SFC, and Austrian schools</td>
+<td>Foundational Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1xqXYmXssgFAHKhSb-3oG2-AwOpNa4nrpnoBEMDi8ywA/edit</td>
+</tr>
+<tr>
+<td>VPE-08</td>
+<td>The Bread of Life: Isomorphic Information Treatise</td>
+<td>Isomorphic Process Treatise</td>
+<td>8-stage mapping connecting physical bread lifecycle to Information Theory, Actualism theology, and 7-plane invariant (TS_0)</td>
+<td>Foundational Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1xCq6cmQFgz7NnmYpWwr0fTILNaAHbVQkqGhorsP6eow/edit</td>
+</tr>
+<tr>
+<td>VPE-09</td>
+<td>Achilles-Setup-Check: Relational Spacetime &amp; Coordinates</td>
+<td>Spacetime Foundations</td>
+<td>Zeno paradox resolution, continuous worldlines, self-normalised traversal coordinates, and temporal frame {[]}(])</td>
+<td>Foundational Theory</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1fwgrHfZJqpy0X_lUEuDABnJgD6WEiL5v9FNx4SCqWEg/edit</td>
+</tr>
+<tr>
+<td>VPE-10</td>
+<td>Research Paper: The Economics and Value Physics of Bread</td>
+<td>Empirical Case Study</td>
+<td>Multi-tier price audit (Private Label to Artisan) and 5-channel monetary interest rate cost-push transmission modeling</td>
+<td>Complete / Empirical Research</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1f4cQwN2Rba5cteU-iWsFCA8MMcOSWRa0IxDDk3x5kM4/edit</td>
+</tr>
+<tr>
+<td>VPE-11</td>
+<td>Research Treatise: Cohesive Village Simulation (7 Guilds)</td>
+<td>Meso-Scale Simulation Treatise</td>
+<td>Meso-scale 600-citizen village simulation across 7 production guilds, Book 1/2/3 Tri-Fold Ledger, and 104-week audit</td>
+<td>Complete / Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1hm6KOBGml4Sry-kHgoHrrFwC2j542zzah--azRmkUJw/edit</td>
+</tr>
+<tr>
+<td>VPE-12</td>
+<td>On the Irreducibility &amp; Necessity of the 7 Interrogative Planes</td>
+<td>Foundational Preprint</td>
+<td>Zenodo preprint proving 42D simplex minimal volume (v_min = 43), TEF 126+n nodes, and P vs NP geodesic collapse</td>
+<td>Preprint / Foundational</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1aJdkY0SAAldN38JT4av1Pw-_Vh3fts0SYkfWl3pqg6s/edit</td>
+</tr>
+<tr>
+<td>VPE-13</td>
+<td>Alethekanon Master Organizational Charter</td>
+<td>Institutional Governance</td>
+<td>Institute charter, Division 1 (IRM) and Division 2 (VPE) hierarchy, multi-agent triad profiles, and supervisory protocols</td>
+<td>Governance Charter</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1kPFbMJ-1gpD-nh_I6d2hdOpvJ4u9q-VlX9NU2pSDSe0/edit</td>
+</tr>
+<tr>
+<td>VPE-14</td>
+<td>Executive Summary &amp; Research Index</td>
+<td>Overview &amp; Navigation</td>
+<td>High-level summary of empirical bread metrics, WEST tokens, and cross-document navigation</td>
+<td>Index / Overview</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1_bek34ggppNV4aYNzjWNhc80eCmEpa0vcjSD98b_23s/edit</td>
+</tr>
+<tr>
+<td>VPE-15</td>
+<td>Value Physics Master Excel Ledger</td>
+<td>Single Canonical Spreadsheet</td>
+<td>Master repository registry, change log, 56-cell matrices, and epistemic audits</td>
+<td>Active Canonical Spreadsheet</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/spreadsheets/d/1_rUffeSE_BKVpHiOyicprWGXV-gC8GRZsK7POWSjb0Q/edit</td>
+</tr>
+<tr>
+<td>VPE-16</td>
+<td>Orthodox Linker Treatise</td>
+<td>Cross-Disciplinary Linker</td>
+<td>Literature mappings to Sraffian Standard Commodities, Godley-Lavoie SFC Macroeconomics, and Landauer Limits</td>
+<td>Formalized &amp; Published</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1-IE4Re1X0WKkWYzW65ZDL_dWW6q4Js4ubipfjcUbwG8/edit</td>
+</tr>
+<tr>
+<td>VPE-17</td>
+<td>PREF Companion Treatise: Value Physics &amp; Macro Resolution</td>
+<td>Macroeconomic Operating System</td>
+<td>Synthesized macroeconomic operating architecture integrating UPE, Cardinal Tokens, Invariant Base Price (P_H), and Foundational Dividend</td>
+<td>Complete / Framework</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1TH6sMQXLh8ZClsq1JuXMZbEjj5sDggOlXwe1AxPNlxI/edit</td>
+</tr>
+<tr>
+<td>VPE-18</td>
+<td>Statutory Model Charter &amp; Sovereign Credit Union Bylaws</td>
+<td>Institutional Legal Framework</td>
+<td>Model legal bylaws for regional credit unions implementing Theorem 5 (0% usury) and Book 1/2/3 Tri-Fold Ledger (ARI-VPE-STAT-2026-01)</td>
+<td>Complete / Model Bylaws</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1ADVAgqsAh9HjAMeVfLUN3sdqvGd8rUuYrGOc9OjYCc4/edit</td>
+</tr>
+<tr>
+<td>VPE-19</td>
+<td>Executive Policy Brief: Agricultural Debt &amp; Supermarket Margins</td>
+<td>Sovereign Policy Brief</td>
+<td>Formal submission for Parliamentary/ACCC inquiries modeling rate hike cost-push inflation and duopoly caps (ARI-VPE-POL-2026-01)</td>
+<td>Complete / Policy Brief</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/15QH8ylkKQBi1PdRC5MgvMjg7L_Nt5pXiPg3ZTGxB87c/edit</td>
+</tr>
+<tr>
+<td>VPE-20</td>
+<td>Value Physics Explained: A Plain-English Beginner&#x27;s Guide</td>
+<td>Educational &amp; Public Resource</td>
+<td>Accessible translation of UPE, 3-layer cost decomposition, WEST tokens, Distortion Quotient DQ, and Cohesive Village model</td>
+<td>Complete / Educational Guide</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1yf97wHNNe4HMiA8-GM_tc_Ke3I3GX_hb7H5sB5yKsmI/edit</td>
+</tr>
+<tr>
+<td>VPE-21</td>
+<td>The Physics of Economic Value: Academic Journal Manuscript</td>
+<td>Unified Academic Treatise</td>
+<td>Peer-reviewed journal manuscript for Ecological Economics and JEDC integrating UPE, 5-sector Leontief tensor, SFC model, and Theorem 5 (ARI-VPE-JRNL-2026-01)</td>
+<td>Complete / Journal Submission</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1Fspsc-AjkvWMmfycQ5P19Jktt14k8hI7OrpDOR1CfmY/edit</td>
+</tr>
+<tr>
+<td>VPE-22</td>
+<td>Multi-Village Regional Network Simulation Treatise</td>
+<td>Regional Network Protocol</td>
+<td>156-week 10-node dynamic network cluster simulation (ARI-VPE-SIM-2026-02) across NSW shires modeling decentralized mutual credit, asymmetric drought resilience, and Inter-Sovereign Trade Tensor clearing</td>
+<td>Complete / Simulation Treatise</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/15ozakw1icWoyH6Lpy8DCUjF8rXhQLfUPFGGfaJT9Y-g/edit</td>
+</tr>
+<tr>
+<td>VPE-23</td>
+<td>Project Management Master Log</td>
+<td>Master PM Document</td>
+<td>Master repository registry, change log, consolidation audit, and active roadmap tracking</td>
+<td>Active Master PM Document</td>
+<td>Synchronized</td>
+<td>https://docs.google.com/document/d/1KIO1zj-3c-Q_xOPBP_U3KQr3MhFqHG4pxUrqJHGv_RQ/edit</td>
+</tr>
+</table></div>
+<h3 class="doc-h3">Worksheet: Formal Change Log</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Value Physics Research Repository — Master Formal Change Log</th>
+</tr>
+<tr>
+<td>Historical Progression, Formal Revisions, Adversarial Audits, and Milestone Completions</td>
+</tr>
+<tr>
+<td>Log ID</td>
+<td>UTC Timestamp</td>
+<td>Local AEST Time</td>
+<td>Operation Category</td>
+<td>Target Document / Artifact</td>
+<td>Role / Lead</td>
+<td>Scope of Changes &amp; Architectural Impact</td>
+</tr>
+<tr>
+<td>LOG-VPE-001</td>
+<td>2026-08-18 02:41</td>
+<td>2026-08-18 12:41</td>
+<td>Authoring &amp; Proposal</td>
+<td>UPE Candidate Draft (WCe0)</td>
+<td>Researcher</td>
+<td>Drafted initial formalization of the Universal Price Equation and 7-Plane Price Vector.</td>
+</tr>
+<tr>
+<td>LOG-VPE-002</td>
+<td>2026-08-18 16:57</td>
+<td>2026-08-19 02:57</td>
+<td>Empirical Research</td>
+<td>The Economics and Value Physics of Bread</td>
+<td>Researcher</td>
+<td>Audited Australian bread retail pricing across 4 tiers and modeled 5-channel interest rate cost-push dynamics.</td>
+</tr>
+<tr>
+<td>LOG-VPE-003</td>
+<td>2026-08-19 23:01</td>
+<td>2026-08-20 09:01</td>
+<td>Simulation Modeling</td>
+<td>Micro-Economy ABM Bread Simulation</td>
+<td>Researcher</td>
+<td>Built 100-timestep 8-stage agent-based simulation evaluating 300 bps rate hikes, 100% fuel spike, and 40% drought.</td>
+</tr>
+<tr>
+<td>LOG-VPE-004</td>
+<td>2026-08-20 03:42</td>
+<td>2026-08-20 13:42</td>
+<td>Treatise Authoring</td>
+<td>Cohesive Village Simulation Treatise</td>
+<td>Researcher</td>
+<td>Formalized meso-scale 600-citizen village across 7 guilds, Book 1/2/3 Tri-Fold Ledger, and 104-week audit.</td>
+</tr>
+<tr>
+<td>LOG-VPE-005</td>
+<td>2026-08-20 04:00</td>
+<td>2026-08-20 14:00</td>
+<td>Foundational Formalism</td>
+<td>The Cardinal Value Matrix</td>
+<td>Researcher</td>
+<td>Mapped WEST, EAST, BEST, WORST 4-quadrant geometry, Need/Want dynamics (Px = αNx + βWx), and Reciprocal Closure.</td>
+</tr>
+<tr>
+<td>LOG-VPE-006</td>
+<td>2026-08-20 04:35</td>
+<td>2026-08-20 14:35</td>
+<td>Theoretical Integration</td>
+<td>The Grand Translation Treatise</td>
+<td>Researcher</td>
+<td>Derived exact translation equations bridging Value Physics to Neoclassical, Sraffian, Bioeconomic, and SFC paradigms.</td>
+</tr>
+<tr>
+<td>LOG-VPE-007</td>
+<td>2026-08-20 16:29</td>
+<td>2026-08-21 02:29</td>
+<td>Currency Formalization</td>
+<td>7-Plane Token Spectrum Architecture</td>
+<td>Researcher</td>
+<td>Constructed multi-spectral currency vector (T), planar action profiles, and eliminated Plane Misidentification Errors.</td>
+</tr>
+<tr>
+<td>LOG-VPE-008</td>
+<td>2026-08-20 16:54</td>
+<td>2026-08-21 02:54</td>
+<td>Isomorphic Treatise</td>
+<td>The Bread of Life Treatise</td>
+<td>Researcher</td>
+<td>Mapped 8-stage bread production to Information Theory, Actualism theology, and Value Physics TS_0 reference invariant.</td>
+</tr>
+<tr>
+<td>LOG-VPE-009</td>
+<td>2026-08-20 16:54</td>
+<td>2026-08-21 02:54</td>
+<td>Master PM Logging</td>
+<td>Value Physics Master PM Log</td>
+<td>Project Manager</td>
+<td>Initialized master deliverables registry, gap analysis, and open research vectors.</td>
+</tr>
+<tr>
+<td>LOG-VPE-010</td>
+<td>2026-08-20 23:35</td>
+<td>2026-08-21 09:35</td>
+<td>Simulation Expansion</td>
+<td>Multi-Commodity Village Simulation</td>
+<td>Researcher</td>
+<td>Extended village model into 5 closed-loop sectors (Food, Energy, Water, Shelter, Care) across 156 weekly timesteps.</td>
+</tr>
+<tr>
+<td>LOG-VPE-011</td>
+<td>2026-08-21 05:12</td>
+<td>2026-08-21 15:12</td>
+<td>Econometric Calibration</td>
+<td>Stock-Flow Consistent (SFC) Model</td>
+<td>Researcher</td>
+<td>Calibrated 156-week dynamic SFC agricultural model against ABARES, ABS, RBA, ACCC, and AEMO datasets.</td>
+</tr>
+<tr>
+<td>LOG-VPE-012</td>
+<td>2026-08-21 23:52</td>
+<td>2026-08-22 09:52</td>
+<td>Protocol Specification</td>
+<td>Tri-Fold Cryptographic Ledger Whitepaper</td>
+<td>Researcher</td>
+<td>Authored mathematical specification of Proof-of-Difficulty (PoD) consensus and 1,000-run Monte Carlo stress testing.</td>
+</tr>
+<tr>
+<td>LOG-VPE-013</td>
+<td>2026-08-22 08:41</td>
+<td>2026-08-22 18:41</td>
+<td>Master Consolidation</td>
+<td>Formal Paper 6: Value Physics &amp; Universal Price Tensor</td>
+<td>Researcher</td>
+<td>Consolidated UPE additions, Bread economics, and Grand Translation into unified master treatise.</td>
+</tr>
+<tr>
+<td>LOG-VPE-014</td>
+<td>2026-08-22 19:07</td>
+<td>2026-08-23 05:07</td>
+<td>Epistemic Adversarial Audit</td>
+<td>Formal Paper 6 Epistemic Audit</td>
+<td>Checker</td>
+<td>Audited Formal Paper 6; flagged formula inversion in Reality Tensor and Table 5.1 normalization error. Issued 5 directives.</td>
+</tr>
+<tr>
+<td>LOG-VPE-015</td>
+<td>2026-08-22 22:16</td>
+<td>2026-08-23 08:16</td>
+<td>Revision &amp; Remediation</td>
+<td>Formal Paper 6 Remediation</td>
+<td>Researcher</td>
+<td>Remediated Reality Tensor formula, recalibrated Table 5.1 DQ values ($5.00 total), added 1∞_U regularization, and defined ∇_M7.</td>
+</tr>
+<tr>
+<td>LOG-VPE-016</td>
+<td>2026-08-22 22:48</td>
+<td>2026-08-23 08:48</td>
+<td>Multi-Sector Extension</td>
+<td>Formal Paper 6 Energy &amp; Water Additions</td>
+<td>Researcher</td>
+<td>Integrated 56-cell reference calibration matrices for Microgrid Energy (1 kWh) and Potable Water (1 kL), plus Section 6.2 Debt Bifurcation.</td>
+</tr>
+<tr>
+<td>LOG-VPE-017</td>
+<td>2026-08-23 03:34</td>
+<td>2026-08-23 13:34</td>
+<td>Literature Grounding</td>
+<td>Orthodox Linker Treatise</td>
+<td>Researcher</td>
+<td>Mapped Value Physics to Sraffian Standard Commodities, Godley-Lavoie SFC Macroeconomics, and Landauer Limits.</td>
+</tr>
+<tr>
+<td>LOG-VPE-018</td>
+<td>2026-08-23 09:12</td>
+<td>2026-08-23 19:12</td>
+<td>Macro Synthesis</td>
+<td>PREF Companion Treatise</td>
+<td>Researcher</td>
+<td>Embedded Value Physics (UPE, WEST, P_H, DQ) into the complete Paradise Reciprocity Economic Framework v5.0.</td>
+</tr>
+<tr>
+<td>LOG-VPE-019</td>
+<td>2026-08-23 17:41</td>
+<td>2026-08-24 03:41</td>
+<td>Knowledge Base Sync</td>
+<td>NotebookLM Sync (3623093f-ad75-41d5-b6e4-5be25ffd8430)</td>
+<td>Project Manager</td>
+<td>Synchronized 15 completed master papers into NotebookLM knowledge base with zero duplicate entries.</td>
+</tr>
+<tr>
+<td>LOG-VPE-020</td>
+<td>2026-08-24 05:05</td>
+<td>2026-08-24 15:05</td>
+<td>Ledger &amp; PM Maintenance</td>
+<td>Value Physics Master Excel Ledger &amp; PM Document</td>
+<td>Project Manager</td>
+<td>Established dedicated master Excel ledger and updated Google Doc PM Master Log with multi-sector roadmap.</td>
+</tr>
+<tr>
+<td>LOG-VPE-021</td>
+<td>2026-08-24 21:44</td>
+<td>2026-08-25 07:44</td>
+<td>Authoring &amp; Governance</td>
+<td>Statutory Model Charter &amp; Sovereign Credit Union Bylaws (1ADV)</td>
+<td>Researcher</td>
+<td>Authored complete statutory charter (ARI-VPE-STAT-2026-01) operationalizing Theorem 5 (0% usury) and Tri-Fold Ledger for regional shires.</td>
+</tr>
+<tr>
+<td>LOG-VPE-022</td>
+<td>2026-08-24 21:44</td>
+<td>2026-08-25 07:44</td>
+<td>Authoring &amp; Policy</td>
+<td>Executive Policy Brief: Agricultural Debt &amp; Supermarket Margins (15QH)</td>
+<td>Researcher</td>
+<td>Authored formal submission (ARI-VPE-POL-2026-01) for Parliamentary/ACCC inquiries modeling rate hike cost-push inflation and duopoly caps.</td>
+</tr>
+<tr>
+<td>LOG-VPE-024</td>
+<td>2026-08-26 08:11:00</td>
+<td>2026-08-26 18:11:00</td>
+<td>Journal Authoring</td>
+<td>Academic Journal Paper ARI-VPE-JRNL-2026-01 (1Fspsc) - Authored unified peer-review manuscript for Ecological Economics / JEDC integrating UPE, 56-cell matrices, SFC empirical proofs, and Theorem 5.</td>
+<td>Researcher</td>
+<td>Authored intuitive public-facing primer translating UPE, 3-layer cost cake, WEST tokens, Distortion Quotient, and Cohesive Village.</td>
+</tr>
+<tr>
+<td>LOG-VPE-025</td>
+<td>2026-08-26 21:40:00</td>
+<td>2026-08-27 07:40:00</td>
+<td>Simulation Scaling</td>
+<td>Multi-Village Regional Network Simulation (ARI-VPE-SIM-2026-01/02)</td>
+<td>Researcher</td>
+<td>Authored 10-node spatial network simulation treatise across regional NSW.</td>
+</tr>
+<tr>
+<td>LOG-VPE-026</td>
+<td>2026-08-27 21:56:00</td>
+<td>2026-08-28 07:56:00</td>
+<td>Journal Authoring &amp; PM</td>
+<td>The Physics of Economic Value (ARI-VPE-JRNL-2026-01) &amp; Master PM Signoff</td>
+<td>Researcher &amp; PM</td>
+<td>Completed academic journal submission manuscript and executed full Sign-Off Protocol audit.</td>
+</tr>
+</table></div>
+<h3 class="doc-h3">Worksheet: 56-Cell Empirical Matrices</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Value Physics 56-Cell Empirical Calibration Matrices</th>
+</tr>
+<tr>
+<td>Empirical Calibration across Food (TS_0 Bread), Energy (1 kWh), Water (1 kL), Shelter, and Care</td>
+</tr>
+<tr>
+<td>Sector Standard</td>
+<td>Stage #</td>
+<td>Supply Chain Stage</td>
+<td>Primary Exergy (Pe)</td>
+<td>Labor Difficulty (WEST)</td>
+<td>Nominal Share ($AUD)</td>
+<td>Distortion (DQ)</td>
+<td>Official Benchmark Source</td>
+<td>Calibration Status</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>1</td>
+<td>1. Plant (Seed &amp; Soil Agronomy)</td>
+<td>0.15 MJ</td>
+<td>0.42 W</td>
+<td>$0.12 AUD</td>
+<td>0.27</td>
+<td>ABARES Cropping Farm Survey (NSW)</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>2</td>
+<td>2. Grain (Crop Photosynthesis &amp; N-Fixation)</td>
+<td>4.95 MJ</td>
+<td>0.65 W</td>
+<td>$0.18 AUD</td>
+<td>0.26</td>
+<td>NSW DPI Farm Gross Margin Budgets</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>3</td>
+<td>3. Harvest (Machinery Diesel &amp; Threshing)</td>
+<td>2.20 MJ</td>
+<td>0.88 W</td>
+<td>$0.25 AUD</td>
+<td>0.27</td>
+<td>ABARES Commodity Reports</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>4</td>
+<td>4. Mill (Pneumatic Roller Crushing)</td>
+<td>0.48 MJ</td>
+<td>0.54 W</td>
+<td>$0.35 AUD</td>
+<td>0.61</td>
+<td>Australian Milling Industry Data</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>5</td>
+<td>5. Leaven (Hydration &amp; Starter Fermentation)</td>
+<td>0.30 MJ</td>
+<td>0.72 W</td>
+<td>$0.45 AUD</td>
+<td>0.59</td>
+<td>Baking Industry Association of Australia</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>6</td>
+<td>6. Oven (Deck Thermal Exergy Fixation)</td>
+<td>2.85 MJ</td>
+<td>0.95 W</td>
+<td>$0.65 AUD</td>
+<td>0.64</td>
+<td>AEMO Commercial Gas/Electricity Tariffs</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>7</td>
+<td>7. Breaking (Packaging &amp; Lyrical Distribution)</td>
+<td>0.20 MJ</td>
+<td>0.31 W</td>
+<td>$0.50 AUD</td>
+<td>1.51</td>
+<td>National Logistics &amp; Packaging Benchmarks</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Bread (TS_0 - 700g Loaf)</td>
+<td>8</td>
+<td>8. Distribution (Supermarket Slotting &amp; Retail)</td>
+<td>2.40 MJ</td>
+<td>0.22 W</td>
+<td>$2.50 AUD</td>
+<td>10.66</td>
+<td>ACCC Supermarket Inquiry Final Report</td>
+<td>Complete / Verified</td>
+</tr>
+<tr>
+<td>Electricity (1 kWh Microgrid)</td>
+<td>1</td>
+<td>1. Generation (Solar PV / Hydro Photon Capture)</td>
+<td>3.60 MJ</td>
+<td>0.08 W</td>
+<td>$0.025 AUD</td>
+<td>0.48</td>
+<td>AEMO Quarterly Energy Dynamics (QED)</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Electricity (1 kWh Microgrid)</td>
+<td>2</td>
+<td>2. Inversion (DC-to-AC Inverter Electronics)</td>
+<td>0.15 MJ</td>
+<td>0.04 W</td>
+<td>$0.015 AUD</td>
+<td>0.58</td>
+<td>Clean Energy Council Guidelines</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Electricity (1 kWh Microgrid)</td>
+<td>3</td>
+<td>3. Storage (LiFePO4 / Pumped Hydro Cycle)</td>
+<td>0.45 MJ</td>
+<td>0.06 W</td>
+<td>$0.030 AUD</td>
+<td>0.77</td>
+<td>ARENA Storage Cost Benchmark Reports</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Electricity (1 kWh Microgrid)</td>
+<td>4</td>
+<td>4. Distribution (Local LV Microgrid Line Delivery)</td>
+<td>0.10 MJ</td>
+<td>0.02 W</td>
+<td>$0.010 AUD</td>
+<td>0.77</td>
+<td>AER Network Distribution Determinations</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Water (1 kL Potable Catchment)</td>
+<td>1</td>
+<td>1. Capture (Gravity Surface Catchment / Basin)</td>
+<td>0.05 MJ</td>
+<td>0.05 W</td>
+<td>$0.080 AUD</td>
+<td>0.62</td>
+<td>NSW Water Utility Cost Benchmarks</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Water (1 kL Potable Catchment)</td>
+<td>2</td>
+<td>2. Treatment (Slow Sand &amp; Biological Filtration)</td>
+<td>0.12 MJ</td>
+<td>0.08 W</td>
+<td>$0.120 AUD</td>
+<td>0.58</td>
+<td>Water Services Association of Australia</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>NSW DPI Irrigation Energy Audits</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Integrated Leontief Embodied Difficulty (WEST)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Regional Local Water Utility Audits</td>
+<td>Drafted / In Verification</td>
+</tr>
+<tr>
+<td>Food (Bread TS_0)</td>
+<td></td>
+<td>Integrated (I - A)^-1</td>
+<td></td>
+<td>0.5650 W</td>
+<td></td>
+<td></td>
+<td>Master Builders Australia / CSIRO Housing</td>
+<td>Scheduled (Phase 4 Sprint)</td>
+</tr>
+<tr>
+<td>Energy (1 kWh)</td>
+<td></td>
+<td>Integrated (I - A)^-1</td>
+<td></td>
+<td>0.1092 W</td>
+<td></td>
+<td></td>
+<td>AIHW National Health &amp; Care Metrics</td>
+<td>Scheduled (Phase 4 Sprint)</td>
+</tr>
+<tr>
+<td>Water (1 kL)</td>
+<td></td>
+<td>Integrated (I - A)^-1</td>
+<td></td>
+<td>0.1961 W</td>
+</tr>
+<tr>
+<td>Shelter (1 Wk)</td>
+<td></td>
+<td>Integrated (I - A)^-1</td>
+<td></td>
+<td>7.5816 W</td>
+</tr>
+<tr>
+<td>Care (1 Unit)</td>
+<td></td>
+<td>Integrated (I - A)^-1</td>
+<td></td>
+<td>2.0989 W</td>
+</tr>
+</table></div>
+<h3 class="doc-h3">Worksheet: Audits &amp; Directives Tracker</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Value Physics Epistemic Audits &amp; Corrective Directives Tracker</th>
+</tr>
+<tr>
+<td>Adversarial Review Log, Checker Feedback, Structural Directives, and Resolution Signoffs</td>
+</tr>
+<tr>
+<td>Audit ID</td>
+<td>Target Document</td>
+<td>Auditor Role</td>
+<td>Audit Date</td>
+<td>Identified Vulnerability / Discrepancy</td>
+<td>Corrective Directive Issued</td>
+<td>Resolution Status</td>
+<td>Verification Evidence</td>
+</tr>
+<tr>
+<td>AUD-VPE-001</td>
+<td>Formal Paper 6 (Section 2.3 &amp; 3.1)</td>
+<td>The Checker</td>
+<td>2026-08-22</td>
+<td>Critical algebraic inversion in Universal Price Equation: Reality Tensor was inverted as Rn(1-Ra)/(S*U).</td>
+<td>Invert fraction to canonical form: (S*U)/[Rn(1-Ra)] across scalar and 7-plane forms.</td>
+<td>CLOSED</td>
+<td>Corrected in Formal Paper 6 Sections 2.3 and 3.1.</td>
+</tr>
+<tr>
+<td>AUD-VPE-002</td>
+<td>Formal Paper 6 (Table 5.1)</td>
+<td>The Checker</td>
+<td>2026-08-22</td>
+<td>Arithmetic normalization error: nominal AUD costs summed to $5.00, but reported DQ used $7.50 total.</td>
+<td>Recalibrate Table 5.1 DQ values to strictly match $5.00 total (DQ_Distrib = 10.66).</td>
+<td>CLOSED</td>
+<td>Recalibrated Table 5.1 in Formal Paper 6; DQ sum and proportions verified.</td>
+</tr>
+<tr>
+<td>AUD-VPE-003</td>
+<td>Formal Paper 6 (Section 3.2)</td>
+<td>The Checker</td>
+<td>2026-08-22</td>
+<td>Zero-division singularity in relative urgency velocity when UA = UB = 0.</td>
+<td>Regularize v_rel with Cost of Being boundary floor: v_rel = |UA - UB| / [max(UA, UB) + 1∞_U].</td>
+<td>CLOSED</td>
+<td>Regularized in Section 3.2 of Formal Paper 6.</td>
+</tr>
+<tr>
+<td>AUD-VPE-004</td>
+<td>Formal Paper 6 (Section 3.3)</td>
+<td>The Checker</td>
+<td>2026-08-22</td>
+<td>Domain ambiguity in directional value gradient operator V = -∇P.</td>
+<td>Define ∇_M7 as the exterior derivative on the Riemannian 7-Plane Price bundle M^7.</td>
+<td>CLOSED</td>
+<td>Exterior derivative formalized in Section 3.3.</td>
+</tr>
+<tr>
+<td>AUD-VPE-005</td>
+<td>Formal Paper 6 (Section 6.2)</td>
+<td>The Checker</td>
+<td>2026-08-22</td>
+<td>Placeholder metadata in verification block at end of document.</td>
+<td>Populate formal author, auditor, institution, date, and location metadata.</td>
+<td>CLOSED</td>
+<td>Metadata block fully populated in Formal Paper 6.</td>
+</tr>
+<tr>
+<td>AUD-VPE-006</td>
+<td>SFC Econometric Paper</td>
+<td>The Checker</td>
+<td>2026-08-23</td>
+<td>Verify 5-year balance sheet stock-flow closure under extreme stochastic interest rates.</td>
+<td>Execute extended 260-week stress simulation to guarantee zero financial leakages. [156/156 PASS (0 accounting leakages)]</td>
+<td>CLOSED</td>
+<td>Godley-Lavoie transaction matrix verified; extended run in progress.</td>
+</tr>
+<tr>
+<td>AUD-VPE-007</td>
+<td>Tri-Fold Ledger Whitepaper</td>
+<td>The Checker</td>
+<td>2026-08-23</td>
+<td>Audit smart contract covenants to ensure r_compound == 0.0% invariant under inflation.</td>
+<td>Stress-test Book 1 linear amortization rules under simulated 15% fiat inflation. [1,000/1,000 PASS (0 defaults, 100% solvency)]</td>
+<td>CLOSED</td>
+<td>Smart covenant bytecode verified; edge-case liquidity testing scheduled.</td>
+</tr>
+<tr>
+<td>AUD-VPE-008</td>
+<td>Policy Brief &amp; Model Bylaws (15QH / 1ADV)</td>
+<td>Epistemic Auditor</td>
+<td>2026-08-25</td>
+<td>Verify alignment of Model Credit Union Bylaws with Australian Corporations Act 2001 (Mutuals).</td>
+<td>Audit Clause 1 and 2 against APRA prudential standards and Theorem 5 linear amortization schedules.</td>
+<td>CLOSED</td>
+<td>Cross-verified against Corporations Act 2001 Part 5C and RIC Act 2018.</td>
+</tr>
+<tr>
+<td>AUD-VPE-010</td>
+<td>Multi-Village Simulation (ARI-VPE-SIM-2026-02)</td>
+<td>Engineer</td>
+<td>2026-08-28 00:00:00</td>
+<td>Verify dynamic stability of 10-node Regional Trade Tensor Xi_trade and Leontief inverse (I - A)^-1 under 70-week drought.</td>
+<td>Validate 0/10 node defaults and total debt amortized.</td>
+<td>CLOSED</td>
+<td>Re-read Multi-Village Simulation (ARI-VPE-SIM-2026-02) Section 4: 0/10 node defaults, total debt amortized linearly to $147.0M AUD, emergency buffer reserves accumulated to 42.0M WEST equivalents. Engineer verification tally: 5/5 dynamic tests PASS.</td>
+</tr>
+</table></div>
+<h3 class="doc-h3">Worksheet: Strategic Roadmap</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Value Physics Strategic Research Roadmap</th>
+</tr>
+<tr>
+<td>The 5-Phase Trajectory toward a Validated Replacement Macroeconomic Model</td>
+</tr>
+<tr>
+<td>Phase #</td>
+<td>Phase Name</td>
+<td>Milestone / Work Package</td>
+<td>Technical &amp; Empirical Deliverable</td>
+<td>Target Horizon</td>
+<td>Status</td>
+<td>Key Lead / Responsible</td>
+</tr>
+<tr>
+<td>Phase 1</td>
+<td>Foundational Theory</td>
+<td>M1.1: Universal Price Equation Formalization</td>
+<td>UPE scalar and field equations, 3-layer cost decomposition, 7-Plane Price Vector (P^7)</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 1</td>
+<td>Foundational Theory</td>
+<td>M1.2: Canonical TS_0 Reference Standard</td>
+<td>8-stage bread lifecycle mapped to Information Theory, Actualism, and physical invariant floor</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>Micro-Economy Modeling</td>
+<td>M2.1: 8-Stage Agent-Based Simulation</td>
+<td>100-timestep supply chain simulation evaluating RBA rate hikes and retail duopoly markups</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>Micro-Economy Modeling</td>
+<td>M2.2: Stock-Flow Consistent (SFC) Macro Model</td>
+<td>156-week empirical econometric model calibrated against ABARES/RBA/ACCC datasets</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>Meso-Scale &amp; Protocol</td>
+<td>M3.1: 5-Sector Closed-Loop Village Simulation</td>
+<td>Coupled Food, Energy, Water, Shelter, Care simulation across 156 weeks under compound shocks</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>Meso-Scale &amp; Protocol</td>
+<td>M3.2: Tri-Fold Cryptographic Ledger Whitepaper</td>
+<td>Proof-of-Difficulty (PoD) consensus specification and 1,000-run Monte Carlo stress testing</td>
+<td>Historical</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.1: Formal Paper 6 Remediation &amp; Polish</td>
+<td>Checker directives resolved, Reality Tensor verified, Table 5.1 recalibrated, metadata signed</td>
+<td>Completed</td>
+<td>COMPLETED</td>
+<td>Researcher / Checker</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.2: Energy (kWh) &amp; Water (kL) Matrices</td>
+<td>Empirical 56-cell matrices for solar/hydro microgrids and potable water utility catchment</td>
+<td>Completed</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.3: Educational Primer Authoring</td>
+<td>Plain-English Beginner&#x27;s Guide for public onboarding and policy translation (1yf9)</td>
+<td>Completed</td>
+<td>COMPLETED</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.4: Automated Evaluation Scripts &amp; Tooling</td>
+<td>Python/Rust CLI tools for automated 56-cell DQ calculation and PoD block header validation</td>
+<td>Sprint Active</td>
+<td>ACTIVE</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.5: Shelter &amp; Care 56-Cell Calibration</td>
+<td>Formal 56-cell matrices for modular rammed-earth construction and clinical/educational labor</td>
+<td>Sprint Active</td>
+<td>ACTIVE</td>
+<td>Researcher</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Multi-Sector Standards</td>
+<td>M4.6: Continuous NotebookLM Knowledge Base Sync</td>
+<td>Maintain 100% synchronization of all completed papers into Notebook 3623093f-ad75</td>
+<td>Ongoing</td>
+<td>ACTIVE</td>
+<td>Project Manager</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>Replacement Macro Model</td>
+<td>M5.1: Academic Journal Paper Submission Suite</td>
+<td>Consolidate master treatises for submission to heterodox and econophysics journals</td>
+<td>Q4 2026</td>
+<td>COMPLETED</td>
+<td>Triad Team</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>Replacement Macro Model</td>
+<td>M5.2: Regional Banking &amp; Credit Union Charter</td>
+<td>Draft statutory model charter and bylaws for Theorem 5 debt bifurcation (ARI-VPE-STAT-2026-01)</td>
+<td>Completed</td>
+<td>COMPLETED</td>
+<td>Researcher / PM</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>Replacement Macro Model</td>
+<td>M5.3: Sovereign Policy Briefing for Inquiries</td>
+<td>Executive policy brief for Senate/ACCC regulatory inquiries on cost-of-living remediation (ARI-VPE-POL-2026-01)</td>
+<td>Completed</td>
+<td>COMPLETED</td>
+<td>Directorate / PM</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>Replacement Macro Model</td>
+<td>M5.5: Open-Source Repository &amp; Web Visualization Dashboard Deployment</td>
+<td>Package multi_village_simulation.py and value_physics_engine.py into open-source repository</td>
+<td>Sprint Active</td>
+<td>ACTIVE</td>
+<td>Engineer</td>
+</tr>
+</table></div>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-30.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-30: [ARCHIVED COPY] Value Physics Registry (Aug 24 v2)</div>
+</a>
+
+        
+<a href="VPE-32.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-32: [ARCHIVED COPY] Project Management Master Log (superseded 2026-08-28)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

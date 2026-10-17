@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-38: finite_boundary_stress_test.py — Value Physics Reader</title>
+  <meta name="description" content="1000-run Monte Carlo finite boundary exhaustion and T_exhaust solver">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-38</span>
+      <span class="doc-badge-cat">Simulation Code Module</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-37.html" class="nav-arrow-btn">&larr; Prev (VPE-37)</a>
+      <a href="VPE-39.html" class="nav-arrow-btn">Next (VPE-39) &rarr;</a>
+      <a href="../deliverables/VPE-38_finite_boundary_stress_test_py.py" target="_blank" class="nav-download-btn">Download PY (8 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Simulations &amp; SFC Models</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">finite_boundary_stress_test.py</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 1000-run Monte Carlo finite boundary exhaustion and T_exhaust solver
+          </div>
+          <div class="article-data-pills"><span class="data-pill">1,000-run Monte Carlo stress verification</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        
+<div class="code-container">
+  <div class="code-header">
+    <span>VPE-38_finite_boundary_stress_test_py.py (PYTHON)</span>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-content').innerText); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy Code', 2000);">Copy Code</button>
+  </div>
+  <pre class="code-block"><code id="code-content">import numpy as np
+import pandas as pd
+import json
+
+def run_stress_test(n_sims=1000, seed=42):
+    np.random.seed(seed)
+    
+    # 10 Nodes
+    nodes = [
+        &quot;Wellington&quot;, &quot;Gilgandra&quot;, &quot;Gunnedah&quot;, &quot;Narrabri&quot;, 
+        &quot;Dubbo&quot;, &quot;Mudgee&quot;, &quot;Tamworth&quot;, &quot;Warren&quot;, &quot;Walgett&quot;, &quot;Moree&quot;
+    ]
+    n_nodes = len(nodes)
+    pop_per_node = 600
+    total_pop = n_nodes * pop_per_node
+    
+    # Baseline weekly demand per citizen
+    grain_demand_per_cap = 0.0035  # tonnes/wk (~3.5 kg flour/grain)
+    water_demand_per_cap = 0.0014  # ML/wk (1.4 kL/wk = 200 L/day)
+    energy_demand_per_cap = 0.025  # MWh/wk (25 kWh/wk)
+    
+    total_grain_demand = total_pop * grain_demand_per_cap # 21.0 t/wk
+    total_water_demand = total_pop * water_demand_per_cap # 8.4 ML/wk
+    total_energy_demand = total_pop * energy_demand_per_cap # 150 MWh/wk
+    
+    # Baseline weekly production capacities (tonnes, ML, MWh)
+    base_grain = np.array([45.0, 40.0, 65.0, 70.0, 15.0, 25.0, 30.0, 55.0, 50.0, 75.0])
+    base_water = np.array([18.0, 20.0, 22.0, 15.0, 30.0, 35.0, 28.0, 25.0, 10.0, 12.0])
+    base_energy = np.array([25.0, 22.0, 20.0, 28.0, 24.0, 18.0, 20.0, 26.0, 32.0, 30.0])
+    
+    # Initial Debt ($M AUD) across 100 farm enterprises
+    initial_debt_total = 180.0 # $1.8M per farm, 10 farms per node
+    
+    # Simulation Horizon
+    weeks = 156
+    
+    # Storage parameters for Value Physics buffers (weeks of reserve)
+    # Testing buffer scenarios: 12 wks, 26 wks, 39 wks, 52 wks
+    buffer_scenarios = [12, 26, 39, 52]
+    
+    results = {}
+    
+    for buf_wks in buffer_scenarios:
+        neo_insolvencies = 0
+        neo_exhaust_weeks = []
+        neo_final_debts = []
+        neo_famine_weeks = []
+        
+        vp_insolvencies = 0
+        vp_exhaust_weeks = []
+        vp_final_debts = []
+        vp_famine_weeks = []
+        vp_buffer_survivals = 0
+        
+        for sim in range(n_sims):
+            # Stochastic drought severity: northern nodes hit by 90-100% collapse, southern by 60-80%
+            # Drought duration: Weeks 20 to 124 (104 weeks of catastrophic shock)
+            drought_severity_north = np.random.uniform(0.05, 0.15, size=(weeks, 4)) # Walgett, Moree, Narrabri, Warren
+            drought_severity_south = np.random.uniform(0.20, 0.40, size=(weeks, 6)) # Other 6 nodes
+            
+            # Combine weather multiplier
+            weather_mult = np.ones((weeks, n_nodes))
+            for w in range(20, 124):
+                weather_mult[w, [7, 8, 9, 3]] = drought_severity_north[w-20]
+                weather_mult[w, [0, 1, 2, 4, 5, 6]] = drought_severity_south[w-20]
+                
+            # --- MODEL A: NEOCLASSICAL STATUS QUO ---
+            neo_debt = initial_debt_total
+            neo_cash_reserves = 15.0 # $15M Farm Management Deposits across all 100 farms
+            neo_grain_stock = total_grain_demand * 6.0 # Commercial inventory = 6 weeks
+            neo_water_stock = total_water_demand * 12.0 # Standard municipal water storage = 12 weeks
+            
+            neo_failed = False
+            neo_fail_week = None
+            neo_famine_count = 0
+            
+            r_commercial_base = 0.055 / 52 # 5.5% cash rate base + 3% margin = 8.5% p.a.
+            r_commercial_shock = 0.085 / 52
+            
+            for w in range(weeks):
+                current_rate = r_commercial_shock if w &gt;= 20 else r_commercial_base
+                # Production
+                g_prod = np.sum(base_grain * weather_mult[w])
+                w_prod = np.sum(base_water * weather_mult[w])
+                
+                # Farm revenue vs cost under neoclassical spot market
+                # Farmers face surging diesel cost ($2.80/L) and interest expense
+                interest_payment = neo_debt * current_rate
+                operating_cost = 0.85 + (0.35 if w &gt;= 20 else 0.0) # $M/wk operating expenses
+                revenue = g_prod * 0.00032 # $320/t farmgate price (monopsony locked)
+                
+                cash_flow = revenue - operating_cost - interest_payment
+                if cash_flow &lt; 0:
+                    if neo_cash_reserves &gt;= abs(cash_flow):
+                        neo_cash_reserves -= abs(cash_flow)
+                    else:
+                        uncovered = abs(cash_flow) - neo_cash_reserves
+                        neo_cash_reserves = 0.0
+                        neo_debt += uncovered # Compound debt expansion
+                        
+                # Inventory update
+                neo_grain_stock += g_prod - total_grain_demand
+                neo_water_stock += w_prod - total_water_demand
+                
+                if neo_grain_stock &lt; 0 or neo_water_stock &lt; 0:
+                    neo_famine_count += 1
+                    if not neo_failed:
+                        neo_failed = True
+                        neo_fail_week = w
+                        
+                # Bankruptcy condition: Debt &gt; $220M (122% of asset backing) and cash reserves == 0
+                if neo_debt &gt; 220.0 and not neo_failed:
+                    neo_failed = True
+                    neo_fail_week = w
+                    
+            if neo_failed:
+                neo_insolvencies += 1
+                neo_exhaust_weeks.append(neo_fail_week)
+            else:
+                neo_exhaust_weeks.append(weeks)
+            neo_final_debts.append(neo_debt)
+            neo_famine_weeks.append(neo_famine_count)
+            
+            # --- MODEL B: VALUE PHYSICS TRI-FOLD NETWORK ---
+            vp_debt = initial_debt_total
+            # Strategic Book 2 buffers: buf_wks of grain and water
+            vp_grain_stock = total_grain_demand * buf_wks
+            vp_water_stock = total_water_demand * buf_wks
+            
+            vp_failed = False
+            vp_fail_week = None
+            vp_famine_count = 0
+            
+            # Theorem 5: Linear amortization over 25 years (1300 weeks) at 0.0% interest
+            # During declared drought (w in [20, 124]), statutory disaster pause applies: Amortization = 0
+            linear_amort_weekly = initial_debt_total / 1300 # ~$0.1385M/wk
+            
+            for w in range(weeks):
+                # Production
+                g_prod = np.sum(base_grain * weather_mult[w])
+                w_prod = np.sum(base_water * weather_mult[w])
+                
+                # Debt update: 0.0% interest! If disaster period, pause amortization. Otherwise, pay linear principal.
+                if not (20 &lt;= w &lt; 124):
+                    vp_debt = max(0.0, vp_debt - linear_amort_weekly)
+                    
+                # Inter-Sovereign Trade Tensor balances physical buffers across all 10 nodes
+                # Net buffer change
+                vp_grain_stock += g_prod - total_grain_demand
+                vp_water_stock += w_prod - total_water_demand
+                
+                if vp_grain_stock &lt; 0 or vp_water_stock &lt; 0:
+                    vp_famine_count += 1
+                    if not vp_failed:
+                        vp_failed = True
+                        vp_fail_week = w
+                        
+            if vp_failed:
+                vp_insolvencies += 1
+                vp_exhaust_weeks.append(vp_fail_week)
+            else:
+                vp_buffer_survivals += 1
+                vp_exhaust_weeks.append(weeks)
+            vp_final_debts.append(vp_debt)
+            vp_famine_weeks.append(vp_famine_count)
+            
+        results[f&quot;Buffer_{buf_wks}wks&quot;] = {
+            &quot;Neoclassical&quot;: {
+                &quot;Insolvency_Rate&quot;: neo_insolvencies / n_sims,
+                &quot;Mean_Failure_Week&quot;: float(np.mean([w for w in neo_exhaust_weeks if w &lt; weeks])) if neo_insolvencies &gt; 0 else None,
+                &quot;Mean_Final_Debt_M&quot;: float(np.mean(neo_final_debts)),
+                &quot;Mean_Famine_Weeks&quot;: float(np.mean(neo_famine_weeks)),
+                &quot;Survival_Probability&quot;: 1.0 - (neo_insolvencies / n_sims)
+            },
+            &quot;Value_Physics&quot;: {
+                &quot;Insolvency_Rate&quot;: vp_insolvencies / n_sims,
+                &quot;Mean_Failure_Week&quot;: float(np.mean([w for w in vp_exhaust_weeks if w &lt; weeks])) if vp_insolvencies &gt; 0 else None,
+                &quot;Mean_Final_Debt_M&quot;: float(np.mean(vp_final_debts)),
+                &quot;Mean_Famine_Weeks&quot;: float(np.mean(vp_famine_weeks)),
+                &quot;Survival_Probability&quot;: vp_buffer_survivals / n_sims,
+                &quot;Debt_Amortized_M&quot;: float(initial_debt_total - np.mean(vp_final_debts))
+            }
+        }
+        
+    print(json.dumps(results, indent=2))
+    with open(&#x27;/working_dir/c_78d465851f96cf57/stress_test_results.json&#x27;, &#x27;w&#x27;) as f:
+        json.dump(results, f, indent=2)
+
+if __name__ == &quot;__main__&quot;:
+    run_stress_test()
+</code></pre>
+</div>
+
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-37.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-37: multi_village_simulation.py</div>
+</a>
+
+        
+<a href="VPE-39.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-39: =HYPERLINK(&quot;https://drive.google.com/file/d/1fDcZdsau_SVq-0AECl1WRyt4HpOX8hY-/view&quot;, &quot;test_value_physics.py&quot;)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

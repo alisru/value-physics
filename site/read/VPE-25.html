@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-25: Research Report: Micro-Economy Agent-Based Simulation - Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium — Value Physics Reader</title>
+  <meta name="description" content="100-timestep 8-stage bread-chain ABM: 300bps rate hike, 100% fuel spike, 40% drought. Milestone M2.1 deliverable. NEWLY REGISTERED 2026-08-28.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-25</span>
+      <span class="doc-badge-cat">Agent-Based Simulation</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-24.html" class="nav-arrow-btn">&larr; Prev (VPE-24)</a>
+      <a href="VPE-26.html" class="nav-arrow-btn">Next (VPE-26) &rarr;</a>
+      <a href="../deliverables/VPE-25_Research_Report_Micro_Economy_Agent_Base.docx" target="_blank" class="nav-download-btn">Download DOCX (14 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Simulations &amp; SFC Models</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Research Report: Micro-Economy Agent-Based Simulation - Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 100-timestep 8-stage bread-chain ABM: 300bps rate hike, 100% fuel spike, 40% drought. Milestone M2.1 deliverable. NEWLY REGISTERED 2026-08-28.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Real-world commodity calibration microdata (CSV/XLSX)</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Research Report: Micro-Economy Agent-Based Simulation — Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium</h2>
+<p class="doc-p"><strong>Dynamic State-Space Modeling of the 8-Stage Bread Supply Chain under Central Bank Rate Hikes, Energy Spikes, and Climate Shocks</strong></p>
+<p class="doc-p">Executive Simulation Highlights</p>
+<p class="doc-p">This computational simulation models a closed-loop 8-stage micro-economy over 100 timesteps, subjecting the supply chain to a compound sequence of exogenous shocks: a <strong>300 bps RBA cash rate hike</strong> (t=20), a <strong>100% diesel fuel price spike</strong> (t=40), and a <strong>40% harvest drought</strong> (t=60–75).</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Neoclassical Duopoly Regime:</strong> Retail loaf prices escalate from $4.00 to <strong>$5.23 AUD</strong> (+30.8%). Supermarket profits surge to <strong>$13.67M AUD</strong> via unearned rentier tolling ($R_a \approx 0.40$), while the systemic Reality Gap accumulates <strong>$12.73M AUD</strong> in uncompensated upstream strain ($DQ = 1.369$).</li>
+<li class="doc-li"><strong>Value Physics Fair-Pricing Protocol:</strong> Enforces Statutory Debt Bifurcation (0% compound usury on productive capital), a National Strategic Grain Reserve ($TS_0$ Buffer), and capped retail margins ($R_a \le 0.12$). Retail prices stabilize at <strong>$1.35–$1.39 AUD per loaf</strong>, 100% supply continuity is preserved during the drought, and farmer cash reserves grow to <strong>$1.44M AUD</strong> ($DQ = 1.000, \Delta R = \$0.00$).</li>
+</ul>
+<h3 class="doc-h3">1. Mathematical Formalization of Identified Theoretical Gaps</h3>
+<p class="doc-p">To transition the Universal Price Equation (UPE) into an operational multi-agent simulation, four core theoretical gaps were formalized mathematically:</p>
+<h4 class="doc-h4">1.1 Dynamic Inventory Buffer &amp; Urgency Coupling</h4>
+<p class="doc-p">In physical supply chains, scarcity is not a static parameter. Inventory depletion dynamically contracts the agent&#x27;s time-horizon ($t_{\text{deadline}} - t \to 0$), driving the Urgency Index $U(t) \to 1.0$:</p>
+<p class="doc-p">dI_i(t)/dt = Q_inflow,i(t) - Q_outflow,i(t) - δ_spoil · I_i(t)U_i(t) = max(0, 1 - I_i(t) / I_target,i)^β_u</p>
+<p class="doc-p">When stock levels $I_i(t)$ drop below the safety buffer $I_{\text{target},i}$, local urgency accelerates super-linearly, triggering the Lorentz Coercion Factor $\gamma(v_{\text{rel}}) = \frac{1}{\sqrt{1 - v_{\text{rel}}^2}}$.</p>
+<h4 class="doc-h4">1.2 Spatial Network Topology &amp; Transport Impedance ($P_3$)</h4>
+<p class="doc-p">Logistical friction across geographic distance $d(x_i, x_j)$ is formalized as a dynamic tensor coupling diesel fuel spot prices and road congestion:</p>
+<p class="doc-p">P_3,ij(t) = [ C_base + C_fuel(t) · Consumption_rate · d(x_i, x_j) ] · [ 1 + Ω_congestion ]</p>
+<p class="doc-p">Under a 100% diesel fuel spike, $P_3$ expands along all transport arcs, widening regional price gradients ($\mathbf{V} = -\nabla P$) between country grain silos and metropolitan distribution centres.</p>
+<h4 class="doc-h4">1.3 Statutory Debt Bifurcation &amp; Non-Usurious Clearing (Theorem 5)</h4>
+<p class="doc-p">To eliminate compound interest usury on physical productive capital, agricultural and manufacturing credit is bifurcated into conserved statutory face value and decaying urgency premiums:</p>
+<p class="doc-p">Settlement_i(t) = P_H,i(t) · Q_i(t)Debt_Service_i(t) = C_principal / T_term   (0% real compound interest on productive substrate)</p>
+<h4 class="doc-h4">1.4 Dynamic Difficulty Wage-Index Engine</h4>
+<p class="doc-p">Trade labor compensation is pegged directly to the $WEST$ difficulty token quantum ($D(t) = s \cdot e \cdot [1+d] \cdot [1+c]$):</p>
+<p class="doc-p">Wage_rate_i(t) = WEST_Tokens_i · Living_Basket_Index(t) · (1 / R_n(t))</p>
+<p class="doc-p">Guaranteeing that certified trade bakers ($s=4.5$) and agricultural machinery operators ($s=4.0, e=3.5\text{ METs}$) maintain 100% purchasing power parity regardless of general inflation.</p>
+<h3 class="doc-h3">2. Multi-Agent Simulation Architecture</h3>
+<p class="doc-p">The simulation instantiates five interacting agent classes coupled to a central market clearinghouse:</p>
+<p class="doc-p">+--------------------------------------------------------------------------------+|                     SOVEREIGN CLEARINGHOUSE &amp; GRAIN BUFFER                     ||                 (Enforces DQ = 1.0, 0% Productive Capital Loans)               |+---------------------------------------+----------------------------------------+                                        |        +-------------------------------+-------------------------------+        |                               |                               |        v                               v                               v+------------------+            +------------------+            +------------------+|  FARMER AGENTS   |            |  MILLER AGENTS   |            |   BAKER AGENTS   || (Stages S1–S3)   |-----------&gt;|   (Stage S4)     |-----------&gt;| (Stages S5–S7)   || Wheat, Diesel,   | 584g Grain | Flour Yield 77%, | 450g Flour | Deck Ovens,      || MET Exertion     | per Loaf   | Electric Exergy  | per Loaf   | Trade Labor s=4.5|+------------------+            +------------------+            +------------------+                                                                        |                                                                        | 1 Loaf                                                                        v+--------------------------------------------------------------------------------+|                          RETAIL DISTRIBUTOR AGENTS (S8)                        ||           (Fleet Transport, Store Placement, Capped Toll R_a &lt;= 0.12)          |+---------------------------------------+----------------------------------------+                                        |                                        v+--------------------------------------------------------------------------------+|                               CONSUMER COHORTS                                 ||            (Mortgage-Stressed vs. Discretionary, Inelastic Need N_x)           |+--------------------------------------------------------------------------------+</p>
+<h3 class="doc-h3">3. Comparative Simulation Results: Neoclassical vs. Fair Pricing</h3>
+<p class="doc-p">Below is the comparative audit of state variables across 100 simulation timesteps under identical exogenous shocks:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Metric &amp; System State Variable</th>
+<th>Neoclassical Duopoly Regime</th>
+<th>Value Physics Fair-Pricing Protocol</th>
+<th>Net Structural Delta</th>
+</tr>
+<tr>
+<th>Peak Retail Loaf Price ($P_m$)</th>
+<th>$5.23 AUD (Post-Shocks)</th>
+<th>$1.39 AUD (Post-Shocks)</th>
+<th>-$3.84 AUD (-73.4%) (Elimination of unearned rentier toll)</th>
+</tr>
+<tr>
+<th>Average Distortion Quotient ($DQ$)</th>
+<th>1.369 (Severe upward markup on consumers)</th>
+<th>1.000 (True physical parity)</th>
+<th>-0.369 (Complete alignment with difficulty $D$)</th>
+</tr>
+<tr>
+<th>Ending Farm Working Cash</th>
+<th>$818,400 AUD (Depleted cash buffer)</th>
+<th>$1,441,367 AUD (Healthy reserves)</th>
+<th>+$622,967 AUD (+76.1%) (Fair difficulty compensation)</th>
+</tr>
+<tr>
+<th>Ending Farm Debt</th>
+<th>$500,000 AUD (Trapped in interest roll-over)</th>
+<th>$462,967 AUD (Actively amortizing principal)</th>
+<th>-$37,033 AUD (Linear principal reduction)</th>
+</tr>
+<tr>
+<th>Supermarket Cumulative Profit</th>
+<th>$13,668,667 AUD (Extractive monopoly rent)</th>
+<th>$686,318 AUD (Fair logistical return)</th>
+<th>-$12.98M AUD (Toll eliminated from consumer bills)</th>
+</tr>
+<tr>
+<th>Cumulative Reality Gap ($\Delta R$)</th>
+<th>$12,727,998 AUD (Stored systemic debt)</th>
+<th>$0.00 AUD (Zero unhedged physical debt)</th>
+<th>-$12.73M AUD (Thermodynamic solvency preserved)</th>
+</tr>
+<tr>
+<th>Strategic Grain Buffer Stock</th>
+<th>0.0 tonnes (Unbuffered market exposure)</th>
+<th>5,100.0 tonnes (Self-replenishing buffer)</th>
+<th>+5,100 t (100% drought resilience)</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">4. Deep-Dive Analytical Insights</h3>
+<h4 class="doc-h4">4.1 The Myth of the &quot;$2.50 Cheap Loaf&quot;</h4>
+<p class="doc-p">The neoclassical regime demonstrates how supermarket private-label pricing ($2.50–$2.70 AUD) functions as a simulacrum under The Cover. Supermarkets extract over <strong>$13.67M AUD</strong> in excess profits by tolling branded bread and dairy lines while forcing grain farmers to sell at $360/t (below long-term capital replacement costs). The unpaid difference accumulates as the <strong>Reality Gap Integral ($\Delta R = \$12.73\text{M AUD}$)</strong>, which manifests in real life as rural bank debt, neglected tractor maintenance, and unreplenished soil minerals.</p>
+<h4 class="doc-h4">4.2 Drought Resilience via the Strategic Grain Reserve ($TS_0$ Buffer)</h4>
+<p class="doc-p">During the simulated 40% harvest drought (t=60 to 75):</p>
+<ul class="doc-ul">
+<li class="doc-li">In the neoclassical regime, farm supply collapsed, triggering localized price spikes and forcing millers to scramble for spot grain.</li>
+<li class="doc-li">Under the Fair-Pricing Protocol, the <strong>National Strategic Grain Reserve</strong> automatically released 20 tonnes/week to keep flour mills running at 100% capacity, while simultaneously paying farmers their full crop baseline ($460/t), completely neutralizing climate revenue volatility.</li>
+</ul>
+<h4 class="doc-h4">4.3 Neutralizing Monetary Policy Shocks via Debt Bifurcation</h4>
+<p class="doc-p">When the central bank hiked the cash rate by 300 bps (t=20), neoclassical farmers saw their debt servicing double, which was passed downstream into wholesale costs. Under Statutory Debt Bifurcation (Theorem 5), agricultural productive loans were insulated from central bank usury, keeping linear amortization intact ($C_{\text{base}}$) and preventing rate hikes from driving cost-push food inflation.</p>
+<h3 class="doc-h3">5. Actionable Implementation Blueprint for a Fair-Pricing Micro-Economy</h3>
+<p class="doc-p">To deploy this framework into a real-world regional agricultural pilot:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Deploy Regional Distributed $WEST$ Ledger:</strong> Implement cryptographic difficulty tracking for local wheat growers, certified bakeries, and transport operators, logging verifiable labor-seconds ($P_b$), exergy ($P_e$), and MET exertion.</li>
+<li class="doc-li"><strong>Establish Statutory Regional Grain Buffer ($TS_0$ Pool):</strong> Capitalize a physical grain silo facility providing 0% concessional working capital seasonal advances to local growers and maintaining 12 months of local flour security.</li>
+<li class="doc-li"><strong>Direct Procurement Contracting:</strong> Contract directly with local independent and franchise bakeries at guaranteed Invariant Base Prices ($P_H$), bypassing supermarket slotting tolls ($R_a \to 0$).</li>
+<li class="doc-li"><strong>Public Price Tensor Dashboard ($P^7$):</strong> Publish weekly regional strain tensors displaying real physical energy and labor costs versus nominal shelf prices, giving consumers complete transparency into supply chain fairness.</li>
+</ul>
+<p class="doc-p">Compiled from automated scheduled action execution in Value Physics &amp; Multi-Agent Econophysics Modeling.</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-24.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-24: Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing</div>
+</a>
+
+        
+<a href="VPE-26.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-26: [ARCHIVED] Research Candidate: Formalization of the UPE &amp; P^7 (draft A)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Value Physics — Master Research Repository & Portal</title>
+  <meta http-equiv="refresh" content="0; url=site/">
+  <script>
+    // Preserve any incoming hash fragments (e.g. #papers, #data) when redirecting to /site/
+    var target = 'site/' + (window.location.hash || '');
+    window.location.replace(target);
+  </script>
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #121824;
+      --border-color: #243048;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #34d399;
+      --accent-gold: #fbbf24;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .portal-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      max-width: 640px;
+      width: 100%;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .brand-logo {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    p.sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+    .enter-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      margin-bottom: 1.75rem;
+    }
+    .enter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .quick-link {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.75rem;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 6px;
+      transition: background 0.15s ease;
+    }
+    .quick-link:hover {
+      background: rgba(56, 189, 248, 0.18);
+    }
+  </style>
+</head>
+<body>
+  <div class="portal-card">
+    <div class="brand-logo">&Phi;</div>
+    <h1>Value Physics</h1>
+    <p class="sub">
+      Alethekanon Research Institute &bull; Division 2: Societal Economics & Macro-Micro Simulation<br>
+      Econophysics Grounded in Thermodynamic Invariants & Empirical Australian Pricing
+    </p>
+    <a class="enter-btn" href="site/">Enter Interactive Presentation Suite &rarr;</a>
+    <div class="quick-links">
+      <a class="quick-link" href="site/papers.html">Papers &amp; Registry (60)</a>
+      <a class="quick-link" href="site/data.html">Empirical Data (34)</a>
+      <a class="quick-link" href="site/changelog.html">Sprint Changelog</a>
+      <a class="quick-link" href="site/updates.html">Daily &amp; Weekly Updates</a>
+      <a class="quick-link" href="site/workflow.html">Workflow Pipeline</a>
+    </div>
+  </div>
+</body>
+</html>

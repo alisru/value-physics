@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-35: SFC Broadacre Model (sfc_model.py) — Value Physics Reader</title>
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-35</span>
+      <span class="doc-badge-cat">Econometric Simulation Script</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-34.html" class="nav-arrow-btn">&larr; Prev (VPE-34)</a>
+      <a href="VPE-36.html" class="nav-arrow-btn">Next (VPE-36) &rarr;</a>
+      <a href="../deliverables/VPE-35_SFC_Broadacre_Model_sfc_model_py.py" target="_blank" class="nav-download-btn">Download PY (5 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Simulations &amp; SFC Models</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">SFC Broadacre Model (sfc_model.py)</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        
+<div class="code-container">
+  <div class="code-header">
+    <span>VPE-35_SFC_Broadacre_Model_sfc_model_py.py (PYTHON)</span>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-content').innerText); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy Code', 2000);">Copy Code</button>
+  </div>
+  <pre class="code-block"><code id="code-content">&quot;&quot;&quot;
+Stock-Flow Consistent (SFC) Dynamic Micro-Economy Model
+Alethekanon Research Institute — Division 2: Societal Economics &amp; Macro-Micro Simulation
+Institutional Reference: ARI-VPE-SFC-2026-01
+
+Simulates a 156-week dynamic broadacre agricultural economy (600 citizens, 200 households,
+10 farming enterprises managing 4,000 ha) under compound shocks:
+- RBA cash rate hike (+425 bps)
+- Diesel price spike ($1.45 -&gt; $2.25/L)
+- 30-week severe climate drought (40% yield collapse)
+Compares Neoclassical commercial banking against Value Physics Theorem 5.
+&quot;&quot;&quot;
+
+import numpy as np
+import pandas as pd
+from typing import Dict, Any
+
+class RegionalSFCModel:
+    def __init__(self, weeks: int = 156, seed: int = 42):
+        self.weeks = weeks
+        self.seed = seed
+        np.random.seed(seed)
+        
+        # Demographic parameters
+        self.citizens = 600
+        self.households = 200
+        self.farms = 10
+        self.hectares_per_farm = 400.0 # 4,000 ha total
+        
+        # Initial Financial Balances ($ AUD)
+        self.initial_farm_debt = 18000000.0 # $1.8M per farm
+        self.initial_fmd_reserves = 1500000.0 # $150k per farm
+        
+        # Macro Shocks Schedule
+        self.r_cash_base = 0.0010 / 52 # 0.10% p.a.
+        self.r_cash_shock = 0.0435 / 52 # 4.35% p.a. (+425 bps)
+        self.commercial_margin = 0.0350 / 52 # 3.50% commercial bank margin
+        
+        self.diesel_base = 1.45 # $ / L
+        self.diesel_shock = 2.25 # $ / L
+        
+    def run_simulation(self) -&gt; Dict[str, pd.DataFrame]:
+        time_index = np.arange(self.weeks)
+        
+        # Initialize time series
+        df_neo = pd.DataFrame(index=time_index)
+        df_vp = pd.DataFrame(index=time_index)
+        
+        # Weather / Yield Multiplier (30-week 40% drought yield shock from Week 40 to 70)
+        yield_mult = np.ones(self.weeks)
+        yield_mult[40:70] = 0.60
+        
+        # Diesel Price Profile
+        diesel_price = np.full(self.weeks, self.diesel_base)
+        diesel_price[20:] = self.diesel_shock
+        
+        # Cash Rate Profile
+        cash_rate = np.full(self.weeks, self.r_cash_base)
+        cash_rate[20:] = self.r_cash_shock
+        
+        # 1. NEOCLASSICAL STATUS QUO RUN
+        neo_debt = np.zeros(self.weeks)
+        neo_debt[0] = self.initial_farm_debt
+        neo_fmd = np.zeros(self.weeks)
+        neo_fmd[0] = self.initial_fmd_reserves
+        neo_bread_price = np.zeros(self.weeks)
+        
+        for w in range(self.weeks):
+            r_lending = cash_rate[w] + self.commercial_margin
+            interest_expense = neo_debt[w] * r_lending
+            
+            # Operating costs (Labor, Diesel, Fertilizer)
+            diesel_exp = self.farms * 1200.0 * diesel_price[w] # 1,200 L/wk per farm
+            labor_exp = self.farms * 2500.0 # $2,500/wk per farm
+            other_exp = self.farms * 1800.0
+            
+            total_cost = interest_expense + diesel_exp + labor_exp + other_exp
+            
+            # Output &amp; Revenue (Farmgate monopsony price fixed at $320/t)
+            base_output = 40.0 * self.farms # 400 tonnes/wk baseline
+            actual_output = base_output * yield_mult[w]
+            revenue = actual_output * 320.0
+            
+            net_income = revenue - total_cost
+            
+            if net_income &lt; 0:
+                drain = abs(net_income)
+                if neo_fmd[w] &gt;= drain:
+                    current_fmd = neo_fmd[w] - drain
+                    new_debt = neo_debt[w]
+                else:
+                    uncovered = drain - neo_fmd[w]
+                    current_fmd = 0.0
+                    new_debt = neo_debt[w] + uncovered
+            else:
+                current_fmd = neo_fmd[w] + net_income * 0.5
+                new_debt = max(0.0, neo_debt[w] - net_income * 0.5)
+                
+            if w &lt; self.weeks - 1:
+                neo_debt[w + 1] = new_debt
+                neo_fmd[w + 1] = current_fmd
+                
+            # Supermarket shelf price (Defending 28% margin over wholesale)
+            unit_cost = (total_cost / max(1.0, actual_output * 700)) # per loaf
+            neo_bread_price[w] = 4.60 + (0.0025 * interest_expense / self.farms) + (0.55 if w &gt;= 40 else 0.0)
+            
+        df_neo[&quot;Debt_AUD&quot;] = neo_debt
+        df_neo[&quot;FMD_Reserves_AUD&quot;] = neo_fmd
+        df_neo[&quot;Bread_Price_AUD&quot;] = neo_bread_price
+        
+        # 2. VALUE PHYSICS THEOREM 5 RUN
+        vp_debt = np.zeros(self.weeks)
+        vp_debt[0] = self.initial_farm_debt
+        vp_bread_price = np.full(self.weeks, 1.15) # Invariant base price Ph
+        linear_amort_weekly = self.initial_farm_debt / (25 * 52) # 25-year linear payoff at 0%
+        
+        for w in range(self.weeks):
+            # Theorem 5: r_compound == 0.0%. Disaster pause applies during drought (Weeks 40-70)
+            if not (40 &lt;= w &lt; 70):
+                new_debt = max(0.0, vp_debt[w] - linear_amort_weekly)
+            else:
+                new_debt = vp_debt[w]
+                
+            if w &lt; self.weeks - 1:
+                vp_debt[w + 1] = new_debt
+                
+        df_vp[&quot;Debt_AUD&quot;] = vp_debt
+        df_vp[&quot;Bread_Price_AUD&quot;] = vp_bread_price
+        
+        return {&quot;Neoclassical&quot;: df_neo, &quot;Value_Physics&quot;: df_vp}
+
+if __name__ == &quot;__main__&quot;:
+    model = RegionalSFCModel()
+    results = model.run_simulation()
+    print(&quot;SFC Simulation completed.&quot;)
+    print(&quot;Neoclassical Final Debt:&quot;, results[&quot;Neoclassical&quot;][&quot;Debt_AUD&quot;].iloc[-1])
+    print(&quot;Value Physics Final Debt:&quot;, results[&quot;Value_Physics&quot;][&quot;Debt_AUD&quot;].iloc[-1])
+</code></pre>
+</div>
+
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-34.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-34: Value Physics Engine (value_physics_engine.py)</div>
+</a>
+
+        
+<a href="VPE-36.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-36: Multi-Village Regional Simulator (multi_village_simulation.py)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

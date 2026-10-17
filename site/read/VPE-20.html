@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-20: Value Physics Explained: A Plain-English Beginner&#x27;s Guide — Value Physics Reader</title>
+  <meta name="description" content="Plain-English translation of UPE, 3-layer cost, WEST tokens, DQ, Cohesive Village">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-20</span>
+      <span class="doc-badge-cat">Educational &amp; Public Resource</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-19.html" class="nav-arrow-btn">&larr; Prev (VPE-19)</a>
+      <a href="VPE-21.html" class="nav-arrow-btn">Next (VPE-21) &rarr;</a>
+      <a href="../deliverables/VPE-20_Value_Physics_Explained_A_Plain_English_.docx" target="_blank" class="nav-download-btn">Download DOCX (710 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Value Physics Explained: A Plain-English Beginner&#x27;s Guide</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Plain-English translation of UPE, 3-layer cost, WEST tokens, DQ, Cohesive Village
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Universal Price Equation (UPE) forward pricing formulation</span><span class="data-pill">3-layer biophysical cost breakdown (Pe + Pb + Pm)</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Value Physics Explained: A Plain-English Beginner&#x27;s Guide</h2>
+<p class="doc-p"><strong>An Intuitive, Step-by-Step Educational Resource for Understanding Real-World Economics</strong></p>
+<h2 class="doc-h2">1. What Is Value Physics? (The Big Idea)</h2>
+<p class="doc-p">Normal economics talks about money like it is points in a video game. It assumes that if a price goes up or down, it is just because of a magic agreement called &quot;supply and demand.&quot;</p>
+<p class="doc-p"><strong>Value Physics looks at economics the way an engineer or a farmer looks at the world:</strong></p>
+<ul class="doc-ul">
+<li class="doc-li">Money doesn&#x27;t grow wheat. Diesel, sunlight, rain, and human sweat grow wheat.</li>
+<li class="doc-li">A dollar bill doesn&#x27;t build a house. Wood, stone, electricity, and physical craftsmanship build a house.</li>
+<li class="doc-li">If you ignore the physical reality of what things actually take to make, your economy eventually breaks down.</li>
+</ul>
+<p class="doc-p">Value Physics connects <strong>money</strong> back to <strong>physics, biology, and real human effort</strong>.</p>
+<h2 class="doc-h2">2. The 3-Layer Cake of Real Cost ($P_t = P_e + P_b + P_m$)</h2>
+<p class="doc-p">Whenever you buy anything—a loaf of bread, a bottle of water, or an hour of electricity—the real total cost has three distinct layers:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Layer</th>
+<th>Cost Component</th>
+<th>Description</th>
+</tr>
+<tr>
+<th>3</th>
+<th>PAPER / MIDDLEMAN COST ($P_m$)</th>
+<th>Bank interest, store markups, legal tolls, rent.</th>
+</tr>
+<tr>
+<th>2</th>
+<th>HUMAN BODY COST ($P_b$)</th>
+<th>Muscle sweat, training time, physical danger, focus.</th>
+</tr>
+<tr>
+<th>1</th>
+<th>EARTH &amp; ENERGY COST ($P_e$)</th>
+<th>Sunlight, diesel fuel, soil nutrients, kilowatt-hours.</th>
+</tr>
+</table></div>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Earth Cost ($P_e$):</strong> The raw energy taken from nature that can never be reused (like burning a litre of diesel in a tractor).</li>
+<li class="doc-li"><strong>Human Body Cost ($P_b$):</strong> The physical calories, years of learning, and mental concentration spent by the person doing the work.</li>
+<li class="doc-li"><strong>Paper Cost ($P_m$):</strong> The fees, bank interest, profit margins, and administrative tolls added on top.</li>
+</ul>
+<p class="doc-p"><strong>The Golden Rule:</strong> Even if someone gives you something for &quot;free&quot; ($P_m = $0), nature and a human body still had to pay the physical cost ($P_e + P_b$).</p>
+<h2 class="doc-h2">3. The 7 Questions of Every Product (The 7-Plane Price Vector $P^7$)</h2>
+<p class="doc-p">Standard economics slaps a single sticker price on an item (e.g. &quot;$5.00&quot;). But Value Physics says every real product answers <strong>7 basic questions</strong>:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>WHO (Identity):</strong> Who made it? (A master craftsman vs. an automated machine).</li>
+<li class="doc-li"><strong>WHAT (Opportunity):</strong> What else could those materials have been used for?</li>
+<li class="doc-li"><strong>WHERE (Logistics):</strong> How far did it travel? (Carried across the room vs. shipped across the ocean).</li>
+<li class="doc-li"><strong>WHY (Prestige):</strong> Is there an artificial brand or status premium attached to it?</li>
+<li class="doc-li"><strong>HOW (Operations):</strong> What physical steps and tools were used to make it right now?</li>
+<li class="doc-li"><strong>CAUSE (History &amp; Tools):</strong> What past loans, machinery purchases, and sunk costs made this possible?</li>
+<li class="doc-li"><strong>EFFECT (Consequences):</strong> What ecological wear, pollution, or waste is left behind?</li>
+</ul>
+<h2 class="doc-h2">4. The WEST Token: Measuring Real Human Effort</h2>
+<p class="doc-p">How do you measure fair work without relying on fluctuating currency markets? Value Physics uses the <strong>WEST Token</strong>:</p>
+<p class="doc-p">$$1 \text{ WEST Token} \equiv 1 \text{ Hour of basic, relaxed, safe, entry-level work}$$</p>
+<p class="doc-p">When work gets harder, the token value multiplies based on four real factors:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Skill ($s$):</strong> Did this take 5 years of training to learn how to do safely?</li>
+<li class="doc-li"><strong>Exertion ($e$):</strong> Are you sitting at a desk or shoveling wet clay in 40°C heat?</li>
+<li class="doc-li"><strong>Danger ($d$):</strong> Are you working at heights or around high-voltage power lines?</li>
+<li class="doc-li"><strong>Focus ($c$):</strong> Are you doing brain surgery or routine sorting?</li>
+</ul>
+<h2 class="doc-h2">5. The Distortion Quotient ($DQ$): Why the Farmer Gets Cents and the Middleman Gets Dollars</h2>
+<p class="doc-p">Have you ever wondered why a farmer who works 14-hour days in the sun often struggles to pay bills, while a supermarket corporate headquarters makes record profits?</p>
+<p class="doc-p">Value Physics measures this with the Distortion Quotient ($DQ$):</p>
+<p class="doc-p">$$DQ = \frac{\text{Percentage of the Money You Get}}{\text{Percentage of the Real Physical Work You Did}}$$</p>
+<h3 class="doc-h3">The Loaf of Bread Example ($5.00 Loaf):</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Growing the Wheat (Stages 1–3):</strong> Takes <strong>41.6%</strong> of all the physical sweat and diesel ($1.95 \text{ WEST}$), but the farmer only gets <strong>$0.55</strong> ($11%$ of the price).$\longrightarrow$ <strong>DQ = 0.26</strong> <em>(Massive underpayment for physical reality)</em>.</li>
+<li class="doc-li"><strong>Scanning the Barcode at the Supermarket (Stage 8):</strong> Takes <strong>4.7%</strong> of the physical effort ($0.22 \text{ WEST}$), but the retail duopoly takes <strong>$2.50</strong> ($50%$ of the price).$\longrightarrow$ <strong>DQ = 10.66</strong> <em>(Massive financial toll extraction)</em>.</li>
+</ul>
+<p class="doc-p">When $DQ$ is much higher than 1.0, someone is charging a toll just for standing at the gate.</p>
+<h2 class="doc-h2">6. Desperation Pricing: The Thirst Trap ($\gamma$)</h2>
+<p class="doc-p">Why does a bottle of water cost $1.50 at a grocery store, but $15.00 at an airport, and $1,000 if you are stranded in the middle of a hot desert?</p>
+<p class="doc-p">It didn&#x27;t take more diesel or plastic to make the water in the desert. What changed is your urgency. When you are desperate to survive, your ability to negotiate drops to zero.</p>
+<p class="doc-p">Value Physics calls this the <strong>Lorentz Coercion Factor ($\gamma$)</strong>. Unregulated markets often exploit desperation to charge maximum prices for non-negotiable human needs (food, medicine, water, and shelter).</p>
+<h2 class="doc-h2">7. The Fix: The Cohesive Village and Non-Usurious Credit</h2>
+<p class="doc-p">Value Physics proposes organizing regional communities into <strong>Cohesive Villages</strong> that use a <strong>Tri-Fold Ledger</strong>:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Book 3 (Reality Ledger):</strong> An uncheatable log of real physical work, solar power generated, and crops harvested.</li>
+<li class="doc-li"><strong>Book 2 (Public Trust):</strong> Community-owned infrastructure (shared grain silos, water dams, solar microgrids) that ensures nobody goes without essentials.</li>
+<li class="doc-li"><strong>Book 1 (Mutual Help at 0% Interest):</strong> Neighbors lend each other productive tools and credit with <strong>zero compounding interest</strong> ($r \equiv 0.0%$), paying back only what the tool originally cost over its lifespan.</li>
+</ul>
+<h2 class="doc-h2">Quick Summary Glossary</h2>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Physical Base Price ($P_H$):</strong> What something actually costs in energy and human effort to make without parasitic tolls.</li>
+<li class="doc-li"><strong>WEST Token:</strong> A fair unit of physical difficulty (skill, exertion, danger, focus).</li>
+<li class="doc-li"><strong>Distortion Quotient ($DQ$):</strong> A meter that shows whether someone is being paid fairly for hard work ($DQ \approx 1.0$) or exploited ($DQ &lt; 0.3$) by middlemen ($DQ &gt; 5.0$).</li>
+<li class="doc-li"><strong>Statutory Debt Bifurcation (Theorem 5):</strong> The legal rule that equipment used to feed, power, and shelter people should never have compound interest attached to it.</li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-19.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-19: Executive Policy Brief: Agricultural Debt &amp; Supermarket Margins</div>
+</a>
+
+        
+<a href="VPE-21.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-21: The Physics of Economic Value</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-46: Municipal Briefing Paper: Implementing Sovereign Credit Unions, Form SCU-A1 Refinancing, and Regional Commodity Buffers — Value Physics Reader</title>
+  <meta name="description" content="4-page printable executive paper for council workshops under Section 358 of the NSW Local Government Act 1993">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-46</span>
+      <span class="doc-badge-cat">Legal / Policy Briefing Paper</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-45.html" class="nav-arrow-btn">&larr; Prev (VPE-45)</a>
+      <a href="VPE-47.html" class="nav-arrow-btn">Next (VPE-47) &rarr;</a>
+      <a href="../deliverables/VPE-46_Municipal_Briefing_Paper_Implementing_So.docx" target="_blank" class="nav-download-btn">Download DOCX (1.2 MB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Empirical Case Studies</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Municipal Briefing Paper: Implementing Sovereign Credit Unions, Form SCU-A1 Refinancing, and Regional Commodity Buffers</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> 4-page printable executive paper for council workshops under Section 358 of the NSW Local Government Act 1993
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2"><strong>Municipal Briefing Paper: Implementing Sovereign Credit Unions, Form SCU-A1 Refinancing, and Regional Commodity Buffers</strong></h2>
+<h2 class="doc-h2"><strong>A Statutory and Operational Guide for Regional Mayors, Shire Councillors, and General Managers under Section 358 of the Local Government Act 1993 (NSW)</strong></h2>
+<p class="doc-p"><strong>Institutional Reference:</strong> ARI-VPE-MBP-2026-01 | <strong>Registry ID:</strong> VPE-46<strong>Author:</strong> Alethekanon Research Institute — Division 2: Societal Economics &amp; Macro-Micro SimulationLocation: New South Wales, Australia | <strong>Date:</strong> 2026-09-05</p>
+<h3 class="doc-h3"><strong>1. Executive Summary &amp; Statutory Authority</strong></h3>
+<p class="doc-p">Regional rural economies across New South Wales face an existential crisis driven not by agricultural unproductivity, but by the structural mechanics of orthodox commercial banking and retail duopoly extraction. Compound interest charges ($r_{\text{compound}} &gt; 8.0%$) and retail supermarket tolling ($DQ = 10.66$) siphon agricultural liquidity out of regional shires, forcing family farm foreclosures during climatic droughts.</p>
+<p class="doc-p">Under Section 358 of the Local Government Act 1993 (NSW), municipal councils possess explicit legal authority to form and participate in corporations, mutual entities, and public trusts with ministerial approval to secure essential community infrastructure. Coupled with Part 5C of the <em>Corporations Act 2001</em> (Cth) governing member-owned mutual financial institutions and Sections 11–12 of the Regional Investment Corporation Act 2018 (Cth), regional local government areas (LGAs) have the statutory power to establish Sovereign Mutual Credit Unions (SMCUs) and protect local productive assets.</p>
+<h3 class="doc-h3"><strong>2. Diagnostic: The Rural Financial Trap</strong></h3>
+<p class="doc-p">The current agricultural financial model is characterized by three primary failure modes:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Working Capital Inflation:</strong> Reserve Bank monetary tightening (+425 bps) does not cool agricultural staple demand; instead, via the working capital cost channel, it compounds upfront input borrowing costs (fertilizer, diesel, seed, water), driving cost-push food price inflation.</li>
+<li class="doc-li"><strong>Duopoly Toll Extraction:</strong> On a standard $5.00 loaf of bread, the primary wheat grower receives only $0.55 (11% of retail price) for 41.6% of total physical exertion, while the supermarket duopoly captures $2.50 (50% of retail price) for under 5% of physical effort ($DQ = 10.66$).</li>
+<li class="doc-li"><strong>Compound Debt vs. Biological Reality:</strong> Biological crops grow linearly ($L(t)$), but commercial debt compounds exponentially ($L_0 e^{rt}$). During severe climatic droughts, compounding interest forces generational land transfers to corporate agribusiness.</li>
+</ul>
+<h3 class="doc-h3"><strong>3. The Three Pillars of Municipal Implementation</strong></h3>
+<p class="doc-p">Participating regional councils establish a synchronized three-pillar infrastructure to insulate the local economy:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Pillar</th>
+<th>Entity</th>
+<th>Core Function</th>
+</tr>
+<tr>
+<th>Pillar 1</th>
+<th>Book 1: Sovereign Mutual Credit Union</th>
+<th>Member-owned, non-distributive mutual bank providing $r \equiv 0.00%$ compound interest facilities with deterministic linear principal amortization.</th>
+</tr>
+<tr>
+<th>Pillar 2</th>
+<th>Book 2: Strategic Physical Reserves</th>
+<th>Shire-owned physical grain silos (26–52 weeks reserve), municipal solar microgrids, and managed water dams with automated statutory drought pauses.</th>
+</tr>
+<tr>
+<th>Pillar 3</th>
+<th>Book 3: Reality Ledger &amp; Logistics</th>
+<th>NMI-certified weighbridge/telemetry coupled with closed-loop vehicle routing to ensure freight fleets eliminate deadheading depletion.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3"><strong>4. Operational Lending Instrument: Form SCU-A1</strong></h3>
+<p class="doc-p">Form SCU-A1 governs the refinancing of commercial agricultural debt into non-usurious municipal facilities. This instrument is designed to align financial obligations with biological production cycles.</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Eligible Security:</strong> Primary agricultural land, tractors, harvesters, on-farm grain silos, and irrigation equipment.</li>
+<li class="doc-li"><strong>Facility Interest Rate:</strong> Strictly $r_{\text{compound}} \equiv 0.00%$ per annum. An annual non-capitalized administrative fee ($\le 0.35%$) covers credit union operational overhead.</li>
+<li class="doc-li"><strong>Linear Amortization:</strong> Principal is repaid in equal annual or monthly installments over a 20-to-25 year term ($\text{Payment} = \frac{C_{\text{principal}}}{T_{\text{term}}}$).</li>
+<li class="doc-li"><strong>Statutory Climatic Hazard Pause (Clause 8.2):</strong> Repayments automatically freeze for 12 months when localized rainfall or crop yields collapse by $\ge 40%$. Unpaid principal is deferred to the end of the term with zero penalty interest or capitalization.</li>
+</ul>
+<h3 class="doc-h3"><strong>5. Regional Network Clearing &amp; Closed-Loop Vehicle Fleet Logistics</strong></h3>
+<p class="doc-p">Under the Multi-Shire Joint Powers Alliance across the 10 regional hubs (Regional NSW, Gilgandra, Gunnedah, Narrabri, Dubbo, Mudgee, Tamworth, Warren, Walgett, Moree):</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Bilateral Trade Tensor ($\mathbf{\Xi}_{\text{trade}}$):</strong> Shires clear grain, water, and power deficits bilaterally at physical base cost ($P_H = $1.15$), saving 35.4% in transport exergy friction.</li>
+<li class="doc-li"><strong>Closed-Loop Fleet Conservation:</strong> The logistics engine (closed_loop_logistics.py) enforces depot vehicle balance ($\sum_j v_{ji} = \sum_j v_{ij}$), systematically repositioning empty bulk grain tippers, water tankers, and BESS low-loaders to source depots, eliminating fleet stranding.</li>
+</ul>
+<h3 class="doc-h3"><strong>6. Turnkey Model Council Resolution &amp; Implementation Roadmap</strong></h3>
+<p class="doc-p">Councils table a standard resolution at ordinary meetings resolving to:</p>
+<ul class="doc-ul">
+<li class="doc-li">Formally note the cost-push inflationary impact of compounding interest on local agriculture.</li>
+<li class="doc-li">Apply to the Minister under Section 358 of the <em>Local Government Act 1993</em> (NSW) to form the Place Sovereign Mutual Credit Union.</li>
+<li class="doc-li">Adopt Theorem 5 ($r_{\text{compound}} \equiv 0.0%$, linear amortization) as the core lending policy.</li>
+<li class="doc-li">Authorize the General Manager to execute the Multi-Shire Joint Powers Alliance Compact.</li>
+</ul>
+<p class="doc-p"><strong>Implementation Schedule:</strong></p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Timeline</th>
+<th>Phase</th>
+<th>Key Deliverables</th>
+</tr>
+<tr>
+<th>Months 1–3</th>
+<th>Governance &amp; Initiation</th>
+<th>Council briefing workshops, community farmer roundtables, and s358 ministerial application.</th>
+</tr>
+<tr>
+<th>Months 4–6</th>
+<th>Incorporation &amp; Audit</th>
+<th>SMCU incorporation, Book 2 physical reserve audit, and initial Form SCU-A1 refinancing pilot.</th>
+</tr>
+<tr>
+<th>Months 7–12</th>
+<th>Full Grid Launch</th>
+<th>Joint Powers Alliance compact execution, weighbridge telemetry integration, and full regional clearing grid launch.</th>
+</tr>
+</table></div>
+<p class="doc-p">Approved for distribution to Regional Shires.</p>
+<p class="doc-p">Person<strong>Director, Societal Economics</strong>Alethekanon Research InstituteDate</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-45.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-45: closed_loop_logistics.py</div>
+</a>
+
+        
+<a href="VPE-47.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-47: hvnl_fatigue_dispatch.py</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-10: Research Paper: The Economics and Value Physics of Bread — Value Physics Reader</title>
+  <meta name="description" content="Multi-tier price audit and 5-channel interest rate cost-push transmission">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-10</span>
+      <span class="doc-badge-cat">Empirical Case Study</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-09.html" class="nav-arrow-btn">&larr; Prev (VPE-09)</a>
+      <a href="VPE-11.html" class="nav-arrow-btn">Next (VPE-11) &rarr;</a>
+      <a href="../deliverables/VPE-10_Research_Paper_The_Economics_and_Value_P.docx" target="_blank" class="nav-download-btn">Download DOCX (25 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Empirical Case Studies</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Research Paper: The Economics and Value Physics of Bread</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Multi-tier price audit and 5-channel interest rate cost-push transmission
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">The Economics and Value Physics of Bread: Multi-Tier Price Architecture, the WEST Standard, and Interest Rate Transmission Dynamics</h2>
+<h3 class="doc-h3">Executive Summary &amp; Theoretical Framework</h3>
+<p class="doc-p">Bread is the foundational caloric substrate of human civilization and the canonical reference standard (TS_0) in Value Physics. Under neoclassical economic dogma, the price of a loaf of bread is treated as a one-dimensional equilibrium scalar (P = f(S, D)), cleared instantaneously by a frictionless market auctioneer. In reality, economic exchange is an entropic, biomechanical, and institutional phenomenon operating across multi-dimensional spacetime.</p>
+<p class="doc-p">This research paper provides an exhaustive empirical calibration of the price of bread across four distinct market tiers in the Australian economy: Supermarket Private Label, National Commercial Branded, Retail Franchise Bakeries, and Independent Craft Artisan Sourdough. We evaluate these market clearing prices against the objective physical baseline established by the <strong>Work-Effort-Skill/Time (WEST) Token Architecture</strong> and the <strong>Universal Price Equation (UPE)</strong>.</p>
+<p class="doc-p">Furthermore, this analysis investigates the macroeconomic transmission of central bank interest rate adjustments into the price of bread. Contrary to textbook monetary doctrine—which posits that central bank cash rate hikes suppress aggregate demand and cool consumer price inflation—we prove mathematically and empirically that monetary tightening acts as a powerful <strong>cost-push inflationary driver</strong> on non-discretionary subsistence staples. Through agricultural farm debt compounding (P_6), industrial capital expenditure financing, commercial lease yields, and the activation of the <strong>Lorentz Coercion Factor (γ(v_rel))</strong> on captive households, interest rate hikes systematically widen the <strong>Distortion Quotient (DQ)</strong> and accelerate systemic fragility.</p>
+<h3 class="doc-h3">The Real Price of Bread: Grounding in Value Physics and the WEST Standard</h3>
+<p class="doc-p">In Value Physics, price is not determined by subjective consumer willingness-to-pay or arbitrary monetary keystrokes. True value is anchored in physical difficulty, thermodynamic exergy destruction (P_e), human biomechanical metabolic expenditure (P_b), and the conservation of natural substrate well-depth (R_n).</p>
+<h4 class="doc-h4">The Mathematical Difficulty Metric (D)</h4>
+<p class="doc-p">Human labor is not a homogenous duration of clock-time; it is a multi-factor physical and cognitive exertion vector. The instantaneous difficulty function D(t) is formalized as:</p>
+<p class="doc-p">D(t) = s(t) · e(t) · [1 + d(t)] · [1 + c(t)]</p>
+<p class="doc-p">where:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>t (Duration in hours):</strong> Sunk, irreversible biological lifespan allocated to the physical transformation.</li>
+<li class="doc-li"><strong>s(t) (Skill Multiplier ∈ [1.0, 10.0]):</strong> Human capital training density, defined by the cumulative years of prerequisite deliberate training and qualification required to execute the process without error: s = 1.0 + ln(1 + Years of Training)</li>
+<li class="doc-li"><strong>e(t) (Metabolic / Physical Exertion in METs ∈ [1.0, 10.0]):</strong> Metabolic Equivalent of Task, where 1.0 MET = 1.0 kcal/(kg·hr) ≈ 4.184 kJ/(kg·hr) representing resting basal metabolic rate.</li>
+<li class="doc-li"><strong>d(t) (Danger &amp; Entropy Exposure Index ∈ [0.0, 2.0]):</strong> Actuarial probability of physical musculoskeletal trauma, chemical toxicity, or irreversible physiological harm per hour.</li>
+<li class="doc-li"><strong>c(t) (Cognitive Attention &amp; Decision Density ∈ [0.0, 2.0]):</strong> Active neurological focus, real-time feedback processing load, and systemic liability.</li>
+</ul>
+<h4 class="doc-h4">The Fundamental Token Quantum and the Invariant Base Price (P_H)</h4>
+<p class="doc-p">The standard quantum unit of value is the <strong>1 WEST Token</strong>: 1 WEST Token ≡ One hour of socially necessary labor at s=1.0, e=1.0 MET, d=0.0, c=0.0</p>
+<p class="doc-p">The cumulative difficulty tokens expended along a complete T-duration supply chain is given by the integral: WEST Tokens = ∫_0^T s(t) · e(t) · [1 + d(t)] · [1 + c(t)] dt</p>
+<p class="doc-p">The <strong>Invariant Geometric Base Price (P_H)</strong> represents the real thermodynamic reproduction cost of the good: P_H = WEST Tokens · [ (κ_energy · P_e + κ_labor · P_b) / R_n ]</p>
+<p class="doc-p">where κ_energy and κ_labor are baseline physical conversion scalars, P_e is primary exergy consumed (in MJ), P_b is human labor seconds, and R_n is the objective ecological well-depth.</p>
+<h4 class="doc-h4">The Distortion Quotient (DQ)</h4>
+<p class="doc-p">To measure the degree of economic exploitation or rentier toll extraction across market segments, we define the <strong>Distortion Quotient (DQ)</strong>: DQ = (% Share of Nominal Market Price (P_m)) / (% Share of WEST Difficulty Tokens)</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>DQ = 1.0 (True Parity):</strong> Nominal price perfectly compensates the physical difficulty and exergy expended.</li>
+<li class="doc-li"><strong>DQ ≪ 1.0 (Substrate Extraction / Labor Exploitation):</strong> High physical difficulty and danger receiving negligible nominal financial return (e.g., farmgate grain production).</li>
+<li class="doc-li"><strong>DQ ≫ 1.0 (Rentier Capture / Toll Enclosure):</strong> Minimal physical exertion capturing massive nominal monetary flows via monopoly gatekeeping, restrictive zoning, or shelf slotting fees (e.g., supermarket duopoly retail markups).</li>
+</ul>
+<h3 class="doc-h3">Empirical Multi-Tier Price Architecture across the Australian Bread Market</h3>
+<p class="doc-p">The Australian bread retail landscape is partitioned into four distinct operational and pricing tiers. Each tier embodies a completely different thermodynamic process, labor density, and financial structure.</p>
+<h4 class="doc-h4">Comparative Market Data Matrix</h4>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Production &amp; Retail Tier</th>
+<th>Market Examples &amp; Shelf Prices</th>
+<th>Direct Labor Time per Loaf</th>
+<th>Skill (s) &amp; Exertion (e)</th>
+<th>Danger (d) &amp; Cognition (c)</th>
+<th>WEST Difficulty Tokens</th>
+<th>Primary Exergy (P_e)</th>
+<th>Nominal Price (P_m)</th>
+<th>Real Physical Base (P_H)</th>
+<th>Distortion Quotient (DQ)</th>
+<th>Primary Socioeconomic Function</th>
+</tr>
+<tr>
+<th>Tier 1: Supermarket Private Label</th>
+<th>Woolworths White Sandwich 650g ($2.50 AUD), Coles Soft White 650g ($2.70 AUD), ALDI Baker&#x27;s Life 700g ($2.40 AUD)</th>
+<th>~ 110 s</th>
+<th>s=2.6, e=2.2 MET</th>
+<th>d=0.15, c=0.20</th>
+<th>0.465</th>
+<th>9.8 MJ</th>
+<th>$2.70 AUD</th>
+<th>$2.85 AUD</th>
+<th>0.796</th>
+<th>Loss-Leader &quot;The Cover&quot;: Artificial price suppression subsidizing staple optics by externalizing debt upstream.</th>
+</tr>
+<tr>
+<th>Tier 2: National Commercial Branded</th>
+<th>Tip Top The One 700g ($4.60 AUD), Helga&#x27;s Traditional Wholemeal 750g ($5.20 AUD), Wonder White 700g ($4.60 AUD)</th>
+<th>~ 130 s</th>
+<th>s=2.8, e=2.3 MET</th>
+<th>d=0.15, c=0.22</th>
+<th>0.547</th>
+<th>10.8 MJ</th>
+<th>$4.90 AUD</th>
+<th>$3.20 AUD</th>
+<th>1.228</th>
+<th>Duopoly Shelf Toll (R_a): Extraction of brand premium (P_4) and eye-level shelf listing fees (P_1) on identical industrial lines.</th>
+</tr>
+<tr>
+<th>Tier 3: Retail Franchise Scratch Bakery</th>
+<th>Bakers Delight Traditional White Loaf ($5.00 AUD), Hi-Fibre Lo-GI ($5.80 AUD), Sourdough Vienna ($8.00 AUD)</th>
+<th>~ 450 s (7.5 min)</th>
+<th>s=4.5, e=3.4 MET</th>
+<th>d=0.25, c=0.40</th>
+<th>1.450</th>
+<th>15.2 MJ</th>
+<th>$5.20 AUD</th>
+<th>$5.10 AUD</th>
+<th>0.985</th>
+<th>Operational Parity: Direct compensation of qualified trade baking labor (P_b), deck ovens, and local shop leaseholds.</th>
+</tr>
+<tr>
+<th>Tier 4: Independent Craft Artisan Sourdough</th>
+<th>Bourke Street Bakery Organic Sourdough ($8.50 AUD), Specialty Seeded Sourdough ($9.50–$12.00 AUD)</th>
+<th>~ 1,080 s (18 min)</th>
+<th>s=6.5, e=3.5 MET</th>
+<th>d=0.20, c=0.75</th>
+<th>3.650</th>
+<th>20.5 MJ</th>
+<th>$8.50 AUD</th>
+<th>$8.80 AUD</th>
+<th>0.965</th>
+<th>High-Difficulty Parity: True thermodynamic and biological craft alignment (wild levain, 36hr cold fermentation).</th>
+</tr>
+</table></div>
+<h4 class="doc-h4">Structural Deconstruction by Market Tier</h4>
+<p class="doc-p">1. Tier 1: Private-Label Supermarket Bread ($2.40 – $2.80 AUD)</p>
+<p class="doc-p">Private-label bread is manufactured using the Chorleywood Bread Process (CBP) inside massive, continuous-flow automated baking plants. It consumes minimal direct human labor (~ 110 seconds per loaf across all 8 stages).</p>
+<p class="doc-p">While consumers view $2.50 white bread as an economic bargain, Value Physics demonstrates that it sells <strong>below its long-run physical reproduction cost</strong> (P_H ≈ $2.85 AUD), yielding a Distortion Quotient of DQ = 0.796. Supermarkets deploy cheap bread as an essential caloric hook under <strong>&quot;The Cover&quot;</strong>. The discount is not funded by supermarket profit surrender; rather, it is extracted by squeezing farmgate wheat acquisition prices down to DQ = 0.134. The unpaid real cost accumulates as the <strong>Reality Gap Integral (Δ R)</strong>, accelerating rural insolvency and soil degradation.</p>
+<p class="doc-p">2. Tier 2: National Commercial Branded Bread ($4.60 – $5.20 AUD)</p>
+<p class="doc-p">National commercial brands (Tip Top, Wonder White, Helga&#x27;s) are produced on the very same industrial automated lines as private-label bread, often in the exact same Goodman Fielder or George Weston Foods facilities.</p>
+<p class="doc-p">The physical difficulty increment is marginal: adding specialty bran, seed mixes, or synthetic vitamin sprays adds only +0.08 WEST tokens (≈ 15–20 cents of physical ingredients and sorting effort). Yet the retail shelf price jumps by <strong>$1.90 to $2.50 AUD</strong>. This entire price delta represents:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>P_4 Lyrical Markup:</strong> Advertising, brand prestige, and health claims.</li>
+<li class="doc-li"><strong>P_1 Meta-Physical Gatekeeping:</strong> Supermarket eye-level shelf placement fees, promotional slotting levies, and duopoly gross margin extraction (R_a ≈ 0.42).</li>
+</ul>
+<p class="doc-p">3. Tier 3: Retail Franchise Scratch Bakeries ($5.00 – $8.00 AUD)</p>
+<p class="doc-p">Franchise bakeries like Bakers Delight eliminate the centralized distribution warehouse and bake fresh daily from scratch on-site.</p>
+<p class="doc-p">This model increases direct human labor time to ~ 450 seconds per loaf, requiring certified trade bakers (s=4.5), heavy manual dough dividing (e=3.4 METs), and heat exposure (d=0.25). Total difficulty expands to <strong>1.450 WEST tokens</strong>. Because nominal pricing ($5.00–$5.20) closely matches this physical difficulty (P_H ≈ $5.10), franchise bakeries achieve <strong>near-perfect operational parity (DQ = 0.985)</strong>.</p>
+<p class="doc-p">4. Tier 4: Independent Craft Artisan Sourdough ($8.50 – $12.00 AUD)</p>
+<p class="doc-p">Independent craft bakeries (such as Bourke Street Bakery) use wild yeast starters, unbleached stoneground flours, and extended 24- to 48-hour cold fermentation.</p>
+<p class="doc-p">This process eliminates industrial chemical conditioners, requiring master baker sensory intuition (s=6.5, c=0.75), manual hand shaping, and stone-deck hearth baking. Direct human labor reaches <strong>18 minutes (1,080 seconds)</strong> per loaf, generating <strong>3.650 WEST difficulty tokens</strong> and consuming 20.5 MJ of exergy.</p>
+<p class="doc-p"><strong>The Economic Paradox:</strong> While an $8.50 sourdough loaf is culturally perceived as an overpriced luxury, in physical terms, <strong>it is the most fairly priced bread in the entire economy (DQ = 0.965)</strong>. It requires nearly <strong>eight times more human skill and metabolic difficulty</strong> than a supermarket loaf, but charges only three times the nominal price.</p>
+<h3 class="doc-h3">Macroeconomic Transmission: The Effects of Interest Rates on Bread Prices</h3>
+<p class="doc-p">A central pillar of modern macroeconomic policy is the Reserve Bank of Australia&#x27;s (RBA) use of the official cash rate to control inflation. Under standard New Keynesian models, raising interest rates dampens consumer demand across the economy, forcing sellers to lower prices.</p>
+<p class="doc-p">Value Physics exposes the fatal flaw in this logic when applied to essential subsistence goods: <strong>Hiking interest rates increases the nominal price of bread through five direct cost-push compounding channels and an urgency coercion multiplier.</strong></p>
+<p class="doc-p">[ Central Bank Rate Hike (+Δr) ]       |       +---&gt; 1. Agricultural Farm Debt Compounding (P_6)  -----&gt; [+ Farmgate Ask]       |       +---&gt; 2. Working Capital Seasonal Overdrafts (P_2) ------&gt; [+ Input Costs]       |       +---&gt; 3. Industrial Baking &amp; Logistics CapEx Debt (P_6) -&gt; [+ Wholesale Price]       |       +---&gt; 4. Commercial Real Estate Leasehold WACC (P_6) ----&gt; [+ Retail Toll]       |       +---&gt; 5. Household Mortgage Distress -&gt; Inelastic Urgency (γ &gt;&gt; 1) -&gt; [+ Margin Defense]</p>
+<h4 class="doc-h4">1. Stage 1–3: Agricultural Debt Compounding &amp; Working Capital Levers</h4>
+<p class="doc-p">Modern broadacre grain farming in Australia is one of the most capital-intensive industries in the world. According to data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES), total Australian farm business debt exceeds <strong>$110 Billion AUD</strong>, with 5% of broadacre farms carrying over 52% of the debt burden.</p>
+<p class="doc-p">When the RBA raised the cash rate from 0.10% to 4.35%:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Term Debt Servicing Escalation:</strong> A representative broadacre grain farmer carrying $2.0 Million AUD in land expansion and combine harvester debt saw annual interest bills jump from <strong>$70,000 AUD (at 3.5%) to over $130,000–$160,000 AUD (at 6.5%–8.5%)</strong>.</li>
+<li class="doc-li"><strong>Working Capital Overdrafts:</strong> Grain farming requires massive upfront working capital months before harvest to fund seed, diesel, and nitrogen fertilizer. Agricultural overdraft rates rose from 5% to over 8.5%–9.0%.</li>
+<li class="doc-li"><strong>Cost-Push Transmission:</strong> Debt servicing expenses increased from 8% of gross farm cash income to <strong>12%–22%</strong>. Because grain farmers cannot operate at a continuous cash loss, this debt load directly inflates the required farmgate breakeven price (P_6 ↑).</li>
+</ul>
+<h4 class="doc-h4">2. Stage 4–7: Industrial CapEx Debt &amp; WACC Amplification in Milling and Baking</h4>
+<p class="doc-p">Industrial flour mills (e.g., Allied Pinnacle, Manildra) and industrial bakeries (Goodman Fielder, George Weston Foods) operate multi-million-dollar automated facilities funded by corporate debt and private equity loans.</p>
+<p class="doc-p">1. <strong>Higher Cost of Capital (WACC):</strong> Rising interest rates increase corporate hurdle rates and debt servicing obligations on continuous tunnel ovens, pneumatic flour transfer lines, and automated packaging machinery.</p>
+<p class="doc-p">2. <strong>Transportation Fleet Leasing:</strong> Commercial transport companies operating prime mover fleets and refrigerated distribution lines face higher asset-finance lease payments, which are passed directly into freight charges (P_3/P_6).</p>
+<p class="doc-p">3. <strong>Inability to Absorb Costs:</strong> Because industrial baking operates on thin single-digit net profit margins (3%–5%), any increase in debt servicing must be passed downstream into the wholesale price of bread charged to supermarkets.</p>
+<h4 class="doc-h4">3. Stage 8: Commercial Retail Leasehold Debt &amp; Duopoly Margin Defense</h4>
+<p class="doc-p">Supermarket giants (Coles and Woolworths) and retail bakery chains operate extensive physical retail footprints. Commercial leases are tied to property valuations and landlord debt costs.</p>
+<p class="doc-p">As interest rates rise:</p>
+<ul class="doc-ul">
+<li class="doc-li">Commercial property yields adjust upward, increasing occupancy costs (P_6).</li>
+<li class="doc-li">Supermarkets defend their return on capital by applying gross margin markups across their packaged goods.</li>
+<li class="doc-li">With Coles and Woolworths controlling over 65% of the national grocery retail market, their oligopoly pricing power (P_other / P_soc &gt;&gt; 1.0) allows them to pass 100% of upstream debt and supply cost increases onto the consumer, adding an unearned extraction margin (R_a ≈ 0.40).</li>
+</ul>
+<h3 class="doc-h3">The Lorentz Coercion Channel: Monetary Tightening and Subsistence Inelasticity</h3>
+<p class="doc-p">The most perverse effect of interest rate hikes occurs on the consumer demand side through the <strong>Lorentz Coercion Factor (γ(v_rel))</strong>.</p>
+<h4 class="doc-h4">Mathematical Formalization of the Coercion Velocity</h4>
+<p class="doc-p">In the Universal Price Equation, the transaction velocity is governed by the relative urgency differential: v_rel = abs(U_buyer - U_seller) / U_max where 0 ≤ v_rel &lt; 1, and γ(v_rel) = 1 / sqrt(1 - v_rel^2).</p>
+<p class="doc-p">When the central bank hikes interest rates, household mortgage payments and rental costs escalate rapidly. Discretionary purchasing power is crushed.</p>
+<p class="doc-p">Household Budget Contraction:[ Discretionary Spending (Restaurants, Luxury) ] ---------&gt; SQUEEZED TO ZERO[ Biological Need N_x (Bread, Milk, Basic Calories) ] ------&gt; INELASTIC &amp; CAPTIVE (U -&gt; 1.0)</p>
+<p class="doc-p">1. <strong>Collapse of Price Elasticity (ε → 0):</strong> A distressed family cannot substitute away from basic food. Bread represents pure biological Need (N_x &gt;&gt; W_x).</p>
+<p class="doc-p">2. <strong>Urgency Asymmetry (v_rel → 1.0):</strong> The supermarket duopoly has infinite temporal patience (U_seller ≈ 0), while the indebted consumer must buy calories daily to survive (U_buyer → 1.0).</p>
+<p class="doc-p">3. <strong>Lorentz Factor Expansion (γ → ∞):</strong> The coercion factor γ spikes, granting supermarkets absolute pricing leverage on staple lines.</p>
+<p class="doc-p">Instead of rate hikes forcing food prices down through demand destruction, <strong>rate hikes trap consumers into buying cheap supermarket bread</strong>, giving duopolies guaranteed high sales volume and enabling aggressive price hikes on branded bread without losing foot traffic.</p>
+<h4 class="doc-h4">The Interest Rate Elasticity of the 7-Plane Price Tensor</h4>
+<p class="doc-p">We formalize the net derivative of the price tensor with respect to the official cash rate (r): ∂P^7 / ∂r = ∑_{k=1}^7 W_k (∂Debt_Service_k / ∂r) + M_duopoly (∂γ(v_rel) / ∂r) - Φ_demand (∂Demand / ∂r).</p>
+<p class="doc-p">Because price elasticity ∂Demand / ∂r ≈ 0 for baseline bread, the negative term vanishes. Consequently: ∂P^7 / ∂r &gt; 0.</p>
+<p class="doc-p"><strong>Theorem:</strong> For essential, non-substitutable subsistence goods, nominal consumer price is a strictly increasing function of the interest rate. Monetary tightening exacerbates food inflation.</p>
+<h3 class="doc-h3">Dynamic Simulation: The Impact of a 300 bps RBA Rate Hike</h3>
+<p class="doc-p">To quantify these theoretical channels, we model a <strong>300 basis point (3.0%) increase in the RBA cash rate</strong> across the 8 stages of the Australian bread supply chain for a standard 700g commercial loaf.</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Supply Chain Stage</th>
+<th>Baseline Price (P_{m,0})</th>
+<th>Debt &amp; Working Capital Interest Cost (+ΔP_interest)</th>
+<th>Energy &amp; Freight Secondary Interest Pass-Through</th>
+<th>Coercive Margin Markup (+ΔP_margin)</th>
+<th>Shocked Price (P_{m,shock})</th>
+<th>% Increase</th>
+</tr>
+<tr>
+<th>S1. Plant (Soil &amp; Seeding)</th>
+<th>11.0¢</th>
+<th>+1.8¢</th>
+<th>+0.4¢</th>
+<th>+0.0¢</th>
+<th>13.2¢</th>
+<th>+20.0%</th>
+</tr>
+<tr>
+<th>S2. Grain (Agronomy)</th>
+<th>8.0¢</th>
+<th>+1.4¢</th>
+<th>+0.3¢</th>
+<th>+0.0¢</th>
+<th>9.7¢</th>
+<th>+21.3%</th>
+</tr>
+<tr>
+<th>S3. Harvest &amp; Silo</th>
+<th>6.5¢</th>
+<th>+1.1¢</th>
+<th>+0.3¢</th>
+<th>+0.0¢</th>
+<th>7.9¢</th>
+<th>+21.5%</th>
+</tr>
+<tr>
+<th>S4. Mill (Flour Production)</th>
+<th>12.0¢</th>
+<th>+1.5¢</th>
+<th>+0.5¢</th>
+<th>+0.5¢</th>
+<th>14.5¢</th>
+<th>+20.8%</th>
+</tr>
+<tr>
+<th>S5. Leaven / Mixing</th>
+<th>19.0¢</th>
+<th>+1.8¢</th>
+<th>+0.6¢</th>
+<th>+1.0¢</th>
+<th>22.4¢</th>
+<th>+17.9%</th>
+</tr>
+<tr>
+<th>S6. Oven (Industrial Baking)</th>
+<th>16.0¢</th>
+<th>+2.2¢</th>
+<th>+0.8¢</th>
+<th>+1.0¢</th>
+<th>20.0¢</th>
+<th>+25.0%</th>
+</tr>
+<tr>
+<th>S7. Breaking &amp; Packaging</th>
+<th>55.0¢</th>
+<th>+4.5¢</th>
+<th>+1.5¢</th>
+<th>+4.0¢</th>
+<th>65.0¢</th>
+<th>+18.2%</th>
+</tr>
+<tr>
+<th>S8. Distribution &amp; Retail</th>
+<th>272.5¢</th>
+<th>+18.0¢</th>
+<th>+6.5¢</th>
+<th>+28.0¢</th>
+<th>325.0¢</th>
+<th>+19.3%</th>
+</tr>
+<tr>
+<th>Total Loaf Price</th>
+<th>$4.00 AUD</th>
+<th>+32.3¢</th>
+<th>+10.9¢</th>
+<th>+34.5¢</th>
+<th>$4.777 AUD</th>
+<th>+19.4%</th>
+</tr>
+</table></div>
+<h4 class="doc-h4">Simulation Findings</h4>
+<p class="doc-p">1. <strong>$0.78 AUD Loaf Price Surge (+19.4%):</strong> A 300 bps rate hike drives an immediate ~ $0.78 AUD increase in the nominal retail price of a commercial loaf.</p>
+<p class="doc-p">2. <strong>Interest Sunk Cost Component (43.2 cents):</strong> Direct debt servicing and working capital interest account for <strong>$0.432 AUD (55.4% of the total price hike)</strong>.</p>
+<p class="doc-p">3. <strong>Retail Margin Expansion (28.0 cents):</strong> Exploiting captive demand (γ ↑), retail duopolies expand absolute dollar margins by $0.28 AUD per loaf, proving that monetary tightening fuels corporate margin defense at the expense of household nutrition.</p>
+<h3 class="doc-h3">Structural Distortions and Systemic Risks: &quot;The Cover&quot; under High Interest Rates</h3>
+<p class="doc-p">When nominal interest rates remain elevated over multi-year horizons, the interaction between &quot;The Cover&quot; and farm debt produces severe structural degradation.</p>
+<p class="doc-p">[ Elevated Interest Rates (r &gt;= 4.35%) ]                 |                 v   [ Farm Debt Servicing Doubles ]                 |                 v   [ Supermarket Enforces $2.70 Price Ceiling (&quot;The Cover&quot;) ]                 |                 v   [ Farmgate Margin &lt; Zero (P_m &lt; P_e + P_b) ]                 |                 v   [ Reality Gap Integral ΔR(t) Explodes ]                 |                 +---&gt; Soil Degradation (Skipping Fertilizer/Lime)                 +---&gt; Deferred Machinery Maintenance                 +---&gt; Rural Bank Foreclosures &amp; Land Consolidation                 |                 v   [ First-Order Phase Shift Collapse (T_crit) ]   (Supply Destruction &amp; Discrete Structural Default)</p>
+<p class="doc-p">1. <strong>The Squeeze on Upstream Substrate:</strong> Supermarkets resist raising private-label bread from $2.70 to $3.50 to protect their &quot;everyday low price&quot; public image.</p>
+<p class="doc-p">2. <strong>Upstream Cannibalization:</strong> Because retail margins (R_a ≈ 0.40) are non-negotiable, the entire burden of higher interest rates is forced back onto grain farmers and independent millers.</p>
+<p class="doc-p">3. <strong>The Reality Gap Accumulation (Δ R):</strong> Farmers service high bank interest by cutting soil regeneration, deferring tractor maintenance (P_6), and liquidating capital reserves.</p>
+<p class="doc-p">4. <strong>Terminal Phase Shift (T_crit):</strong> As proven in Theorem 3 of the Value Physics corpus, this artificial price suppression cannot persist indefinitely. At T_crit, physical suppliers abandon production, resulting in discrete supply breakdowns, agricultural bank defaults, and sudden step-function food shortages.</p>
+<h3 class="doc-h3">Sovereign Supply-Side Remediation and Policy Architectures</h3>
+<p class="doc-p">To insulate the staple food supply from the destructive cost-push spirals of central bank interest rate cycles, Value Physics proposes three structural remediation mechanisms:</p>
+<h4 class="doc-h4">1. Statutory Debt Bifurcation (Theorem 5: Asymptotic Obligation)</h4>
+<p class="doc-p">Agricultural production loans for critical food staples must be legally bifurcated: Obligation(t) = C_base + E_premium · exp(-λ t), where C_base is the invariant face capital (land purchase, machinery principal, operational administration) capped at a zero real interest rate, and E_premium (speculative compound interest) decays to zero. Food production capital must be insulated from monetary policy rate manipulation.</p>
+<h4 class="doc-h4">2. The Public Agricultural Infrastructure Bank &amp; Grain Buffer</h4>
+<p class="doc-p">Establish a sovereign statutory entity (a modern Public Grain Board) providing direct concessional working capital (0%–1% fixed-rate seasonal finance for wheat planting and harvest inputs, completely bypassing private commercial bank overdraft spreads) and national strategic grain reserves ($TS_0$ Buffer) guaranteeing farmers fair WEST token difficulty compensation (DQ = 1.0) regardless of global commodity spot market volatility.</p>
+<h4 class="doc-h4">3. ACCC Duopoly Unbundling and Structural Margin Caps</h4>
+<p class="doc-p">Impose strict statutory limits on supermarket retail slotting tolls (R_a ≤ 0.15) for essential subsistence goods. By breaking the supermarket duopoly&#x27;s ability to extract unearned rents on captive consumers (γ → 1.0), food prices can be realigned with their true physical difficulty (P_H).</p>
+<h3 class="doc-h3">References &amp; Corpus Synthesis</h3>
+<h4 class="doc-h4">Primary Source Corpus Links</h4>
+<ul class="doc-ul">
+<li class="doc-li">Research Candidate: Formalization of the Universal Price Equation (UPE) &amp; 7-Plane Price Vector (P^7): Core mathematical formalisms for the 7-plane price vector, Lorentz coercion factor, and the canonical bread reference floor.</li>
+<li class="doc-li">The Cover: Theoretical foundation of the four settlement states, artificial price suppression, reality gap accumulation, and systemic collapse mechanics.</li>
+<li class="doc-li">The Well Principle: Conservation law of substrate investment (R_n) versus rentier extraction tolls (R_a).</li>
+<li class="doc-li">The Physics of Value: A Definitive Treatise on Currency, Simulacra, and the Reality Tensor: Relativistic value equation (E_v = m(tv)^2) and Lorentz transform of urgency.</li>
+<li class="doc-li">Relative Homogenous Scope: Temporal resolution windows and directional gradients (V = -∇ P).</li>
+<li class="doc-li">Research Candidate: The Macroeconomic Transfer Circuit — Welfare as Corporate Underwrite &amp; Monopsony Capture: Subsistence transfer capture in supermarket duopolies and platform markets.</li>
+<li class="doc-li">Research Candidate: Australian Macroeconomic Trajectory — The 4-Era Structural Settlement &amp; Asset Financialization: 4-Era macroeconomic structural model and asset financialization.</li>
+</ul>
+<h4 class="doc-h4">Empirical Data &amp; Institutional Literature</h4>
+<ul class="doc-ul">
+<li class="doc-li">Packaged Bread | Woolworths Supermarkets: Retail POS pricing microdata across national brand and private-label bread.</li>
+<li class="doc-li">Shop Helgas Products Online | Coles Supermarkets: Supermarket brand tier pricing schedules.</li>
+<li class="doc-li">Bakers Delight National Product Catalog: Franchise bakery fresh-bake retail pricing and product metrics.</li>
+<li class="doc-li">Bourke Street Bakery Instore Menu: Independent artisan sourdough pricing schedules.</li>
+<li class="doc-li">Australian Banking Association: Agricultural Lending Data: Empirical debt statistics on broadacre grain farms.</li>
+<li class="doc-li">ABARES: Australian Agricultural Commodities Report: Australian wheat production, farm business cash income, and input cost trends.</li>
+<li class="doc-li">Reserve Bank of Australia: The Transmission of Monetary Policy: Official RBA cash rate transmission mechanism documentation.</li>
+<li class="doc-li">ACCC Supermarkets Inquiry Reports: Australian Competition and Consumer Commission investigation into supermarket pricing power, supplier squeeze, and retail margins.</li>
+<li class="doc-li">Georgescu-Roegen, N. (1971). <em>The Entropy Law and the Economic Process</em>. Harvard University Press.</li>
+<li class="doc-li">Sraffa, P. (1960). <em>Production of Commodities by Means of Commodities</em>. Cambridge University Press.</li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-09.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-09: Achilles-Setup-Check: Relational Spacetime &amp; Coordinates</div>
+</a>
+
+        
+<a href="VPE-11.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-11: Research Treatise: Cohesive Village Simulation (7 Guilds)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

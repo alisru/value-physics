@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-18: Statutory Model Charter &amp; Sovereign Credit Union Bylaws — Value Physics Reader</title>
+  <meta name="description" content="Model bylaws implementing Theorem 5 (0% usury) and the Tri-Fold Ledger (ARI-VPE-STAT-2026-01)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-18</span>
+      <span class="doc-badge-cat">Institutional Legal Framework</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-17.html" class="nav-arrow-btn">&larr; Prev (VPE-17)</a>
+      <a href="VPE-19.html" class="nav-arrow-btn">Next (VPE-19) &rarr;</a>
+      <a href="../deliverables/VPE-18_Statutory_Model_Charter_Sovereign_Credit.docx" target="_blank" class="nav-download-btn">Download DOCX (797 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Statutory Model Charter &amp; Sovereign Credit Union Bylaws</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Model bylaws implementing Theorem 5 (0% usury) and the Tri-Fold Ledger (ARI-VPE-STAT-2026-01)
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Theorem 5 (Non-usurious debt bifurcation &amp; mutual credit)</span><span class="data-pill">Real-world commodity calibration microdata (CSV/XLSX)</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Statutory Model Charter &amp; Sovereign Credit Union Bylaws: Operational Implementation of Theorem 5 and Non-Usurious Productive Capital Clearing</h2>
+<p class="doc-p"><strong>A Model Legal, Governance, and Operational Framework for Regional Mutual Financial Institutions, Agricultural Shires, and Municipal Trusts</strong></p>
+<p class="doc-p"><strong>Published by the Alethekanon Research Institute — Division 2: Societal Economics &amp; Value Physics</strong><strong>Institutional Charter Reference: ARI-VPE-STAT-2026-01</strong></p>
+<h2 class="doc-h2">Executive Legislative Summary &amp; Preamble</h2>
+<p class="doc-p">Modern regional economies and agricultural broadacre communities suffer structural liquidity starvation under orthodox central banking regimes. By treating all debt as a homogenous financial asset yielding compound interest ($L(t) = L_0 e^{rt}$), central bank rate hikes transmit an aggressive cost-push inflationary impulse through upstream working capital ($P_{Q6}$), accelerating foreclosures, eroding regional capital, and transferring localized wealth to centralized financial monopolies.</p>
+<p class="doc-p">This <strong>Statutory Model Charter &amp; Sovereign Credit Union Bylaws</strong> provides an operational, legally defensible framework for regional credit unions, mutual financial institutions, and local government councils to deploy <strong>Theorem 5 (Statutory Debt Bifurcation)</strong> and the <strong>Value Physics Tri-Fold Ledger Architecture</strong>. Grounded in historical precedents (the Swiss WIR Bank established in 1934, the Regional Investment Corporation Act 2018, and standard Mutual Societies regulations under the Australian <em>Corporations Act 2001</em>), this charter establishes non-usurious, zero-compound-interest productive capital clearing ($r_{\text{compound}} \equiv 0.0%$) to permanently stabilize regional food, energy, water, shelter, and care systems.</p>
+<h2 class="doc-h2">Article I: Name, Jurisdictional Scope &amp; Constitutional Purpose</h2>
+<h3 class="doc-h3">Section 1.01 Name and Institutional Status</h3>
+<p class="doc-p">The entity established under this Charter shall operate as a Member-Owned Mutual Financial Institution and Sovereign Clearing Trust (hereafter, the &quot;Sovereign Credit Union&quot; or &quot;SCU&quot;).</p>
+<h3 class="doc-h3">Section 1.02 Constitutional Purpose</h3>
+<p class="doc-p">The core objective of the SCU is to preserve the physical substrate and productive carrying capacity ($R_n$) of the regional community by:</p>
+<ul class="doc-ul">
+<li class="doc-li">Eliminating compound interest usury on essential productive capital.</li>
+<li class="doc-li">Anchoring monetary credit emission directly to verified physical difficulty ($WEST$ Tokens) and thermodynamic exergy ($P_e$).</li>
+<li class="doc-li">Maintaining the Invariant Physical Base Price ($P_H$) across the 5 essential physical needs (Food, Energy, Water, Shelter, and Care).</li>
+<li class="doc-li">Insulating regional enterprises from external macroeconomic credit contraction and speculative financial shocks.</li>
+</ul>
+<h2 class="doc-h2">Article II: Statutory Debt Bifurcation (Theorem 5 Implementation)</h2>
+<h3 class="doc-h3">Section 2.01 Mandatory Asset Class Bifurcation</h3>
+<p class="doc-p">All credit facilities, loans, and financial obligations issued or administered by the SCU must be legally classified into one of two mutually exclusive tiers:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Class A (Productive Substrate Capital):</strong> All loans allocated to tangible physical reproduction—including agricultural cropping land, grain storage silos, solar/hydro microgrids, water reservoirs and reticulation networks, modular residential shelter construction, and clinical medical equipment.</li>
+<li class="doc-li"><strong>Class B (Discretionary Commercial Credit):</strong> Loans allocated to non-essential commercial ventures, luxury consumer acquisitions, or external market trade.</li>
+</ul>
+<h3 class="doc-h3">Section 2.02 Invariant 0.0% Compound Usury Rule (Class A)</h3>
+<p class="doc-p">All Class A productive capital facilities are subject to an absolute statutory prohibition on compound interest:$$r_{\text{compound}} \equiv 0.0%$$No capitalization of interest, penalty rate compounding, or rolling compound overdraft fees shall ever attach to Class A obligations.</p>
+<h3 class="doc-h3">Section 2.03 Linear Principal Amortization Schedule</h3>
+<p class="doc-p">Repayment of Class A facilities shall follow the deterministic linear amortization schedule formalized in Theorem 5:$$\text{Obligation}(t) = \frac{C_{\text{principal}}}{T_{\text{term}}}$$Where $C_{\text{principal}}$ is the exact statutory cost of the physical equipment/substrate, and $T_{\text{term}}$ is the agreed operational lifespan (e.g., 15 years for agricultural machinery, 25 years for solar microgrids, 50 years for rammed-earth housing).</p>
+<h3 class="doc-h3">Section 2.04 Concessional Reality Gap Absorber</h3>
+<p class="doc-p">In the event of an exogenous climatic disaster (e.g., severe multi-year drought with crop yield drop $\ge 35%$) or regional energy shock, debt amortization payments are automatically paused without penalty, extending $T_{\text{term}}$ commensurately.</p>
+<h2 class="doc-h2">Article III: The Tri-Fold Ledger Operational Architecture</h2>
+<p class="doc-p">The SCU shall maintain three separate, cryptographically coupled accounting books:</p>
+<p class="doc-p"><strong>BOOK 3: THE REALITY LEDGER (Proof-of-Difficulty State Machine)</strong></p>
+<ul class="doc-ul">
+<li class="doc-li">State: Physical Difficulty Block $B_k = { H_{prev}, Timestamp, Guild_ID, D_{vector} }$</li>
+<li class="doc-li">Difficulty Integral: $WEST_k = \int s(t) \cdot e(t) \cdot [1+d(t)] \cdot [1+c(t)] dt$</li>
+<li class="doc-li">Thermodynamic Audit: Exergy $P_e$ (MJ / kWh), Soil Health $R_n$, Water Levels</li>
+</ul>
+<p class="doc-p"><strong>BOOK 2: PUBLIC SOVEREIGN LEDGER (Sovereign Credit Emission)</strong></p>
+<ul class="doc-ul">
+<li class="doc-li">Minting Rule: $\Delta Credit_Book2 \equiv WEST_Tokens_verified$ (Book 3)</li>
+<li class="doc-li">Sovereign Capital Fund: Funds Common Grain Silos, Microgrid Batteries, Water Tanks</li>
+<li class="doc-li">Price Floor Mandate: Enforces Invariant Pricing $P_{ask} = P_H$ (DQ = 1.00)</li>
+</ul>
+<p class="doc-p"><strong>BOOK 1: PRIVATE MUTUAL CREDIT LEDGER (Non-Usurious Bilateral Exchange)</strong></p>
+<ul class="doc-ul">
+<li class="doc-li">Smart Covenant Rule: $r_{compound} \equiv 0.0%$</li>
+<li class="doc-li">Linear Amortization: $Obligation(t) = C_{principal} / T_{term}$</li>
+<li class="doc-li">Demurrage-Free Internal Clearing: Zero parasitic drain on working balances</li>
+</ul>
+<h3 class="doc-h3">Section 3.01 Book 1 (Private Mutual Credit Clearing)</h3>
+<ul class="doc-ul">
+<li class="doc-li">Members receive a mutual credit line capped by their verified annual physical production difficulty ($WEST_{\text{capacity}}$).</li>
+<li class="doc-li">Balances clear bilaterally at zero interest. Positive balances represent verified contribution to the regional commons; negative balances represent linear commitments of future labor.</li>
+</ul>
+<h3 class="doc-h3">Section 3.02 Book 2 (Public Sovereign Ledger)</h3>
+<ul class="doc-ul">
+<li class="doc-li">The SCU issues sovereign public credits strictly backed 1:1 by verified Proof-of-Difficulty ($WEST$) tokens logged in Book 3.</li>
+<li class="doc-li">Sovereign credits finance common infrastructure (solar microgrids, water reservoirs, grain storage).</li>
+</ul>
+<h3 class="doc-h3">Section 3.03 Book 3 (Thermodynamic Reality Ledger &amp; PoD Hashing)</h3>
+<ul class="doc-ul">
+<li class="doc-li">All physical production data is hashed into deterministic block headers containing fixed 65-byte ECDSA witness attestations (bytes65 guild_multisig[3]).</li>
+<li class="doc-li">Guarantees that nominal credit cannot be issued without proof of physical exergy ($P_e$) and human metabolic labor ($P_b$) expended.</li>
+</ul>
+<h2 class="doc-h2">Article IV: The Invariant Base Price ($P_H$) &amp; Anti-Gouging Covenants</h2>
+<h3 class="doc-h3">Section 4.01 The Invariant Base Price Mandate</h3>
+<p class="doc-p">All participating guild enterprises that receive Class A financing agree to clear essential provisions at their physical base price ($P_H$):$$P_H = \text{WEST Tokens} \cdot \left[ \frac{\kappa_e P_e + \kappa_b P_b}{R_n} \right]$$</p>
+<h3 class="doc-h3">Section 4.02 Retail Margin and Enclosure Toll Cap</h3>
+<p class="doc-p">Retail and distribution intermediaries are strictly capped at an extraction toll factor $R_a \le 0.12$ ($12%$ gross retail margin). Any excess price markup over $P_H$ is automatically taxed at $100%$ into the Sovereign Public Infrastructure Fund (Book 2).</p>
+<h2 class="doc-h2">Article V: Governance, Guild Structure &amp; Epistemic Audit</h2>
+<h3 class="doc-h3">Section 5.01 The 7-Guild Board of Governors</h3>
+<p class="doc-p">The SCU is governed by a 7-member Board representing the functional guilds of reality:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Guild 1 (Agriculture &amp; Soil Regeneration):</strong> Cropping farmers, pastoralists, compost engineers.</li>
+<li class="doc-li"><strong>Guild 2 (Energy &amp; Water Harvesting):</strong> Microgrid operators, hydrologists, electrical linesmen.</li>
+<li class="doc-li"><strong>Guild 3 (Food Processing &amp; Baking):</strong> Millers, trade scratch bakers ($s=4.5$), preservers.</li>
+<li class="doc-li"><strong>Guild 4 (Construction &amp; Modular Shelter):</strong> Earth builders, carpenters, plumbers.</li>
+<li class="doc-li"><strong>Guild 5 (Healthcare &amp; Education):</strong> Clinicians, nurses, teachers, care providers.</li>
+<li class="doc-li"><strong>Guild 6 (Logistics &amp; Workshop Depot):</strong> Heavy transport mechanics, depot operators.</li>
+<li class="doc-li"><strong>Guild 7 (Civic Planning &amp; Epistemic Audit):</strong> Legal trustees, ledger verifiers, accountants.</li>
+</ul>
+<h3 class="doc-h3">Section 5.02 Automatic Distortion Quotient (DQ) Audit Triggers</h3>
+<p class="doc-p">If the Distortion Quotient ($DQ$) in any sector exceeds $1.50$ (indicating rentier toll capture) or drops below $0.50$ (indicating labor exploitation), the Epistemic Audit Guild automatically triggers a price and margin review.</p>
+<h2 class="doc-h2">Article VI: Cross-Village Inter-Sovereign Trade Protocol ($\mathbf{\Xi}_{\text{trade}}$)</h2>
+<h3 class="doc-h3">Section 6.01 The Inter-Sovereign Exchange Tensor</h3>
+<p class="doc-p">Trade between independent cohesive villages operating Tri-Fold Ledgers shall settle via the Bilateral Exchange Tensor:$$\mathbf{\Xi}_{\text{trade}} = \frac{\text{WEST}_{\text{exported}}}{\text{WEST}_{\text{imported}}} \cdot \left[ \frac{R_{n,\text{exporter}} + \Delta R_{n,\text{exporter}}}{R_{n,\text{importer}} + \Delta R_{n,\text{importer}}} \right]$$where $R_n$ represents baseline ecological and infrastructure well-depth and $\Delta R_n$ represents net seasonal replenishment. Settlement occurs in physical commodity clearing or Book 2 mutual recognition, completely independent of external fiat foreign exchange markets.</p>
+<h2 class="doc-h2">Schedule A: Standard Productive Capital Master Covenant (Form SCU-A1)</h2>
+<p class="doc-p">Every Class A loan agreement shall incorporate the statutory covenants: (1) 0.0% compound interest, (2) Linear principal retirement, (3) Climate disaster amortization pause, (4) Invariant Base Price clearance guarantee.</p>
+<h3 class="doc-h3"><strong>Ratification and Institutional Seal</strong></h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Authoring Division:</strong> Division 2 (Societal Economics &amp; Value Physics)</li>
+<li class="doc-li"><strong>Lead Value Physicist:</strong> The Researcher</li>
+<li class="doc-li"><strong>Epistemic Auditor:</strong> The Checker / Project Manager</li>
+<li class="doc-li"><strong>Date of Promulgation:</strong> 2026-08-24</li>
+<li class="doc-li"><strong>Jurisdictional Seat:</strong> NSW, Australia</li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-17.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-17: PREF Companion Treatise: Value Physics &amp; Macro Resolution</div>
+</a>
+
+        
+<a href="VPE-19.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-19: Executive Policy Brief: Agricultural Debt &amp; Supermarket Margins</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

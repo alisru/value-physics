@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-06: The 7-Plane Token Spectrum Architecture — Value Physics Reader</title>
+  <meta name="description" content="Multi-spectral currency vector, planar action profiles, Plane Misidentification Errors">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-06</span>
+      <span class="doc-badge-cat">Foundational Currency Architecture</span>
+      <span class="doc-badge-status">Foundational Treatise</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-05.html" class="nav-arrow-btn">&larr; Prev (VPE-05)</a>
+      <a href="VPE-07.html" class="nav-arrow-btn">Next (VPE-07) &rarr;</a>
+      <a href="../deliverables/VPE-06_The_7_Plane_Token_Spectrum_Architecture.docx" target="_blank" class="nav-download-btn">Download DOCX (460 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">The 7-Plane Token Spectrum Architecture</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Multi-spectral currency vector, planar action profiles, Plane Misidentification Errors
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">The 7-Plane Token Spectrum Architecture: Multi-Dimensional Currency Decomposition, Isomorphic Bread Dynamics, and Planar Action Vectors</h2>
+<p class="doc-p"><strong>Mapping the 8-Stage Canonical Process ($TS_0$) into Planar Currencies and Eliminating Cross-Planar Extraction</strong></p>
+<p class="doc-p">Executive Abstract</p>
+<p class="doc-p">Single-scalar fiat currencies force every distinct physical, cognitive, ecological, and spiritual human activity into a single homogenous dollar figure ($P$). This dimensional flattening creates the <strong>Plane Misidentification Error</strong>, allowing financialized systems to cannibalize care work, natural substrates, and cultural meaning to inflate nominal financial balances.</p>
+<p class="doc-p">This research treatise formalizes the <strong>7-Plane Token Spectrum Architecture</strong>. Grounded in the canonical 8-stage Bread Reference Process ($TS_0$), economic currency is decomposed into a 7-dimensional spectral vector $\vec{\mathbf{T}} = [T_1, T_2, T_3, T_4, T_5, T_6, T_7]^T$. Specific human actions generate specific planar token spectrums, ensuring that biological sustenance, technical craft, ecological replenishment, and cultural celebration are accounted for in their native ontological dimensions without cross-planar extraction.</p>
+<h3 class="doc-h3">1. Bread as the Canonical Isomorphic Process ($TS_0$)</h3>
+<p class="doc-p">As established in The Bread of Life: An Information-Process Interpretation and The Universal Price Equation Formalization, bread is not merely food; it is the <strong>canonical physical reference standard ($TS_0$)</strong> because it executes the complete isomorphic cycle across all 7 Planes of Reality:</p>
+<p class="doc-p">[ S1: PLANT ] ──► [ S2: GRAIN ] ──► [ S3: HARVEST ] ──► [ S4: MILL ] ──► [ S5: LEAVEN ] ──► [ S6: OVEN ] ──► [ S7: BREAKING ] ──► [ S8: DISTRIBUTION ]   (Moral 0:         (Energy            (Physical          (Lineage           (Biological         (Thermal          (Lyrical          (Terminal Truth:    Nutrient          Capture:           Separation:        Severed:           Transmutation:      Fixation:         Inversion:        All 7 Planes    Intake)           Starch)            Chaff)             Seed Dead)         Wild Starter)       Exergy)           Shared Gift)      Zero Residue)</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>True Moral Zero ($Q_2$ Silence at Plant):</strong> The plant takes nutrients without alternative pathways to decline, establishing the objective ground floor ($\psi = 0$) without arbitrary fiat assumptions.</li>
+<li class="doc-li"><strong>Lineage Transmutation ($Q_6$ at Mill → Leaven):</strong> Biological genetic lineage terminates at the mill stone and is reborn as social/cultural lineage at the leaven.</li>
+<li class="doc-li"><strong>The Lyrical Inversion ($Q_4$ at Breaking):</strong> Meaning is silent through physical production and activates uniquely at the breaking—the only stage where a completed whole is dismantled deliberately to be given away.</li>
+<li class="doc-li"><strong>Terminal Truth State ($TS$ at Distribution):</strong> Distribution is the unique physical event where all 7 Planes hold the truth state simultaneously with zero unpaid residue ($TBE \equiv TS_0$).</li>
+</ul>
+<h3 class="doc-h3">2. The 7-Plane Token Spectrum: Currency Decomposition</h3>
+<p class="doc-p">Every human activity and economic transformation outputs a multi-dimensional token spectrum across the 7 Planes of Reality:</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Plane &amp; Dimension</th>
+<th>Token Spectrum ($T_i$)</th>
+<th>Survival Requirement</th>
+<th>Temporal Metric</th>
+<th>Generating Human &amp; Physical Actions</th>
+</tr>
+<tr>
+<th>Plane 1: Meta-Physical ($c_1$)<br>WHO (Identity)</th>
+<th>$T_1$: Recognition Token<br>(Will / Sovereignty)</th>
+<th>Recognition / Personhood</th>
+<th>Directional Time<br>($\psi$ Moral Will)</th>
+<th>Covenant establishing, constitutional governance, identity verification, granting sovereign trust.</th>
+</tr>
+<tr>
+<th>Plane 2: Possible ($c_2$)<br>WHAT (Definition)</th>
+<th>$T_2$: Purpose Token<br>(Option / Trajectory)</th>
+<th>Purpose / Horizon</th>
+<th>Resolution Time<br>(Probability Collapse)</th>
+<th>Scientific R&amp;D, architectural blueprinting, breeding crop varieties, contingency insurance buffering.</th>
+</tr>
+<tr>
+<th>Plane 3: Physical ($c_3$)<br>WHERE (Locus)</th>
+<th>$T_3$: Shelter / Exergy Token<br>(Spatial Joules)</th>
+<th>Shelter / Thermoregulation</th>
+<th>Rendering Time<br>(Light-Travel Delay $d/c$)</th>
+<th>Solar microgrid generation (kWh), timber framing, masonry, freight logistics, physical soil tilling.</th>
+</tr>
+<tr>
+<th>Plane 4: Lyrical ($c_4$)<br>WHY (Drive)</th>
+<th>$T_4$: Refreshment Token<br>(Resonance / Meaning)</th>
+<th>Refreshment / Harmony</th>
+<th>Resonance Time<br>(Harmonic Overtones)</th>
+<th>Music composition, sacred celebration, shared meals, artistic storytelling, the act of Breaking bread.</th>
+</tr>
+<tr>
+<th>Plane 5: Logical ($c_5$)<br>HOW (Method)</th>
+<th>$T_5$: Power / Tech Token<br>(Algorithmic Precision)</th>
+<th>Executive Power / Logos</th>
+<th>Processing Time<br>(Counting / Computation)</th>
+<th>Software coding, mechanical engineering, trade precision baking ($s=4.5$), legal contract compilation.</th>
+</tr>
+<tr>
+<th>Plane 6: Historical ($c_6$)<br>CAUSE (Origin)</th>
+<th>$T_6$: Moral / Lineage Token<br>(Ancestral Sunk Cost)</th>
+<th>Moral Integrity / Lineage</th>
+<th>Sequential Time<br>(Linear Cause-Effect)</th>
+<th>CapEx amortization, historical soil remediation, trauma resolution, intergenerational debt retirement.</th>
+</tr>
+<tr>
+<th>Plane 7: Emotive ($c_7$)<br>EFFECT (Impact)</th>
+<th>$T_7$: Sustenance / Care Token<br>(Homeostatic Healing)</th>
+<th>Sustenance / Life-Persistence</th>
+<th>Homeostatic Time<br>(Metabolic Maintenance)</th>
+<th>Elder nursing, palliative care, child rearing, trauma psychotherapy, direct caloric feeding.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">3. The Planar Action Vector Formalism</h3>
+<p class="doc-p">Any productive economic action $\alpha$ is represented as an emission of a 7-dimensional spectral vector:</p>
+<p class="doc-p">vec(T)_alpha = [ T_1 (Recognition), T_2 (Purpose), T_3 (Physical), T_4 (Lyrical), T_5 (Logical), T_6 (Historical), T_7 (Emotive) ]^T</p>
+<h4 class="doc-h4">Comparative Action Profiles</h4>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Productive Action</th>
+<th>Primary Emitted Spectrums</th>
+<th>Spectral Vector Signature ($\vec{\mathbf{T}}$)</th>
+<th>Planar Function</th>
+</tr>
+<tr>
+<th>Wheat Sowing (S1)</th>
+<th>Physical ($T_3$), Logical ($T_5$), Historical ($T_6$)</th>
+<th>[ 0.05, 0.15, 0.45, 0.00, 0.20, 0.15, 0.00 ]</th>
+<th>Diesel exergy, GPS precision seeding, multi-year topsoil nitrogen investment.</th>
+</tr>
+<tr>
+<th>Artisan Sourdough Bake (S6)</th>
+<th>Physical ($T_3$), Logical ($T_5$), Lyrical ($T_4$)</th>
+<th>[ 0.05, 0.10, 0.35, 0.15, 0.30, 0.05, 0.00 ]</th>
+<th>Thermal deck exergy, fermentation biochemistry, aesthetic crust scoring.</th>
+</tr>
+<tr>
+<th>Breaking &amp; Sharing (S7–S8)</th>
+<th>Lyrical ($T_4$), Emotive ($T_7$), Recognition ($T_1$)</th>
+<th>[ 0.25, 0.05, 0.05, 0.40, 0.00, 0.05, 0.20 ]</th>
+<th>Communal table fellowship, dismantling the whole for the other, moral closure.</th>
+</tr>
+<tr>
+<th>Palliative Clinical Care</th>
+<th>Emotive ($T_7$), Recognition ($T_1$), Logical ($T_5$)</th>
+<th>[ 0.20, 0.05, 0.05, 0.10, 0.15, 0.05, 0.40 ]</th>
+<th>Homeostatic comfort, human dignity witness, pharmacology precision.</th>
+</tr>
+<tr>
+<th>Solar Microgrid Engineering</th>
+<th>Logical ($T_5$), Physical ($T_3$), Purpose ($T_2$)</th>
+<th>[ 0.05, 0.25, 0.35, 0.00, 0.30, 0.05, 0.00 ]</th>
+<th>Inverter topology, battery chemistry, long-term village energy sovereignty.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">4. Eliminating the Plane Misidentification Error</h3>
+<p class="doc-p">In standard financial capitalism, all 7 Planes are collapsed into single-scalar money ($P$). This allows institutions to engage in predatory <strong>Planar Arbitrage</strong>:</p>
+<p class="doc-p">[ THE NEOCLASSICAL EXTRACTION ARBITRAGE ]Cannibalize Plane 7 (Unpaid Nurse Burnout) ──────► Squeeze into Plane 1 (Executive Bonus)Neglect Plane 3 (Deferred Water Infrastructure) ──► Inflate Plane 4 (Corporate Branding)Deforest Plane 6 (Topsoil &amp; Lineage Depletion) ──► Record Plane 5 (Quarterly GDP Growth)</p>
+<h4 class="doc-h4">The Planar Conservation Law</h4>
+<p class="doc-p">Under the 7-Plane Token Spectrum, currencies are non-fungible across planes without verified physical transformation. A settlement must balance accounts within each plane independently:</p>
+<p class="doc-p">For each Plane p ∈ {1, ..., 7}:   ∑ T_injected,p + ∑ BEST_p = ∑ EAST_p + ∑ WORST_p</p>
+<p class="doc-p">An institution cannot claim solvency by having excess $T_1$ or $T_4$ if its $T_3$ (Physical exergy) or $T_7$ (Emotive care) reserves are running a catastrophic physical deficit.</p>
+<h3 class="doc-h3">5. Integration with the Cardinal Tokens (WEST, EAST, BEST, WORST)</h3>
+<p class="doc-p">The 4 Cardinal Perspectives act as the <strong>Directional Operators</strong> applied across the 7-Plane Spectrum:</p>
+<p class="doc-p">WEST_p = Input Difficulty on Plane p (What was physically/cognitively spent)EAST_p = Realized Utility on Plane p (What life-relief was achieved)BEST_p = Regenerative Carry-Capacity on Plane p (What was added to the commons)WORST_p = Extractive Toll on Plane p (What parasitic rent was extracted)</p>
+<p class="doc-p">This creates a complete $4 \times 7$ <strong>Econophysics State Tensor</strong> governing every transaction in the micro-economy simulation.</p>
+<p class="doc-p">Compiled from Value Physics Research, 7-Plane Actualism Formulations, and Multi-Spectra Token Architectures.</p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-05.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-05: The Cardinal Value Matrix: WEST, EAST, BEST, WORST</div>
+</a>
+
+        
+<a href="VPE-07.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-07: The Grand Translation to Modern Economic Theory</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

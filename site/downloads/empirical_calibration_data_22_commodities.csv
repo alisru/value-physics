@@ -1,0 +1,23 @@
+commodity,unit,sector,P_retail_observed,P_energy_Pe,P_base_Pb,Metabolic_U,Scarcity_S,Regen_Capacity_Rn,Relativistic_Urgency_vrel,Lorentz_Gamma,RRP_D_recommended,Implied_Extractive_Drag_Ra,Extractive_Premium_AUD,Fairness_Index_Percent
+Commercial Sliced White Bread (680g),loaf,Sector 1 (Food / Subsistence),4.1,0.38,0.45,2.15,1,1,0.05,1.0013,3.03,0.3417,1.07,73.8
+Milling Wheat (APW1 / ASW1),tonne,Sector 1 (Food / Agricultural Feedstock),365,104.4,82,95,1.05,0.98,0.02,1.0002,290.28,0.43,74.72,79.5
+Fresh Full Cream Milk (Full Fat),litre,Sector 1 (Food / Dairy Subsistence),2.1,0.31,0.48,0.75,1.05,0.95,0.1,1.005,1.64,0.364,0.46,78.1
+Farmgate Beef Cattle Weaners (British Breed),kg liveweight,Sector 1 (Food / Pastoral Livestock),3.85,0.42,1.15,1.25,1.15,0.85,0.15,1.0114,3.32,0.2498,0.53,86.1
+Automotive Diesel Fuel (Ultra-Low Sulphur),litre,Sector 2 (Energy / Liquid Fuels),2.15,0.32,0.92,0.35,1.08,0.9,0.12,1.0073,1.67,0.5351,0.48,77.8
+Residential Grid Electricity (Single-Rate Flat),kWh,Sector 2 (Energy / Power Utility),0.36,0.08,0.07,0.09,1.15,0.92,0.08,1.0032,0.27,0.4626,0.09,73.7
+LPG Bottled Gas (45kg Domestic Cylinder),45kg cylinder,Sector 2 (Energy / Liquid Petroleum Gas),165,29.4,58.36,28.5,1.15,0.88,0.16,1.0131,126.26,0.5115,38.74,76.5
+Bulk Potable Water Cartage (Regional NSW),"kL (1,000L)",Sector 3 (Water / Municipal Subsistence),15.5,4.32,3.95,3.2,1.3,0.75,0.25,1.0328,14.12,0.2077,1.38,91.1
+Domestic Waste Collection (Regional NSW),weekly bin lift,Sector 3/5 (Municipal Sanitation & Care),9.33,2.45,1.85,2.15,1.2,0.72,0.22,1.0251,8.05,0.2697,1.28,86.3
+"Prescription Antibiotic (Amoxicillin 500mg, 20 Caps)",dispensing course,Sector 5 (Care / Essential Healthcare),16.5,2.1,3.2,5.8,1.2,0.94,0.35,1.0675,13.37,0.2943,3.13,81
+Residential Structural Softwood Timber (MGP10 90x45mm Pine),lineal metre,Sector 4 (Shelter / Building Construction),7.2,0.85,1.2,2.1,1.25,0.88,0.15,1.0114,5.13,0.4142,2.07,71.2
+Pre-Mixed Ready-Mix Concrete (N20 20 MPa Structural),cubic metre,Sector 4 (Shelter / Building Construction),295,62,78,58,1.15,0.85,0.2,1.0206,221.72,0.4833,73.28,75.2
+"Structural Steel Reinforcing Mesh (SL82, 6.0m x 2.4m Sheet)",sheet (14.4 m2),Sector 4 (Shelter / Building Construction),128,28.5,36.8,22.5,1.12,0.82,0.18,1.0166,97.18,0.5017,30.82,75.9
+Bulk Road Freight Transport (Newell Highway B-Double Corridor),net tonne-km,Sector 2/4 (Logistics / Spatial Freight),0.12,0.03,0.03,0.02,1.1,0.92,0.14,1.0099,0.09,0.591,0.04,71.1
+Australian Merino Greasy Wool (19-Micron Fleece),kg clean,Sector 1/4 (Agri-Fiber / Thermal Shelter),15.5,1.45,2.2,5.6,1.1,0.88,0.08,1.0032,10.82,0.4074,4.68,69.8
+Domestic Broadband Data Transit (NBN 50/20 Mbps Tier),monthly service,Sector 5/6 (Digital Infrastructure / Utilities),85,4.8,14.5,12.2,1.05,0.95,0.15,1.0114,33.22,0.7924,51.78,39.1
+"Prescription Salbutamol Inhaler (100mcg CFC-Free MDI, 200 Doses)",inhaler unit,Sector 5 (Care / Essential Healthcare),12.5,0.65,1.35,3.4,1.1,0.92,0.4,1.0911,6.53,0.5776,5.97,52.2
+Urban Reticulated Potable Water (Municipal Pipeline Tariff),"kL (1,000L)",Sector 3 (Water / Municipal Utility),3.6,0.48,0.62,1.15,1.15,0.8,0.2,1.0206,2.82,0.3251,0.78,78.4
+Commercial Broiler Chicken (Whole Fresh Dressed Bird),kg dressed,Sector 1 (Food / Poultry Subsistence),4.5,0.46,1.68,1.15,1.05,0.95,0.12,1.0073,3.45,0.4575,1.05,76.6
+Standard Extruded Clay Facing Bricks (Common Structural Masonry),"1,000 bricks",Sector 4 (Shelter / Building Construction),1150,278,182,185,1.12,0.82,0.18,1.0166,722.12,0.6277,427.88,62.8
+Coarse Solar Sea Salt (Unrefined Food & Livestock Grade),25kg bag,Sector 1/3 (Food / Mineral Subsistence),14.5,1.65,2.1,4.2,1.05,0.96,0.06,1.0018,8.45,0.5719,6.05,58.2
+Raw Centrifugal Cane Sugar (Bulk Crystal Milling Feedstock),tonne,Sector 1 (Food / Agricultural Carbohydrate),620,142,168,145,1.08,0.9,0.05,1.0013,487.77,0.438,132.23,78.7

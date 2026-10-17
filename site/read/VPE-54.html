@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-54: Executable Code: RRP Fairness Audit &amp; Benchmarking Engine (rrp_fairness_audit.py) — Value Physics Reader</title>
+  <meta name="description" content="Standalone Python RRP fairness audit engine calibrated across 24 Australian benchmark necessities (Food, Agriculture, Energy, Water, Sanitation, Healthcare, Shelter, Freight Logistics, Agri-Fiber, Digital Infrastructure, Mineral Electrolytes, Carbohydrate Feedstocks, Agricultural Water Infrastructure, Export Oilseeds).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-54</span>
+      <span class="doc-badge-cat">Executable Code Module (.py)</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-53.html" class="nav-arrow-btn">&larr; Prev (VPE-53)</a>
+      <a href="VPE-55.html" class="nav-arrow-btn">Next (VPE-55) &rarr;</a>
+      <a href="../deliverables/VPE-54_Executable_Code_RRP_Fairness_Audit_Bench.py" target="_blank" class="nav-download-btn">Download PY (36 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Computational Engines &amp; Code</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Executable Code: RRP Fairness Audit &amp; Benchmarking Engine (rrp_fairness_audit.py)</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Standalone Python RRP fairness audit engine calibrated across 24 Australian benchmark necessities (Food, Agriculture, Energy, Water, Sanitation, Healthcare, Shelter, Freight Logistics, Agri-Fiber, Digital Infrastructure, Mineral Electrolytes, Carbohydrate Feedstocks, Agricultural Water Infrastructure, Export Oilseeds).
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        
+<div class="code-container">
+  <div class="code-header">
+    <span>VPE-54_Executable_Code_RRP_Fairness_Audit_Bench.py (PYTHON)</span>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-content').innerText); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy Code', 2000);">Copy Code</button>
+  </div>
+  <pre class="code-block"><code id="code-content">&quot;&quot;&quot;
+Value Physics RRP Fairness Audit &amp; Empirical Benchmarking Engine
+Deliverable ID: VPE-54 | Alethekanon Research Institute — Division 2
+Author: Jarrod Lyndsay Hamilton, Australia
+
+Empirical testing suite for the Universal Price Equation (UPE):
+  P = m1 * m2 * gamma(v_rel) * [(S * U) / (R_n * (1 - R_a))] + P_e + P_b
+
+Calculates forward biophysical pricing, reverse-engineers observed commercial RRPs,
+solves for extractive drag (R_a), and establishes objective Recommended Retail Prices
+based on Difficulty (RRP/D).
+&quot;&quot;&quot;
+
+import math
+from typing import Dict, Any, List
+
+def calculate_gamma(v_rel: float, eps: float = 1e-16) -&gt; float:
+    &quot;&quot;&quot;Calculates the relativistic urgency/coercion factor gamma(v_rel).&quot;&quot;&quot;
+    v_capped = min(max(v_rel, 0.0), 1.0 - eps)
+    return 1.0 / math.sqrt(1.0 - v_capped**2)
+
+def calculate_forward_upe(
+    P_e: float,
+    P_b: float,
+    U: float,
+    S: float = 1.0,
+    R_n: float = 1.0,
+    R_a: float = 0.0,
+    m1: float = 1.0,
+    m2: float = 1.0,
+    v_rel: float = 0.0,
+    eps: float = 1e-16
+) -&gt; float:
+    &quot;&quot;&quot;Computes forward price from biophysical, energetic, and metabolic difficulty inputs.&quot;&quot;&quot;
+    gamma = calculate_gamma(v_rel, eps)
+    denom = max(R_n * (1.0 - min(R_a, 1.0 - eps)), eps)
+    metabolic_tier = m1 * m2 * gamma * ((S * U) / denom)
+    return metabolic_tier + P_e + P_b
+
+def audit_commercial_rrp(
+    commodity: str,
+    unit: str,
+    sector: str,
+    P_retail: float,
+    P_e: float,
+    P_b: float,
+    U: float,
+    S: float = 1.0,
+    R_n: float = 1.0,
+    v_rel: float = 0.0,
+    m1: float = 1.0,
+    m2: float = 1.0,
+    fair_reserve_Ra: float = 0.02,
+    eps: float = 1e-16
+) -&gt; Dict[str, Any]:
+    gamma = calculate_gamma(v_rel, eps)
+    spread = P_retail - (P_e + P_b)
+    
+    if spread &lt;= eps:
+        implied_Ra = 0.0
+    else:
+        numerator = m1 * m2 * gamma * S * U
+        ratio = numerator / (R_n * spread)
+        implied_Ra = max(0.0, min(1.0 - ratio, 1.0))
+        
+    rrp_d = calculate_forward_upe(
+        P_e=P_e,
+        P_b=P_b,
+        U=U,
+        S=S,
+        R_n=R_n,
+        R_a=fair_reserve_Ra,
+        m1=1.0,
+        m2=1.0,
+        v_rel=v_rel,
+        eps=eps
+    )
+    
+    extractive_premium = max(0.0, P_retail - rrp_d)
+    fairness_index = min(1.0, rrp_d / max(P_retail, eps))
+    
+    return {
+        &quot;commodity&quot;: commodity,
+        &quot;unit&quot;: unit,
+        &quot;sector&quot;: sector,
+        &quot;P_retail_observed&quot;: round(P_retail, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;P_energy_Pe&quot;: round(P_e, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;P_base_Pb&quot;: round(P_b, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;Metabolic_U&quot;: round(U, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;Scarcity_S&quot;: round(S, 2),
+        &quot;Regen_Capacity_Rn&quot;: round(R_n, 2),
+        &quot;Relativistic_Urgency_vrel&quot;: round(v_rel, 2),
+        &quot;Lorentz_Gamma&quot;: round(gamma, 4),
+        &quot;RRP_D_recommended&quot;: round(rrp_d, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;Implied_Extractive_Drag_Ra&quot;: round(implied_Ra, 4),
+        &quot;Extractive_Premium_AUD&quot;: round(extractive_premium, 4 if &quot;nt-km&quot; in unit else 2),
+        &quot;Fairness_Index_Percent&quot;: round(fairness_index * 100.0, 1)
+    }
+
+def get_australian_benchmark_dataset() -&gt; List[Dict[str, Any]]:
+    return [
+        {
+            &quot;commodity&quot;: &quot;Commercial Sliced White Bread (680g)&quot;,
+            &quot;unit&quot;: &quot;loaf&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Subsistence)&quot;,
+            &quot;P_retail&quot;: 4.10,
+            &quot;P_e&quot;: 0.38,  # Bakery gas/electricity, delivery logistics fuel
+            &quot;P_b&quot;: 0.45,  # Milling flour, yeast, salt, packaging film
+            &quot;U&quot;: 2.15,    # Broadacre farm labor, milling, industrial baking, retail shelf stocking
+            &quot;S&quot;: 1.00,    # Normal seasonal grain availability
+            &quot;R_n&quot;: 1.00,   # Fully renewable annual cropping cycle
+            &quot;v_rel&quot;: 0.05  # Moderate daily consumption urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Milling Wheat (APW1 / ASW1)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Agricultural Feedstock)&quot;,
+            &quot;P_retail&quot;: 365.00,
+            &quot;P_e&quot;: 104.40,  # Tractor diesel, harvest fuel, grain drying thermal exergy
+            &quot;P_b&quot;: 82.00,   # Certified seed stock, soil mineral replenishment, ag-chemicals
+            &quot;U&quot;: 95.00,     # Agronomic labor hours across 4,000 ha broadacre rotation
+            &quot;S&quot;: 1.05,      # Post-harvest storage scarcity buffer
+            &quot;R_n&quot;: 0.98,    # Soil organic carbon regeneration index
+            &quot;v_rel&quot;: 0.02   # Grain storage temporal buffer
+        },
+        {
+            &quot;commodity&quot;: &quot;Fresh Full Cream Milk (Full Fat)&quot;,
+            &quot;unit&quot;: &quot;litre&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Dairy Subsistence)&quot;,
+            &quot;P_retail&quot;: 2.10,
+            &quot;P_e&quot;: 0.31,  # Farm milk vat chilling, tanker refrigeration, HTST pasteurisation, store fridge
+            &quot;P_b&quot;: 0.48,  # Pasture feed, silage, grain concentrates, veterinary, HDPE bottle &amp; cap
+            &quot;U&quot;: 0.75,    # Twice-daily herd milking labor, processing plant techs, tanker driver, dairy stocking
+            &quot;S&quot;: 1.05,    # Seasonal regional milk production buffer
+            &quot;R_n&quot;: 0.95,   # Dairy herd lactation and pasture regrowth capacity
+            &quot;v_rel&quot;: 0.10  # Highly perishable 14-day cold-chain product; captive dairy farmer supply
+        },
+        {
+            &quot;commodity&quot;: &quot;Farmgate Beef Cattle Weaners (British Breed)&quot;,
+            &quot;unit&quot;: &quot;kg liveweight&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Pastoral Livestock)&quot;,
+            &quot;P_retail&quot;: 3.85,  # $1,155 per 300kg steer at regional saleyard auction
+            &quot;P_e&quot;: 0.42,  # Paddock stock water solar/diesel pumping exergy, farm ute &amp; cattle truck transport fuel
+            &quot;P_b&quot;: 1.15,  # Breeding cow maintenance depreciation, pasture superphosphate, mineral lick, vaccines, NLIS tags
+            &quot;U&quot;: 1.25,    # Extensive pastoral grazing labor (calving watch, muster, yard drafting, cattle handling)
+            &quot;S&quot;: 1.15,    # Post-drought maternal breeding herd rebuilding demand
+            &quot;R_n&quot;: 0.85,   # Perennial pasture seasonal regrowth &amp; 9-month bovine gestation recovery cycle
+            &quot;v_rel&quot;: 0.15  # Summer pasture biomass drying coercion (graziers cannot hold stock without costly supplementary feed)
+        },
+        {
+            &quot;commodity&quot;: &quot;Automotive Diesel Fuel (Ultra-Low Sulphur)&quot;,
+            &quot;unit&quot;: &quot;litre&quot;,
+            &quot;sector&quot;: &quot;Sector 2 (Energy / Liquid Fuels)&quot;,
+            &quot;P_retail&quot;: 2.15,
+            &quot;P_e&quot;: 0.32,  # Refinery thermal cracking, electricity, pipeline pressure
+            &quot;P_b&quot;: 0.92,  # Crude oil feedstock at terminal import parity price (TIPP)
+            &quot;U&quot;: 0.35,    # Terminal logistics, road tanker transport driver, service station operator
+            &quot;S&quot;: 1.08,    # Regional NSW freight corridor supply buffer
+            &quot;R_n&quot;: 0.90,   # Non-renewable fossil depletion replenishment drag
+            &quot;v_rel&quot;: 0.12  # Regional transport operational dependency
+        },
+        {
+            &quot;commodity&quot;: &quot;Residential Grid Electricity (Single-Rate Flat)&quot;,
+            &quot;unit&quot;: &quot;kWh&quot;,
+            &quot;sector&quot;: &quot;Sector 2 (Energy / Power Utility)&quot;,
+            &quot;P_retail&quot;: 0.36,
+            &quot;P_e&quot;: 0.08,  # NEM wholesale generation thermal energy &amp; line transmission losses
+            &quot;P_b&quot;: 0.07,  # Physical poles, wires, transformer capital depreciation base
+            &quot;U&quot;: 0.09,    # Lineworker maintenance shifts, dispatch engineering, billing admin
+            &quot;S&quot;: 1.15,    # Peak demand grid stress multiplier
+            &quot;R_n&quot;: 0.92,   # Renewable generation firmness and battery storage renewal
+            &quot;v_rel&quot;: 0.08  # Essential domestic heating/cooling baseline
+        },
+        {
+            &quot;commodity&quot;: &quot;LPG Bottled Gas (45kg Domestic Cylinder)&quot;,
+            &quot;unit&quot;: &quot;45kg cylinder&quot;,
+            &quot;sector&quot;: &quot;Sector 2 (Energy / Liquid Petroleum Gas)&quot;,
+            &quot;P_retail&quot;: 165.00,  # Regional delivered exchange cylinder price
+            &quot;P_e&quot;: 29.40,  # Propane distillation, compression exergy, tanker haulage, local delivery truck diesel
+            &quot;P_b&quot;: 58.36,  # Liquid propane feedstock (88L @ import parity), 10-year cylinder testing amortisation, brass valves
+            &quot;U&quot;: 28.50,    # Hazardous goods driver exertion, manual 90kg cylinder trolley handling, safety coupling
+            &quot;S&quot;: 1.15,    # Regional distance from coastal import terminals &amp; winter heating peak
+            &quot;R_n&quot;: 0.88,   # Associated petroleum/natural gas depleting fossil reserves
+            &quot;v_rel&quot;: 0.16  # Winter domestic heating/cooking dependence in unreticulated regional towns
+        },
+        {
+            &quot;commodity&quot;: &quot;Bulk Potable Water Cartage (Regional NSW)&quot;,
+            &quot;unit&quot;: &quot;kL (1,000L)&quot;,
+            &quot;sector&quot;: &quot;Sector 3 (Water / Municipal Subsistence)&quot;,
+            &quot;P_retail&quot;: 15.50, # $155.00 per 10,000L heavy vehicle delivery load
+            &quot;P_e&quot;: 4.32,  # Class 4 heavy rigid tanker diesel transport (40 km roundtrip) + booster pumping
+            &quot;P_b&quot;: 3.95,  # Council treated potable standpipe tariff ($3.20/kL) + food-grade hose/tanker maintenance
+            &quot;U&quot;: 3.20,    # Heavy tanker operator driving hours, standpipe loading, rural tank discharge
+            &quot;S&quot;: 1.30,    # Regional drought rainfall deficit in Warrumbungle Shire
+            &quot;R_n&quot;: 0.75,   # Castlereagh river basin and groundwater aquifer recharge capacity
+            &quot;v_rel&quot;: 0.25  # High existential urgency (empty domestic rainwater tanks in unserviced rural zone)
+        },
+        {
+            &quot;commodity&quot;: &quot;Domestic Waste Collection (Regional NSW)&quot;,
+            &quot;unit&quot;: &quot;weekly bin lift&quot;,
+            &quot;sector&quot;: &quot;Sector 3/5 (Municipal Sanitation &amp; Care)&quot;,
+            &quot;P_retail&quot;: 9.33,  # $485.00 annual domestic waste service charge / 52 weeks
+            &quot;P_e&quot;: 2.45,  # Heavy dual-control side-loader compactor truck diesel &amp; hydraulic PTO exergy
+            &quot;P_b&quot;: 1.85,  # Mobile 240L HDPE bin depreciation, compactor chassis maintenance, transfer station upkeep
+            &quot;U&quot;: 2.15,    # Driver operational vigilance, repetitive route control, early shift labor
+            &quot;S&quot;: 1.20,    # Local landfill airspace capacity &amp; EPA buffer zoning regulations
+            &quot;R_n&quot;: 0.72,   # Landfill environmental assimilation &amp; leachate treatment capacity
+            &quot;v_rel&quot;: 0.22  # Statutory non-discretionary municipal public health monopoly
+        },
+        {
+            &quot;commodity&quot;: &quot;Prescription Antibiotic (Amoxicillin 500mg, 20 Caps)&quot;,
+            &quot;unit&quot;: &quot;dispensing course&quot;,
+            &quot;sector&quot;: &quot;Sector 5 (Care / Essential Healthcare)&quot;,
+            &quot;P_retail&quot;: 16.50,  # Benchmark private retail pharmacy price (non-PBS subsidized)
+            &quot;P_e&quot;: 2.10,  # Sterile fermentation bioprocessing exergy, cleanroom HVAC, spray-drying, blister thermoforming heat
+            &quot;P_b&quot;: 3.20,  # 10g pure amoxicillin trihydrate API powder, excipients, gelatin capsule shells, PVC blister foil, carton
+            &quot;U&quot;: 5.80,    # Certified community pharmacist clinical checking, drug interaction screening, labeling, patient counseling
+            &quot;S&quot;: 1.20,    # Global API manufacturing concentration &amp; offshore supply chain bottleneck buffer
+            &quot;R_n&quot;: 0.94,   # Biochemical fermentation enzymatic synthesis replenishment capacity
+            &quot;v_rel&quot;: 0.35  # Severe biological bacterial infection urgency (delaying treatment risks systemic complications)
+        },
+        {
+            &quot;commodity&quot;: &quot;Residential Structural Softwood Timber (MGP10 90x45mm Pine)&quot;,
+            &quot;unit&quot;: &quot;lineal metre&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Construction)&quot;,
+            &quot;P_retail&quot;: 7.20,
+            &quot;P_e&quot;: 0.85,  # Forestry harvesting diesel, kiln drying thermal gas, sawmill electricity
+            &quot;P_b&quot;: 1.20,  # Plantation stumpage royalty, seedling renewal, land management
+            &quot;U&quot;: 2.10,    # Mechanical harvester operators, sawmill processing, timber yard logistics
+            &quot;S&quot;: 1.25,    # Post-Black Summer bushfire plantation resource deficit
+            &quot;R_n&quot;: 0.88,   # 28-year radiata pine rotation cycle renewal capacity
+            &quot;v_rel&quot;: 0.15  # Fixed-price builder contract milestone completion urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Pre-Mixed Ready-Mix Concrete (N20 20 MPa Structural)&quot;,
+            &quot;unit&quot;: &quot;cubic metre&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Construction)&quot;,
+            &quot;P_retail&quot;: 295.00,
+            &quot;P_e&quot;: 62.00,  # Cement kiln clinker calcination exergy, quarry crushing, agitator fuel
+            &quot;P_b&quot;: 78.00,  # Portland cement, washed coarse basalt aggregate, river sand, admixtures
+            &quot;U&quot;: 58.00,    # Quarry operators, batch plant batcher, agitator transit driver, QC testing
+            &quot;S&quot;: 1.15,    # Metro infrastructure pouring demand pressure
+            &quot;R_n&quot;: 0.85,   # Virgin aggregate non-renewable mineral depletion index
+            &quot;v_rel&quot;: 0.20  # 90-minute initial setting window / slump loss transit coercion
+        },
+        {
+            &quot;commodity&quot;: &quot;Structural Steel Reinforcing Mesh (SL82, 6.0m x 2.4m Sheet)&quot;,
+            &quot;unit&quot;: &quot;sheet (14.4 m2)&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Construction)&quot;,
+            &quot;P_retail&quot;: 128.00,
+            &quot;P_e&quot;: 28.50,  # Blast furnace coke exergy, EAF electric scrap melting, rod rolling &amp; cross-welding
+            &quot;P_b&quot;: 36.80,  # 41 kg iron ore / scrap billet base, chemical pickling, anti-corrosive scale coating
+            &quot;U&quot;: 22.50,    # Heavy metallurgical steelworkers, continuous caster operators, automated grid welders
+            &quot;S&quot;: 1.12,    # Regional construction delivery buffer &amp; NSW residential slab demand
+            &quot;R_n&quot;: 0.82,   # Steel closed-loop recyclability modulated by non-renewable virgin ore/coke depletion
+            &quot;v_rel&quot;: 0.18  # Concrete slab pour critical path inspection sequencing urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Bulk Road Freight Transport (Newell Highway B-Double Corridor)&quot;,
+            &quot;unit&quot;: &quot;net tonne-km&quot;,
+            &quot;sector&quot;: &quot;Sector 2/4 (Logistics / Spatial Freight)&quot;,
+            &quot;P_retail&quot;: 0.1250, # $5.00/km loaded B-Double rate for a 40-tonne payload
+            &quot;P_e&quot;: 0.0345,  # 55 L/100km loaded B-Double diesel exergy across Newell Highway freight corridor
+            &quot;P_b&quot;: 0.0285,  # Prime mover/trailer chassis capital depreciation, 34 radial tyres, scheduled servicing, tolls
+            &quot;U&quot;: 0.0210,    # Long-haul HVNL driving shift vigilance, physical hitching/tarping, loading dock detention
+            &quot;S&quot;: 1.10,      # Regional directional freight imbalance (headhaul vs. backhaul)
+            &quot;R_n&quot;: 0.92,    # Highway pavement infrastructure renewal capacity
+            &quot;v_rel&quot;: 0.14   # Supermarket JIT supply chain penalty windows &amp; perishable produce transit urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Australian Merino Greasy Wool (19-Micron Fleece)&quot;,
+            &quot;unit&quot;: &quot;kg clean&quot;,
+            &quot;sector&quot;: &quot;Sector 1/4 (Agri-Fiber / Thermal Shelter)&quot;,
+            &quot;P_retail&quot;: 15.50,
+            &quot;P_e&quot;: 1.45,  # Shearing shed diesel generator, hydraulic wool press, farm vehicle mustering, regional road haulage
+            &quot;P_b&quot;: 2.20,  # Veterinary drench, flystrike prevention, pasture trace mineral licks, nylon woolpacks
+            &quot;U&quot;: 5.60,    # Contract shearing labor, wool classing, year-round flock husbandry, crutching, drafting
+            &quot;S&quot;: 1.10,    # Seasonal shearing flush &amp; auction cataloguing buffer
+            &quot;R_n&quot;: 0.88,  # Rangeland perennial pasture regeneration rate
+            &quot;v_rel&quot;: 0.08 # Annual shearing operating cashflow constraint
+        },
+        {
+            &quot;commodity&quot;: &quot;Domestic Broadband Data Transit (NBN 50/20 Mbps Tier)&quot;,
+            &quot;unit&quot;: &quot;monthly service&quot;,
+            &quot;sector&quot;: &quot;Sector 5/6 (Digital Infrastructure / Utilities)&quot;,
+            &quot;P_retail&quot;: 85.00,
+            &quot;P_e&quot;: 4.80,  # Fiber line termination laser power, street node active power, POI routing exergy, data center cooling
+            &quot;P_b&quot;: 14.50, # Subterranean duct amortization, optical line terminal depreciation, NTD hardware, cable pit maintenance
+            &quot;U&quot;: 12.20,   # Network operations center (NOC) engineering, field fiber splicing, customer service fault resolution
+            &quot;S&quot;: 1.05,    # Peak evening hour CVC bandwidth contention buffer
+            &quot;R_n&quot;: 0.95,  # Optical component lifecycle renewal &amp; battery backup maintenance
+            &quot;v_rel&quot;: 0.15 # Non-discretionary telework, educational access, and telehealth dependence
+        },
+        {
+            &quot;commodity&quot;: &quot;Prescription Salbutamol Inhaler (100mcg CFC-Free MDI, 200 Doses)&quot;,
+            &quot;unit&quot;: &quot;inhaler unit&quot;,
+            &quot;sector&quot;: &quot;Sector 5 (Care / Essential Healthcare)&quot;,
+            &quot;P_retail&quot;: 12.50,
+            &quot;P_e&quot;: 0.65,  # Cleanroom HVAC filtration, cryogenic propellant liquefaction, sterile processing
+            &quot;P_b&quot;: 1.35,  # Micronized salbutamol sulfate, HFA-134a propellant, aluminum canister, metering valve, actuator
+            &quot;U&quot;: 3.40,    # GMP cleanroom technicians, batch release testing, pharmacist clinical consultation
+            &quot;S&quot;: 1.10,    # TGA batch certification regulatory buffer
+            &quot;R_n&quot;: 0.92,  # Chemical synthesis active precursor availability &amp; propellant supply
+            &quot;v_rel&quot;: 0.40 # Acute asthma/bronchospasm life-safety urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Urban Reticulated Potable Water (Municipal Pipeline Tariff)&quot;,
+            &quot;unit&quot;: &quot;kL (1,000L)&quot;,
+            &quot;sector&quot;: &quot;Sector 3 (Water / Municipal Utility)&quot;,
+            &quot;P_retail&quot;: 3.60,
+            &quot;P_e&quot;: 0.48,  # Intake river/dam pump electricity, water treatment filtration, elevated reservoir booster pumping
+            &quot;P_b&quot;: 0.62,  # Alum coagulant, chlorine disinfection, pH adjustment lime, pipeline capital maintenance depreciation
+            &quot;U&quot;: 1.15,    # Certified treatment plant operators, mains burst maintenance crew, microbiological water quality testing
+            &quot;S&quot;: 1.15,    # Regional inland catchment storage level &amp; seasonal restriction buffer
+            &quot;R_n&quot;: 0.80,  # River basin inflow replenishment &amp; environmental flow allocation
+            &quot;v_rel&quot;: 0.20 # Essential daily residential hydration and municipal sanitation
+        },
+        {
+            &quot;commodity&quot;: &quot;Commercial Broiler Chicken (Whole Fresh Dressed Bird)&quot;,
+            &quot;unit&quot;: &quot;kg dressed&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Poultry Subsistence)&quot;,
+            &quot;P_retail&quot;: 4.50,
+            &quot;P_e&quot;: 0.46,  # Broiler shed climate control ventilation/heating, feed milling, abattoir spin chilling
+            &quot;P_b&quot;: 1.68,  # Formulated grain feed (FCR 1.65), day-old chick cost, bedding litter, barrier packaging
+            &quot;U&quot;: 1.15,    # Shed management labor, bird catching, abattoir processing line, supermarket display
+            &quot;S&quot;: 1.05,    # Short biological growing cycle elasticity vs cold-chain buffer
+            &quot;R_n&quot;: 0.95,  # Rapid flock cycle turnover &amp; high grain-to-protein conversion efficiency
+            &quot;v_rel&quot;: 0.12 # Perishable fresh meat cold-chain urgency
+        },
+        {
+            &quot;commodity&quot;: &quot;Standard Extruded Clay Facing Bricks (Common Structural Masonry)&quot;,
+            &quot;unit&quot;: &quot;1,000 bricks&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Construction)&quot;,
+            &quot;P_retail&quot;: 1150.00,
+            &quot;P_e&quot;: 278.00, # Tunnel kiln gas firing at 1050-1150 C, pugmill/extrusion electricity, flatbed transport
+            &quot;P_b&quot;: 182.00, # Natural clay/shale royalty, sand, barium efflorescence additive, kiln furniture wear, pallets
+            &quot;U&quot;: 185.00,   # Quarry extraction, extrusion line setup, kiln surveillance, robotic setting, crane offloading
+            &quot;S&quot;: 1.12,     # Regional construction demand buffer &amp; kiln batch firing schedules
+            &quot;R_n&quot;: 0.82,   # Non-renewable clay pit depletion and refractory degradation
+            &quot;v_rel&quot;: 0.18  # Critical-path bricklaying sequencing in residential construction
+        },
+        {
+            &quot;commodity&quot;: &quot;Coarse Solar Sea Salt (Unrefined Food &amp; Livestock Grade)&quot;,
+            &quot;unit&quot;: &quot;25kg bag&quot;,
+            &quot;sector&quot;: &quot;Sector 1/3 (Food / Mineral Subsistence)&quot;,
+            &quot;P_retail&quot;: 14.50,
+            &quot;P_e&quot;: 1.65,  # Seawater intake pumping, pan harvesting, mechanical washing, bagging electricity, road freight
+            &quot;P_b&quot;: 2.10,  # Seawater brine royalty, pan levee maintenance, multi-wall woven PP bag, pallets, stretch wrap
+            &quot;U&quot;: 4.20,    # Pan brine density monitoring, harvester operation, wash screening, bagging QC, warehouse handling
+            &quot;S&quot;: 1.05,    # Abundant oceanic supply modulated by seasonal rainfall in evaporation pans
+            &quot;R_n&quot;: 0.96,  # Inexhaustible tidal seawater recharge and high solar insolation renewal
+            &quot;v_rel&quot;: 0.06 # Non-perishable essential biological mineral nutrient with stable shelf buffer
+        },
+        {
+            &quot;commodity&quot;: &quot;Raw Centrifugal Cane Sugar (Bulk Crystal Milling Feedstock)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Agricultural Carbohydrate)&quot;,
+            &quot;P_retail&quot;: 620.00,
+            &quot;P_e&quot;: 142.00, # Cane harvesting diesel, bin locomotive haulage, mill crushing tandems, vacuum pan boiling, centrifuge
+            &quot;P_b&quot;: 168.00, # Cane stool planting sets amortization, fertilizer, herbicides, mill roller re-shelling, bulk storage
+            &quot;U&quot;: 145.00,   # Sugarcane agronomic management, laser leveling, harvester haul-out driving, boiler/pan operators, QC lab
+            &quot;S&quot;: 1.08,     # Seasonal tropical crushing window buffer against weather delays
+            &quot;R_n&quot;: 0.90,   # Annual ratoon crop vegetative regrowth capacity modulated by soil nutrient depletion
+            &quot;v_rel&quot;: 0.05  # Non-perishable dry bulk carbohydrate crystal storage stability
+        },
+        {
+            &quot;commodity&quot;: &quot;HDPE Rural Water Reticulation Pipe (32mm PN12.5, 100m Coil)&quot;,
+            &quot;unit&quot;: &quot;100m coil&quot;,
+            &quot;sector&quot;: &quot;Sector 3/4 (Water &amp; Agricultural Infrastructure)&quot;,
+            &quot;P_retail&quot;: 245.00,
+            &quot;P_e&quot;: 48.50,  # Virgin polymer extrusion motor, barrel heating to 200 C, vacuum bath cooling, transport
+            &quot;P_b&quot;: 68.00,  # PE100 resin pellets (28kg), carbon black UV stabilizer, die tooling wear, wooden strapping
+            &quot;U&quot;: 38.00,    # Extruder line setup, ultrasonic wall-thickness QC testing, coiler operation, merchant loading
+            &quot;S&quot;: 1.10,     # Regional agricultural drought infrastructure buffer &amp; pipe demand spikes
+            &quot;R_n&quot;: 0.88,   # Petrochemical polymer fossil reliance and extrusion machinery renewal
+            &quot;v_rel&quot;: 0.16  # Critical stock watering emergency repair urgency on rural grazing properties
+        },
+        {
+            &quot;commodity&quot;: &quot;Farmgate Canola Grain (Bulk Non-GM Oilseed)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Vegetable Oil &amp; Protein Meal)&quot;,
+            &quot;P_retail&quot;: 685.00,
+            &quot;P_e&quot;: 118.50, # Broadacre tractor diesel for direct drilling, spraying, swathing, combine harvesting, haulage
+            &quot;P_b&quot;: 215.00, # Hybrid seed sets, high-rate nitrogen/sulfur fertilizers, fungicides, harvester capital depreciation
+            &quot;U&quot;: 112.00,   # Agronomic surveillance, precision spraying, swathing, combine operation, oil sampling
+            &quot;S&quot;: 1.08,     # Frost risk, seasonal winter rain dependency, and oilseed crush capacity buffer
+            &quot;R_n&quot;: 0.92,   # Annual cropping cycle with rotational soil disease break benefits for wheat
+            &quot;v_rel&quot;: 0.04  # Stable dry bulk oilseed on-farm aerated silo storage buffer
+        },
+        {
+            &quot;commodity&quot;: &quot;Commercial FIBC Polypropylene Bulk Bags (1-Tonne Woven Container)&quot;,
+            &quot;unit&quot;: &quot;bag&quot;,
+            &quot;sector&quot;: &quot;Sector 1/4 (Agri-Logistics &amp; Storage Infrastructure)&quot;,
+            &quot;P_retail&quot;: 24.50,
+            &quot;P_e&quot;: 4.20,  # Propylene polymerization/extrusion, circular loom weaving, cutting/sewing power, transport
+            &quot;P_b&quot;: 5.90,  # Virgin PP resin (1.85kg), UV masterbatch, heavy lifting webbing loops (0.45kg), thread, bundle packaging
+            &quot;U&quot;: 4.80,    # Loom setup technicians, industrial seamstress fabrication, SWL pull-testing, baling press, forklift handling
+            &quot;S&quot;: 1.08,    # Harvest seasonal grain/fertilizer bagging demand spikes and overseas container supply lead-times
+            &quot;R_n&quot;: 0.90,  # Petrochemical polymer fossil reliance, reusable for 2-4 cycles if unweathered, recyclable PP
+            &quot;v_rel&quot;: 0.12 # Seed grain bagging or fertilizer loading urgency during tight seasonal agricultural windows
+        },
+        {
+            &quot;commodity&quot;: &quot;Bulk Portland Cement (General Purpose GP Clinker)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Construction)&quot;,
+            &quot;P_retail&quot;: 345.00,
+            &quot;P_e&quot;: 112.00, # Quarry blasting/haulage diesel, raw grinding, rotary kiln 1450 C pyroprocessing (3.4 GJ/t), finish grinding, tanker haulage
+            &quot;P_b&quot;: 84.00,  # Limestone/shale/sand/iron royalties (1.55t raw meal/t clinker), gypsum setting regulator (5%), kiln refractory brick wear
+            &quot;U&quot;: 56.00,   # Heavy quarry operators, raw mill chemical/XRF testing, kiln lead burner, millwrights, pneumatic tanker drivers
+            &quot;S&quot;: 1.12,     # Continuous kiln thermal inertia, clinker import shipping lead-times, and regional concrete pouring schedules
+            &quot;R_n&quot;: 0.78,   # Non-renewable limestone/shale geological deposit extraction, refractory wear, carbon calcination degradation
+            &quot;v_rel&quot;: 0.15  # Continuous construction concrete pour sequencing; batching plants cannot pause structural slab pours
+        },
+        {
+            &quot;commodity&quot;: &quot;Corrugated Galvanized Steel Roofing Sheets (Custom Orb 0.42mm BMT)&quot;,
+            &quot;unit&quot;: &quot;lineal metre&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Envelope Roofing)&quot;,
+            &quot;P_retail&quot;: 21.50,
+            &quot;P_e&quot;: 4.85,  # Blast furnace coke smelting, hot/cold rolling electric motors, continuous zinc pot heating, roll-forming, freight
+            &quot;P_b&quot;: 6.20,  # Iron ore lump, coking coal, limestone flux, SHG zinc coating (Z275 = 275g/m2), roll-forming tooling wear, pallets
+            &quot;U&quot;: 3.80,    # Steel mill operators, galvanizing line chemical technicians, roll-forming machine setup, crane loading, yard handling
+            &quot;S&quot;: 1.10,    # Regional roofing construction contractor delivery buffer and roll-forming custom cut-to-length lead-time
+            &quot;R_n&quot;: 0.82,  # Non-renewable iron ore/coal geological extraction, zinc mineral depletion, high recyclability modulated by smelting
+            &quot;v_rel&quot;: 0.18 # Weather-tight lockup urgency; timber wall framing is vulnerable to rain damage until roofing iron is installed
+        },
+        {
+            &quot;commodity&quot;: &quot;Bulk Granular Agricultural Urea Fertilizer (46% Nitrogen)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1/2 (Agricultural Biochemical Energy Feedstock)&quot;,
+            &quot;P_retail&quot;: 740.00,
+            &quot;P_e&quot;: 315.00, # Haber-Bosch steam methane reforming (SMR) natural gas thermal/feedstock (~20 GJ/t), prilling/granulation electricity, freight
+            &quot;P_b&quot;: 165.00, # Natural gas chemical feedstock, process water, formaldehyde anti-caking conditioning, synthesis reactor depreciation, storage
+            &quot;U&quot;: 78.00,   # Chemical synthesis plant operators, gas reforming compressor mechanics, laboratory purity QC chemists, bulk delivery drivers
+            &quot;S&quot;: 1.14,     # Tight seasonal broadacre top-dressing planting window demand spikes, import vessel shipping lead-times, gas reservation
+            &quot;R_n&quot;: 0.84,   # Non-renewable fossil methane depletion, energy-intensive Haber-Bosch synthesis, reactive nitrogen volatilization losses
+            &quot;v_rel&quot;: 0.15  # Seasonal soil moisture crop uptake window; nitrogen must be applied immediately prior to forecast rain events
+        },
+        {
+            &quot;commodity&quot;: &quot;Agricultural Glyphosate Herbicide (450g/L SL Systemic Formulation)&quot;,
+            &quot;unit&quot;: &quot;20L drum&quot;,
+            &quot;sector&quot;: &quot;Sector 1/2 (Agricultural Chemical Inputs)&quot;,
+            &quot;P_retail&quot;: 135.00,
+            &quot;P_e&quot;: 22.50,  # Catalytic synthesis exergy, neutralization, surfactant high-shear mixing, HDPE blow-molding, DG compliance freight
+            &quot;P_b&quot;: 54.00,  # Technical glyphosate AI (9kg), tallow amine surfactant (2.4kg), fluorinated HDPE drum, tamper closure, drumMUSTER
+            &quot;U&quot;: 21.50,    # Batch reactor operators, HPLC active assay chemists, automated packaging technicians, APVMA compliance, rural handling
+            &quot;S&quot;: 1.12,     # Pre-seeding autumn knockdown demand spikes, APVMA regulatory batch certification buffer
+            &quot;R_n&quot;: 0.86,   # Non-renewable petrochemical/phosphorus precursor extraction, chemical synthesis waste, weed resistance duty
+            &quot;v_rel&quot;: 0.18  # Critical 48-72h broadacre autumn post-rain knockdown moisture window prior to direct-drill seeding
+        },
+        {
+            &quot;commodity&quot;: &quot;Standard Gypsum Plasterboard Wall Lining (10mm Recessed Edge)&quot;,
+            &quot;unit&quot;: &quot;1.2m x 2.4m sheet&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Building Interior Linings)&quot;,
+            &quot;P_retail&quot;: 24.80,
+            &quot;P_e&quot;: 4.90,   # Natural gypsum calcining kiln (160 C), boardline slurry pumping, multi-deck board drying kiln (130 C), transport
+            &quot;P_b&quot;: 6.40,   # Raw gypsum rock royalty, multi-ply 100% recycled paper linerboard (380g/m2), core starch additives, edge tape, gluts
+            &quot;U&quot;: 4.10,     # Quarry operators, calciner surveillance, boardline wet-end chemistry technicians, cutter operators, crane offloading
+            &quot;S&quot;: 1.10,     # Residential interior lining trade scheduling buffer, regional plastering contractor stock lead-times
+            &quot;R_n&quot;: 0.85,   # Non-renewable mineral gypsum deposit extraction, natural gas combustion degradation, high paper liner recyclability
+            &quot;v_rel&quot;: 0.14  # Interior construction critical path; walls must be hung, stopped, and sanded before painting and electrical fit-out
+        },
+        {
+            &quot;commodity&quot;: &quot;Commercial Structural Hardwood Timber (F17 Kiln-Dried Hardwood, 90x45mm)&quot;,
+            &quot;unit&quot;: &quot;lineal metre&quot;,
+            &quot;sector&quot;: &quot;Sector 4 (Shelter / Structural Framing &amp; Heavy Construction)&quot;,
+            &quot;P_retail&quot;: 14.80,
+            &quot;P_e&quot;: 2.15,   # Heavy native harvester felling/snigging diesel, high-torque breakdown saw electric power, 4-6 week kiln dehumidification, transport
+            &quot;P_b&quot;: 2.85,   # Native forest sustainable yield forestry royalty, carbide sawblade tip wear, wax emulsion end-grain sealer, high-tensile strapping
+            &quot;U&quot;: 3.20,     # Steep terrain faller vigilance, heavy log carriage sawyer operations, visual stress-grading (AS 2082/AS 2796 F17), timber sorting
+            &quot;S&quot;: 1.25,     # Severe hardwood supply constraints across eastern Australia following native forest harvesting policy transitions in Victoria/WA/NSW
+            &quot;R_n&quot;: 0.72,   # Long 60-80 year native eucalypt biological growth rotation cycles, selective sawlog harvest regimes, ecological forest buffers
+            &quot;v_rel&quot;: 0.14  # Structural framing critical milestone; roof trusses and lintels depend on bearer/joist installation before weather enclosure
+        },
+        {
+            &quot;commodity&quot;: &quot;Agricultural Feed Barley (F1 Broadacre Feed Grain)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Agricultural Feedstock &amp; Livestock Energy)&quot;,
+            &quot;P_retail&quot;: 325.00,
+            &quot;P_e&quot;: 92.50,  # Tractor diesel for pre-sowing fallow prep, air-seeder planting fuel, selective in-crop spraying, harvester/header fuel, grain aeration
+            &quot;P_b&quot;: 74.00,  # Certified F1 seed grain, MAP basal starter fertilizer, selective in-crop herbicide/fungicide, broadacre machinery capital wear
+            &quot;U&quot;: 84.00,    # Broadacre tractor operator hours, chaser bin logistics, header operational vigilance, road train transport, receival sampling
+            &quot;S&quot;: 1.06,     # Domestic feedlot beef and dairy ration demand buffer, regional export shipping allocation
+            &quot;R_n&quot;: 0.98,   # Annual winter crop replenishment, soil organic carbon recharge, rotational legume nitrogen fixation recovery
+            &quot;v_rel&quot;: 0.04  # Continuous livestock feedlot ration requirements and pastoral drought supplementary feeding buffer
+        },
+        {
+            &quot;commodity&quot;: &quot;Commercial Copper Electrical Building Wire (2.5mm2 Twin &amp; Earth Flat TPS Cable)&quot;,
+            &quot;unit&quot;: &quot;100m drum&quot;,
+            &quot;sector&quot;: &quot;Sector 2/4 (Energy Reticulation &amp; Building Infrastructure)&quot;,
+            &quot;P_retail&quot;: 225.00,
+            &quot;P_e&quot;: 24.50,  # Copper rod continuous upcasting, tandem wire-drawing through diamond dies, electric resistance annealing, PVC extrusion heating, spooling, freight
+            &quot;P_b&quot;: 118.50, # High-conductivity electrolytic tough pitch (ETP) copper (6.72kg Cu-ETP), electrical grade V-90 flame-retardant PVC compound (5.5kg), spool packaging
+            &quot;U&quot;: 22.00,    # Continuous wire casting operators, diamond die drawing bench technicians, high-voltage spark testing QA, automated spool coiling, warehouse storemen
+            &quot;S&quot;: 1.15,     # Global refined copper cathode inventory buffer, domestic electrical wholesale trade stocking lead-times
+            &quot;R_n&quot;: 0.82,   # Non-renewable primary copper geological ore grade depletion, offset by high secondary copper recycling and scrap reclamation value
+            &quot;v_rel&quot;: 0.18  # Mandatory first-fix electrical rough-in milestone; cables must be clipped through wall framing studs prior to insulation and plasterboard lockup
+        },
+        {
+            &quot;commodity&quot;: &quot;Solvent-Extracted Canola Meal / Protein Cake (Bulk Pelletized, 36%-38% Crude Protein)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;sector&quot;: &quot;Sector 1 (Food / Livestock Protein Feedstock &amp; Nutrition)&quot;,
+            &quot;P_retail&quot;: 580.00,
+            &quot;P_e&quot;: 84.50,  # Expeller crushing friction, steam conditioning, hexane extraction solvent recovery re-boiler, desolventizer-toaster, hammer-mill, pellet die extrusion, bulk transport
+            &quot;P_b&quot;: 212.00, # Allocated raw canola seed feedstock mass fraction (crushing yields ~42% oil and ~58% meal), hexane solvent make-up, boiler water chemicals, pelleting binders
+            &quot;U&quot;: 82.00,    # Solvent plant DCS board operators, extraction pump maintenance mechanics, analytical NIR laboratory protein assay chemists, pellet mill operators, gantry dispatch
+            &quot;S&quot;: 1.10,     # Domestic intensive beef feedlot and dairy ration demand buffer, regional export meal container allocation
+            &quot;R_n&quot;: 0.94,   # Annual oilseed crop replenishment, rotational soil nutrient recovery, high soil organic nitrogen requirement
+            &quot;v_rel&quot;: 0.10  # Continuous livestock rumen microbial protein maintenance; feedlots cannot interrupt protein ration without severe digestive acidosis and daily weight gain collapse
+        }
+    ]
+
+def run_full_fairness_audit() -&gt; List[Dict[str, Any]]:
+    dataset = get_australian_benchmark_dataset()
+    audited_results = []
+    for item in dataset:
+        res = audit_commercial_rrp(
+            commodity=item[&quot;commodity&quot;],
+            unit=item[&quot;unit&quot;],
+            sector=item[&quot;sector&quot;],
+            P_retail=item[&quot;P_retail&quot;],
+            P_e=item[&quot;P_e&quot;],
+            P_b=item[&quot;P_b&quot;],
+            U=item[&quot;U&quot;],
+            S=item[&quot;S&quot;],
+            R_n=item[&quot;R_n&quot;],
+            v_rel=item[&quot;v_rel&quot;]
+        )
+        audited_results.append(res)
+    return audited_results
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;=&quot; * 80)
+    print(&quot;VALUE PHYSICS: UNIVERSAL PRICE EQUATION (UPE) EMPIRICAL RRP/D FAIRNESS AUDIT&quot;)
+    print(&quot;Alethekanon Research Institute — Division 2 | Official Calibration Dataset (34 Goods)&quot;)
+    print(&quot;=&quot; * 80)
+    
+    audits = run_full_fairness_audit()
+    for a in audits:
+        p_ret = a[&quot;P_retail_observed&quot;]
+        pe = a[&quot;P_energy_Pe&quot;]
+        pb = a[&quot;P_base_Pb&quot;]
+        u = a[&quot;Metabolic_U&quot;]
+        rrpd = a[&quot;RRP_D_recommended&quot;]
+        ra = a[&quot;Implied_Extractive_Drag_Ra&quot;] * 100
+        prem = a[&quot;Extractive_Premium_AUD&quot;]
+        fair = a[&quot;Fairness_Index_Percent&quot;]
+        comm = a[&quot;commodity&quot;]
+        sec = a[&quot;sector&quot;]
+        unit = a[&quot;unit&quot;]
+        fmt = &quot;.4f&quot; if &quot;nt-km&quot; in unit else &quot;.2f&quot;
+        print(f&quot;Target Good: {comm}&quot;)
+        print(f&quot;  Sector: {sec} | Unit: {unit}&quot;)
+        print(f&quot;  Observed Retail RRP:  ${p_ret:{fmt}} AUD&quot;)
+        print(f&quot;  Energy Base (Pe):     ${pe:{fmt}} AUD&quot;)
+        print(f&quot;  Physical Base (Pb):   ${pb:{fmt}} AUD&quot;)
+        print(f&quot;  Metabolic Labor (U):  {u:{fmt}} WEST-equiv&quot;)
+        print(f&quot;  Fair RRP/D:           ${rrpd:{fmt}} AUD&quot;)
+        print(f&quot;  Extractive Drag (Ra): {ra:.1f}%&quot;)
+        print(f&quot;  Extractive Premium:   ${prem:{fmt}} AUD&quot;)
+        print(f&quot;  Fairness Index:       {fair:.1f}%&quot;)
+        print()
+    print(&quot;=&quot; * 80)
+</code></pre>
+</div>
+
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-53.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-53: UPE Real-World Pricing &amp; RRP/D Fairness Engine</div>
+</a>
+
+        
+<a href="VPE-55.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-55: Empirical Research Paper: Real-World Pricing and RRP/D Fairness Audit — Food, Fuel, Energy, and Shelter Materials (manuscript_vpe55.tex / VPE-55)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

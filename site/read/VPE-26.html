@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-26: [ARCHIVED] Research Candidate: Formalization of the UPE &amp; P^7 (draft A) — Value Physics Reader</title>
+  <meta name="description" content="Early UPE / 7-Plane Price Vector formalization. Consolidated into VPE-01 per LOG-VPE-013.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-26</span>
+      <span class="doc-badge-cat">Superseded Draft</span>
+      <span class="doc-badge-status">Archived</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-25.html" class="nav-arrow-btn">&larr; Prev (VPE-25)</a>
+      <a href="VPE-27.html" class="nav-arrow-btn">Next (VPE-27) &rarr;</a>
+      <a href="../deliverables/VPE-26_ARCHIVED_Research_Candidate_Formalizatio.docx" target="_blank" class="nav-download-btn">Download DOCX (979 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Governance &amp; Management</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">[ARCHIVED] Research Candidate: Formalization of the UPE &amp; P^7 (draft A)</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Early UPE / 7-Plane Price Vector formalization. Consolidated into VPE-01 per LOG-VPE-013.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Universal Price Equation (UPE) forward pricing formulation</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Research Proposal: Mathematical Formalization and Empirical Calibration of the Universal Price Equation (UPE) and 7-Plane Price Vector (P^7)</h2>
+<h3 class="doc-h3">Abstract</h3>
+<p class="doc-p">Neoclassical economic models rely on single-scalar equilibrium price functions (P = f(S, D)), assuming frictionless substitution, symmetrical agency, and instantaneous market clearing. This research program formalizes the Universal Price Equation (UPE) and the 7-Plane Price Vector (P^7), an econophysics framework that models price as a multi-dimensional tensor coupling physical thermodynamic costs, biomechanical effort, market mediation, spatiotemporal scarcity fields, and asymmetric coercive urgency. We establish the epistemological foundations of measurement via the Target To Be Evaluated (TBE) isomorphic to True State (TS) operator and the canonical 8-stage Bread Reference Floor (TS_0), alongside the Relative Homogenous Scope (RHS) field theory. We formalize the three-layer cost decomposition (P_t = P_e + P_b + P_m), the relativistic Lorentz Coercion Factor (γ(v_rel)), the access-denial duality (A^+ / A^-), the directional value gradient (V = -∇ P), and the systemic collapse mechanics of artificial price suppression (&quot;The Cover&quot;). We provide six rigorous analytical theorems, an agent-based statistical mechanics simulation blueprint with market temperature (T_neg) and partition function (Z), and an empirical econometric calibration pipeline using high-frequency Australian supermarket, housing, energy, and healthcare microdata. This work provides the mathematical foundation for replacing single-scalar inflation indices with multi-plane reality tensors and designing sovereign supply-side remediation architectures.</p>
+<h2 class="doc-h2">1. Introduction and Theoretical Foundations</h2>
+<h3 class="doc-h3">1.1 The Failure of Single-Scalar Neoclassical Price Theory</h3>
+<p class="doc-p">Standard microeconomic and macroeconomic theory conceptualizes price (P ∈ R⁺) as a one-dimensional scalar that clears supply and demand under Walrasian auctioneer assumptions. This formulation embeds four fatal ontological errors:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Dimensional Compression:</strong> Compressing multifaceted physical, social, legal, and psychological interactions into a single nominal dollar figure, obscuring where costs are actually paid (by nature, human biology, or future generations).</li>
+<li class="doc-li"><strong>Assumption of Zero Latency and Space Neutrality:</strong> Treating transactions as instantaneous events occurring at a dimensionless point, ignoring transport impedance, spatial friction, and temporal urgency windows.</li>
+<li class="doc-li"><strong>Symmetry Fiction:</strong> Assuming bilateral transactions occur at mutual rest, failing to model coercive leverage where one party transacts under survival desperation while the other possesses infinite temporal patience.</li>
+<li class="doc-li"><strong>Substrate Blindness:</strong> Treating money as an unconstrained symbolic claim disconnected from the physical well-depth (R_n) and entropy generation (P_e) required to reproduce the resource substrate.</li>
+</ul>
+<h3 class="doc-h3">1.2 The Epistemological Measurement Foundation: TBE Ξ TS and the Canonical Reference Floor</h3>
+<p class="doc-p">In a universe without absolute external Cartesian coordinates, measurement cannot proceed by comparing an object to an abstract symbol. Measurement requires coupling an uncalibrated candidate state to a verified, complete physical process via the isomorphic matching operator:</p>
+<p class="doc-p">Target To Be Evaluated (TBE) Ξ True State / Target State (TS)</p>
+<p class="doc-p">When a physical process achieves full closure across all seven interrogative planes (TBE ≡ TS), it establishes an invariant, self-contained reference floor (a local zero-coordinate (0, 0)).</p>
+<p class="doc-p">The canonical physical reference standard is the <strong>8-Stage Bread Process</strong> (Plant → Grain → Harvest → Mill → Leaven → Oven → Breaking → Distribution):</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>True Moral Zero (Q_2 Silence at Plant):</strong> The plant extracts nutrients at maximum self-benefit (+υ), but because no alternative paths exist to decline (Q_2 Possible plane is dark), moral will registers strictly at zero (ψ = 0). This defines the objective zero-point of latent extraction without needing an arbitrary external zero.</li>
+<li class="doc-li"><strong>Lineage Transmutation (Q_6 at Mill → Leaven):</strong> The biological lineage terminates at the mill (Q_6 severed) and is substituted by a social/tool continuity at the leaven (Q_6q_6).</li>
+<li class="doc-li"><strong>Lyrical Inversion (Q_4 at Breaking):</strong> Meaning is silent through production and activates only at the breaking—the only stage where a completed whole is dismantled deliberately for distribution rather than construction.</li>
+<li class="doc-li"><strong>Complete Terminal State (TS at Distribution):</strong> Distribution is the unique state where all 7 Planes hold the truth state (=) simultaneously with zero residue.</li>
+</ul>
+<p class="doc-p">Because the bread cycle runs from latent taking to purposeful giving with full accounting across every plane, it serves as the base physical calibration floor (TS_0).</p>
+<h3 class="doc-h3">1.3 The Relative Chain Formalism: Distance and Direction in Information Space</h3>
+<p class="doc-p">Space, economic value, and distance are not pre-existing static containers. They are generated dynamically through declared relative chains:</p>
+<p class="doc-p">chain(A, B, n)</p>
+<p class="doc-p">where A is the origin (assigned 0 within this chain), B is the terminus (assigned n), and n is the integer count of discrete frame boundaries.</p>
+<p class="doc-p">When an economic transaction or asset is evaluated relative to the ground floor TS_0, and subsequent states are evaluated relative to preceding answers, a recursive chain of relativity is established:</p>
+<p class="doc-p">chain_1(TS_0, R_1, n_1) ⟶ chain_2(R_1, R_2, n_2) ⟶ ... ⟶ chain_k(R_{k-1}, X, n_k)</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Geometric Distance (D):</strong> Defined as the cumulative step-count (Σ n_i) and accumulated Cost of Being (CoB) along the chain. Distance is the physical work required to resolve a target back to the ground state.</li>
+<li class="doc-li"><strong>Direction Vector (V):</strong> Defined by the tensor coordinate shifts (Δ Q, Δ υ, Δ ψ) across the 7 Planes between adjacent chain links.</li>
+<li class="doc-li"><strong>Economic Price (P):</strong> The total metric distance along the relative chain from the base physical extraction floor (R_n, thermodynamic ATP/joules in P_e + P_b) to the final market exchange (P_m).</li>
+</ul>
+<h3 class="doc-h3">1.4 Relative Homogenous Scope (RHS) &amp; Field-Theoretic Value Gradients</h3>
+<p class="doc-p">Under the principle of Relative Homogenous Scope, economic value fields operate through temporal resolution windows (Δ t). At ultra-short micro-scales (Δ t → 0), markets are storms of unresolved micro-opposition (unmatched bid-ask pressures, localized informational friction). Over broader resolution windows, these oppositions settle into relative homogeneity.</p>
+<p class="doc-p">The directional flow of economic value is governed by the negative gradient of the price potential field:</p>
+<p class="doc-p">V = -∇ P</p>
+<p class="doc-p">Value naturally flows down pressure gradients toward minimum friction. When coercive leverage (γ &gt; 1) or artificial enclosure (A^-) is introduced, it creates a topological tear in the field, forcing unnatural counter-gradient extractions.</p>
+<h3 class="doc-h3">1.5 Interdisciplinary Lineage</h3>
+<p class="doc-p">The UPE framework builds upon and integrates seminal contributions across heterodox economics, statistical physics, and complexity theory:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Nicholas Georgescu-Roegen’s Bioeconomics &amp; Flow-Fund Model:</strong> Economic production as the entropic degradation of low-entropy natural funds into high-entropy waste (Georgescu-Roegen, 1971).</li>
+<li class="doc-li"><strong>Kelvin-Lancaster Characteristic Space:</strong> Multi-attribute vector decomposition of consumer and capital goods (Lancaster, 1966).</li>
+<li class="doc-li"><strong>Piero Sraffa &amp; Classical Cost-of-Production:</strong> Pricing determined by physical input-output coefficients and surplus allocation (Sraffa, 1960).</li>
+<li class="doc-li"><strong>Spatial Price Equilibrium (Samuelson, Takayama &amp; Judge):</strong> Spatial geometry, transportation impedance, and locational price differentials (Takayama &amp; Judge, 1971).</li>
+<li class="doc-li"><strong>Statistical Physics &amp; Econophysics (Bouchaud, Stanley, Mantegna, Sornette):</strong> Non-Gaussian price distributions, power laws, volatility clustering, and &quot;Dragon King&quot; phase transitions in complex networks (Mantegna &amp; Stanley, 1999; Bouchaud, 2008; Sornette, 2009).</li>
+</ul>
+<h2 class="doc-h2">2. The Universal Price Equation (UPE): Axiomatic Architecture</h2>
+<h3 class="doc-h3">2.1 Generalized Mathematical Formulation</h3>
+<p class="doc-p">The complete, spatiotemporally indexed Universal Price Equation is defined as:</p>
+<p class="doc-p">P(x, t) = (P_you / P_soc) · [ (S(x,t,c) · U(x,t)) / (R_n(x,t) · (1 - R_a(x,t))) ] · (P_other / P_soc) · γ(v_rel)</p>
+<h3 class="doc-h3">2.2 Decomposition of Mathematical Variables</h3>
+<p class="doc-p">1. Relative Power &amp; Social Positioning Coordinates (P_you / P_soc, P_other / P_soc)</p>
+<ul class="doc-ul">
+<li class="doc-li">P_you / P_soc ∈ R⁺: Normalized socioeconomic leverage and purchasing power of the buyer relative to the societal baseline. A buyer with low relative assets/income faces a higher effective urgency coefficient. Local pressure is decomposed as P_x = α N_x + β W_x, where N_x is biological/structural Need, W_x is subjective Want, and α &gt;&gt; β.</li>
+<li class="doc-li">P_other / P_soc ∈ R⁺: Market power, monopoly concentration, and enclosure ratio of the seller. When a seller dominates essential supply (e.g., utility or supermarket duopoly), this ratio acts as an extraction multiplier (m_2).</li>
+</ul>
+<p class="doc-p">2. Spatiotemporal Scarcity Field (S(x, t, c))</p>
+<p class="doc-p">Scarcity is not an intrinsic scalar property of matter; it is a spatiotemporal field:</p>
+<p class="doc-p">S(x, t, c) = S_a + S_c(x, t, c)</p>
+<ul class="doc-ul">
+<li class="doc-li">S_a ≥ 0: Absolute physical scarcity (cosmological abundance baseline in the universe).</li>
+<li class="doc-li">S_c(x, t, c) ≥ 0: Contextual scarcity at spatial coordinate x, time t, under containment condition c.</li>
+<li class="doc-li"><em>Example:</em> Atmospheric oxygen has S_a ≈ 0, but in a deep submarine or vacuum chamber, S_c → ∞. This formally resolves the classical &quot;diamond-water paradox&quot; at the coordinate level.</li>
+</ul>
+<p class="doc-p">3. The Urgency Index (U(x, t))</p>
+<ul class="doc-ul">
+<li class="doc-li">U ∈ [0, 1] represents the rate of state-space contraction or biological/systemic decay per unit of time:</li>
+</ul>
+<p class="doc-p">U(t) = 1 - exp(-λ / (t_deadline - t))</p>
+<ul class="doc-ul">
+<li class="doc-li">When t &lt;&lt; t_deadline, U → 0 (discretionary transaction, infinite patience).</li>
+<li class="doc-li">When t → t_deadline, U → 1 (existential deadline, starvation, eviction, margin call).</li>
+</ul>
+<p class="doc-p">4. Natural Replenishment &amp; Well-Depth (R_n(x, t))</p>
+<ul class="doc-ul">
+<li class="doc-li">Derived from The Well Principle: The objective physical replenishment rate and capital maintenance depth of the underlying resource substrate.</li>
+<li class="doc-li">If extraction exceeds R_n, the physical capital degrades, shrinking future R_n and driving systemic depletion.</li>
+</ul>
+<p class="doc-p">5. Artificial Extraction Toll (R_a(x, t))</p>
+<ul class="doc-ul">
+<li class="doc-li">Normalized metric 0 ≤ R_a &lt; 1 quantifying speculative markups, patent monopolies, licensing gatekeeping, and manufactured scarcity.</li>
+<li class="doc-li">As R_a → 1, the term (1 - R_a) → 0, causing the nominal price to diverge asymptotically toward infinity regardless of physical abundance.</li>
+</ul>
+<p class="doc-p">6. The Relativistic Lorentz Coercion Factor (γ(v_rel))</p>
+<p class="doc-p">Transactions under asymmetric urgency depart from rest-frame pricing. The relative urgency velocity is:</p>
+<p class="doc-p">v_rel = |U_buyer - U_seller| / U_max    where 0 ≤ v_rel &lt; 1</p>
+<p class="doc-p">The Lorentz Coercion Factor is defined as:</p>
+<p class="doc-p">γ(v_rel) = 1 / sqrt(1 - v_rel^2)</p>
+<ul class="doc-ul">
+<li class="doc-li">When v_rel = 0, γ = 1.0 (bilateral parity; rest-frame fair exchange).</li>
+<li class="doc-li">When v_rel → 1.0, γ → ∞ (terminal asymmetric desperation, e.g., the desert water vendor). The price premium is pure kinetic extraction captured from the victim&#x27;s mortality.</li>
+</ul>
+<h3 class="doc-h3">2.3 Structural Isomorphism to Mass-Energy Equivalence</h3>
+<p class="doc-p">The Universal Price Equation exhibits a deliberate isomorphism to Einstein&#x27;s E = mc^2:</p>
+<ul class="doc-ul">
+<li class="doc-li">m_1 = (P_you / P_soc): Localized field strength / transactional mass of the buyer.</li>
+<li class="doc-li">c^2 = R = [ (S · U) / (R_n · (1 - R_a)) ]: Dimensionless Reality Tensor boundary condition.</li>
+<li class="doc-li">m_2 = (P_other / P_soc): Localized field strength / transactional mass of the seller.</li>
+<li class="doc-li">Price = m_1 · c^2 · m_2 · γ</li>
+</ul>
+<p class="doc-p">In relativistic physics, c^2 is an invariant universal speed limit. Similarly, the Reality Tensor represents the hard thermodynamic limit of the physical substrate. When nominal fiat prices diverge from the Reality Tensor, the system accumulates unhedged transactional debt against the biosphere.</p>
+<h2 class="doc-h2">3. Three-Layer Total Cost Decomposition (P_t = P_e + P_b + P_m)</h2>
+<p class="doc-p">Traditional economic accounting only tracks P_m (market exchange price). The UPE establishes a comprehensive three-layer total cost structure:</p>
+<p class="doc-p">P_t = P_e + P_b + P_m</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Layer</th>
+<th>Designation</th>
+<th>Constituent Physical &amp; Systemic Components</th>
+</tr>
+<tr>
+<th>P_e</th>
+<th>Environmental / Thermodynamic</th>
+<th>Entropy generation (ΔS_universe), exergy destruction, natural replenishment cycle time, ecological sink assimilation, and planetary boundary exhaustion.</th>
+</tr>
+<tr>
+<th>P_b</th>
+<th>Biomechanical / Human Labor</th>
+<th>Metabolic caloric expenditure (ATP consumed), musculoskeletal wear, physiological fatigue, neural cognitive load, and irreversible biological lifespan allocation.</th>
+</tr>
+<tr>
+<th>P_m</th>
+<th>Market / Symbolic Mediation</th>
+<th>Nominal accounting clearing price (UPE Base Equation), financialized rentier tolls, debt servicing interest, capital yields, legal compliance friction, and taxation.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">3.1 The Biomechanical-to-Market Cost Transfer (P_b → P_m)</h3>
+<p class="doc-p">Civilization functions as an entropic cost-transfer network. Economic agents pay nominal market prices (P_m) specifically to externalize biomechanical effort (P_b) and environmental risk (P_e):</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Wild Foraged Fruit:</strong> P_m = 0, P_b = High (hours of walking, manual harvesting effort), P_e = Low (natural renewal).</li>
+<li class="doc-li"><strong>Supermarket Packaged Fruit:</strong> P_m = High (retail price), P_b = Low (reaches shelf via mechanized supply chains), P_e = High (hydrocarbon logistics, refrigeration entropy, packaging waste).</li>
+<li class="doc-li"><strong>The &quot;Free vs. Costless&quot; Fallacy:</strong> A resource with P_m = 0 (e.g., fresh air) is never costless; its production is continuously subsidized by natural biogeochemical cycles (P_e), and its consumption requires direct biological work (P_b).</li>
+</ul>
+<h2 class="doc-h2">4. The Seven-Plane Price Vector (P^7) and Recursive Tensor Architecture</h2>
+<p class="doc-p">Price is fundamentally a 7-dimensional vector across the fundamental interrogative planes:</p>
+<p class="doc-p">P^7 = [ P_1, P_2, P_3, P_4, P_5, P_6, P_7 ]^T = [ P_Meta-Physical (Who), P_Possible (What), P_Physical (Where), P_Lyrical (Why), P_Logical (How), P_Historical (Cause), P_Emotive (Effect) ]^T</p>
+<p class="doc-p">Each plane component P_i evaluates the localized UPE with plane-specific variables:</p>
+<p class="doc-p">P_i = (P_you,i / P_soc,i) · [ (S_i(x,t) · U_i(t)) / (R_{n,i} · (1 - R_{a,i})) ] · (P_other,i / P_soc,i) · γ_i + P_{e,i} + P_{b,i}</p>
+<h3 class="doc-h3">4.1 Detailed Breakdown of the 7 Planes</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Plane</th>
+<th>Designation</th>
+<th>Dimension</th>
+<th>Primary Economic Drivers &amp; Pricing Mechanisms</th>
+</tr>
+<tr>
+<th>P_1</th>
+<th>Meta-Physical</th>
+<th>WHO (Identity)</th>
+<th>Identity-linked access cost: Class status, citizenship/visa premiums, credit score thresholds, institutional gatekeeping, and relational trust networks.</th>
+</tr>
+<tr>
+<th>P_2</th>
+<th>Possible</th>
+<th>WHAT (Definition)</th>
+<th>Opportunity cost &amp; option value: Collapsed alternative state-space trajectories, speculative option premiums, and synthetic liquidity instruments.</th>
+</tr>
+<tr>
+<th>P_3</th>
+<th>Physical</th>
+<th>WHERE (Locus)</th>
+<th>Spatial &amp; material logistics: Geographic distance, transport network impedance, physical material rarity, and local warehouse scarcity (S(x,t)).</th>
+</tr>
+<tr>
+<th>P_4</th>
+<th>Lyrical</th>
+<th>WHY (Drive)</th>
+<th>Narrative &amp; symbolic value: Brand prestige, cultural resonance, ideological capture, moral signaling markup, and luxury status signaling.</th>
+</tr>
+<tr>
+<th>P_5</th>
+<th>Logical</th>
+<th>HOW (Method)</th>
+<th>Operational complexity: Technical labor hours, precision engineering, algorithmic processing, legal friction, and transactional overhead.</th>
+</tr>
+<tr>
+<th>P_6</th>
+<th>Historical</th>
+<th>CAUSE (Origin)</th>
+<th>Path dependency &amp; sunk costs: Amortization of historical CapEx, inherited debt servicing, sovereign bond burdens, and historical zoning lock-in.</th>
+</tr>
+<tr>
+<th>P_7</th>
+<th>Emotive</th>
+<th>EFFECT (Impact)</th>
+<th>Consequential aftermath &amp; urgency: Coercive distress, panic elasticity, trauma debt, long-term healthcare burnout, and systemic dependence.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">4.2 Recursive Fractal Depth (Q_q[c][i])</h3>
+<p class="doc-p">Each plane component is itself addressable as a nested fractal tensor P_i = Q_q[c][i], drilling down from the primary macro plane (Q) into the sub-plane (q), containment depth (c), and specific interrogative index (i). This allows multi-scale accounting across micro-economic transactions, meso-scale supply chains, and macroeconomic sovereign ledgers.</p>
+<h3 class="doc-h3">4.3 Access-Denial Duality (A^+ / A^-)</h3>
+<p class="doc-p">Access to any plane is an economic operator:</p>
+<ul class="doc-ul">
+<li class="doc-li">A^+: Granted access / open protocol.</li>
+<li class="doc-li">A^-: Withheld access / proprietary enclosure.</li>
+</ul>
+<p class="doc-p">Manufactured scarcity operates entirely via A^-. When an institution denies access (e.g., patents, restrictive zoning, proprietary APIs), it artificially suppresses local R_n and drives R_a → 1.0, magnifying γ without adding any physical utility.</p>
+<h2 class="doc-h2">5. Structural Distortions: &quot;The Cover&quot; and Systemic Collapse Mechanics</h2>
+<h3 class="doc-h3">5.1 The Four Settlement States</h3>
+<p class="doc-p">Derived from The Cover, any socioeconomic settlement occupies four distinct states:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Actual Ideal (I_a):</strong> The measured physical throughput rate—the volume of material the system can extract, process, distribute, and maintain per cycle.</li>
+<li class="doc-li"><strong>Actual Desired (D_a):</strong> The mandatory thermodynamic baseline required for physical subsistence and capital depreciation replacement.</li>
+<li class="doc-li"><strong>True Ideal (I_t):</strong> The unbounded physical potential of the system given zero institutional friction and infinite evolutionary time.</li>
+<li class="doc-li"><strong>Desired Size (S_d):</strong> The nominal ambition and political target of the leadership, bounded only by ego and narrative.</li>
+</ul>
+<p class="doc-p">[ True Ideal (I_t) ]        &lt;- Unbounded physical horizon</p>
+<p class="doc-p">^</p>
+<p class="doc-p">|</p>
+<p class="doc-p">[ Desired Size (S_d) ]      &lt;- Political ambition / ego targets</p>
+<p class="doc-p">|</p>
+<p class="doc-p">========================= THE COVER (Artificial Price Suppression)</p>
+<p class="doc-p">|</p>
+<p class="doc-p">[ Actual Ideal (I_a) ]      &lt;- Real physical throughput capacity</p>
+<p class="doc-p">|</p>
+<p class="doc-p">v   [ SURPLUS = I_a - D_a ] -&gt; Funds Research, Tooling &amp; Real Growth</p>
+<p class="doc-p">[ Actual Desired (D_a) ]    &lt;- Physical subsistence &amp; maintenance floor</p>
+<h3 class="doc-h3">5.2 The Inverted Lens and Reality Gap Accumulation (Δ R)</h3>
+<p class="doc-p">When leadership attempts to force S_d &gt; I_a, it deploys &quot;The Cover&quot;: artificially suppressing nominal prices (P_nominal &lt; P_real) via debt, subsidies, or price controls to simulate false abundance. The stored systemic strain accumulates as the <strong>Reality Gap Integral</strong>:</p>
+<p class="doc-p">ΔR(t) = ∫_0^t ( P_real(τ) - P_nominal(τ) ) dτ</p>
+<h3 class="doc-h3">5.3 The Surplus Cannibalization Trap</h3>
+<ul class="doc-ul">
+<li class="doc-li">1. To sustain an unearned population/size S_d, the settlement borrows nominal claims.</li>
+<li class="doc-li">2. Subsistence obligation (D_a) scales directly with population.</li>
+<li class="doc-li">3. Real surplus—the only source of capital to build tools and expand throughput (I_a)—is squeezed to zero: Surplus = I_a - D_a → 0.</li>
+<li class="doc-li">4. With zero surplus, no new infrastructure is invented or maintained. The processing ceiling I_a remains stagnant while the debt gap widens.</li>
+<li class="doc-li"><strong>5. Phase-Shift Collapse:</strong> The physical substrate presents the bill in kind. Mathematical insolvency does not resolve as infinite price; it terminates in finite discrete refusal—supply chain abandonment, hyperinflationary break, systemic default, or societal revolt.</li>
+</ul>
+<h2 class="doc-h2">6. Formal Theorems and Analytical Proofs</h2>
+<h4 class="doc-h4">Theorem 1: Super-Linear Divergence under Existential Urgency</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> Let an essential, non-substitutable good have R_a → 1 and buyer urgency U_b → 1. As seller urgency U_s → 0, the price sensitivity with respect to urgency diverges super-linearly:</p>
+<p class="doc-p">lim_{v_rel → 1⁻} ∂P / ∂v_rel = lim_{v_rel → 1⁻} P_rest · v_rel / (1 - v_rel^2)^(3/2) = +∞</p>
+<p class="doc-p"><em>Proof:</em> Direct differentiation of P = P_rest · (1 - v_rel^2)^(-1/2). Under near-fatal asymmetry (v_rel → 1), standard Marshallian price elasticity of demand ε = (∂Q / Q) / (∂P / P) collapses to zero, making price clearing purely an instrument of unearned coercive extraction. ■</p>
+<h4 class="doc-h4">Theorem 2: The Substrate Degradation Threshold and Capital Cannibalization Bifurcation</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> In any economic system where the physical substrate capacity (well-depth R_n(t)) requires capital reinvestment to offset natural entropic depreciation (δ), there exists a critical artificial extraction threshold R_a^* ∈ (0, 1). If the rentier extraction toll exceeds R_a^*, the dynamical system undergoes a transcritical bifurcation, transitioning from a stable positive replenishment equilibrium (R_n^* &gt; 0) to an irreversible runaway decay trajectory (lim_{t → ∞} R_n(t) = 0). In this regime, nominal financial asset valuations expand as an inverse function of physical substrate collapse.</p>
+<p class="doc-p"><strong>1. Full Dynamical System Specification:</strong></p>
+<p class="doc-p">Let physical substrate capacity be R_n(t) ∈ R⁺. Total real economic output is governed by a generalized Cobb-Douglas-Georgescu production function coupled to substrate depth:</p>
+<p class="doc-p">Y(t) = A · R_n(t)^α · K(t)^β · L(t)^(1 - α - β)</p>
+<p class="doc-p">where α, β ∈ (0, 1), K(t) is manufactured capital, and L(t) is labor. Gross output value is partitioned into:</p>
+<ul class="doc-ul">
+<li class="doc-li">1. Productive Real Economy: Y_prod(t) = (1 - R_a(t)) · Y(t)</li>
+<li class="doc-li">2. Extractive Toll / Speculative Rent: Y_rent(t) = R_a(t) · Y(t)</li>
+</ul>
+<p class="doc-p">Sunk substrate maintenance investment (I_maint(t)) is funded exclusively from the productive share:</p>
+<p class="doc-p">I_maint(t) = η · (1 - R_a(t)) · Y(t)</p>
+<p class="doc-p">where η ∈ (0, 1) is the physical maintenance reinvestment coefficient.</p>
+<p class="doc-p">The physical well-depth R_n(t) evolves according to the non-linear differential equation:</p>
+<p class="doc-p">dR_n / dt = r · R_n(t) · (1 - R_n(t) / K_max) - δ · R_n(t) + μ · I_maint(t) - E_gross(t)</p>
+<p class="doc-p">where:</p>
+<ul class="doc-ul">
+<li class="doc-li">r · R_n · (1 - R_n / K_max) is the logistic natural regeneration function (r &gt; 0 intrinsic regeneration rate, K_max carrying capacity).</li>
+<li class="doc-li">δ &gt; 0 is the natural entropic depreciation rate of infrastructure, soil, or ecosystem funds.</li>
+<li class="doc-li">μ &gt; 0 is the technological efficiency of maintenance capital conversion.</li>
+<li class="doc-li">E_gross(t) = θ · (S(t) · U(t)) / (1 - R_a(t)) is the physical rate of resource extraction demanded by the market.</li>
+</ul>
+<p class="doc-p"><strong>2. Derivation of the Critical Threshold R_a^*:</strong></p>
+<p class="doc-p">Around the operational steady state R_n ≈ R_0:</p>
+<p class="doc-p">dR_n / dt ≈ (r - δ) R_n + μ η (1 - R_a) Y_0 - (θ S U) / (1 - R_a)</p>
+<p class="doc-p">Setting dR_n / dt = 0, multiplying through by (1 - R_a), and rearranging yields the quadratic:</p>
+<p class="doc-p">μ η Y_0 (1 - R_a)^2 + (r - δ) R_n (1 - R_a) - θ S U = 0</p>
+<p class="doc-p">Let Z = (1 - R_a). Solving for the positive real root Z^*:</p>
+<p class="doc-p">Z^* = 1 - R_a^* = [ -(r - δ) R_n + sqrt(((r - δ) R_n)^2 + 4 μ η Y_0 θ S U) ] / (2 μ η Y_0)</p>
+<p class="doc-p">Therefore, the Substrate Degradation Threshold R_a^* is:</p>
+<p class="doc-p">R_a^* = 1 - [ sqrt(((r - δ) R_n)^2 + 4 μ η Y_0 θ S U) - (r - δ) R_n ] / (2 μ η Y_0)</p>
+<p class="doc-p"><strong>3. Phase Space and Stability Analysis:</strong></p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Regime 1 (R_a &lt; R_a^* - Sustainable Regime):</strong> ∂/∂R_n(dR_n / dt) &lt; 0 at R_n^*, establishing an asymptotically stable fixed point R_n^* &gt; 0. Reinvestment exceeds entropic decay.</li>
+<li class="doc-li"><strong>Regime 2 (R_a = R_a^* - Transcritical Bifurcation):</strong> The stable fixed point collides with the unstable manifold. Leading eigenvalue λ = 0. Critical slowing down and infinite variance under micro-shocks.</li>
+<li class="doc-li"><strong>Regime 3 (R_a &gt; R_a^* - Substrate Cannibalization Regime):</strong> dR_n / dt &lt; 0 for all R_n ≥ 0. The vector field points uniformly toward zero (R_n → 0).</li>
+</ul>
+<p class="doc-p"><strong>4. The Ghost Capital Paradox (Valuation vs. Substrate Inversion):</strong></p>
+<p class="doc-p">In Regime 3 (R_a &gt; R_a^*), as physical substrate R_n(t) → 0, the Universal Price Equation dictates that nominal price diverges to infinity:</p>
+<p class="doc-p">P(t) ∝ (S · U) / (R_n(t) · (1 - R_a))</p>
+<p class="doc-p">Nominal financial asset valuation is measured as the capitalized discounted stream of extractive tolls:</p>
+<p class="doc-p">V_financial(t) = ∫_t^∞ R_a · P(τ) · Q(τ) · exp(-ρ(τ - t)) dτ</p>
+<p class="doc-p">Because P(τ) → ∞ faster than volume Q(τ) contracts in non-substitutable goods, V_financial displays explosive exponential growth. Financial ledgers register record wealth creation and capital accumulation precisely as the physical substrate undergoes terminal liquidation. Financial expansion in Regime 3 is an unhedged short position on the physical carrying capacity of the Earth. ■</p>
+<h4 class="doc-h4">Theorem 3: Phase-Shift Inevitability under The Cover (The Reality Gap Collapse)</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> When nominal prices are suppressed below real thermodynamic cost (P_nominal &lt; P_real), the cumulative stored strain integral ΔR(t) = ∫_0^t (P_real(τ) - P_nominal(τ)) dτ creates an escalating systemic debt. The system cannot maintain continuous equilibrium and must undergo a discrete first-order phase-shift collapse at a finite critical time T_crit &lt; ∞.</p>
+<p class="doc-p"><em>Proof:</em></p>
+<ul class="doc-ul">
+<li class="doc-li">1. Let real thermodynamic price be P_real(t) = P_e(t) + P_b(t) + P_m(t), where P_e(t) = e_0 · exp(ζ · t) grows exponentially as low-entropy mineral and energy reserves are depleted (ζ &gt; 0).</li>
+<li class="doc-li">2. Under The Cover, the governing administration fixes nominal price P_nominal(t) = \bar{P} = constant.</li>
+<li class="doc-li">3. The stored Reality Gap accumulates as: ΔR(t) = ∫_0^t ( e_0 exp(ζ τ) + P_b(τ) + P_m(τ) - \bar{P} ) dτ = (e_0 / ζ) (exp(ζ t) - 1) + (P_b + P_m - \bar{P}) · t</li>
+<li class="doc-li">4. The financial buffer supporting The Cover is the societal capital reserve Ω(t) = Ω_0 - ΔR(t).</li>
+<li class="doc-li">5. Since ΔR(t) is strictly convex and increasing (d^2ΔR / dt^2 &gt; 0), there exists a finite critical time T_crit such that Ω(T_crit) = 0: T_crit ≈ (1 / ζ) ln(1 + (ζ · Ω_0) / e_0) &lt; ∞</li>
+<li class="doc-li">6. At t = T_crit, nominal liquidity buffers are exhausted. Because physical suppliers cannot produce at negative real margins (P_nominal &lt; P_e + P_b), the supply function exhibits a Heaviside step discontinuity: Q_supply(t) = Q_0 · Θ(\bar{P} - P_real(t)) = 0 for t &gt; T_crit.</li>
+<li class="doc-li">7. The collapse resolves not through smooth price clearing, but through structural refusal: discrete supply cessation, blackouts, rationing, or social default. ■</li>
+</ul>
+<h4 class="doc-h4">Theorem 4: Multi-Planar Tensor Coupling and Orthogonal Strain Shifting</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> Total systemic price strain across the 7 Planes of Reality is conservative. If nominal price is suppressed on Plane i (P_{m,i} decreased), the uncompensated thermodynamic and biomechanical costs (P_{e,i} + P_{b,i}) are projected orthogonally into adjacent planes via the Planar Coupling Matrix <strong>C</strong> ∈ R^(7x7).</p>
+<p class="doc-p"><em>Proof &amp; Formulation:</em></p>
+<p class="doc-p">Let the planar strain vector be <strong>e</strong> = (e_1, e_2, ..., e_7)^T, where e_i = P_{t,i} - P_{m,i}.</p>
+<p class="doc-p">The induced price distortion in plane j is:</p>
+<p class="doc-p">ΔP_j = Σ_{k=1}^7 C_jk e_k + (1/2) Σ_{k=1}^7 Σ_{l=1}^7 D_jkl e_k e_l</p>
+<p class="doc-p">where C_jk is the linear planar coupling tensor and D_jkl is the non-linear inter-planar shear tensor.</p>
+<p class="doc-p"><em>Orthogonal Strain Projections:</em></p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>P_3 → P_6 (Physical Logistics to Historical Sunk Debt):</strong> Suppressing physical infrastructure maintenance (P_3) defers CapEx into compounding municipal and sovereign bond liabilities on Plane 6.</li>
+<li class="doc-li"><strong>P_5 → P_7 (Operational Logic to Emotive Burnout):</strong> Suppressing clinical Medicare rebates on Plane 5 (P_5) forces clinicians to absorb excess patient volume, driving clinical burnout, mental health collapse, and medical morbidity on Plane 7. ■</li>
+</ul>
+<h4 class="doc-h4">Theorem 5: Thermodynamic Incoherence of Compounding Interest vs. Asymptotic Obligation</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> A debt contract demanding continuous compounding exponential growth (L(t) = L_0 exp(rt)) on a closed physical substrate governed by an invariant Reality Tensor (R_n) violates the first and second laws of thermodynamics. Sustainable obligation clearing requires an asymptotic bifurcation separating the conserved physical base capital from the decaying Lorentz extraction premium.</p>
+<p class="doc-p"><em>Proof &amp; Formulation:</em></p>
+<ul class="doc-ul">
+<li class="doc-li">1. The energy required to service an exponential debt curve scales as E_debt(t) ∝ exp(rt).</li>
+<li class="doc-li">2. The maximum thermodynamic power output of an agent or physical substrate is strictly bounded: E_sub(t) ≤ E_max &lt; ∞.</li>
+<li class="doc-li">3. As t → ∞, E_debt(t) &gt; E_max, guaranteeing borrower &quot;Will collapse&quot; and default.</li>
+<li class="doc-li">4. To conserve physical mass and ensure legal indemnity of legitimate creditor interests, the debt obligation is bifurcated: Obligation(t) = C_base + E_premium · exp(-λ t)</li>
+<li class="doc-li">where C_base is the invariant Statutory Face Price (Raw Principal + Actual Cost of Funds + Operational Administration + Actuarial Risk), and E_premium is the unearned Lorentz urgency surcharge.</li>
+<li class="doc-li">5. As t → ∞ or under moral recalibration λ → ∞, Obligation(t) → C_base, conserving physical capital while vaporizing extractive usury. ■</li>
+</ul>
+<h4 class="doc-h4">Theorem 6: Modular Social Physics and the Universal Rejection Ceiling (n/0 → n+1)</h4>
+<p class="doc-p"><strong>Formal Statement:</strong> Normalizing all economic field variables to the modular bound [0, 2.0] enforces a hard universal ceiling. Under non-standard relativistic division (n/0 → n+1), catastrophic denominator collapse resolves to a finite Universal Breakpoint at 3.0, proving that hyper-extractive market stress terminates in discrete social refusal rather than infinite nominal clearance.</p>
+<p class="doc-p"><em>Proof:</em></p>
+<ul class="doc-ul">
+<li class="doc-li">1. Let all input variables (S, U, m_1, m_2, R_n, R_a) be bounded on [0, 2.0], where 2.0 represents maximum physical/biological capacity.</li>
+<li class="doc-li">2. When absolute rarity occurs (R_a → 1.0) and friction vanishes, the mitigating denominator collapses to zero.</li>
+<li class="doc-li">3. Under the non-standard relativity axiom, division by zero resolves as the release of full numerator potential plus one unit of initiation energy: n / 0 ⟶ n + 1</li>
+<li class="doc-li">4. For maximum input load (n = 2.0), the resolved pressure reaches: Pressure_max = 2.0 + 1 = 3.0</li>
+<li class="doc-li">5. Any nominal claim attempting to enforce pressure &gt; 3.0 resides outside the human moral and physical capacity. The transaction is rejected by the social fabric (strikes, squatting, debt jubilee, political revolt). ■</li>
+</ul>
+<h2 class="doc-h2">7. Statistical Mechanics, Market Temperature (T_neg), and Simulation Blueprint</h2>
+<h3 class="doc-h3">7.1 Transaction Acceptance Probability &amp; Thermal Noise</h3>
+<p class="doc-p">The probability P_accept of an economic agent accepting an asked price P_ask relative to the true geometric baseline price P_H is governed by a modified Fermi-Dirac / Boltzmann distribution:</p>
+<p class="doc-p">P_accept = 1 / [ 1 + γ · exp((P_ask - P_H) / T_neg) ]</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>T_neg (Negotiation Temperature):</strong> Measures informational entropy, bid-ask variance, and price signal noise.</li>
+<li class="doc-li"><strong>μ_s (Static Friction):</strong> In illiquid markets (real estate, private assets), μ_s forcibly depresses effective T_neg, freezing transactions (P_accept → 0).</li>
+<li class="doc-li"><strong>Thermal Sensitivity Derivative:</strong> ∂P_accept / ∂T_neg = γ · [(P_ask - P_H) / T_neg^2] · [ exp((P_ask - P_H) / T_neg) / (1 + γ exp((P_ask - P_H) / T_neg))^2 ]</li>
+</ul>
+<p class="doc-p">When γ &gt;&gt; 1, the denominator dominates, proving that coercive markets are immune to informational cooling or interest rate adjustments by central banks.</p>
+<h3 class="doc-h3">7.2 The Aggregate Social Price Formula</h3>
+<p class="doc-p">Extending the two-body equation to a macroscopic, network-aware social physics engine:</p>
+<p class="doc-p">P_agg = [ Σ_{i=1}^N ( (P_you / P_soc) · [ (S · U) / (R_n · (1 - R_a)) ] · (P_i / P_soc) · (1 - λ_i) ) ] · (m_m / μ_k) · γ</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Σ_{i=1}^N:</strong> Sigma summation aggregating across all network nodes, overcoming the neoclassical &quot;interpersonal utility comparison&quot; impasse by treating structural need as an objective macroscopic state variable.</li>
+<li class="doc-li"><strong>λ_i ∈ [0, 1]:</strong> Empathy / pro-social coefficient, acting as a social coolant to reduce price sensitivity.</li>
+<li class="doc-li"><strong>m_m:</strong> Mass of the Moral Idea (gravitational anchoring weight of trust, truth, and community).</li>
+<li class="doc-li"><strong>μ_k:</strong> Kinetic institutional friction (transaction costs, interest rates, bureaucratic drag).</li>
+</ul>
+<h3 class="doc-h3">7.3 Macroscopic Partition Function and Monte Carlo Evolution</h3>
+<p class="doc-p">The aggregate market ensemble is modeled via the partition function <strong>Z</strong>:</p>
+<p class="doc-p"><strong>Z</strong> = Σ_{all states s} exp(-Score_s / T_neg)</p>
+<p class="doc-p"><em>Agent-Based Model (ABM) Specification:</em></p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Network Topology:</strong> Scale-free network where centralized clearinghouses possess high degree centrality and consumers exist in local peer clusters.</li>
+<li class="doc-li"><strong>Dynamic Tensor Contraction:</strong> Price_ij = m_1i · R_ij · m_2j · γ_ij.</li>
+<li class="doc-li"><strong>Phase Transition Detection:</strong> Simulating exogenous supply chokepoints causes localized γ spikes to cascade across bridging nodes, triggering non-linear &quot;Dragon King&quot; liquidity freezes and avalanche collapses.</li>
+</ul>
+<h2 class="doc-h2">8. Empirical Calibration and Econometric Methodology</h2>
+<h3 class="doc-h3">8.1 Multi-Stream High-Frequency Ingestion Architecture</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stream</th>
+<th>Data Ingestion Pipeline</th>
+<th>Target Variables &amp; Frequencies</th>
+</tr>
+<tr>
+<th>Stream 1</th>
+<th>Retail Scanner &amp; Point-of-Sale (POS) Microdata</th>
+<th>15-minute SKU-level price, volume, wholesale acquisition cost, slotting fees, and duopoly retail margins to isolate R_a and markups.</th>
+</tr>
+<tr>
+<th>Stream 2</th>
+<th>Housing &amp; Property Transaction Feeds</th>
+<th>Weekly auction clearance rates, rental bond lodgements, mortgage debt-to-income ratios, and land vs. capital depreciation splits to map S_c and P_2/P_6.</th>
+</tr>
+<tr>
+<th>Stream 3</th>
+<th>Wholesale Energy &amp; Commodity Spot Markets</th>
+<th>5-minute National Electricity Market (NEM) bid-stacks, gas netback prices, fuel terminal gate prices, and interconnect impedance to track P_3 logistics.</th>
+</tr>
+<tr>
+<th>Stream 4</th>
+<th>Healthcare &amp; Social Services Invoicing</th>
+<th>Monthly Medicare fee-to-rebate ratios, NDIS hourly platform billing records, clinician burnout turnover, and out-of-pocket gap payments to quantify P_5/P_7.</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">8.2 Econometric Estimation: Structural VECM and Tensor Decomposition</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Vector Error Correction Model (VECM):</strong> Δ <strong>P</strong>_t = <strong>Π</strong> <strong>P</strong>_{t-1} + Σ_{i=1}^{p-1} <strong>Γ</strong>_i Δ <strong>P</strong>_{t-i} + <strong>B</strong> <strong>X</strong>_t + <strong>ε</strong>_t where <strong>Π</strong> = <strong>α β</strong>^T isolates the cointegrating vectors between nominal prices P_m, physical production costs P_e + P_b, and extraction tolls R_a.</li>
+<li class="doc-li"><strong>Higher-Order Singular Value Decomposition (HOSVD):</strong> Decomposing the 7 × 7 × 7 tensor <strong>T</strong> into core tensor <strong>S</strong> and mode factor matrices: <strong>T</strong> = <strong>S</strong> ×_1 <strong>U</strong>^(1) ×_2 <strong>U</strong>^(2) ×_3 <strong>U</strong>^(3) isolating principal mode eigenvectors driving inflation across the 7 Planes.</li>
+<li class="doc-li"><strong>Identification Strategy:</strong> Exploiting natural exogenous shocks (e.g., severe weather events, geopolitical maritime chokepoints, sudden statutory regulatory adjustments) to cleanly identify and calibrate the Lorentz velocity v_rel and coercion factor γ.</li>
+</ul>
+<h2 class="doc-h2">9. Applied Empirical Case Studies</h2>
+<h3 class="doc-h3">9.1 Case 1: Australian Supermarket Duopoly (Retail Markups &amp; Supplier Squeeze)</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Empirical Context:</strong> Coles and Woolworths controlling &gt;65% of national grocery retail.</li>
+<li class="doc-li"><strong>UPE Mapping:</strong> Hyper-concentrated seller mass P_other / P_soc &gt;&gt; 1.0; artificial extraction toll R_a ≈ 0.40 enforced via supplier exclusive lock-ins and shelf slotting fees.</li>
+<li class="doc-li"><strong>Result:</strong> Retail food inflation exceeds farmgate cost increases by &gt;180%. Agricultural producers absorb uncompensated biomechanical costs (P_b), while consumers face coercive markups on non-discretionary caloric needs (N_x).</li>
+</ul>
+<h3 class="doc-h3">9.2 Case 2: Financialized Housing as a Speculative Debt Currency</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Empirical Context:</strong> Australian residential property post-1999 Ralph Review (50% CGT discount + Negative Gearing).</li>
+<li class="doc-li"><strong>UPE Mapping:</strong> Artificial scarcity (S_c → 2.0) engineered via restrictive municipal zoning enclosure (A^-); housing transmuted from physical shelter utility (P_3/P_5) into speculative liquidity instruments (P_2/P_6).</li>
+<li class="doc-li"><strong>Result:</strong> Median house price-to-income ratio expands from 3.5x to &gt;8.5x, generating over $11B in annual tax-deducted landlord losses to harvest tax-discounted capital gains, locking young cohorts into permanent Lorentz urgency (U → 1.0).</li>
+</ul>
+<h3 class="doc-h3">9.3 Case 3: Public Healthcare Monopsony vs. Care Platform Extraction</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Empirical Context:</strong> Federal Medicare Benefits Schedule (MBS) rebate freezes alongside privatized NDIS platform brokers.</li>
+<li class="doc-li"><strong>UPE Mapping:</strong> State monopsony suppresses clinical clearing price (P_m,5) below real wage replacement (P_b,5), projecting strain orthogonally into GP burnout and mental health collapse (P_e,7 + P_b,7), while unregulated NDIS platform intermediaries extract high R_a tolls.</li>
+<li class="doc-li"><strong>Result:</strong> Frontline clinical supply desertification coexists with explosive balance-sheet expansion in private care platform platforms.</li>
+</ul>
+<h3 class="doc-h3">9.4 Case 4: National Electricity Market (NEM) &amp; Energy Transition Chokepoints</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Empirical Context:</strong> 5-minute dispatch intervals, gas peaker strategic bidding, and transmission grid bottlenecks in Eastern Australia.</li>
+<li class="doc-li"><strong>UPE Mapping:</strong> Renewable generation boasts infinite renewability (Rn → ∞) and near-zero P_e, but localized transmission impedance (P_3) and peaker fuel market power (R_a → 1.0) allow legacy generators to set marginal prices at the market price cap ($17,500/MWh) during high-urgency demand spikes (U → 1.0).</li>
+<li class="doc-li"><strong>Result:</strong> Spot price volatility cascades into retail energy bills, proving that physical renewability on one axis cannot neutralize monopolistic extraction tolls on a dependent logistical plane.</li>
+</ul>
+<h2 class="doc-h2">10. Algorithmic Governance: The Hegemonic Alignment Protocol (H-Score)</h2>
+<p class="doc-p">To transition this framework from descriptive physics into prescriptive governance, we define the <strong>Hegemonic Alignment Protocol (H-Score)</strong> for integration into distributed settlement ledgers and public procurement systems:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>1. Protocol Checksum:</strong> High-value transactions (e.g., land rezoning, pharmaceutical pricing, wholesale energy bids) are evaluated in real-time by calculating the vector distance between asked price P_ask and baseline geometric price P_H.</li>
+<li class="doc-li"><strong>2. Automated Vector Dissonance Detection:</strong> If an entity leverages extreme Lorentz asymmetry (γ &gt;&gt; 1.0) or artificial access denial (A^-) to extract unearned rents (R_a → 1.0), the transaction&#x27;s H-Score collapses.</li>
+<li class="doc-li"><strong>3. Dynamic Protocol Friction:</strong> The network protocol automatically triggers localized static friction (μ_s) via graduated disincentivizing levies and transaction delays, while rebating and subsidizing generative, well-deepening investments (R_n ↑, A^+).</li>
+</ul>
+<h2 class="doc-h2">11. Policy Implications and Sovereign Structural Remediation</h2>
+<ul class="doc-ul">
+<li class="doc-li"><strong>1. Replacement of Single-Scalar CPI with the 7-Plane Price Tensor:</strong> Central banks and treasuries must transition from scalar CPI targeting to 7-Plane strain vector dashboards (P^7), distinguishing physical resource scarcity (S(x,t)) from monopolistic rentier tolls (R_a) and emotional/social burnout (P_7).</li>
+<li class="doc-li"><strong>2. Sovereign Supply-Side Intervention (The Public Developer):</strong> Neutralize artificial tolls (R_a → 0) via state-backed direct construction, As-Of-Right 4D Spatial Digital Twin statutory planning, and public equity capitalization of upstream supply chains (timber, steel, concrete).</li>
+<li class="doc-li"><strong>3. Decoupling Subsistence from Coercive Urgency:</strong> Establishing unconditional baseline floors in shelter, energy, food, and healthcare to guarantee U &lt;&lt; 1.0, collapsing the Lorentz multiplier (γ → 1.0) and eliminating coercive extraction.</li>
+</ul>
+<h2 class="doc-h2">12. Corpus Synthesis &amp; References</h2>
+<h3 class="doc-h3">Primary Source Google Docs</h3>
+<ul class="doc-ul">
+<li class="doc-li">UPE_additions.md: Core structural formalisms for spatiotemporal indexing, 3-layer cost decomposition, 7-plane price vector, and access-denial duality.</li>
+<li class="doc-li">The Cover: Theoretical foundation of the four settlement states, artificial price suppression, reality gap accumulation, and systemic collapse mechanics.</li>
+<li class="doc-li">The Well Principle: The conservation law of prior structural investment (R_n) versus rentier extraction tolls (R_a) across fractal reality planes.</li>
+<li class="doc-li">The Physics of Value: A Definitive Treatise on Currency, Simulacra, and the Reality Tensor: Relativistic value equation (E_v = m(tv)^2), Lorentz transform of urgency, and five-line identity proof.</li>
+<li class="doc-li">Relative Homogenous Scope: Discrete spatial cell opposition, temporal resolution windows, and emergent field homogenies.</li>
+<li class="doc-li">MMT: A Structural Critique from Value Physics: Deconstruction of sovereign fiat issuance and unanchored nominal ledgers.</li>
+<li class="doc-li">MMT Value Physics Deconstruction: The Tri-Fold Ledger System (Private Credit, Public Sovereign, Reality Ledger).</li>
+<li class="doc-li">The Dialectics of Currency: MMT, Scaling Trade, and the Dual State: Fractal scale of trade and trust, egalitarian vs. anti-egalitarian institutional dynamics.</li>
+<li class="doc-li">Research Candidate: Value Physics vs. MMT — The Tri-Fold Ledger &amp; The Reality Tensor: Comparative research proposal on thermodynamic accounting vs. modern chartalism.</li>
+<li class="doc-li">Research Candidate: Australian Macroeconomic Trajectory — The 4-Era Structural Settlement &amp; Asset Financialization: 4-Era macroeconomic structural model and 1999 housing-currency financialization.</li>
+<li class="doc-li">Research Candidate: The Macroeconomic Transfer Circuit — Welfare as Corporate Underwrite &amp; Monopsony Capture: Kalecki-Levy extension and subsistence transfer capture in retail, energy, and care platform markets.</li>
+</ul>
+<h3 class="doc-h3">Academic &amp; Econophysics Literature</h3>
+<ul class="doc-ul">
+<li class="doc-li">Arrow, K. J., &amp; Debreu, G. (1954). Existence of an equilibrium for a competitive economy. <em>Econometrica</em>, 22(3), 265–290.</li>
+<li class="doc-li">Bouchaud, J.-P. (2008). Economics needs a scientific revolution. <em>Nature</em>, 455(7217), 1181–1181.</li>
+<li class="doc-li">Bouchaud, J.-P., &amp; Potters, M. (2003). <em>Theory of Financial Risk and Derivative Pricing: From Statistical Physics to Risk Management</em>. Cambridge University Press.</li>
+<li class="doc-li">Einstein, A. (1905). Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig? <em>Annalen der Physik</em>, 323(13), 639–641.</li>
+<li class="doc-li">Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. <em>The Journal of Finance</em>, 25(2), 383–417.</li>
+<li class="doc-li">Georgescu-Roegen, N. (1971). <em>The Entropy Law and the Economic Process</em>. Harvard University Press.</li>
+<li class="doc-li">Kahneman, D., &amp; Tversky, A. (1979). Prospect theory: An analysis of decision under risk. <em>Econometrica</em>, 47(2), 263–291.</li>
+<li class="doc-li">Lancaster, K. J. (1966). A new approach to consumer theory. <em>Journal of Political Economy</em>, 74(2), 132–157.</li>
+<li class="doc-li">Mantegna, R. N., &amp; Stanley, H. E. (1999). <em>Introduction to Econophysics: Correlations and Complexity in Finance</em>. Cambridge University Press.</li>
+<li class="doc-li">Sornette, D. (2009). Dragon-kings, black swans and the prediction of crises. <em>International Journal of Terraspace Science and Engineering</em>, 2(1), 1–18.</li>
+<li class="doc-li">Sraffa, P. (1960). <em>Production of Commodities by Means of Commodities</em>. Cambridge University Press.</li>
+<li class="doc-li">Takayama, T., &amp; Judge, G. G. (1971). <em>Spatial and Temporal Price and Allocation Models</em>. North-Holland Publishing.</li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-25.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-25: Research Report: Micro-Economy Agent-Based Simulation - Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium</div>
+</a>
+
+        
+<a href="VPE-27.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-27: [ARCHIVED] Research Candidate: Formalization of the UPE &amp; P^7 (draft B)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

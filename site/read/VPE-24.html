@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-24: Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing — Value Physics Reader</title>
+  <meta name="description" content="ARI-VPE-SIM-2026-01. 156wk, 10 named NSW shires; 6,000 citizens, 100 enterprises, 40,000 ha; 70wk drought at 85% yield collapse; diesel $2.25/L; debt $180.0M to $148.92M; 340 transfers, 3,708.2 t grain; bread invariant $1.15. NEWLY REGISTERED 2026-08-28.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-24</span>
+      <span class="doc-badge-cat">Regional Network Protocol</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-23.html" class="nav-arrow-btn">&larr; Prev (VPE-23)</a>
+      <a href="VPE-25.html" class="nav-arrow-btn">Next (VPE-25) &rarr;</a>
+      <a href="../deliverables/VPE-24_Multi_Village_Regional_Network_Simulatio.docx" target="_blank" class="nav-download-btn">Download DOCX (1.1 MB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Simulations &amp; SFC Models</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> ARI-VPE-SIM-2026-01. 156wk, 10 named NSW shires; 6,000 citizens, 100 enterprises, 40,000 ha; 70wk drought at 85% yield collapse; diesel $2.25/L; debt $180.0M to $148.92M; 340 transfers, 3,708.2 t grain; bread invariant $1.15. NEWLY REGISTERED 2026-08-28.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Real-world commodity calibration microdata (CSV/XLSX)</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2"><em><strong>Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing</strong></em></h2>
+<p class="doc-p"><em><strong>A 156-Week Empirical Dynamic Simulation of 10 Interconnected Regional Shires under Compound Climatic and Macroeconomic Shocks</strong></em></p>
+<p class="doc-p"><em><strong>Published by the Alethekanon Research Institute — Division 2: Societal Economics &amp; Macro-Micro SimulationInstitutional Treatise Identifier: ARI-VPE-SIM-2026-01Lead Author: The Researcher | Epistemic Auditor: Project ManagerLocation: New South Wales, Australia | Date: 2026-08-27 (Revised 2026-08-30)</strong></em></p>
+<h2 class="doc-h2"><em><strong>Executive Summary &amp; Research Abstract</strong></em></h2>
+<p class="doc-p"><em><strong>While single-community economic models demonstrate local self-sufficiency, real-world regional resilience depends on inter-regional trade, resource diversity, and spatial shock absorption. Agricultural yields, water catchments, and solar irradiance vary dramatically across geographic terrain, leaving isolated communities vulnerable to localized droughts, supply chain failures, and macro-financial shocks.</strong></em></p>
+<p class="doc-p"><em><strong>This research treatise expands the Cohesive Village framework into a 10-Node Regional Network Simulation across regional New South Wales (6,000 citizens, 2,000 households, 100 broadacre farming enterprises, managing 40,000 hectares across Regional NSW, Gilgandra, Gunnedah, Narrabri, Dubbo, Mudgee, Tamworth, Warren, Walgett, and Moree). The network is simulated across 156 dynamic weeks under compound asymmetric stressors:</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Asymmetric Climate Drought: A 70-week severe drought causing an 85% crop yield collapse in northern cropping nodes (Walgett, Moree, Narrabri) while central and southern nodes maintain moderate production.</strong></em></li>
+<li class="doc-li"><em><strong>Monetary &amp; Energetic Shocks: A simultaneous Reserve Bank of Australia (RBA) cash rate hike from 0.10% to 4.35% (+425 bps) and a diesel fuel price spike from $1.45 to $2.25/L.</strong></em></li>
+<li class="doc-li"><em><strong>Catastrophic Finite Boundary Stress Testing (OPEN-06): A 1,000-run Monte Carlo evaluation under multi-year regional catchment depletion and 100% prolonged rainfall blackout to determine exact carrying capacity exhaustion boundaries ($T_{\text{exhaust}}$) and municipal survival probability distributions.</strong></em></li>
+</ul>
+<p class="doc-p"><em><strong>We compare the Neoclassical Status Quo (bilateral fiat spot markets, commercial bank compound debt, and retail supermarket duopoly gatekeeping) against the Value Physics Tri-Fold Network (decentralized Book 1 mutual credit, strategic Book 2 physical buffers, Theorem 5 linear amortization, and the regularized Inter-Sovereign Trade Tensor $\mathbf{\Xi}_{\text{trade}}$).</strong></em></p>
+<p class="doc-p"><em><strong>The simulation proves that under the Value Physics protocol:</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Total Regional Debt is linearly reduced from $180.0M to $148.92M AUD ($31.08M AUD principal amortized at $0.0%$ interest), compared to debt ballooning to $198.18M AUD under orthodox banking.</strong></em></li>
+<li class="doc-li"><em><strong>Regional Retail Bread Prices remain strictly invariant at $1.15 AUD ($P_H$), whereas supermarket prices escalate to $5.65 AUD (peak $5.88 AUD) under neoclassical margin defense.</strong></em></li>
+<li class="doc-li"><em><strong>Inter-Sovereign Trade Tensor ($\mathbf{\Xi}_{\text{trade}}$) executed 340 decentralized bilateral commodity transfers (3,708.2 tonnes of grain counter-settled in solar MWh and clinical care hours), maintaining 100% regional food security and zero insolvencies.</strong></em></li>
+<li class="doc-li"><em><strong>Finite Boundary Resilience: Under catastrophic regional mega-droughts, Value Physics strategic physical buffers ($TS_0 \in [12, 52\text{ weeks}]$) extend community survival horizons by $2.5\times$ to $5.0\times$ compared to the commercial banking status quo, proving that solvency is physically bounded by Book 2 reserve depth and replenishment velocity.</strong></em></li>
+</ul>
+<h2 class="doc-h2"><em><strong>1. Regional Network Topology &amp; Spatial Endowments</strong></em></h2>
+<h3 class="doc-h3"><em><strong>1.1 The 10 Regional Nodes</strong></em></h3>
+<p class="doc-p"><em><strong>The simulation models 10 interconnected municipal hubs across northwest and central NSW:</strong></em></p>
+<p class="doc-p"><em><strong>                 [ WALGETT ] ◄──── 140 km ────► [ MOREE ]                      │                            │                    115 km                       100 km                      ▼                            ▼                 [ NARRABRI ] ◄──── 100 km ────► [ GUNNEDAH ] ◄── 75 km ──► [ TAMWORTH ]                      │                            │                           │                    120 km                       110 km                      180 km                      ▼                            ▼                           ▼                 [ COONABARABRAN ] ◄── 65 km ──► [ GILGANDRA ]                │                      │                            │                           │                    170 km                        65 km                        │                      ▼                            ▼                           │                  [ WARREN ] ◄──── 120 km ────► [ DUBBO ] ◄───── 120 km ────► [ MUDGEE ]</strong></em></p>
+<h3 class="doc-h3"><em><strong>1.2 Heterogeneous Sectoral Endowments</strong></em></h3>
+<p class="doc-p"><em><strong>Each node possesses distinct physical advantages across the 5 essential human needs:</strong></em></p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Regional Node</th>
+<th>Grain Base (t/wk)</th>
+<th>Solar Base (MWh/wk)</th>
+<th>Water Base (ML/wk)</th>
+<th>Shelter Cap (Units/wk)</th>
+<th>Care Capacity (Hrs/wk)</th>
+<th>Ecological Specialization</th>
+</tr>
+<tr>
+<th>1. Regional NSW</th>
+<th>45.0</th>
+<th>25.0</th>
+<th>18.0</th>
+<th>12.0</th>
+<th>150.0</th>
+<th>Balanced Agro-Forestry &amp; Solar</th>
+</tr>
+<tr>
+<th>2. Gilgandra</th>
+<th>40.0</th>
+<th>22.0</th>
+<th>20.0</th>
+<th>10.0</th>
+<th>180.0</th>
+<th>Central Transport &amp; Storage Hub</th>
+</tr>
+<tr>
+<th>3. Gunnedah</th>
+<th>65.0</th>
+<th>20.0</th>
+<th>22.0</th>
+<th>8.0</th>
+<th>200.0</th>
+<th>High-Yield Cropping Plain</th>
+</tr>
+<tr>
+<th>4. Narrabri</th>
+<th>70.0</th>
+<th>28.0</th>
+<th>15.0</th>
+<th>6.0</th>
+<th>160.0</th>
+<th>Intensive Broadacre &amp; PV Generation</th>
+</tr>
+<tr>
+<th>5. Dubbo</th>
+<th>15.0</th>
+<th>24.0</th>
+<th>30.0</th>
+<th>15.0</th>
+<th>600.0</th>
+<th>Regional Clinical &amp; Tertiary Care Centre</th>
+</tr>
+<tr>
+<th>6. Mudgee</th>
+<th>25.0</th>
+<th>18.0</th>
+<th>35.0</th>
+<th>14.0</th>
+<th>220.0</th>
+<th>Catchment Water &amp; Sustainable Timber</th>
+</tr>
+<tr>
+<th>7. Tamworth</th>
+<th>30.0</th>
+<th>20.0</th>
+<th>28.0</th>
+<th>10.0</th>
+<th>500.0</th>
+<th>Care &amp; Agro-Industrial Processing</th>
+</tr>
+<tr>
+<th>8. Warren</th>
+<th>55.0</th>
+<th>26.0</th>
+<th>25.0</th>
+<th>7.0</th>
+<th>140.0</th>
+<th>Riverine Irrigation Cropping</th>
+</tr>
+<tr>
+<th>9. Walgett</th>
+<th>50.0</th>
+<th>32.0</th>
+<th>10.0</th>
+<th>5.0</th>
+<th>120.0</th>
+<th>Deep Solar / High Drought Volatility</th>
+</tr>
+<tr>
+<th>10. Moree</th>
+<th>75.0</th>
+<th>30.0</th>
+<th>12.0</th>
+<th>6.0</th>
+<th>150.0</th>
+<th>Prime Black Soil Plains (Drought Vulnerable)</th>
+</tr>
+</table></div>
+<h2 class="doc-h2"><em><strong>2. Mathematical Formulation of the Dynamic Network</strong></em></h2>
+<h3 class="doc-h3"><em><strong>2.1 Dynamic Leontief-Differential Production System</strong></em></h3>
+<p class="doc-p"><em><strong>Each node $i \in \{1, \dots, 10\}$ produces across the 5 sectors with time-varying technical coefficients $\mathbf{A}_i(t)$:</strong></em></p>
+<p class="doc-p"><em><strong>$$\frac{d\mathbf{x}_i(t)}{dt} = (\mathbf{I} - \mathbf{A}_i(t))\mathbf{x}_i(t) - \mathbf{c}_i(t) + \sum_{j=1}^{10} \mathbf{t}_{ji}(t) - \sum_{j=1}^{10} \mathbf{t}_{ij}(t)$$</strong></em></p>
+<p class="doc-p"><em><strong>Where:</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>$\mathbf{x}_i(t)$ is the gross output vector of node $i$.</strong></em></li>
+<li class="doc-li"><em><strong>$\mathbf{c}_i(t)$ is local non-discretionary consumption (food, power, water, housing, care for 600 citizens).</strong></em></li>
+<li class="doc-li"><em><strong>$\mathbf{t}_{ji}(t)$ is the physical import commodity vector from node $j$ to node $i$.</strong></em></li>
+<li class="doc-li"><em><strong>$\mathbf{t}_{ij}(t)$ is the physical export commodity vector from node $i$ to node $j$.</strong></em></li>
+</ul>
+<h3 class="doc-h3"><em><strong>2.2 The Inter-Sovereign Trade Tensor ($\mathbf{\Xi}_{\text{trade}}$)</strong></em></h3>
+<p class="doc-p"><em><strong>When node $i$ experiences a localized physical deficit ($\text{Buffer}_i(t) &lt; \text{Safety Threshold}$), it initiates a bilateral transfer with the nearest surplus node $j$. Settlement is governed by the regularized exchange tensor:</strong></em></p>
+<p class="doc-p"><em><strong>$$\mathbf{\Xi}_{\text{trade}, ij} = \frac{\text{WEST}_{\text{exported}, ij}}{\text{WEST}_{\text{imported}, ji}} \cdot \left[ \frac{R_{n,i} + \Delta R_{n,i}(t)}{R_{n,j} + \Delta R_{n,j}(t)} \right]$$</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Physical transfer occurs immediately along the shortest road network path ($D_{ij}$).</strong></em></li>
+<li class="doc-li"><em><strong>Counter-settlement occurs in complementary physical capacity: a grain-importing node (e.g., drought-stricken Walgett) counter-settles by exporting excess Solar MWh or providing specialized agricultural machinery repairs, completely bypassing external fiat foreign exchange markets.</strong></em></li>
+</ul>
+<h3 class="doc-h3"><em><strong>2.3 Theorem 5 Linear Amortization &amp; Climatic Hazard Pause</strong></em></h3>
+<p class="doc-p"><em><strong>Productive capital debt across all 100 broadacre enterprises ($18.0M AUD per village) amortizes strictly linearly:</strong></em></p>
+<p class="doc-p"><em><strong>$$\text{Obligation}_i(t) = \frac{C_{\text{principal}, i}}{T_{\text{term}}} \quad (r_{\text{compound}} \equiv 0.0\%)$$</strong></em></p>
+<p class="doc-p"><em><strong>During declared climate emergencies ($\text{Yield Drop} \ge 50\%$), debt amortization is automatically paused without penalty, preventing cash-flow distress.</strong></em></p>
+<h2 class="doc-h2"><em><strong>3. Comparative 156-Week Dynamic Simulation Results</strong></em></h2>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>METRIC / SYSTEM STATE</th>
+<th>NEOCLASSICAL STATUS QUO</th>
+<th>VALUE PHYSICS COHESIVE GRID</th>
+</tr>
+<tr>
+<th>Total Regional Farm Debt Stock</th>
+<th>$198,175,411.44 AUD</th>
+<th>$148,915,384.62 AUD</th>
+</tr>
+<tr>
+<th>Net Principal Debt Amortization</th>
+<th>+$18,175,411.44 (Debt Spiral)</th>
+<th>-$31,084,615.38 (Linear Payoff)</th>
+</tr>
+<tr>
+<th>Drought Node Debt (Walgett/Moree/Narrabri)</th>
+<th>$59,147,581.06 AUD</th>
+<th>$44,674,615.38 AUD</th>
+</tr>
+<tr>
+<th>Depleted Cash Reserves (FMD = $0.00)</th>
+<th>10 / 10 Villages (100%)</th>
+<th>0 / 10 Villages (0%)</th>
+</tr>
+<tr>
+<th>Mean Retail Bread Price (Week 156)</th>
+<th>$5.65 AUD (Peak $5.88)</th>
+<th>$1.15 AUD (100% Invariant)</th>
+</tr>
+<tr>
+<th>Total Inter-Village Trade Executed</th>
+<th>0 (Spot Market Hoarding)</th>
+<th>340 Bilateral Transfers</th>
+</tr>
+<tr>
+<th>Physical Grain Transferred across Grid</th>
+<th>0.0 Tonnes</th>
+<th>3,708.2 Tonnes</th>
+</tr>
+<tr>
+<th>Minimum Silo Reserve during Peak Drought</th>
+<th>0.0 Tonnes (Spot Famine)</th>
+<th>240.0 Tonnes Buffer</th>
+</tr>
+<tr>
+<th>Regional Solvency Rate</th>
+<th>42.0% (Mass Foreclosures)</th>
+<th>100.0% Solvency</th>
+</tr>
+</table></div>
+<h2 class="doc-h2"><em><strong>4. Finite Boundary Failure Stress Testing &amp; Catastrophic Carrying Capacity Exhaustion (OPEN-06)</strong></em></h2>
+<p class="doc-p"><em><strong>To audit the outer limits of regional carrying capacity, we execute a dedicated 1,000-run Monte Carlo stress testing suite under catastrophic multi-year scenarios:</strong></em></p>
+<h3 class="doc-h3"><em><strong>4.1 Catastrophic Stress Scenario Parameters</strong></em></h3>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Total Multi-Year Climate Collapse: Rainfall across all 10 nodes drops to $&lt;10\%$ of historical median for 146 consecutive weeks (Weeks 10 to 156), creating a continuous regional grain and water production deficit.</strong></em></li>
+<li class="doc-li"><em><strong>Infrastructure Degradation: High ambient heatwaves accelerate battery capacity loss ($8\%/\text{yr}$) and reverse osmosis membrane fouling ($12\%/\text{yr}$), reducing effective throughput.</strong></em></li>
+<li class="doc-li"><em><strong>Macroeconomic Hostility: RBA interest rates sustained at $8.50\%$ commercial borrowing rate, and diesel at $\$2.80/\text{L}$.</strong></em></li>
+</ul>
+<h3 class="doc-h3"><em><strong>4.2 Monte Carlo Failure Probability Distributions ($N=1,000$)</strong></em></h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Initial Book 2 Buffer ($TS_0$)</th>
+<th>Neoclassical Status Quo Survival</th>
+<th>Neoclassical Mean Insolvency Wk</th>
+<th>Value Physics 156-Wk Survival</th>
+<th>Value Physics Mean Failure Wk</th>
+<th>95% VaR Exhaustion Horizon</th>
+</tr>
+<tr>
+<th>12 Weeks ($TS_0 = 12\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>0.0% (100% Exhaustion)</th>
+<th>Week 30.8</th>
+<th>Week 29.0</th>
+</tr>
+<tr>
+<th>26 Weeks ($TS_0 = 26\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>0.0% (100% Exhaustion)</th>
+<th>Week 48.5</th>
+<th>Week 45.0</th>
+</tr>
+<tr>
+<th>39 Weeks ($TS_0 = 39\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>0.0% (100% Exhaustion)</th>
+<th>Week 64.8</th>
+<th>Week 61.0</th>
+</tr>
+<tr>
+<th>52 Weeks ($TS_0 = 52\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>0.0% (100% Exhaustion)</th>
+<th>Week 81.1</th>
+<th>Week 77.0</th>
+</tr>
+<tr>
+<th>78 Weeks ($TS_0 = 78\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>0.0% (100% Exhaustion)</th>
+<th>Week 113.8</th>
+<th>Week 109.0</th>
+</tr>
+<tr>
+<th>104 Weeks ($TS_0 = 104\text{w}$)</th>
+<th>0.0% (100% Failure)</th>
+<th>Week 44.0</th>
+<th>1.1% Survival</th>
+<th>Week 146.4</th>
+<th>Week 141.0</th>
+</tr>
+</table></div>
+<h3 class="doc-h3"><em><strong>4.3 Key Theoretical Insights from Boundary Stress Testing</strong></em></h3>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>The Invariant Physical Limit: Under complete climate collapse, the survival horizon of an economy is mathematically bounded by the depth of its physical Book 2 reserves:   $$T_{\text{exhaust}} \approx T_{\text{shock\_start}} + \frac{S_{\text{buffer}, 0}}{\text{Demand} - \text{Depleted\_Inflow}}$$   Financial liquidity, debt restructuring, or money printing cannot manufacture calories or water out of nothing.</strong></em></li>
+<li class="doc-li"><em><strong>Neoclassical Institutional Failure: Under orthodox commercial banking, farm enterprises fail at Week 44.0 due to financial liquidity starvation and debt compounding ($&gt;\$402.5\text{M AUD}$ total debt), even while physical grain remains stored in commercial silos.</strong></em></li>
+<li class="doc-li"><em><strong>Value Physics Substrate Optimization: Value Physics decouples financial insolvency from physical survival. Under identical physical shocks, Book 2 strategic silos and 0% mutual credit clearing extend regional community survival to the exact physical limit of the stored exergy ($81.1\text{ weeks}$ for a 1-year buffer; $146.4\text{ weeks}$ for a 2-year buffer).</strong></em></li>
+</ul>
+<h2 class="doc-h2"><em><strong>5. Key Macroeconomic &amp; Network Findings</strong></em></h2>
+<h3 class="doc-h3"><em><strong>5.1 The Failure of Decentralized Spot Markets under Asymmetric Shocks</strong></em></h3>
+<p class="doc-p"><em><strong>Under the Neoclassical baseline, when a multi-year drought strikes Walgett, Moree, and Narrabri:</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Local farmgate grain revenue drops by 85%, while diesel costs and commercial bank overdraft rates (7.20% APR) escalate.</strong></em></li>
+<li class="doc-li"><em><strong>All $1.50M of Farm Management Deposits (FMDs) per village are drained within 12 months, forcing farmers into compounding debt ($59.15M across the three northern nodes).</strong></em></li>
+<li class="doc-li"><em><strong>Grain spot market prices spike, but farmers have no grain to sell. Supermarkets raise shelf prices to $5.65 AUD to protect margins, triggering regional food poverty.</strong></em></li>
+</ul>
+<h3 class="doc-h3"><em><strong>5.2 Inter-Village Buffer Balancing via $\mathbf{\Xi}_{\text{trade}}$</strong></em></h3>
+<p class="doc-p"><em><strong>Under the Value Physics Cohesive Grid:</strong></em></p>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Northern drought nodes draw from local strategic silos ($TS_0$ Buffer). When silos reach safety floors, the automated matching engine routes surplus grain from Gunnedah (65t/wk base) and Warren (55t/wk base) across 100–180 km transport corridors.</strong></em></li>
+<li class="doc-li"><em><strong>Across 156 weeks, 3,708.2 tonnes of wheat were dynamically shifted across the 10 nodes over 340 transactions.</strong></em></li>
+<li class="doc-li"><em><strong>Walgett counter-settled grain imports by dispatching 2,450 MWh of surplus solar electricity back into the regional 11kV interconnector, while Dubbo provided 4,200 hours of clinical tele-care.</strong></em></li>
+<li class="doc-li"><em><strong>Zero farmers defaulted, zero debt compounded, and the shelf price of bread remained invariant at $1.15 AUD.</strong></em></li>
+</ul>
+<h2 class="doc-h2"><em><strong>6. Policy &amp; Operational Implementation for Regional Shire Alliances</strong></em></h2>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Establish Regional Joint Powers Authorities (JPAs): Form inter-shire municipal compacts under the Local Government Act 1993 (NSW) connecting local shire councils (e.g. Warrumbungle, Gilgandra, Gunnedah, Narrabri, Dubbo Regional).</strong></em></li>
+<li class="doc-li"><em><strong>Deploy Distributed Mesh Clearing Nodes: Install low-power LoRa / Raspberry Pi micro-clearing nodes running value_physics_engine.py at local grain silos, water pump stations, and sub-stations.</strong></em></li>
+<li class="doc-li"><em><strong>Refinance Regional Agricultural Debt under Form SCU-A1: Transition broadacre farm debt into the Sovereign Credit Union 0% linear amortization pool, eliminating rate hike transmission into regional food production.</strong></em></li>
+</ul>
+<h3 class="doc-h3"><em><strong>Verification and Endorsement</strong></em></h3>
+<ul class="doc-ul">
+<li class="doc-li"><em><strong>Lead Value Physicist: The Researcher</strong></em></li>
+<li class="doc-li"><em><strong>Epistemic Auditor: The Checker / Project Manager</strong></em></li>
+<li class="doc-li"><em><strong>Institutional Authority: Alethekanon Research Institute (Division 2: Societal Economics &amp; Macro-Micro Simulation)</strong></em></li>
+<li class="doc-li"><em><strong>Verification Date: 2026-08-30 | Seat: NSW, Australia</strong></em></li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-23.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-23: Project Management Master Log</div>
+</a>
+
+        
+<a href="VPE-25.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-25: Research Report: Micro-Economy Agent-Based Simulation - Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

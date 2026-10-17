@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-01: Formal Paper 6: Value Physics &amp; The Universal Price Tensor — Value Physics Reader</title>
+  <meta name="description" content="UPE, 3-layer cost (Pe+Pb+Pm), P^7 vector, Lorentz coercion, 56-cell matrices (5 sectors), Leontief-Value tensor, Theorem 5. Author: Jarrod Lyndsay Hamilton, Alethekanon Research Institute, NSW, Australia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-01</span>
+      <span class="doc-badge-cat">Master Theoretical Treatise</span>
+      <span class="doc-badge-status">Remediated &amp; Verified (Master Draft)</span>
+    </div>
+    <div class="reader-nav-right">
+      <span class="nav-arrow-btn disabled">&larr; Prev</span>
+      <a href="VPE-02.html" class="nav-arrow-btn">Next (VPE-02) &rarr;</a>
+      <a href="../deliverables/VPE-01_Formal_Paper_6_Value_Physics_The_Univers.docx" target="_blank" class="nav-download-btn">Download DOCX (3.0 MB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Formal Paper 6: Value Physics &amp; The Universal Price Tensor</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> UPE, 3-layer cost (Pe+Pb+Pm), P^7 vector, Lorentz coercion, 56-cell matrices (5 sectors), Leontief-Value tensor, Theorem 5. Author: Jarrod Lyndsay Hamilton, Alethekanon Research Institute, NSW, Australia.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Universal Price Equation (UPE) forward pricing formulation</span><span class="data-pill">3-layer biophysical cost breakdown (Pe + Pb + Pm)</span><span class="data-pill">56-cell multi-sector input-output supply chain matrix</span><span class="data-pill">Theorem 5 (Non-usurious debt bifurcation &amp; mutual credit)</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Value Physics &amp; The Universal Price Tensor: Spatiotemporal Scarcity Fields, The 7-Plane Price Vector (P^7), and Empirical Calibration of the Canonical Reference Standard (TS_0)</h2>
+<p class="doc-p"><strong>Jarrod Lyndsay Hamilton</strong></p>
+<p class="doc-p"><em>Alethekanon Research Institute, Australia</em></p>
+<p class="doc-p"><em>Date: September 5, 2026</em></p>
+<p class="doc-p"><em>License: Creative Commons Attribution 4.0 International (CC-BY 4.0)</em></p>
+<p class="doc-p"><strong>MSC 2020 Classifications:</strong></p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Primary: </strong>91B02 (Fundamental economic theory / econophysics), 91B50 (General equilibrium theory), 82C03 (Foundations of statistical mechanics)</li>
+<li class="doc-li"><strong>Secondary: </strong>91B74 (Macroeconomic models), 90C05 (Linear programming / duality), 83A05 (Special relativity), 91B32 (Resource allocation), 91B64 (Monetary theory)</li>
+</ul>
+<p class="doc-p"><strong>Keywords: </strong>Value Physics, Universal Price Tensor, Spatiotemporal Scarcity Fields, 7-Plane Price Vector, Three-Layer Cost Architecture, WEST Difficulty Tokens, Lorentz Coercion Factor, Distortion Quotient, Sraffa-Leontief Input-Output, Bread Reference Standard, Tri-Fold Ledger.</p>
+<h2 class="doc-h2">Executive Abstract</h2>
+<p class="doc-p">Neoclassical economics and standard general equilibrium models formalize price as a one-dimensional equilibrium scalar ($P = f(S, D)$), assuming frictionless substitution, symmetrical transaction agency, instantaneous market clearing ($dt = 0$), and substrate-blind nominal accounting. These assumptions fail to model physical entropy, metabolic labor exhaustion, spatiotemporal logistics, asymmetric survival coercion, and ecological resource depletion.</p>
+<p class="doc-p">This research treatise unifies and formalizes the complete theoretical architecture of <strong>Value Physics</strong>. We construct the <strong>Universal Price Equation (UPE)</strong> and the multi-dimensional <strong>Universal Price Tensor</strong>, decomposing price across space, time, and physical containment $P(x, t, c)$. We establish the <strong>Three-Layer Total Cost Decomposition</strong> ($P_{\text{total}} = P_e + P_b + P_m$), proving that &quot;free&quot; market exchange ($P_m = 0$) does not imply zero cost, as thermodynamic exergy destruction ($P_e$) and biomechanical metabolic effort ($P_b$) are always paid somewhere in the physical substrate. We formulate the <strong>7-Plane Price Vector ($\mathbf{P}^7$)</strong> across the orthogonal interrogative dimensions of reality (Identity, Opportunity, Logistics, Prestige, Operations, Historical Lineage, and Consequential Trauma) with fractal depth addressability ($Qqci$). We derive the relativistic <strong>Lorentz Coercion Factor $\gamma(v_{\text{rel}})$</strong>, model the Access-Denial Duality ($A^+ / A^-$), prove the directional value gradient theorem ($\mathbf{V}^7 = -\nabla \mathbf{P}^7$), and demonstrate the systemic collapse mechanics of artificial price suppression (&quot;The Cover&quot;). We prove the <strong>Kantorovich-Samuelson Spatial Value Duality Theorem</strong>, establishing that regional price differentials in non-usurious economies equate strictly to the irreversible thermodynamic exergy of transport. Furthermore, we formalize the <strong>Work-Effort-Skill/Time (WEST) Difficulty Metric</strong>, establish the <strong>Distortion Quotient ($DQ$)</strong> to quantify institutional rentier extraction, and calibrate the multi-commodity Leontief-Value mesh across food, energy, water, shelter, and health. Finally, we provide multi-scale empirical calibration tables, standalone Python field solvers, and machine-checkable specifications for Lean 4 formal verification.</p>
+<h2 class="doc-h2">1. Epistemological Foundations &amp; Ontological Primitives</h2>
+<h3 class="doc-h3">1.1 The Four Fatal Errors of Single-Scalar Price Theory</h3>
+<p class="doc-p">Standard economic doctrine models price as a one-dimensional scalar cleared by a hypothetical Walrasian auctioneer. This embeds four fatal ontological flaws:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Dimensional Compression: </strong>Orthodox theory compresses multidimensional physical, legal, biological, and psychological interactions into a single nominal currency scalar ($P \in \mathbb{R}^+$). This compression masks where costs are paid—whether by human metabolic biological depletion, ecological exhaustion, or future generations.</li>
+<li class="doc-li"><strong>Space and Time Neutrality: </strong>General equilibrium models assume instantaneous market clearing ($dt = 0$) at a dimensionless geometric point, violating the finite speed of physical causality ($c$) and ignoring spatial transport friction and perishable shelf-life decay.</li>
+<li class="doc-li"><strong>Symmetry Fiction: </strong>Neoclassical models assume bilateral exchange occurs at mutual rest between agents of equal agency. In real economies, exchange occurs under profound coercive leverage: one party transacts under survival desperation ($v_{\text{rel}} \to 1.0$) while the counterparty possesses infinite temporal patience and capital reserves.</li>
+<li class="doc-li"><strong>Substrate Blindness: </strong>Orthodox economics treats money as an unconstrained symbolic claim disconnected from the physical well-depth of the biosphere ($R_n$) and the irreversible thermodynamic exergy destruction ($P_e = T_0 S_{\text{gen}}$) required to reproduce the resource base.</li>
+</ul>
+<h3 class="doc-h3">1.2 The Epistemological Measurement Foundation: $\text{TBE} \;\Xi\; \text{TS}$</h3>
+<p class="doc-p">In a universe without arbitrary external Cartesian reference frames, economic and physical measurement requires coupling an uncalibrated candidate state to a verified, complete physical process via the isomorphic matching operator $\Xi$:</p>
+<p class="doc-p">$$\text{Target To Be Evaluated (TBE)} \;\Xi\; \text{Target State / True State (TS)}$$</p>
+<p class="doc-p">When a physical production cycle achieves complete closure across all 7 Interrogative Planes with zero ungrounded remainder, it establishes an invariant reference coordinate: a physical calibration zero-floor ($\text{TS}_0$).</p>
+<h3 class="doc-h3">1.3 The Failure Modes of Neoclassical Welfare Economics</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Pareto Optimality vs. Physical Subsistence: </strong>A Pareto-efficient allocation can exist where a fraction of the population starves while a monopolistic intermediary accumulates unearned rent, because no reallocation can make the starving party better off without reducing the nominal profits of the rentier.</li>
+<li class="doc-li"><strong>Pigouvian Fallacy: </strong>Taxing negative externalities under nominal price mechanisms fails to reverse entropy: collecting monetary fines does not rebuild depleted soil nitrogen, restore extinct aquifers, or replenish human metabolic lifespan spent.</li>
+<li class="doc-li"><strong>The Working Capital Cost-Push Paradox: </strong>Classical monetary policy assumes interest rate hikes suppress inflation by reducing aggregate demand. In physical production networks, interest on working capital is an unavoidable cost of production ($P_{Q6}$), causing rate hikes to act as a cost-push inflationary driver on non-discretionary subsistence goods.</li>
+</ul>
+<h2 class="doc-h2">2. The Universal Price Equation &amp; Multi-Layer Cost Decomposition</h2>
+<h3 class="doc-h3">2.1 Spatiotemporal Scarcity and Urgency Fields</h3>
+<p class="doc-p">Scarcity ($S$) and Urgency ($U$) are not static scalar parameters; they are localized field functions of spacetime coordinates and containment conditions:</p>
+<p class="doc-p">$$S = S(x, t, c) = S_a + S_c(x, t)$$</p>
+<p class="doc-p">$$U = U(x, t, c) = U_a + U_c(x, t)$$</p>
+<p class="doc-p">Where:</p>
+<ul class="doc-ul">
+<li class="doc-li">$S_a \ge 0$ is absolute physical scarcity: the context-free baseline quantity of the physical resource within the biosphere.</li>
+<li class="doc-li">$S_c(x, t) \ge 0$ is contextual scarcity: scarcity induced by geographic transport distance, institutional barriers, or artificial monopolistic enclosure.</li>
+<li class="doc-li">$U_a \ge 0$ is baseline biological urgency: the metabolic need required to maintain homeostatic organism viability.</li>
+<li class="doc-li">$U_c(x, t) \ge 0$ is contextual deadline pressure: the rate of perishable decay and existential distress per unit time.</li>
+</ul>
+<h3 class="doc-h3">2.2 Three-Layer Total Cost Decomposition</h3>
+<p class="doc-p">Total economic cost ($P_{\text{total}}$) decomposes into three coupled but physically distinct layers:</p>
+<p class="doc-p">$$P_{\text{total}} = P_e + P_b + P_m$$</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>$P_e$ (Thermodynamic Exergy Destruction Cost): </strong>The exact thermodynamic exergy destroyed from the ecological well-depth ($R_n$), governed by the Gouy-Stodola theorem:</li>
+</ul>
+<p class="doc-p">$$P_e = T_0 S_{\text{gen}} = \Delta B_{\text{des}} \quad [\text{Joules}]$$</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>$P_b$ (Biomechanical Metabolic Labor Cost): </strong>The biological metabolic energy expended by human workers, measured in Metabolic Equivalent of Task units ($1\text{ MET} = 1\text{ kcal}/\text{kg}\cdot\text{hr} = 4.184\text{ kJ}/\text{kg}\cdot\text{hr}$):</li>
+</ul>
+<p class="doc-p">$$P_b = \int_0^T \text{MET}(t) \cdot M_{\text{body}} \, dt \quad [\text{MET-Hours / Joules}]$$</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>$P_m$ (Market Mediation Cost): </strong>The nominal financial clearing price, fees, and rentier toll markups charged by legal institutions.</li>
+</ul>
+<p class="doc-p"><strong>The Law of Substrate Accounting: </strong>When market mediation price is zero ($P_m = 0$, e.g., wild resource harvesting, domestic care, unpriced pollution), total physical cost remains strictly positive:</p>
+<p class="doc-p">$$P_{\text{total}} = P_e + P_b &gt; 0$$</p>
+<p class="doc-p">Human civilization acts as a biomechanical cost transfer network where agents exchange money ($P_m$) to reduce their personal exposure to entropy, time, uncertainty, and physical labor.</p>
+<h3 class="doc-h3">2.3 The Master Universal Price Equation (UPE)</h3>
+<p class="doc-p">The complete spatiotemporal Universal Price Equation is formulated as:</p>
+<p class="doc-p">$$P(x, t) = m_1 \cdot m_2 \cdot \gamma(v_{\text{rel}}) \cdot \left[ \frac{S(x, t, c) \cdot U(x, t, c)}{R_n(x, t) \cdot \big(1 - R_a(x, t)\big)} \right] + P_e(x, t) + P_b(x, t)$$</p>
+<p class="doc-p">Where:</p>
+<ul class="doc-ul">
+<li class="doc-li">$m_1, m_2 \in \mathbb{R}^+$ are transacting mass scaling coefficients parameterizing institutional scale and organizational capacity.</li>
+<li class="doc-li">$\gamma(v_{\text{rel}}) \in [1.0, \infty)$ is the relativistic Lorentz Coercion Factor.</li>
+<li class="doc-li">$R_n(x, t) \in (0, 1]$ is the natural ecological substrate abundance and replenishment rate.</li>
+<li class="doc-li">$R_a(x, t) \in [0, 1)$ is the rentier enclosure and toll gate extraction fraction ($R_a \to 1.0 \implies P \to \infty$).</li>
+</ul>
+<h2 class="doc-h2">3. The 7-Plane Price Vector (P^7) &amp; Relativistic Coercion Mechanics</h2>
+<h3 class="doc-h3">3.1 The 7-Plane Price Vector ($\mathbf{P}^7$)</h3>
+<p class="doc-p">Price is an irreducible 7-dimensional tensor across the orthogonal interrogative dimensions of reality:</p>
+<p class="doc-p">$$\mathbf{P}^7 = \begin{pmatrix} P_{Q1} \\ P_{Q2} \\ P_{Q3} \\ P_{Q4} \\ P_{Q5} \\ P_{Q6} \\ P_{Q7} \end{pmatrix} = \begin{pmatrix} \text{WHO: Metaphysical / Identity Access Cost} \\ \text{WHAT: Possible / Opportunity Cost} \\ \text{WHERE: Physical / Logistics \&amp; Spatial Transport} \\ \text{WHY: Lyrical / Symbolic Premium \&amp; Prestige} \\ \text{HOW: Logical / Operational Production \&amp; Labor} \\ \text{CAUSE: Historical / Inherited Debt \&amp; Capital Sunk Cost} \\ \text{EFFECT: Emotive / Consequential Trauma \&amp; Ecological Debt} \end{pmatrix}$$</p>
+<p class="doc-p">Each plane component is addressable down the fractal depth hierarchy ($P_i = Q[q[c[i]]]$):</p>
+<p class="doc-p">$$P_{\text{total}} = \sum_{i=1}^7 \left[ m_1 m_2 \gamma_i \left( \frac{S_i U_i}{R_{n,i}(1 - R_{a,i})} \right) + P_{e,i} + P_{b,i} \right]$$</p>
+<h3 class="doc-h3">3.2 The Relativistic Lorentz Coercion Factor ($\gamma(v_{\text{rel}})$)</h3>
+<p class="doc-p">Under asymmetric existential urgency between transacting parties $A$ and $B$, let $U_A, U_B \in [0, 1]$ represent their relative survival time horizons. The relative urgency velocity is:</p>
+<p class="doc-p">$$v_{\text{rel}} = \frac{|U_A - U_B|}{\max(U_A, U_B) + 1\infty_U} \in [0, 1)$$</p>
+<p class="doc-p">where $1\infty_U = 10^{-16}$ regularizes the denominator against division-by-zero.</p>
+<p class="doc-p">The transaction scales by the Lorentz Coercion Factor:</p>
+<p class="doc-p">$$\gamma(v_{\text{rel}}) = \frac{1}{\sqrt{1 - v_{\text{rel}}^2}}$$</p>
+<p class="doc-p"><strong>Theorem 3.1 (Elasticity Collapse under Urgent Coercion): </strong>As relative urgency approaches unity ($v_{\text{rel}} \to 1.0^-$), price elasticity of demand collapses to zero:</p>
+<p class="doc-p">$$\epsilon(v_{\text{rel}}) = \frac{\epsilon_0}{\gamma(v_{\text{rel}})} = \epsilon_0 \sqrt{1 - v_{\text{rel}}^2} \xrightarrow{\quad v_{\text{rel}} \to 1.0 \quad} 0$$</p>
+<p class="doc-p">Price sensitivity vanishes completely, enabling infinite unearned rentier toll extraction ($R_a \to 1.0$).</p>
+<h3 class="doc-h3">3.3 Access-Denial Duality &amp; The Directional Value Gradient</h3>
+<p class="doc-p">Access is an active priceable object: $A^+$ (granted access) and $A^-$ (withheld access). Manufactured scarcity (patents, monopoly distribution, restrictive zoning) operates strictly through $A^-$, amplifying $\gamma$ without increasing physical difficulty.</p>
+<p class="doc-p">The <strong>Directional Value Gradient</strong> dictates that economic value flows along the negative gradient of systemic price strain on the Riemannian 7-Plane manifold $\mathcal{M}^7$:</p>
+<p class="doc-p">$$\mathbf{V}^7 = -\nabla_{\mathcal{M}^7} \mathbf{P}^7$$</p>
+<h3 class="doc-h3">3.4 Theorem 3.2 (Kantorovich-Samuelson Spatial Value Duality)</h3>
+<p class="doc-p"><strong>Theorem 3.2 (Kantorovich-Samuelson Spatial Value Duality): </strong>Let the spatial transport cost between geographic nodes $i$ and $j$ along plane $P_{Q3}$ be $c_{ij} = D_{ij} \cdot \kappa_{\text{exergy}}$, where $D_{ij}$ is the network transport distance and $\kappa_{\text{exergy}}$ is the physical exergy destruction rate per unit distance. Under the Monge-Kantorovich minimum exergy transportation problem:</p>
+<p class="doc-p">$$\min \sum_{i,j} c_{ij} x_{ij} \quad \text{subject to } \sum_j x_{ij} \le S_i, \quad \sum_i x_{ij} \ge D_j, \quad x_{ij} \ge 0$$</p>
+<p class="doc-p">The dual linear programming formulation yields origin supply shadow potentials $u_i^*$ and destination delivery shadow prices $v_j^*$. By the Strong Duality Theorem of Linear Programming and Karush-Kuhn-Tucker (KKT) complementary slackness, on every active physical trade route ($x_{ij}^* &gt; 0$):</p>
+<p class="doc-p">$$v_j^* - u_i^* = c_{ij} = D_{ij} \cdot \kappa_{\text{exergy}}$$</p>
+<p class="doc-p">While for all inactive trade routes:</p>
+<p class="doc-p">$$v_j^* - u_i^* \le c_{ij}$$</p>
+<p class="doc-p">Consequently, the Directional Value Gradient $\mathbf{V}^7 = -\nabla_{\mathcal{M}^7} \mathbf{P}^7$ evaluated along the spatial logistics dimension ($P_{Q3}$) corresponds exactly to the optimal dual shadow price gradient:</p>
+<p class="doc-p">$$\nabla_{ij} P_{Q3} = v_j^* - u_i^* = c_{ij}$$</p>
+<p class="doc-p">Under non-usurious clearing ($R_a \equiv 0$), spatial arbitrage profits collapse to zero:</p>
+<p class="doc-p">$$\Pi_{\text{arbitrage}} = (P_j - P_i) - c_{ij} \equiv 0$$</p>
+<p class="doc-p">Regional price differentials equate strictly to the irreversible thermodynamic work of transport ($P_e$). $\blacksquare$</p>
+<h2 class="doc-h2">4. The WEST Token Standard &amp; Difficulty Metric</h2>
+<h3 class="doc-h3">4.1 The Mathematical Difficulty Metric ($D$)</h3>
+<p class="doc-p">Human labor difficulty is an objective physical and neurological exertion function of four multiplicative parameters:</p>
+<p class="doc-p">$$D(t) = s(t) \cdot e(t) \cdot \big[1 + d(t)\big] \cdot \big[1 + c(t)\big]$$</p>
+<p class="doc-p">Where:</p>
+<ul class="doc-ul">
+<li class="doc-li">$s(t) = 1.0 + \ln(1 + \text{Years of Training}) \in [1.0, 10.0]$ is human capital skill training density.</li>
+<li class="doc-li">$e(t) \in [1.0, 10.0]$ is metabolic exertion in METs ($1.0\text{ MET} \approx 4.184\text{ kJ}/(\text{kg}\cdot\text{hr})$).</li>
+<li class="doc-li">$d(t) \in [0.0, 2.0]$ is the actuarial danger and physical entropy exposure index.</li>
+<li class="doc-li">$c(t) \in [0.0, 2.0]$ is cognitive attention load and decision density.</li>
+</ul>
+<h3 class="doc-h3">4.2 The 1 WEST Token Quantum &amp; Invariant Base Price ($P_H$)</h3>
+<p class="doc-p">$$1\text{ WEST Token} \equiv \text{One hour of labor at } s=1.0,\; e=1.0\text{ MET},\; d=0.0,\; c=0.0$$</p>
+<p class="doc-p">$$\text{WEST Tokens} = \int_0^T s(t) \cdot e(t) \cdot \big[1 + d(t)\big] \cdot \big[1 + c(t)\big] \, dt$$</p>
+<p class="doc-p">The <strong>Invariant Physical Base Price ($P_H$)</strong> is:</p>
+<p class="doc-p">$$P_H = \text{WEST Tokens} \cdot \left[ \frac{\kappa_e P_e + \kappa_b P_b}{R_n} \right]$$</p>
+<h3 class="doc-h3">4.3 The Distortion Quotient ($DQ$)</h3>
+<p class="doc-p">The systemic fairness of an economic sector is measured by the ratio of nominal price captured to physical difficulty expended:</p>
+<p class="doc-p">$$DQ = \frac{\% \text{ Share of Nominal Market Price } (P_m)}{\% \text{ Share of Embedded WEST Difficulty Tokens}}$$</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>$DQ = 1.0$: </strong>True difficulty parity (fair exchange).</li>
+<li class="doc-li"><strong>$DQ \ll 1.0$: </strong>Substrate extraction / labor exploitation (high physical difficulty, negligible financial return).</li>
+<li class="doc-li"><strong>$DQ \gg 1.0$: </strong>Rentier toll capture (negligible physical exertion, massive nominal financial capture).</li>
+</ul>
+<h3 class="doc-h3">4.4 The Cardinal Value Matrix (WEST, EAST, BEST, WORST)</h3>
+<p class="doc-p">Economic actions map into a 4-quadrant thermodynamic value geometry:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>WEST (Work-Effort-Skill/Time): </strong>Constructive physical difficulty creating genuine thermodynamic utility and exergy structure ($\Delta S_{\text{system}} &lt; 0$).</li>
+<li class="doc-li"><strong>EAST (Entropy-Augmented Scarcity Toll): </strong>Frictional energy dissipated across complex logistics and supply chains.</li>
+<li class="doc-li"><strong>BEST (Beneficial Ecological Systemic Throughput): </strong>Regenerative ecological and community actions that replenish baseline natural resource capacity ($R_n \uparrow$).</li>
+<li class="doc-li"><strong>WORST (Wasteful Oppressive Rentier Spoliation Toll): </strong>Parasitic artificial scarcity extraction ($R_a \uparrow$, $v_{\text{rel}} \to 1.0$) extracting nominal wealth without creating physical throughput.</li>
+</ul>
+<h2 class="doc-h2">3. The 7-Plane Price Vector (P^7) &amp; Relativistic Coercion</h2>
+<h2 class="doc-h2">5. Multi-Sector Empirical Calibration Suite &amp; Leontief Mesh</h2>
+<h3 class="doc-h3">5.1 The 56-Cell (7×8) Canonical Bread Reference Standard (TS_0)</h3>
+<p class="doc-p">The 8-stage production cycle of a 1 kg sourdough loaf across the 7 Interrogative Planes provides the universal empirical calibration standard (TS_0):</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage</th>
+<th>Q1 (WHO)</th>
+<th>Q2 (WHAT)</th>
+<th>Q3 (WHERE)</th>
+<th>Q4 (WHY)</th>
+<th>Q5 (HOW)</th>
+<th>Q6 (CAUSE)</th>
+<th>Q7 (EFFECT)</th>
+<th>WEST</th>
+<th>AUD</th>
+<th>DQ</th>
+</tr>
+<tr>
+<th>1. Plant</th>
+<th>Seed Guild</th>
+<th>Soil Influx</th>
+<th>Farm Field</th>
+<th>Life Sust.</th>
+<th>Photosyn.</th>
+<th>Seed Lineage</th>
+<th>Biomass Gen.</th>
+<th>0.42 W</th>
+<th>$0.12</th>
+<th>0.27</th>
+</tr>
+<tr>
+<th>2. Grain</th>
+<th>Agronomist</th>
+<th>NPK Option</th>
+<th>Spatial Plot</th>
+<th>Grain Form</th>
+<th>Fertilizer</th>
+<th>Nitrate Sunk</th>
+<th>Veg. Growth</th>
+<th>0.65 W</th>
+<th>$0.18</th>
+<th>0.26</th>
+</tr>
+<tr>
+<th>3. Harvest</th>
+<th>Harvester Op.</th>
+<th>Grain Yield</th>
+<th>Grain Bunker</th>
+<th>Food Secur.</th>
+<th>Diesel Comb.</th>
+<th>Combine Cap.</th>
+<th>Stored Grain</th>
+<th>0.88 W</th>
+<th>$0.25</th>
+<th>0.27</th>
+</tr>
+<tr>
+<th>4. Mill</th>
+<th>Mill Tech</th>
+<th>Whole Flour</th>
+<th>Silo Facility</th>
+<th>Industry Feed</th>
+<th>Roller Milling</th>
+<th>Mill CapEx</th>
+<th>Milled Flour</th>
+<th>0.54 W</th>
+<th>$0.35</th>
+<th>0.61</th>
+</tr>
+<tr>
+<th>5. Leaven</th>
+<th>Artisan Baker</th>
+<th>Fermentation</th>
+<th>Mixing Basin</th>
+<th>Texture Std.</th>
+<th>Wild Yeast</th>
+<th>Mother Starter</th>
+<th>Proofed Dough</th>
+<th>0.72 W</th>
+<th>$0.45</th>
+<th>0.59</th>
+</tr>
+<tr>
+<th>6. Oven</th>
+<th>Master Baker</th>
+<th>Crust Maillard</th>
+<th>Thermal Oven</th>
+<th>Caloric Core</th>
+<th>Wood Thermal</th>
+<th>Energy Debt</th>
+<th>Baked Loaf</th>
+<th>0.95 W</th>
+<th>$0.65</th>
+<th>0.64</th>
+</tr>
+<tr>
+<th>7. Breaking</th>
+<th>Packaging Op.</th>
+<th>Pack Options</th>
+<th>Cooling Rack</th>
+<th>Commercial</th>
+<th>Mech. Slicing</th>
+<th>Pack Line Dep.</th>
+<th>Sliced Loaf</th>
+<th>0.31 W</th>
+<th>$0.50</th>
+<th>1.51</th>
+</tr>
+<tr>
+<th>8. Distrib.</th>
+<th>Retail Duopoly</th>
+<th>Shelf Slotting</th>
+<th>Retail Aisle</th>
+<th>Monop. Toll</th>
+<th>Barcode Scan</th>
+<th>Rentier Toll</th>
+<th>Consumer Sale</th>
+<th>0.22 W</th>
+<th>$2.50</th>
+<th>10.66</th>
+</tr>
+<tr>
+<th>TOTAL</th>
+<th>Covenant</th>
+<th>Caloric Core</th>
+<th>Regional Supply</th>
+<th>Life Loaf</th>
+<th>Physical Trade</th>
+<th>Sunk Amort.</th>
+<th>Health Homeo.</th>
+<th>4.69 W</th>
+<th>$5.00</th>
+<th>1.00</th>
+</tr>
+</table></div>
+<p class="doc-p"><em>Methodological Clarification on Difficulty Aggregation: The 4.69 W difficulty total represents the multi-tier batch-level reference standard across all 8 production stages. When parameterized for single-unit continuous industrial throughput in macroeconomic aggregate simulations, direct labor time resolves to 129.7 seconds (0.5474 WEST tokens) per 700g commercial loaf. Both representations strictly conserve thermodynamic exergy (Pe) and labor difficulty (Pb) at their respective operational scales.</em></p>
+<h3 class="doc-h3">5.2 Empirical 56-Cell Microgrid Electricity Reference Standard (1 kWh)</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage</th>
+<th>Q1 (WHO)</th>
+<th>Q2 (WHAT)</th>
+<th>Q3 (WHERE)</th>
+<th>Q4 (WHY)</th>
+<th>Q5 (HOW)</th>
+<th>Q6 (CAUSE)</th>
+<th>Q7 (EFFECT)</th>
+<th>WEST</th>
+<th>AUD</th>
+<th>DQ</th>
+</tr>
+<tr>
+<th>1. Solar Influx</th>
+<th>Silicon Cell</th>
+<th>Solar Irrad.</th>
+<th>Photovoltaic</th>
+<th>Exergy Flux</th>
+<th>MPPT Tracking</th>
+<th>Module CapEx</th>
+<th>DC Photons</th>
+<th>0.15 W</th>
+<th>$0.005</th>
+<th>0.24</th>
+</tr>
+<tr>
+<th>2. Inversion</th>
+<th>Inverter Tech</th>
+<th>AC Sine Wave</th>
+<th>Power Inverter</th>
+<th>Clean Power</th>
+<th>IGBT Switching</th>
+<th>Plant Deprec.</th>
+<th>240V AC Wave</th>
+<th>0.25 W</th>
+<th>$0.010</th>
+<th>0.29</th>
+</tr>
+<tr>
+<th>3. Chem. Store</th>
+<th>Electro-Chem.</th>
+<th>LiFePO4 Cell</th>
+<th>Battery Bank</th>
+<th>Energy Buffer</th>
+<th>Ion Intercal.</th>
+<th>Cell Degrade</th>
+<th>MWh Buffer</th>
+<th>0.40 W</th>
+<th>$0.015</th>
+<th>0.27</th>
+</tr>
+<tr>
+<th>4. Power Cond.</th>
+<th>Grid Engineer</th>
+<th>Frequency/Hz</th>
+<th>Substation</th>
+<th>Power Factor</th>
+<th>Harmonic Filter</th>
+<th>Substation Cap.</th>
+<th>50.0 Hz Pure</th>
+<th>0.20 W</th>
+<th>$0.008</th>
+<th>0.29</th>
+</tr>
+<tr>
+<th>5. HV Step-Up</th>
+<th>Linesman Guild</th>
+<th>Step-Up Trans.</th>
+<th>HV Switchyard</th>
+<th>Long Haul</th>
+<th>Dielectric Oil</th>
+<th>Transformer</th>
+<th>11 kV Bus</th>
+<th>0.35 W</th>
+<th>$0.012</th>
+<th>0.25</th>
+</tr>
+<tr>
+<th>6. Reticulation</th>
+<th>Network Crew</th>
+<th>Distribution</th>
+<th>Pole/Wire Span</th>
+<th>Household Tap</th>
+<th>Line Clearing</th>
+<th>Pole Lease Sunk</th>
+<th>240V Service</th>
+<th>0.45 W</th>
+<th>$0.015</th>
+<th>0.24</th>
+</tr>
+<tr>
+<th>7. Metering</th>
+<th>Consumer Node</th>
+<th>Net Metering</th>
+<th>Dwelling Panel</th>
+<th>Telemetry Log</th>
+<th>Interval Sync</th>
+<th>Smart Meter Cap</th>
+<th>Time-of-Use</th>
+<th>0.15 W</th>
+<th>$0.010</th>
+<th>0.48</th>
+</tr>
+<tr>
+<th>8. Retail Toll</th>
+<th>Gentailer Board</th>
+<th>Tariff Enclosure</th>
+<th>Financial Desk</th>
+<th>Shareholder Rent</th>
+<th>Monop. Billing</th>
+<th>Hedging Fee</th>
+<th>Power Bill</th>
+<th>0.10 W</th>
+<th>$0.210</th>
+<th>15.11</th>
+</tr>
+<tr>
+<th>TOTAL</th>
+<th>Grid Gov.</th>
+<th>Kinetic Exergy</th>
+<th>Regional Grid</th>
+<th>Base Utility</th>
+<th>Electro-Mech.</th>
+<th>Linear Asset</th>
+<th>Homeostasis</th>
+<th>2.05 W</th>
+<th>$0.285</th>
+<th>1.00</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">5.3 Empirical 56-Cell Potable Water Reference Standard (1 kL)</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage</th>
+<th>Q1 (WHO)</th>
+<th>Q2 (WHAT)</th>
+<th>Q3 (WHERE)</th>
+<th>Q4 (WHY)</th>
+<th>Q5 (HOW)</th>
+<th>Q6 (CAUSE)</th>
+<th>Q7 (EFFECT)</th>
+<th>WEST</th>
+<th>AUD</th>
+<th>DQ</th>
+</tr>
+<tr>
+<th>1. Catchment</th>
+<th>Catchment Care</th>
+<th>Rainfall Inflow</th>
+<th>Watershed Basin</th>
+<th>Baseline Hydr.</th>
+<th>Silt Traps</th>
+<th>Basin Ecology</th>
+<th>Natural Runoff</th>
+<th>0.20 W</th>
+<th>$0.05</th>
+<th>0.23</th>
+</tr>
+<tr>
+<th>2. Storage</th>
+<th>Dam Engineer</th>
+<th>Water Storage</th>
+<th>Deep Reservoir</th>
+<th>Drought Buffer</th>
+<th>Spillway Gates</th>
+<th>Dam Wall CapEx</th>
+<th>MegaLitres Stor.</th>
+<th>0.30 W</th>
+<th>$0.08</th>
+<th>0.25</th>
+</tr>
+<tr>
+<th>3. Coagulation</th>
+<th>Chemical Tech</th>
+<th>Flocculation</th>
+<th>Clarifier Tank</th>
+<th>Turbidity Cut</th>
+<th>Alum Dosing</th>
+<th>Plant Amort.</th>
+<th>Settled Sludge</th>
+<th>0.35 W</th>
+<th>$0.10</th>
+<th>0.27</th>
+</tr>
+<tr>
+<th>4. Membrane</th>
+<th>Water Chemist</th>
+<th>Pore Permeance</th>
+<th>Filtration Bed</th>
+<th>Biological Pure</th>
+<th>Sand/Microfilter</th>
+<th>Membrane Dep.</th>
+<th>Clean Permeate</th>
+<th>0.50 W</th>
+<th>$0.15</th>
+<th>0.28</th>
+</tr>
+<tr>
+<th>5. Disinfect.</th>
+<th>Bio-Safety Off.</th>
+<th>Pathogen Free</th>
+<th>Contact Basin</th>
+<th>Public Health</th>
+<th>UV / Chlorine</th>
+<th>Chemical Sunk</th>
+<th>Potable Water</th>
+<th>0.25 W</th>
+<th>$0.07</th>
+<th>0.26</th>
+</tr>
+<tr>
+<th>6. Pumping</th>
+<th>Pump Engineer</th>
+<th>Hydraulic Head</th>
+<th>Booster Station</th>
+<th>Elevation Lift</th>
+<th>Multi-Stage Cent.</th>
+<th>Pump Wear Cap</th>
+<th>Static Head</th>
+<th>0.60 W</th>
+<th>$0.20</th>
+<th>0.31</th>
+</tr>
+<tr>
+<th>7. Trunk Mains</th>
+<th>Pipelayer Guild</th>
+<th>Reticulation</th>
+<th>Trunk Pipeline</th>
+<th>Distribution</th>
+<th>Pressure Reduc.</th>
+<th>Pipeline Asset</th>
+<th>Reticulated kL</th>
+<th>0.45 W</th>
+<th>$0.15</th>
+<th>0.31</th>
+</tr>
+<tr>
+<th>8. Utility Toll</th>
+<th>Water Board</th>
+<th>Access Enclosure</th>
+<th>Council Board</th>
+<th>Debt Service</th>
+<th>Billing Toll</th>
+<th>Sovereign Bond</th>
+<th>Water Invoice</th>
+<th>0.15 W</th>
+<th>$2.20</th>
+<th>13.69</th>
+</tr>
+<tr>
+<th>TOTAL</th>
+<th>Watershed</th>
+<th>Living Water</th>
+<th>Catchment</th>
+<th>Biosecurity</th>
+<th>Hydraulic Eng.</th>
+<th>Infra Amort.</th>
+<th>Cellular Health</th>
+<th>2.80 W</th>
+<th>$3.00</th>
+<th>1.00</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">5.4 Empirical 56-Cell Modular Shelter Reference Standard (1 Unit/Wk)</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage</th>
+<th>Q1 (WHO)</th>
+<th>Q2 (WHAT)</th>
+<th>Q3 (WHERE)</th>
+<th>Q4 (WHY)</th>
+<th>Q5 (HOW)</th>
+<th>Q6 (CAUSE)</th>
+<th>Q7 (EFFECT)</th>
+<th>WEST</th>
+<th>AUD</th>
+<th>DQ</th>
+</tr>
+<tr>
+<th>1. Quarrying</th>
+<th>Quarryman</th>
+<th>Subsoil Clay</th>
+<th>Pit Quarry</th>
+<th>Raw Envelope</th>
+<th>Heavy Excavation</th>
+<th>Basin Geology</th>
+<th>Extracted Mass</th>
+<th>0.40 W</th>
+<th>$1.50</th>
+<th>0.31</th>
+</tr>
+<tr>
+<th>2. Timber Prep</th>
+<th>Sawmiller</th>
+<th>Structural Stud</th>
+<th>Timber Yard</th>
+<th>Frame Envelope</th>
+<th>Milling / Drying</th>
+<th>Forest Growth</th>
+<th>Milled Studs</th>
+<th>0.60 W</th>
+<th>$2.50</th>
+<th>0.35</th>
+</tr>
+<tr>
+<th>3. Foundation</th>
+<th>Concreter Guild</th>
+<th>Rubble Trench</th>
+<th>Building Pad</th>
+<th>Seismic Ground</th>
+<th>Pour Slab / Pad</th>
+<th>Site Prep CapEx</th>
+<th>Solid Base</th>
+<th>0.80 W</th>
+<th>$3.00</th>
+<th>0.31</th>
+</tr>
+<tr>
+<th>4. Rammed Earth</th>
+<th>Master Rammer</th>
+<th>400mm Wall</th>
+<th>Wall Formwork</th>
+<th>Thermal Comfort</th>
+<th>Pneumatic Pack</th>
+<th>Formwork Amort.</th>
+<th>Structural Mass</th>
+<th>1.20 W</th>
+<th>$4.50</th>
+<th>0.31</th>
+</tr>
+<tr>
+<th>5. Roof Truss</th>
+<th>Carpenter Guild</th>
+<th>Corrugated Iron</th>
+<th>Roof Canopy</th>
+<th>Weather Barrier</th>
+<th>Truss Erection</th>
+<th>Steel CapEx</th>
+<th>Waterproofed</th>
+<th>0.75 W</th>
+<th>$3.00</th>
+<th>0.33</th>
+</tr>
+<tr>
+<th>6. Glazing</th>
+<th>Glazier Guild</th>
+<th>Double Glazing</th>
+<th>Solar Aperture</th>
+<th>Passive Solar</th>
+<th>Thermal Break</th>
+<th>Window Tooling</th>
+<th>Insulated Shell</th>
+<th>0.55 W</th>
+<th>$2.50</th>
+<th>0.38</th>
+</tr>
+<tr>
+<th>7. Fitout</th>
+<th>Plumber/Spark</th>
+<th>Service Lines</th>
+<th>Interior Core</th>
+<th>Living Hygiene</th>
+<th>Copper/PEX Runs</th>
+<th>Fixture Deprec.</th>
+<th>Habitable Unit</th>
+<th>0.90 W</th>
+<th>$4.00</th>
+<th>0.37</th>
+</tr>
+<tr>
+<th>8. Fin. Toll</th>
+<th>Mortgagee Bank</th>
+<th>Interest Toll</th>
+<th>Banking Portal</th>
+<th>Equity Yield</th>
+<th>Usury Amort.</th>
+<th>Land Speculation</th>
+<th>Eviction Risk</th>
+<th>0.20 W</th>
+<th>$44.00</th>
+<th>18.28</th>
+</tr>
+<tr>
+<th>TOTAL</th>
+<th>Guild</th>
+<th>Habitat</th>
+<th>Regional Plot</th>
+<th>Thermal Rest</th>
+<th>Architecture</th>
+<th>50-Yr Amort.</th>
+<th>Homeostasis</th>
+<th>5.40 W</th>
+<th>$65.00</th>
+<th>1.00</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">5.5 Empirical 56-Cell Clinical &amp; Preventive Care Reference Standard (1 Unit)</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage</th>
+<th>Q1 (WHO)</th>
+<th>Q2 (WHAT)</th>
+<th>Q3 (WHERE)</th>
+<th>Q4 (WHY)</th>
+<th>Q5 (HOW)</th>
+<th>Q6 (CAUSE)</th>
+<th>Q7 (EFFECT)</th>
+<th>WEST</th>
+<th>AUD</th>
+<th>DQ</th>
+</tr>
+<tr>
+<th>1. Triage</th>
+<th>Triage Nurse</th>
+<th>Vital Signs</th>
+<th>Clinic Intake</th>
+<th>Urgency Ranking</th>
+<th>Clinical Protocol</th>
+<th>Nurse Training</th>
+<th>Intake Profile</th>
+<th>0.30 W</th>
+<th>$1.50</th>
+<th>0.36</th>
+</tr>
+<tr>
+<th>2. Diagnostics</th>
+<th>Pathologist</th>
+<th>Lab Analysis</th>
+<th>Diagnostic Lab</th>
+<th>Etiology Map</th>
+<th>Spectrometry</th>
+<th>Lab Asset CapEx</th>
+<th>Pathology Rep.</th>
+<th>0.50 W</th>
+<th>$2.50</th>
+<th>0.36</th>
+</tr>
+<tr>
+<th>3. Pharmacy</th>
+<th>Pharmacist</th>
+<th>Bio-Active Molec.</th>
+<th>Dispensary</th>
+<th>Receptor Bind</th>
+<th>Compounding</th>
+<th>Chemical Sunk</th>
+<th>Dosed Therapy</th>
+<th>0.25 W</th>
+<th>$1.20</th>
+<th>0.34</th>
+</tr>
+<tr>
+<th>4. Clinical</th>
+<th>Surgeon/Doctor</th>
+<th>Intervention</th>
+<th>Operating Room</th>
+<th>Life Preservation</th>
+<th>Surgical Care</th>
+<th>Medical Degree</th>
+<th>Stabilized Body</th>
+<th>0.70 W</th>
+<th>$3.80</th>
+<th>0.39</th>
+</tr>
+<tr>
+<th>5. Rehab</th>
+<th>Physiotherapist</th>
+<th>Mobility Restoration</th>
+<th>Rehab Gym</th>
+<th>Functional Range</th>
+<th>Physical Therapy</th>
+<th>Equipment Dep.</th>
+<th>Restored Movement</th>
+<th>0.40 W</th>
+<th>$2.00</th>
+<th>0.36</th>
+</tr>
+<tr>
+<th>6. Prevention</th>
+<th>Hygienist</th>
+<th>Prophylaxis</th>
+<th>Community Clinic</th>
+<th>Immune Defense</th>
+<th>Vaccine / Clean</th>
+<th>Public Health</th>
+<th>Disease Avoid.</th>
+<th>0.35 W</th>
+<th>$1.80</th>
+<th>0.37</th>
+</tr>
+<tr>
+<th>7. Palliative</th>
+<th>Palliative Carer</th>
+<th>Human Dignity</th>
+<th>Home Care</th>
+<th>Pain Relief</th>
+<th>Comfort Support</th>
+<th>Empathy Labor</th>
+<th>Dignified Life</th>
+<th>0.60 W</th>
+<th>$3.20</th>
+<th>0.38</th>
+</tr>
+<tr>
+<th>8. Insur. Toll</th>
+<th>HMO Executive</th>
+<th>Denial Protocol</th>
+<th>Corporate Desk</th>
+<th>Private Margin</th>
+<th>Automated Denial</th>
+<th>Paperwork Gate</th>
+<th>Debt Distress</th>
+<th>0.10 W</th>
+<th>$29.00</th>
+<th>20.62</th>
+</tr>
+<tr>
+<th>TOTAL</th>
+<th>Care Guild</th>
+<th>Human Life</th>
+<th>Sanctuary</th>
+<th>Preservation</th>
+<th>Clinical Art</th>
+<th>Sunk Training</th>
+<th>Wellbeing</th>
+<th>3.20 W</th>
+<th>$45.00</th>
+<th>1.00</th>
+</tr>
+</table></div>
+<h3 class="doc-h3">5.6 The Multi-Commodity Leontief-Value Tensor (Ψ_mesh)</h3>
+<p class="doc-p">Coupling all 5 basic subsistence sectors via the input-output technical coefficients matrix A:</p>
+<p class="doc-p">$$A = \begin{pmatrix} 0.000 &amp; 0.001 &amp; 0.002 &amp; 0.500 &amp; 0.100 \\ 0.050 &amp; 0.000 &amp; 0.450 &amp; 15.000 &amp; 1.200 \\ 0.002 &amp; 0.001 &amp; 0.000 &amp; 0.800 &amp; 0.050 \\ 0.001 &amp; 0.0005 &amp; 0.0005 &amp; 0.000 &amp; 0.020 \\ 0.002 &amp; 0.001 &amp; 0.001 &amp; 0.050 &amp; 0.000 \end{pmatrix}$$</p>
+<p class="doc-p">The Leontief inverse (I - A)^-1 resolves total direct and indirect exergy requirements:</p>
+<p class="doc-p">$$(I - A)^{-1} = \begin{pmatrix} 1.0008 &amp; 0.0014 &amp; 0.0030 &amp; 0.5292 &amp; 0.1125 \\ 0.0702 &amp; 1.0099 &amp; 0.4640 &amp; 15.6326 &amp; 1.5548 \\ 0.0030 &amp; 0.0015 &amp; 1.0012 &amp; 0.8282 &amp; 0.0687 \\ 0.0011 &amp; 0.0005 &amp; 0.0008 &amp; 1.0101 &amp; 0.0210 \\ 0.0021 &amp; 0.0010 &amp; 0.0015 &amp; 0.0680 &amp; 1.0029 \end{pmatrix}$$</p>
+<p class="doc-p">Total embodied difficulty d_integrated = d_direct · (I - A)^-1:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Food (1 Loaf): </strong>Direct 0.5474 W → Integrated 0.5650 W (+3.2% indirect energy/logistics).</li>
+<li class="doc-li"><strong>Energy (1 kWh): </strong>Direct 0.1025 W → Integrated 0.1092 W (+6.5% indirect infrastructure maintenance).</li>
+<li class="doc-li"><strong>Water (1 kL): </strong>Direct 0.1400 W → Integrated 0.1961 W (+40.1% indirect electric pumping exergy).</li>
+<li class="doc-li"><strong>Shelter (1 Wk): </strong>Direct 5.4000 W → Integrated 7.5816 W (+40.4% indirect embodied industrial materials).</li>
+<li class="doc-li"><strong>Care (1 Unit): </strong>Direct 1.7500 W → Integrated 2.0989 W (+19.9% indirect facilities heating/electricity).</li>
+</ul>
+<h3 class="doc-h3">5.7 Macroeconomic Cost-Push Interest Rate Transmission</h3>
+<p class="doc-p">Grounding Value Physics in empirical monetary economics (Ravenna &amp; Walsh 2006, Barth &amp; Ramey 2001, Stone-Geary 1954):</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>1. Working Capital Cost Channel: </strong>Production of physical staples requires advance financing for inputs (fertilizer, diesel, seed, water). Rate hikes increase P_Q6 working capital interest charges before output reaches market.</li>
+<li class="doc-li"><strong>2. Subsistence Inelasticity &amp; Coercion: </strong>Under Stone-Geary subsistence thresholds, demand elasticity collapses (ε → 0 as v_rel → 1.0), forcing households to absorb cost-push price hikes on non-discretionary staples.</li>
+<li class="doc-li"><strong>3. Distortion Widening: </strong>Monetary tightening widens the Distortion Quotient gap, crushing upstream producers (DQ → 0.10) while inflating retail supermarket prices (DQ → 10.66+).</li>
+</ul>
+<h2 class="doc-h2">6. Tri-Fold Ledger Architecture &amp; Macroeconomic Governance</h2>
+<h3 class="doc-h3">6.1 The Tri-Fold Ledger</h3>
+<p class="doc-p">Macroeconomic stability requires a three-tier balance sheet architecture:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>1. Book 1 (Private Credit Ledger): </strong>Commercial bank endogenous money creation (Σ Δ Assets - Σ Δ Liabilities ≡ 0).</li>
+<li class="doc-li"><strong>2. Book 2 (Public Sovereign Ledger): </strong>State currency emission; sovereign deficits mirror non-government financial surpluses.</li>
+<li class="doc-li"><strong>3. Book 3 (Thermodynamic Reality Ledger): </strong>Absolute physical ledger tracking human life-seconds (Pb), thermodynamic exergy destruction (Pe), and ecological carrying capacity (Rn).</li>
+</ul>
+<h3 class="doc-h3">6.2 Theorem 6.1 (Statutory Debt Bifurcation)</h3>
+<p class="doc-p"><strong>Theorem 6.1 (Statutory Debt Bifurcation): </strong>To prevent monetary inflation from inducing physical ecological collapse, financial debt contracts on Book 1 must be statutorily bifurcated from the physical carrying capacity recorded on Book 3. Nominal compound interest cannot be legally enforced on non-reproducible thermodynamic resources (Rn).</p>
+<h3 class="doc-h3">6.3 The Price Invariant Theorem &amp; &quot;The Cover&quot;</h3>
+<p class="doc-p"><strong>Theorem 6.2 (The Price Invariant Theorem): </strong>Any political or institutional policy that suppresses the nominal market price (Pm → 0) without reducing thermodynamic exergy dissipation (Pe) or metabolic difficulty (Pb) generates systemic <strong>Reality Debt (Δ R)</strong>:</p>
+<p class="doc-p">$$Δ R = \int_0^T (P_e + P_b - P_m) \, dt$$</p>
+<p class="doc-p">This debt accumulates invisibly in the physical substrate. When &quot;The Cover&quot; fails (subsidies deplete, infrastructure breaks, or workers strike), the price snaps back violently to the true thermodynamic baseline, triggering supply chain collapse.</p>
+<h3 class="doc-h3">6.4 Proof-of-Difficulty (PoD) Cryptographic Ledger</h3>
+<p class="doc-p">The Book 3 Reality Ledger utilizes <strong>Proof-of-Difficulty (PoD)</strong> cryptographic telemetry: sensor-verified work logs (GPS tractor hours, kilowatt-meter hashes, biometric MET trackers) are hashed into tamper-evident Merkle DAGs, establishing unforgeable records of physical exergy expenditure.</p>
+<h2 class="doc-h2">7. Comprehensive Comparative Literature Review</h2>
+<h3 class="doc-h3">7.1 Economic Paradigm Comparison Matrix</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Economic Paradigm</th>
+<th>Value Foundation</th>
+<th>Price Determination</th>
+<th>Treatment of Entropy &amp; Exergy</th>
+<th>Treatment of Coercive Power</th>
+</tr>
+<tr>
+<th>Neoclassical (Walras / Arrow-Debreu)</th>
+<th>Subjective marginal utility</th>
+<th>Walrasian auctioneer market clearing</th>
+<th>Ignored; production functions are reversible</th>
+<th>Symmetrical; zero coercive urgency ($v_{\text{rel}} \equiv 0$)</th>
+</tr>
+<tr>
+<th>Classical / Sraffian (Sraffa 1960)</th>
+<th>Sunk labor &amp; physical inputs</th>
+<th>Input-output reproduction matrix</th>
+<th>Physical inputs modeled; exergy unformalized</th>
+<th>Class bargaining over surplus profit/wage</th>
+</tr>
+<tr>
+<th>Bioeconomics (Georgescu-Roegen 1971)</th>
+<th>Low-entropy matter-energy</th>
+<th>Thermodynamic degradation limits</th>
+<th>Core foundation; entropy law governs activity</th>
+<th>Ecological constraints on throughput</th>
+</tr>
+<tr>
+<th>Post-Keynesian SFC (Godley &amp; Lavoie 2007)</th>
+<th>Stock-flow accounting balance</th>
+<th>Cost-plus pricing on working capital</th>
+<th>Financial flows balanced; physical exergy omitted</th>
+<th>Institutional power &amp; credit rationing</th>
+</tr>
+<tr>
+<th>Value Physics (IRM Formal Paper 6)</th>
+<th>WEST Difficulty Tokens &amp; Exergy</th>
+<th>Universal Price Tensor $P(x, t, c)$</th>
+<th>Fully Integrated ($P_e = T_0 S_{\text{gen}}$)</th>
+<th>Lorentz Coercion Factor $\gamma(v_{\text{rel}})$ &amp; $DQ$</th>
+</tr>
+</table></div>
+<h2 class="doc-h2">8. Companion Software Architecture &amp; Lean 4 Formal Blueprint Linkages</h2>
+<h3 class="doc-h3">8.1 Reference Software Implementations</h3>
+<p class="doc-p">The mathematical algorithms of Value Physics, the UPE evaluation CLI, and the 5-sector Leontief input-output mesh are implemented in open-source Python software available in Google Drive:</p>
+<ul class="doc-ul">
+<li class="doc-li">irm_engine.py: Reference simulation engine containing Module 6 (Value Physics, UPE Tensor CLI evaluate-upe, and WEST token calculations).</li>
+<li class="doc-li">base_systems.py: Multi-scale coordinate representations.</li>
+<li class="doc-li">regularization.py: Numerical regularizers for non-linear economic attractors.</li>
+<li class="doc-li">orthodox_bridge.py: Verification suite validating Sraffa-Leontief matrix conversions.</li>
+</ul>
+<h3 class="doc-h3">8.2 Lean 4 Formal Verification Specifications</h3>
+<p class="doc-p">The formal verification blueprint is documented in the Lean 4 Mechanized Proof Blueprint. Below are standalone Lean 4 type definitions for Mathlib4 integration:</p>
+<p class="doc-p">import Mathlib.Analysis.Calculus.FDeriv.Basic</p>
+<p class="doc-p">import Mathlib.Data.Real.Basic</p>
+<p class="doc-p">import Mathlib.Data.Matrix.Basic</p>
+<p class="doc-p">-- 1. Definition of the 7-Plane Price Vector</p>
+<p class="doc-p">inductive PricePlane</p>
+<p class="doc-p">| Q1_Identity</p>
+<p class="doc-p">| Q2_Opportunity</p>
+<p class="doc-p">| Q3_Logistics</p>
+<p class="doc-p">| Q4_Prestige</p>
+<p class="doc-p">| Q5_Operations</p>
+<p class="doc-p">| Q6_HistoricalDebt</p>
+<p class="doc-p">| Q7_EcologicalTrauma</p>
+<p class="doc-p">deriving DecidableEq, Repr</p>
+<p class="doc-p">-- 2. Difficulty Vector Structure</p>
+<p class="doc-p">structure DifficultyVector where</p>
+<p class="doc-p">skill_training : ℝ</p>
+<p class="doc-p">physical_exertion : ℝ</p>
+<p class="doc-p">danger_index : ℝ</p>
+<p class="doc-p">cognitive_density : ℝ</p>
+<p class="doc-p">h_skill : skill_training ≥ 1.0</p>
+<p class="doc-p">h_exert : physical_exertion ≥ 1.0</p>
+<p class="doc-p">h_danger : danger_index ≥ 0.0</p>
+<p class="doc-p">h_cogn : cognitive_density ≥ 0.0</p>
+<p class="doc-p">def instantaneous_difficulty (d : DifficultyVector) : ℝ :=</p>
+<p class="doc-p">d.skill_training * d.physical_exertion * (1 + d.danger_index) * (1 + d.cognitive_density)</p>
+<p class="doc-p">-- 3. The Relativistic Lorentz Coercion Factor</p>
+<p class="doc-p">def lorentz_coercion (v_rel : ℝ) (h : v_rel ∈ Set.Ico 0.0 1.0) : ℝ :=</p>
+<p class="doc-p">1 / Real.sqrt (1 - v_rel ^ 2)</p>
+<p class="doc-p">-- 4. Universal Price Equation (UPE) Specification</p>
+<p class="doc-p">structure RealityParameters where</p>
+<p class="doc-p">spatial_friction : ℝ</p>
+<p class="doc-p">urgency : ℝ</p>
+<p class="doc-p">natural_abundance : ℝ</p>
+<p class="doc-p">artificial_scarcity : ℝ</p>
+<p class="doc-p">h_abundance : natural_abundance &gt; 0.0</p>
+<p class="doc-p">h_scarcity : artificial_scarcity ∈ Set.Ico 0.0 1.0</p>
+<p class="doc-p">def evaluate_upe (m1 m2 : ℝ) (p : RealityParameters) (v_rel : ℝ)</p>
+<p class="doc-p">(hv : v_rel ∈ Set.Ico 0.0 1.0) (Pe Pb : ℝ) : ℝ :=</p>
+<p class="doc-p">let reality_tensor := (p.spatial_friction * p.urgency) / (p.natural_abundance * (1 - p.artificial_scarcity))</p>
+<p class="doc-p">m1 * m2 * (lorentz_coercion v_rel hv) * reality_tensor + Pe + Pb</p>
+<p class="doc-p">-- 5. Distortion Quotient Definition</p>
+<p class="doc-p">def distortion_quotient (pct_price pct_difficulty : ℝ) (h : pct_difficulty &gt; 0) : ℝ :=</p>
+<p class="doc-p">pct_price / pct_difficulty</p>
+<p class="doc-p"></p>
+<h2 class="doc-h2">9. Comprehensive Academic Bibliography &amp; BibTeX Citations</h2>
+<p class="doc-p">@book{sraffa1960production,</p>
+<p class="doc-p">author = {Sraffa, Piero},</p>
+<p class="doc-p">title = {Production of Commodities by Means of Commodities: Prelude to a Critique of Economic Theory},</p>
+<p class="doc-p">publisher = {Cambridge University Press},</p>
+<p class="doc-p">address = {Cambridge},</p>
+<p class="doc-p">year = {1960}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{georgescu1971entropy,</p>
+<p class="doc-p">author = {Georgescu-Roegen, Nicholas},</p>
+<p class="doc-p">title = {The Entropy Law and the Economic Process},</p>
+<p class="doc-p">publisher = {Harvard University Press},</p>
+<p class="doc-p">address = {Cambridge, MA},</p>
+<p class="doc-p">year = {1971}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{godley2007monetary,</p>
+<p class="doc-p">author = {Godley, Wynne and Lavoie, Marc},</p>
+<p class="doc-p">title = {Monetary Economics: An Integrated Approach to Credit, Money, Income, Production and Wealth},</p>
+<p class="doc-p">publisher = {Palgrave Macmillan},</p>
+<p class="doc-p">address = {New York},</p>
+<p class="doc-p">year = {2007}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{arrow1954existence,</p>
+<p class="doc-p">author = {Arrow, Kenneth J. and Debreu, Gerard},</p>
+<p class="doc-p">title = {Existence of an equilibrium for a competitive economy},</p>
+<p class="doc-p">journal = {Econometrica},</p>
+<p class="doc-p">volume = {22},</p>
+<p class="doc-p">number = {3},</p>
+<p class="doc-p">pages = {265--290},</p>
+<p class="doc-p">year = {1954}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{leontief1986input,</p>
+<p class="doc-p">author = {Leontief, Wassily},</p>
+<p class="doc-p">title = {Input-Output Economics},</p>
+<p class="doc-p">publisher = {Oxford University Press},</p>
+<p class="doc-p">address = {New York},</p>
+<p class="doc-p">year = {1986}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{ravenna2006financial,</p>
+<p class="doc-p">author = {Ravenna, Federico and Walsh, Carl E.},</p>
+<p class="doc-p">title = {Optimal monetary policy with the cost channel},</p>
+<p class="doc-p">journal = {Journal of Monetary Economics},</p>
+<p class="doc-p">volume = {53},</p>
+<p class="doc-p">number = {2},</p>
+<p class="doc-p">pages = {199--216},</p>
+<p class="doc-p">year = {2006}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{barth2001cost,</p>
+<p class="doc-p">author = {Barth, Marvin J. and Ramey, Valerie A.},</p>
+<p class="doc-p">title = {The cost channel of monetary transmission},</p>
+<p class="doc-p">journal = {NBER Macroeconomics Annual},</p>
+<p class="doc-p">volume = {16},</p>
+<p class="doc-p">pages = {199--240},</p>
+<p class="doc-p">year = {2001}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{stone1954linear,</p>
+<p class="doc-p">author = {Stone, Richard},</p>
+<p class="doc-p">title = {Linear expenditure systems and demand analysis: An application to the pattern of British demand},</p>
+<p class="doc-p">journal = {The Economic Journal},</p>
+<p class="doc-p">volume = {64},</p>
+<p class="doc-p">number = {255},</p>
+<p class="doc-p">pages = {511--527},</p>
+<p class="doc-p">year = {1954}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{landauer1961dissipation,</p>
+<p class="doc-p">author = {Landauer, Rolf},</p>
+<p class="doc-p">title = {Irreversibility and heat generation in the computing process},</p>
+<p class="doc-p">journal = {IBM Journal of Research and Development},</p>
+<p class="doc-p">volume = {5},</p>
+<p class="doc-p">number = {3},</p>
+<p class="doc-p">pages = {183--191},</p>
+<p class="doc-p">year = {1961}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{yakovenko2009colloquium,</p>
+<p class="doc-p">author = {Yakovenko, Victor M. and Rosser, J. Barkley},</p>
+<p class="doc-p">title = {Colloquium: Statistical mechanics of money, wealth, and income},</p>
+<p class="doc-p">journal = {Reviews of Modern Physics},</p>
+<p class="doc-p">volume = {81},</p>
+<p class="doc-p">number = {4},</p>
+<p class="doc-p">pages = {1703--1725},</p>
+<p class="doc-p">year = {2009}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@misc{hamilton2026upe,</p>
+<p class="doc-p">author = {Hamilton, Jarrod Lyndsay},</p>
+<p class="doc-p">title = {Formal Paper 6: Value Physics and The Universal Price Tensor},</p>
+<p class="doc-p">institution = {Alethekanon Research Institute},</p>
+<p class="doc-p">address = {Regional NSW, NSW, Australia},</p>
+<p class="doc-p">year = {2026}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@misc{hamilton2026bread,</p>
+<p class="doc-p">author = {Hamilton, Jarrod Lyndsay},</p>
+<p class="doc-p">title = {The Economics and Value Physics of Bread: Canonical Invariant Modeling of the 8-Stage Reference Standard},</p>
+<p class="doc-p">institution = {Alethekanon Research Institute},</p>
+<p class="doc-p">address = {Regional NSW, NSW, Australia},</p>
+<p class="doc-p">year = {2026}</p>
+<p class="doc-p">}</p>
+<p class="doc-p"></p>
+<h2 class="doc-h2">7. Comprehensive Comparative Literature Review</h2>
+<h3 class="doc-h3">7.1 Economic Paradigm Comparison Matrix</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Economic Paradigm</th>
+<th>Value Foundation</th>
+<th>Price Determination</th>
+<th>Treatment of Entropy &amp; Exergy</th>
+<th>Treatment of Coercive Power</th>
+</tr>
+<tr>
+<th>Neoclassical (Walras / Arrow-Debreu)</th>
+<th>Subjective marginal utility</th>
+<th>Walrasian auctioneer market clearing</th>
+<th>Ignored; production functions are reversible</th>
+<th>Symmetrical; zero coercive urgency (v_rel ≡ 0)</th>
+</tr>
+<tr>
+<th>Classical / Sraffian (Sraffa 1960)</th>
+<th>Sunk labor &amp; physical inputs</th>
+<th>Input-output reproduction matrix</th>
+<th>Physical inputs modeled; exergy unformalized</th>
+<th>Class bargaining over surplus profit/wage</th>
+</tr>
+<tr>
+<th>Bioeconomics (Georgescu-Roegen 1971)</th>
+<th>Low-entropy matter-energy</th>
+<th>Thermodynamic degradation limits</th>
+<th>Core foundation; entropy law governs activity</th>
+<th>Ecological constraints on throughput</th>
+</tr>
+<tr>
+<th>Post-Keynesian SFC (Godley &amp; Lavoie 2007)</th>
+<th>Stock-flow accounting balance</th>
+<th>Cost-plus pricing on working capital</th>
+<th>Financial flows balanced; physical exergy omitted</th>
+<th>Institutional power &amp; credit rationing</th>
+</tr>
+<tr>
+<th>Value Physics (IRM Formal Paper 6)</th>
+<th>WEST Difficulty Tokens &amp; Exergy</th>
+<th>Universal Price Tensor P(x, t, c)</th>
+<th>Fully Integrated (Pe = T0 S_gen)</th>
+<th>Lorentz Coercion Factor γ(v_rel) &amp; DQ</th>
+</tr>
+</table></div>
+<h2 class="doc-h2">8. Companion Software Architecture &amp; Lean 4 Formal Blueprint Linkages</h2>
+<h3 class="doc-h3">8.1 Reference Software Implementations</h3>
+<p class="doc-p">The mathematical algorithms of Value Physics, the UPE evaluation CLI, and the 5-sector Leontief input-output mesh are implemented in open-source Python software available in Google Drive:</p>
+<ul class="doc-ul">
+<li class="doc-li">irm_engine.py: Reference simulation engine containing Module 6 (Value Physics, UPE Tensor CLI evaluate-upe, and WEST token calculations).</li>
+<li class="doc-li">base_systems.py: Multi-scale coordinate representations.</li>
+<li class="doc-li">regularization.py: Numerical regularizers for non-linear economic attractors.</li>
+<li class="doc-li">orthodox_bridge.py: Verification suite validating Sraffa-Leontief matrix conversions.</li>
+</ul>
+<h3 class="doc-h3">8.2 Lean 4 Formal Verification Specifications</h3>
+<p class="doc-p">The formal verification blueprint is documented in the Lean 4 Mechanized Proof Blueprint. Below are standalone Lean 4 type definitions for Mathlib4 integration:</p>
+<p class="doc-p">import Mathlib.Analysis.Calculus.FDeriv.Basic</p>
+<p class="doc-p">import Mathlib.Data.Real.Basic</p>
+<p class="doc-p">import Mathlib.Data.Matrix.Basic</p>
+<p class="doc-p">-- 1. Definition of the 7-Plane Price Vector</p>
+<p class="doc-p">inductive PricePlane</p>
+<p class="doc-p">| Q1_Identity</p>
+<p class="doc-p">| Q2_Opportunity</p>
+<p class="doc-p">| Q3_Logistics</p>
+<p class="doc-p">| Q4_Prestige</p>
+<p class="doc-p">| Q5_Operations</p>
+<p class="doc-p">| Q6_HistoricalDebt</p>
+<p class="doc-p">| Q7_EcologicalTrauma</p>
+<p class="doc-p">deriving DecidableEq, Repr</p>
+<p class="doc-p">-- 2. Difficulty Vector Structure</p>
+<p class="doc-p">structure DifficultyVector where</p>
+<p class="doc-p">skill_training : ℝ</p>
+<p class="doc-p">physical_exertion : ℝ</p>
+<p class="doc-p">danger_index : ℝ</p>
+<p class="doc-p">cognitive_density : ℝ</p>
+<p class="doc-p">h_skill : skill_training ≥ 1.0</p>
+<p class="doc-p">h_exert : physical_exertion ≥ 1.0</p>
+<p class="doc-p">h_danger : danger_index ≥ 0.0</p>
+<p class="doc-p">h_cogn : cognitive_density ≥ 0.0</p>
+<p class="doc-p">def instantaneous_difficulty (d : DifficultyVector) : ℝ :=</p>
+<p class="doc-p">d.skill_training * d.physical_exertion * (1 + d.danger_index) * (1 + d.cognitive_density)</p>
+<p class="doc-p">-- 3. The Relativistic Lorentz Coercion Factor</p>
+<p class="doc-p">def lorentz_coercion (v_rel : ℝ) (h : v_rel ∈ Set.Ico 0.0 1.0) : ℝ :=</p>
+<p class="doc-p">1 / Real.sqrt (1 - v_rel ^ 2)</p>
+<p class="doc-p">-- 4. Universal Price Equation (UPE) Specification</p>
+<p class="doc-p">structure RealityParameters where</p>
+<p class="doc-p">spatial_friction : ℝ</p>
+<p class="doc-p">urgency : ℝ</p>
+<p class="doc-p">natural_abundance : ℝ</p>
+<p class="doc-p">artificial_scarcity : ℝ</p>
+<p class="doc-p">h_abundance : natural_abundance &gt; 0.0</p>
+<p class="doc-p">h_scarcity : artificial_scarcity ∈ Set.Ico 0.0 1.0</p>
+<p class="doc-p">def evaluate_upe (m1 m2 : ℝ) (p : RealityParameters) (v_rel : ℝ)</p>
+<p class="doc-p">(hv : v_rel ∈ Set.Ico 0.0 1.0) (Pe Pb : ℝ) : ℝ :=</p>
+<p class="doc-p">let reality_tensor := (p.spatial_friction * p.urgency) / (p.natural_abundance * (1 - p.artificial_scarcity))</p>
+<p class="doc-p">m1 * m2 * (lorentz_coercion v_rel hv) * reality_tensor + Pe + Pb</p>
+<p class="doc-p">-- 5. Distortion Quotient Definition</p>
+<p class="doc-p">def distortion_quotient (pct_price pct_difficulty : ℝ) (h : pct_difficulty &gt; 0) : ℝ :=</p>
+<p class="doc-p">pct_price / pct_difficulty</p>
+<p class="doc-p"></p>
+<h2 class="doc-h2">9. Comprehensive Academic Bibliography &amp; BibTeX Citations</h2>
+<p class="doc-p">@book{sraffa1960production,</p>
+<p class="doc-p">author = {Sraffa, Piero},</p>
+<p class="doc-p">title = {Production of Commodities by Means of Commodities: Prelude to a Critique of Economic Theory},</p>
+<p class="doc-p">publisher = {Cambridge University Press},</p>
+<p class="doc-p">address = {Cambridge},</p>
+<p class="doc-p">year = {1960}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{georgescu1971entropy,</p>
+<p class="doc-p">author = {Georgescu-Roegen, Nicholas},</p>
+<p class="doc-p">title = {The Entropy Law and the Economic Process},</p>
+<p class="doc-p">publisher = {Harvard University Press},</p>
+<p class="doc-p">address = {Cambridge, MA},</p>
+<p class="doc-p">year = {1971}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{godley2007monetary,</p>
+<p class="doc-p">author = {Godley, Wynne and Lavoie, Marc},</p>
+<p class="doc-p">title = {Monetary Economics: An Integrated Approach to Credit, Money, Income, Production and Wealth},</p>
+<p class="doc-p">publisher = {Palgrave Macmillan},</p>
+<p class="doc-p">address = {New York},</p>
+<p class="doc-p">year = {2007}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{arrow1954existence,</p>
+<p class="doc-p">author = {Arrow, Kenneth J. and Debreu, Gerard},</p>
+<p class="doc-p">title = {Existence of an equilibrium for a competitive economy},</p>
+<p class="doc-p">journal = {Econometrica},</p>
+<p class="doc-p">volume = {22},</p>
+<p class="doc-p">number = {3},</p>
+<p class="doc-p">pages = {265--290},</p>
+<p class="doc-p">year = {1954}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@book{leontief1986input,</p>
+<p class="doc-p">author = {Leontief, Wassily},</p>
+<p class="doc-p">title = {Input-Output Economics},</p>
+<p class="doc-p">publisher = {Oxford University Press},</p>
+<p class="doc-p">address = {New York},</p>
+<p class="doc-p">year = {1986}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{ravenna2006financial,</p>
+<p class="doc-p">author = {Ravenna, Federico and Walsh, Carl E.},</p>
+<p class="doc-p">title = {Optimal monetary policy with the cost channel},</p>
+<p class="doc-p">journal = {Journal of Monetary Economics},</p>
+<p class="doc-p">volume = {53},</p>
+<p class="doc-p">number = {2},</p>
+<p class="doc-p">pages = {199--216},</p>
+<p class="doc-p">year = {2006}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{barth2001cost,</p>
+<p class="doc-p">author = {Barth, Marvin J. and Ramey, Valerie A.},</p>
+<p class="doc-p">title = {The cost channel of monetary transmission},</p>
+<p class="doc-p">journal = {NBER Macroeconomics Annual},</p>
+<p class="doc-p">volume = {16},</p>
+<p class="doc-p">pages = {199--240},</p>
+<p class="doc-p">year = {2001}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{stone1954linear,</p>
+<p class="doc-p">author = {Stone, Richard},</p>
+<p class="doc-p">title = {Linear expenditure systems and demand analysis: An application to the pattern of British demand},</p>
+<p class="doc-p">journal = {The Economic Journal},</p>
+<p class="doc-p">volume = {64},</p>
+<p class="doc-p">number = {255},</p>
+<p class="doc-p">pages = {511--527},</p>
+<p class="doc-p">year = {1954}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{landauer1961dissipation,</p>
+<p class="doc-p">author = {Landauer, Rolf},</p>
+<p class="doc-p">title = {Irreversibility and heat generation in the computing process},</p>
+<p class="doc-p">journal = {IBM Journal of Research and Development},</p>
+<p class="doc-p">volume = {5},</p>
+<p class="doc-p">number = {3},</p>
+<p class="doc-p">pages = {183--191},</p>
+<p class="doc-p">year = {1961}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@article{yakovenko2009colloquium,</p>
+<p class="doc-p">author = {Yakovenko, Victor M. and Rosser, J. Barkley},</p>
+<p class="doc-p">title = {Colloquium: Statistical mechanics of money, wealth, and income},</p>
+<p class="doc-p">journal = {Reviews of Modern Physics},</p>
+<p class="doc-p">volume = {81},</p>
+<p class="doc-p">number = {4},</p>
+<p class="doc-p">pages = {1703--1725},</p>
+<p class="doc-p">year = {2009}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@misc{hamilton2026upe,</p>
+<p class="doc-p">author = {Hamilton, Jarrod Lyndsay},</p>
+<p class="doc-p">title = {Formal Paper 6: Value Physics and The Universal Price Tensor},</p>
+<p class="doc-p">institution = {Alethekanon Research Institute},</p>
+<p class="doc-p">address = {Regional NSW, NSW, Australia},</p>
+<p class="doc-p">year = {2026}</p>
+<p class="doc-p">}</p>
+<p class="doc-p">@misc{hamilton2026bread,</p>
+<p class="doc-p">author = {Hamilton, Jarrod Lyndsay},</p>
+<p class="doc-p">title = {The Economics and Value Physics of Bread: Canonical Invariant Modeling of the 8-Stage Reference Standard},</p>
+<p class="doc-p">institution = {Alethekanon Research Institute},</p>
+<p class="doc-p">address = {Regional NSW, NSW, Australia},</p>
+<p class="doc-p">year = {2026}</p>
+<p class="doc-p">}</p>
+<p class="doc-p"></p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+        
+<a href="VPE-02.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-02: Technical Whitepaper: The Tri-Fold Cryptographic Ledger</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

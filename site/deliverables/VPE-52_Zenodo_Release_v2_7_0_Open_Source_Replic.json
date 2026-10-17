@@ -1,0 +1,130 @@
+{
+  "metadata": {
+    "title": "Value Physics: Thermodynamic Exergy, Metabolic Labor, and Non-Linear State-Space Dynamics (Release v2.7.0 Computational Replication Package)",
+    "upload_type": "software",
+    "description": "Comprehensive computational replication package, simulation engines, high-resolution phase figures, and LaTeX manuscript sources for Value Physics — Division 2: Societal Economics & Macro-Micro Simulation. Accompanies the dual flagship journal submission suite: 'The Physics of Economic Value' (Ecological Economics / ARI-VPE-JRNL-2026-01) and 'Thermodynamic Work-Antiwork State-Space Dynamics' (Journal of Economic Dynamics and Control / ARI-VPE-TH-2026-02). Includes 11 standalone Python simulation engines, 24 unit tests with 100% pass rate, Sraffa-Leontief 5-sector input-output matrices, Unscented Kalman Filter state-space decouplers, and 156-week Stock-Flow Consistent balance sheet models.",
+    "creators": [
+      {
+        "name": "Hamilton, Jarrod Lyndsay",
+        "affiliation": "Alethekanon Research Institute — Division 2: Societal Economics & Macro-Micro Simulation, Australia",
+        "role": "Lead Researcher & Project Director"
+      }
+    ],
+    "access_right": "open",
+    "license": "CC-BY-4.0",
+    "keywords": [
+      "Value Physics",
+      "Thermodynamic Economics",
+      "Work-Antiwork Dynamics",
+      "Universal Price Equation",
+      "State-Space Modeling",
+      "Unscented Kalman Filter",
+      "Sraffa-Leontief Input-Output",
+      "Stock-Flow Consistency",
+      "Gouy-Stodola Theorem",
+      "Bifurcation Analysis",
+      "Cambridge Capital Controversy",
+      "Ecological Economics"
+    ],
+    "communities": [
+      {
+        "identifier": "alethekanon-research-institute"
+      },
+      {
+        "identifier": "econophysics"
+      },
+      {
+        "identifier": "ecological-economics"
+      }
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "https://docs.google.com/document/d/1Fspsc-AjkvWMmfycQ5P19Jktt14k8hI7OrpDOR1CfmY/edit",
+        "relation": "isDocumentedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://docs.google.com/document/d/1JFiXoA78s_c4x_Mj-ae22ancn-NFzb2IPZ22F7fY3Bs/edit",
+        "relation": "isDocumentedBy",
+        "scheme": "url"
+      }
+    ],
+    "version": "v2.7.0",
+    "publication_date": "2026-09-29"
+  },
+  "replication_assets": {
+    "python_modules": [
+      {
+        "filename": "work_antiwork_dynamics.py",
+        "role": "Core state-space simulation engine, 4 canonical regimes, EKF and UKF decouplers",
+        "test_coverage": "24/24 unit tests passing"
+      },
+      {
+        "filename": "test_value_physics.py",
+        "role": "Automated verification suite executing in 0.061s across all 24 theorems and models"
+      },
+      {
+        "filename": "sfc_model.py",
+        "role": "156-week Stock-Flow Consistent dynamic simulation for 100-farm regional collective"
+      },
+      {
+        "filename": "finite_boundary_stress_test.py",
+        "role": "1,000-run Monte Carlo finite resource boundary exhaustion and ruin horizon solver"
+      },
+      {
+        "filename": "closed_loop_logistics.py",
+        "role": "Nodal tare exergy and empty vehicle deadheading conservation model"
+      },
+      {
+        "filename": "hvnl_fatigue_dispatch.py",
+        "role": "Heavy Vehicle National Law regulatory fatigue and staging swap optimizer"
+      },
+      {
+        "filename": "multi_commodity_dispatch.py",
+        "role": "Fleet capacity and link tonnage constraint dispatcher"
+      },
+      {
+        "filename": "spatial_trade_optimizer.py",
+        "role": "10-node regional trade optimizer and Kantorovich-Samuelson shadow pricing"
+      },
+      {
+        "filename": "multi_village_simulation.py",
+        "role": "Warrumbungle-Orana 10-node regional network simulation under compound drought"
+      },
+      {
+        "filename": "cohesive_village.py",
+        "role": "600-citizen village micro-economy across 7 guilds with Tri-Fold Ledger accounting"
+      },
+      {
+        "filename": "value_physics_engine.py",
+        "role": "Universal Price Equation 7-plane tensor and relativistic coercion kernel evaluator"
+      }
+    ],
+    "visual_assets": [
+      {
+        "filename": "phase_portrait.png",
+        "resolution": "300 DPI",
+        "description": "Potential-Activity (P, A) Diamond Phase Space vector field and separatrix boundary"
+      },
+      {
+        "filename": "bifurcation_diagram.png",
+        "resolution": "300 DPI",
+        "description": "Transcritical bifurcation diagram and critical leverage boundary L_crit"
+      }
+    ],
+    "submission_packages": [
+      {
+        "filename": "vpe21_latex_package.zip",
+        "target_journal": "Ecological Economics",
+        "manuscript_id": "ARI-VPE-JRNL-2026-01",
+        "status": "Zero-Error Verified (15 pages)"
+      },
+      {
+        "filename": "vpe49_latex_package.zip",
+        "target_journal": "Journal of Economic Dynamics and Control",
+        "manuscript_id": "ARI-VPE-TH-2026-02",
+        "status": "Zero-Error Verified (36 pages)"
+      }
+    ]
+  }
+}

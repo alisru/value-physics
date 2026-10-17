@@ -1,0 +1,862 @@
+[
+  {
+    "id": "VPE-01",
+    "title": "Formal Paper 6: Value Physics & The Universal Price Tensor",
+    "category": "Master Theoretical Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "UPE, 3-layer cost (Pe+Pb+Pm), P^7 vector, Lorentz coercion, 56-cell matrices (5 sectors), Leontief-Value tensor, Theorem 5. Author: Jarrod Lyndsay Hamilton, Alethekanon Research Institute, NSW, Australia.",
+    "status": "Remediated & Verified (Master Draft)",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-01_Formal_Paper_6_Value_Physics_The_Univers.docx",
+    "file_ext": "DOCX",
+    "file_size": "3.0 MB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation",
+      "3-layer biophysical cost breakdown (Pe + Pb + Pm)",
+      "56-cell multi-sector input-output supply chain matrix",
+      "Theorem 5 (Non-usurious debt bifurcation & mutual credit)"
+    ]
+  },
+  {
+    "id": "VPE-02",
+    "title": "Technical Whitepaper: The Tri-Fold Cryptographic Ledger",
+    "category": "Cryptographic Protocol Whitepaper",
+    "group": "Cryptographic Protocols",
+    "scope": "PoD consensus state machine, Book 1/2/3 accounting, 1,000-run Monte Carlo testing",
+    "status": "Complete / Validated",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-02_Technical_Whitepaper_The_Tri_Fold_Crypto.docx",
+    "file_ext": "DOCX",
+    "file_size": "11 KB",
+    "associated_data": [
+      "1,000-run Monte Carlo stress verification"
+    ]
+  },
+  {
+    "id": "VPE-03",
+    "title": "Econometric Paper: Stock-Flow Consistent Micro-Economy Modeling",
+    "category": "Econometric SFC Empirical Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "156-week SFC matrix for NSW broadacre farming, calibrated to ABARES/ABS/RBA/ACCC/AEMO",
+    "status": "Complete / Empirical Master",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-03_Econometric_Paper_Stock_Flow_Consistent_.docx",
+    "file_ext": "DOCX",
+    "file_size": "461 KB",
+    "associated_data": [
+      "156-week SFC matrix calibrated to ABARES/ABS/RBA/ACCC/AEMO"
+    ]
+  },
+  {
+    "id": "VPE-04",
+    "title": "Research Report: Multi-Commodity Cohesive Village Simulation",
+    "category": "Dynamic Multi-Sector Simulation",
+    "group": "Simulations & SFC Models",
+    "scope": "600-citizen village across 5 sectors under 3-year compound crises",
+    "status": "Complete / Modeled",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-04_Research_Report_Multi_Commodity_Cohesive.docx",
+    "file_ext": "DOCX",
+    "file_size": "314 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-05",
+    "title": "The Cardinal Value Matrix: WEST, EAST, BEST, WORST",
+    "category": "Foundational Conceptual Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "4-quadrant token geometry, Need/Want dynamics, Reciprocal Closure Law",
+    "status": "Foundational Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-05_The_Cardinal_Value_Matrix_WEST_EAST_BEST.docx",
+    "file_ext": "DOCX",
+    "file_size": "461 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-06",
+    "title": "The 7-Plane Token Spectrum Architecture",
+    "category": "Foundational Currency Architecture",
+    "group": "Theoretical Treatises",
+    "scope": "Multi-spectral currency vector, planar action profiles, Plane Misidentification Errors",
+    "status": "Foundational Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-06_The_7_Plane_Token_Spectrum_Architecture.docx",
+    "file_ext": "DOCX",
+    "file_size": "460 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-07",
+    "title": "The Grand Translation to Modern Economic Theory",
+    "category": "Cross-Disciplinary Theoretical Suite",
+    "group": "Governance & Management",
+    "scope": "Bridges to Neoclassical, Sraffian, Bioeconomic, Post-Keynesian SFC and Austrian schools",
+    "status": "Foundational Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-07_The_Grand_Translation_to_Modern_Economic.docx",
+    "file_ext": "DOCX",
+    "file_size": "18 KB",
+    "associated_data": [
+      "156-week SFC matrix calibrated to ABARES/ABS/RBA/ACCC/AEMO"
+    ]
+  },
+  {
+    "id": "VPE-08",
+    "title": "The Bread of Life: Isomorphic Information Treatise",
+    "category": "Isomorphic Process Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "8-stage bread lifecycle mapped to Information Theory, Actualism, TS_0 invariant",
+    "status": "Foundational Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-08_The_Bread_of_Life_Isomorphic_Information.docx",
+    "file_ext": "DOCX",
+    "file_size": "11 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-09",
+    "title": "Achilles-Setup-Check: Relational Spacetime & Coordinates",
+    "category": "Spacetime Foundations",
+    "group": "Theoretical Treatises",
+    "scope": "Zeno resolution, continuous worldlines, self-normalised traversal coordinates",
+    "status": "Foundational Theory",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-09_Achilles_Setup_Check_Relational_Spacetim.docx",
+    "file_ext": "DOCX",
+    "file_size": "1001 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-10",
+    "title": "Research Paper: The Economics and Value Physics of Bread",
+    "category": "Empirical Case Study",
+    "group": "Empirical Case Studies",
+    "scope": "Multi-tier price audit and 5-channel interest rate cost-push transmission",
+    "status": "Complete / Empirical Research",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-10_Research_Paper_The_Economics_and_Value_P.docx",
+    "file_ext": "DOCX",
+    "file_size": "25 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-11",
+    "title": "Research Treatise: Cohesive Village Simulation (7 Guilds)",
+    "category": "Meso-Scale Simulation Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "600-citizen village across 7 guilds, Tri-Fold Ledger, 104-week audit",
+    "status": "Complete / Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-11_Research_Treatise_Cohesive_Village_Simul.docx",
+    "file_ext": "DOCX",
+    "file_size": "462 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-12",
+    "title": "On the Irreducibility & Necessity of the 7 Interrogative Planes",
+    "category": "Foundational Preprint",
+    "group": "Theoretical Treatises",
+    "scope": "Zenodo preprint: 42D simplex minimal volume, TEF 126+n nodes, P vs NP collapse. OUTSIDE PRIMARY DIRECTORY.",
+    "status": "Preprint / Foundational",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-12_On_the_Irreducibility_Necessity_of_the_7.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.0 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-13",
+    "title": "Alethekanon Master Organizational Charter",
+    "category": "Institutional Governance",
+    "group": "Governance & Management",
+    "scope": "Institute charter, Division 1/2 hierarchy, multi-agent triad profiles. OUTSIDE PRIMARY DIRECTORY.",
+    "status": "Governance Charter",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-13_Alethekanon_Master_Organizational_Charte.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.0 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-14",
+    "title": "Executive Summary & Research Index",
+    "category": "Overview & Navigation",
+    "group": "Governance & Management",
+    "scope": "Summary of bread metrics, WEST tokens, cross-document navigation",
+    "status": "Index / Overview",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-14_Executive_Summary_Research_Index.docx",
+    "file_ext": "DOCX",
+    "file_size": "13 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-15",
+    "title": "Value Physics Master Excel Ledger",
+    "category": "Single Canonical Spreadsheet",
+    "group": "Governance & Management",
+    "scope": "Registry, change log, 56-cell verification record, audit tracker, roadmap",
+    "status": "Active Canonical Spreadsheet",
+    "notebooklm": "n/a (this workbook)",
+    "file_path": "deliverables/VPE-15_Value_Physics_Master_Excel_Ledger.xlsx",
+    "file_ext": "XLSX",
+    "file_size": "36 KB",
+    "associated_data": [
+      "56-cell multi-sector input-output supply chain matrix"
+    ]
+  },
+  {
+    "id": "VPE-16",
+    "title": "Orthodox Linker Treatise",
+    "category": "Cross-Disciplinary Linker",
+    "group": "Governance & Management",
+    "scope": "Mappings to Sraffian Standard Commodities, Godley-Lavoie SFC, Landauer limits. OUTSIDE PRIMARY DIRECTORY.",
+    "status": "Formalized & Published",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-16_Orthodox_Linker_Treatise.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.2 MB",
+    "associated_data": [
+      "156-week SFC matrix calibrated to ABARES/ABS/RBA/ACCC/AEMO"
+    ]
+  },
+  {
+    "id": "VPE-17",
+    "title": "PREF Companion Treatise: Value Physics & Macro Resolution",
+    "category": "Macroeconomic Operating System",
+    "group": "Theoretical Treatises",
+    "scope": "Macro architecture integrating UPE, Cardinal Tokens, P_H, Foundational Dividend. OUTSIDE PRIMARY DIRECTORY.",
+    "status": "Complete / Framework",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-17_PREF_Companion_Treatise_Value_Physics_Ma.docx",
+    "file_ext": "DOCX",
+    "file_size": "982 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation"
+    ]
+  },
+  {
+    "id": "VPE-18",
+    "title": "Statutory Model Charter & Sovereign Credit Union Bylaws",
+    "category": "Institutional Legal Framework",
+    "group": "Governance & Management",
+    "scope": "Model bylaws implementing Theorem 5 (0% usury) and the Tri-Fold Ledger (ARI-VPE-STAT-2026-01)",
+    "status": "Complete / Model Bylaws",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-18_Statutory_Model_Charter_Sovereign_Credit.docx",
+    "file_ext": "DOCX",
+    "file_size": "797 KB",
+    "associated_data": [
+      "Theorem 5 (Non-usurious debt bifurcation & mutual credit)",
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-19",
+    "title": "Executive Policy Brief: Agricultural Debt & Supermarket Margins",
+    "category": "Sovereign Policy Brief",
+    "group": "Empirical Case Studies",
+    "scope": "Submission for Parliamentary/ACCC inquiries on rate-hike cost-push inflation and duopoly caps (ARI-VPE-POL-2026-01)",
+    "status": "Complete / Policy Brief",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-19_Executive_Policy_Brief_Agricultural_Debt.docx",
+    "file_ext": "DOCX",
+    "file_size": "440 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-20",
+    "title": "Value Physics Explained: A Plain-English Beginner's Guide",
+    "category": "Educational & Public Resource",
+    "group": "Governance & Management",
+    "scope": "Plain-English translation of UPE, 3-layer cost, WEST tokens, DQ, Cohesive Village",
+    "status": "Complete / Educational Guide",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-20_Value_Physics_Explained_A_Plain_English_.docx",
+    "file_ext": "DOCX",
+    "file_size": "710 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation",
+      "3-layer biophysical cost breakdown (Pe + Pb + Pm)"
+    ]
+  },
+  {
+    "id": "VPE-21",
+    "title": "The Physics of Economic Value",
+    "category": "Journal Submission Manuscript",
+    "group": "Journal Manuscripts",
+    "scope": "Consolidate Unified Academic Journal Manuscript (40,745 characters, ~6,500 words, ~15 pages) with Appendices A & B, Section 2.6 Invertible State Equation, Section 2.7 Decoupled Identification Theorem, Section 2.8 Stochastic EKF Observer, Section 2.9 High-Order UKF Theorem 2.9, and complete Elsevier LaTeX package (manuscript_vpe21.tex [38.0 kB, 100% ASCII, pdflatex verified 15-page clean PDF with 0 errors], references_vpe21.bib, vpe21_latex_package.zip [16.7 kB]).",
+    "status": "Complete / Verified Zero-Error Compilation Pass (Unconditional Clearance)",
+    "notebooklm": "Synchronized (verified 2026-10-06)",
+    "file_path": "deliverables/VPE-21_The_Physics_of_Economic_Value.pdf",
+    "file_ext": "PDF",
+    "file_size": "426 KB",
+    "associated_data": [
+      "High-Order Unscented Kalman Filter (UKF) state observer (Theorem 2.9)",
+      "Publication-grade LaTeX source tree & camera-ready PDF proof"
+    ]
+  },
+  {
+    "id": "VPE-22",
+    "title": "Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Climate Resilience, and Inter-Sovereign Trade Tensor Clearing",
+    "category": "Regional Network Protocol",
+    "group": "Simulations & SFC Models",
+    "scope": "ARI-VPE-SIM-2026-02. 156wk, 10 Warrumbungle-Orana nodes; 6,500 citizens, 70 enterprises; 30wk drought (wks 40-70) at 50% yield loss; diesel $2.40/L; debt to $147.04M; +8.79M Rn; 42.0M WEST reserves",
+    "status": "Complete / Simulation Treatise",
+    "notebooklm": "Synchronized (unverified 2026-08-28)",
+    "file_path": "deliverables/VPE-22_Multi_Village_Regional_Network_Simulatio.docx",
+    "file_ext": "DOCX",
+    "file_size": "696 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-23",
+    "title": "Project Management Master Log",
+    "category": "Master PM Document",
+    "group": "Governance & Management",
+    "scope": "Repository architecture, corpus health audit, evidence standard, verification log, roadmap, open items register",
+    "status": "Active Master PM Document",
+    "notebooklm": "Synchronized (verified 2026-10-06)",
+    "file_path": "deliverables/VPE-23_Project_Management_Master_Log.docx",
+    "file_ext": "DOCX",
+    "file_size": "2.0 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-24",
+    "title": "Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing",
+    "category": "Regional Network Protocol",
+    "group": "Simulations & SFC Models",
+    "scope": "ARI-VPE-SIM-2026-01. 156wk, 10 named NSW shires; 6,000 citizens, 100 enterprises, 40,000 ha; 70wk drought at 85% yield collapse; diesel $2.25/L; debt $180.0M to $148.92M; 340 transfers, 3,708.2 t grain; bread invariant $1.15. NEWLY REGISTERED 2026-08-28.",
+    "status": "Complete / Simulation Treatise",
+    "notebooklm": "Not synchronized",
+    "file_path": "deliverables/VPE-24_Multi_Village_Regional_Network_Simulatio.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.1 MB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-25",
+    "title": "Research Report: Micro-Economy Agent-Based Simulation - Fair-Pricing Protocol vs. Extractive Duopoly Equilibrium",
+    "category": "Agent-Based Simulation",
+    "group": "Simulations & SFC Models",
+    "scope": "100-timestep 8-stage bread-chain ABM: 300bps rate hike, 100% fuel spike, 40% drought. Milestone M2.1 deliverable. NEWLY REGISTERED 2026-08-28.",
+    "status": "Complete / Modeled",
+    "notebooklm": "Not synchronized",
+    "file_path": "deliverables/VPE-25_Research_Report_Micro_Economy_Agent_Base.docx",
+    "file_ext": "DOCX",
+    "file_size": "14 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-26",
+    "title": "[ARCHIVED] Research Candidate: Formalization of the UPE & P^7 (draft A)",
+    "category": "Superseded Draft",
+    "group": "Governance & Management",
+    "scope": "Early UPE / 7-Plane Price Vector formalization. Consolidated into VPE-01 per LOG-VPE-013.",
+    "status": "Archived / Superseded by VPE-01",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-26_ARCHIVED_Research_Candidate_Formalizatio.docx",
+    "file_ext": "DOCX",
+    "file_size": "979 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation"
+    ]
+  },
+  {
+    "id": "VPE-27",
+    "title": "[ARCHIVED] Research Candidate: Formalization of the UPE & P^7 (draft B)",
+    "category": "Superseded Draft",
+    "group": "Governance & Management",
+    "scope": "Second candidate draft carrying an identical title to VPE-26. Consolidated into VPE-01.",
+    "status": "Archived / Superseded by VPE-01",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-27_ARCHIVED_Research_Candidate_Formalizatio.docx",
+    "file_ext": "DOCX",
+    "file_size": "580 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-28",
+    "title": "[ARCHIVED] UPE_additions.md",
+    "category": "Superseded Working Note",
+    "group": "Governance & Management",
+    "scope": "Exploratory additions note. Consolidated into VPE-01 per PM Master Log section 3.",
+    "status": "Archived / Superseded by VPE-01",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-28_ARCHIVED_UPE_additions_md.docx",
+    "file_ext": "DOCX",
+    "file_size": "554 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-29",
+    "title": "[ARCHIVED COPY] Value Physics Registry (Aug 24)",
+    "category": "Superseded Registry Snapshot",
+    "group": "Governance & Management",
+    "scope": "Point-in-time registry snapshot retained for provenance.",
+    "status": "Archived",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-29_ARCHIVED_COPY_Value_Physics_Registry_Aug.xlsx",
+    "file_ext": "XLSX",
+    "file_size": "39 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-30",
+    "title": "[ARCHIVED COPY] Value Physics Registry (Aug 24 v2)",
+    "category": "Superseded Registry Snapshot",
+    "group": "Governance & Management",
+    "scope": "Point-in-time registry snapshot retained for provenance.",
+    "status": "Archived",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-30_ARCHIVED_COPY_Value_Physics_Registry_Aug.xlsx",
+    "file_ext": "XLSX",
+    "file_size": "40 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-31",
+    "title": "[ARCHIVED COPY] Value Physics Master Excel Ledger (superseded 2026-08-28)",
+    "category": "Superseded Control Document",
+    "group": "Governance & Management",
+    "scope": "Prior ledger. 56-cell tab contradicted FP6 (4 electricity / 2 water stages); LOG-VPE-023 and AUD-VPE-009 missing; LOG-VPE-024 column shift; Leontief source column offset.",
+    "status": "Archived / Superseded by VPE-15",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-31_ARCHIVED_COPY_Value_Physics_Master_Excel.xlsx",
+    "file_ext": "XLSX",
+    "file_size": "41 KB",
+    "associated_data": [
+      "56-cell multi-sector input-output supply chain matrix"
+    ]
+  },
+  {
+    "id": "VPE-32",
+    "title": "[ARCHIVED COPY] Project Management Master Log (superseded 2026-08-28)",
+    "category": "Superseded Control Document",
+    "group": "Governance & Management",
+    "scope": "Prior PM log. Section 1.1 duplicated with copies disagreeing on entry 22; corrupted table fragment; numbering jumped 7 to 16.",
+    "status": "Archived / Superseded by VPE-23",
+    "notebooklm": "Excluded (archived)",
+    "file_path": "deliverables/VPE-32_ARCHIVED_COPY_Project_Management_Master_.docx",
+    "file_ext": "DOCX",
+    "file_size": "25 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-33",
+    "title": "Municipal Implementation Toolkit & Operational Handbook",
+    "category": "Legal, Policy & Governance",
+    "group": "Empirical Case Studies",
+    "scope": "",
+    "status": "Complete / Operational Manual",
+    "notebooklm": "",
+    "file_path": "deliverables/VPE-33_Municipal_Implementation_Toolkit_Operati.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.2 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-34",
+    "title": "Value Physics Engine (value_physics_engine.py)",
+    "category": "Executable Code Module",
+    "group": "Computational Engines & Code",
+    "scope": "",
+    "status": "Complete / Executable",
+    "notebooklm": "",
+    "file_path": "deliverables/VPE-34_Value_Physics_Engine_value_physics_engin.py",
+    "file_ext": "PY",
+    "file_size": "3 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-35",
+    "title": "SFC Broadacre Model (sfc_model.py)",
+    "category": "Econometric Simulation Script",
+    "group": "Simulations & SFC Models",
+    "scope": "",
+    "status": "Complete / Executable",
+    "notebooklm": "",
+    "file_path": "deliverables/VPE-35_SFC_Broadacre_Model_sfc_model_py.py",
+    "file_ext": "PY",
+    "file_size": "5 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-36",
+    "title": "Multi-Village Regional Simulator (multi_village_simulation.py)",
+    "category": "Network Simulation Script",
+    "group": "Simulations & SFC Models",
+    "scope": "",
+    "status": "Complete / Executable",
+    "notebooklm": "",
+    "file_path": "deliverables/VPE-36_Multi_Village_Regional_Simulator_multi_v.py",
+    "file_ext": "PY",
+    "file_size": "1 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-37",
+    "title": "multi_village_simulation.py",
+    "category": "Simulation Code Module",
+    "group": "Simulations & SFC Models",
+    "scope": "10-node regional NSW network simulation with Inter-Sovereign Trade Tensor clearing",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-37_multi_village_simulation_py.py",
+    "file_ext": "PY",
+    "file_size": "1 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-38",
+    "title": "finite_boundary_stress_test.py",
+    "category": "Simulation Code Module",
+    "group": "Simulations & SFC Models",
+    "scope": "1000-run Monte Carlo finite boundary exhaustion and T_exhaust solver",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-38_finite_boundary_stress_test_py.py",
+    "file_ext": "PY",
+    "file_size": "8 KB",
+    "associated_data": [
+      "1,000-run Monte Carlo stress verification"
+    ]
+  },
+  {
+    "id": "VPE-39",
+    "title": "=HYPERLINK(\"https://drive.google.com/file/d/1fDcZdsau_SVq-0AECl1WRyt4HpOX8hY-/view\", \"test_value_physics.py\")",
+    "category": "Automated Unit Test Suite",
+    "group": "Computational Engines & Code",
+    "scope": "24 comprehensive unit tests (covering UPE, 56-cell matrices, Leontief inverse, Theorem 5, PoD hashing, finite blowup, spatial LP, closed-loop fleet, HVNL fatigue, separatrix, dynamic drag propagation, Leontief singularity, white/colored Kramers escape, invertible UPE diagnostics, longitudinal decoupling, EKF observer, and UKF observer) passing with 100% rate",
+    "status": "Complete / Verified (24/24 Pass)",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-39_HYPERLINK_https_drive_google_com_file_d_.py",
+    "file_ext": "PY",
+    "file_size": "26 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation",
+      "56-cell multi-sector input-output supply chain matrix",
+      "Theorem 5 (Non-usurious debt bifurcation & mutual credit)",
+      "High-Order Unscented Kalman Filter (UKF) state observer (Theorem 2.9)",
+      "Automated test suite (24-29 unit tests, 100% pass rate)"
+    ]
+  },
+  {
+    "id": "VPE-40",
+    "title": "Master Automated Unit Test Suite (test_value_physics.py)",
+    "category": "Optimization Code Module",
+    "group": "Computational Engines & Code",
+    "scope": "Master 25-test automated unit test suite verifying thermodynamic exergy, metabolic labor, relativistic velocity caps, UKF observers, and 24-commodity empirical RRP/D benchmark calibrations.",
+    "status": "Complete / Verified Pass (25/25 Tests Passing in 0.188s)",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-40_Master_Automated_Unit_Test_Suite_test_va.py",
+    "file_ext": "PY",
+    "file_size": "32 KB",
+    "associated_data": [
+      "High-Order Unscented Kalman Filter (UKF) state observer (Theorem 2.9)",
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-41",
+    "title": "README.md",
+    "category": "Navigation & Architecture Index",
+    "group": "Theoretical Treatises",
+    "scope": "Standalone repository architecture guide and test execution manual",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-41_README_md.md",
+    "file_ext": "MD",
+    "file_size": "9 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-42",
+    "title": "CHANGELOG.md",
+    "category": "Sprint Execution History",
+    "group": "Governance & Management",
+    "scope": "Master version log through Sprint 18.3",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized (verified 2026-10-06)",
+    "file_path": "deliverables/VPE-42_CHANGELOG_md.docx",
+    "file_ext": "DOCX",
+    "file_size": "219 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-43",
+    "title": "multi_commodity_dispatch.py",
+    "category": "Optimization Code Module",
+    "group": "Computational Engines & Code",
+    "scope": "SciPy linear programming solver for coupled multi-commodity dispatch (Grain Water BESS) subject to joint highway link fleet constraints",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-43_multi_commodity_dispatch_py.py",
+    "file_ext": "PY",
+    "file_size": "7 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-44",
+    "title": "Municipal Sovereign Credit & Regional Buffer Resilience: Operational Briefing for Regional Councils",
+    "category": "Executive Presentation Deck",
+    "group": "Governance & Management",
+    "scope": "10-slide executive presentation in Google Slides for regional shire councils and credit union executives",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-44_Municipal_Sovereign_Credit_Regional_Buff.pptx",
+    "file_ext": "PPTX",
+    "file_size": "520 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-45",
+    "title": "closed_loop_logistics.py",
+    "category": "Optimization Code Module",
+    "group": "Computational Engines & Code",
+    "scope": "SciPy linear programming solver for closed-loop vehicle repositioning enforcing depot fleet conservation and deadheading tare exergy accounting",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-45_closed_loop_logistics_py.py",
+    "file_ext": "PY",
+    "file_size": "11 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-46",
+    "title": "Municipal Briefing Paper: Implementing Sovereign Credit Unions, Form SCU-A1 Refinancing, and Regional Commodity Buffers",
+    "category": "Legal / Policy Briefing Paper",
+    "group": "Empirical Case Studies",
+    "scope": "4-page printable executive paper for council workshops under Section 358 of the NSW Local Government Act 1993",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-46_Municipal_Briefing_Paper_Implementing_So.docx",
+    "file_ext": "DOCX",
+    "file_size": "1.2 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-47",
+    "title": "hvnl_fatigue_dispatch.py",
+    "category": "Optimization / Regulatory Module",
+    "group": "Governance & Management",
+    "scope": "Python solver for Heavy Vehicle National Law (HVNL) Standard Hours fatigue limits evaluating driver shifts mandatory rest breaks and Regional staging hubs",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-47_hvnl_fatigue_dispatch_py.py",
+    "file_ext": "PY",
+    "file_size": "2 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-48",
+    "title": "=HYPERLINK(\"https://drive.google.com/file/d/1AbM5gpTSHp7FeeUIu1CqiCPcFOiLcEo5/view\", \"work_antiwork_dynamics.py\")",
+    "category": "Multi-Sector Simulation Solver",
+    "group": "Simulations & SFC Models",
+    "scope": "Multi-sector simulation solver with ExtendedKalmanDecoupler and UnscentedKalmanDecoupler high-order observer (Theorems 3.2 & 5.4)",
+    "status": "Complete / Verified",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-48_HYPERLINK_https_drive_google_com_file_d_.py",
+    "file_ext": "PY",
+    "file_size": "17 KB",
+    "associated_data": [
+      "High-Order Unscented Kalman Filter (UKF) state observer (Theorem 2.9)"
+    ]
+  },
+  {
+    "id": "VPE-49",
+    "title": "Thermodynamic Work-Antiwork State-Space Dynamics (University Submission Edition)",
+    "category": "Master Theoretical Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "25-50 page university submission paper (121,983 characters, ~19,500 words, ~45-48 pages) with Sections 1-10, Theorems 1-5.4, Subsections 5.1-5.8, Section 6.1-6.4, Section 7.1-7.4 (Accounting pathology, Soddy divergence, Theorem 5 proof, Cambridge controversy resolution), Section 8 (4 regimes Runge-Kutta, EKF/UKF, 24 unit tests), Section 9 (4 policy pillars), Section 10 (4 conclusion subsections), Appendix A (A.1-A.4 Sraffa-Leontief inversion, Hawkins-Simon minors, Transpose Drag theorem), Appendix B (B.1-B.4 Langevin Kramers escape rate, Colored noise penalty proof), Appendix C (UKF Curvature Invariance Theorem proof), and complete Harvard bibliography. Fully sanitized LaTeX submission package (manuscript_vpe49.tex [119.5 kB, 100% ASCII, pdflatex verified 36-page PDF with 0 errors], references.bib, vpe49_latex_package.zip [43.2 kB]).",
+    "status": "Complete / Verified Zero-Error Compilation Pass (Unconditional Clearance)",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-49_Thermodynamic_Work_Antiwork_State_Space_.pdf",
+    "file_ext": "PDF",
+    "file_size": "614 KB",
+    "associated_data": [
+      "Theorem 5 (Non-usurious debt bifurcation & mutual credit)",
+      "High-Order Unscented Kalman Filter (UKF) state observer (Theorem 2.9)",
+      "Publication-grade LaTeX source tree & camera-ready PDF proof",
+      "Automated test suite (24-29 unit tests, 100% pass rate)"
+    ]
+  },
+  {
+    "id": "VPE-50",
+    "title": "phase_portrait.png",
+    "category": "Visual Phase Space Diagram",
+    "group": "Governance & Management",
+    "scope": "300 DPI high-resolution dual-panel phase portrait showing (W_p A_p) vector field nullclines separatrix basins and rotated (P A) diamond phase space with Lyapunov envelope",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-50_phase_portrait_png.png",
+    "file_ext": "PNG",
+    "file_size": "1.0 MB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-51",
+    "title": "=HYPERLINK(\"https://drive.google.com/file/d/1OUTISzQlXMwm0lweByh8_3TiT2dVp79O/view\", \"bifurcation_diagram.png\")",
+    "category": "Visual Bifurcation Diagram",
+    "group": "Governance & Management",
+    "scope": "300 DPI high-resolution dual-panel diagram rendering the Transcritical Bifurcation threshold (L_crit = 0.20) and the Thermodynamic Leontief Singularity curve (r_crit \u2248 44.87)",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-51_HYPERLINK_https_drive_google_com_file_d_.png",
+    "file_ext": "PNG",
+    "file_size": "428 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-52",
+    "title": "Zenodo Release v2.7.0 Open-Source Replication Manifest",
+    "category": "Computational Replication Metadata Manifest",
+    "group": "Computational Engines & Code",
+    "scope": "Full JSON-LD schema cataloging all 11 standalone Python simulation engines, 24 unit tests, 2 high-resolution 300 DPI phase figures, dual zero-error LaTeX publication packages, author cover letters, CC-BY-4.0 licensing, and DOI assignment metadata.",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-52_Zenodo_Release_v2_7_0_Open_Source_Replic.json",
+    "file_ext": "JSON",
+    "file_size": "4 KB",
+    "associated_data": [
+      "Publication-grade LaTeX source tree & camera-ready PDF proof",
+      "Automated test suite (24-29 unit tests, 100% pass rate)"
+    ]
+  },
+  {
+    "id": "VPE-53",
+    "title": "UPE Real-World Pricing & RRP/D Fairness Engine",
+    "category": "Executable Python Engine (.py)",
+    "group": "Computational Engines & Code",
+    "scope": "Standalone Python module computing UPE forward pricing, reverse engineering retail RRPs, solving for extractive drag (Ra), and determining Recommended Retail Price / Difficulty (RRP/D) benchmarks across Australian commodities.",
+    "status": "Complete / Executable",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-53_UPE_Real_World_Pricing_RRP_D_Fairness_En.py",
+    "file_ext": "PY",
+    "file_size": "5 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation"
+    ]
+  },
+  {
+    "id": "VPE-54",
+    "title": "Executable Code: RRP Fairness Audit & Benchmarking Engine (rrp_fairness_audit.py)",
+    "category": "Executable Code Module (.py)",
+    "group": "Computational Engines & Code",
+    "scope": "Standalone Python RRP fairness audit engine calibrated across 24 Australian benchmark necessities (Food, Agriculture, Energy, Water, Sanitation, Healthcare, Shelter, Freight Logistics, Agri-Fiber, Digital Infrastructure, Mineral Electrolytes, Carbohydrate Feedstocks, Agricultural Water Infrastructure, Export Oilseeds).",
+    "status": "Complete / Operational (24 Goods Calibrated)",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-54_Executable_Code_RRP_Fairness_Audit_Bench.py",
+    "file_ext": "PY",
+    "file_size": "36 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-55",
+    "title": "Empirical Research Paper: Real-World Pricing and RRP/D Fairness Audit \u2014 Food, Fuel, Energy, and Shelter Materials (manuscript_vpe55.tex / VPE-55)",
+    "category": "Empirical Research Paper / Journal Manuscript",
+    "group": "Journal Manuscripts",
+    "scope": "Publication-grade empirical treatise and 11-page camera-ready PDF proof (0 errors) across 14 Australian necessities with 300 DPI figures and BibTeX database covering Food, Energy, Water, Care, Shelter, and Freight Logistics. Target: Ecological Economics. Author: Jarrod Lyndsay Hamilton.",
+    "status": "Complete / Camera-Ready",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-55_Empirical_Research_Paper_Real_World_Pric.pdf",
+    "file_ext": "PDF",
+    "file_size": "996 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  },
+  {
+    "id": "VPE-56",
+    "title": "Open-Science Replication Manifest & Metadata Package (zenodo_vpe55_manifest.json)",
+    "category": "Replication Manifest (JSON)",
+    "group": "Computational Engines & Code",
+    "scope": "Dedicated 6-test automated unit test suite verifying forward UPE pricing, RRP reverse engineering, parameter sensitivity, and fairness indices across all 24 Australian benchmark commodities.",
+    "status": "Complete / Verified Pass (6/6 Tests Passing in 0.002s)",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-56_Open_Science_Replication_Manifest_Metada.json",
+    "file_ext": "JSON",
+    "file_size": "5 KB",
+    "associated_data": [
+      "Universal Price Equation (UPE) forward pricing formulation"
+    ]
+  },
+  {
+    "id": "VPE-57",
+    "title": "Dedicated Zenodo Upload Package Folder: VPE-55 Empirical Pricing Audit",
+    "category": "Zenodo Distribution Folder",
+    "group": "Zenodo Packages",
+    "scope": "Self-contained deposit directory containing camera-ready PDF, LaTeX source, CSV dataset, 300 DPI figures, Python solver, manifest, and README upload guide for VPE-55.",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-57_Dedicated_Zenodo_Upload_Package_Folder_V.zip",
+    "file_ext": "ZIP",
+    "file_size": "1.6 MB",
+    "associated_data": [
+      "Publication-grade LaTeX source tree & camera-ready PDF proof"
+    ]
+  },
+  {
+    "id": "VPE-58",
+    "title": "Dedicated Zenodo Upload Package Folder: VPE-21 Physics of Economic Value",
+    "category": "Zenodo Distribution Folder",
+    "group": "Zenodo Packages",
+    "scope": "Self-contained deposit directory containing camera-ready 15-page PDF proof, LaTeX source, SFC simulation code, test suite, manifest, and README upload guide for VPE-21.",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-58_Dedicated_Zenodo_Upload_Package_Folder_V.zip",
+    "file_ext": "ZIP",
+    "file_size": "16 KB",
+    "associated_data": [
+      "156-week SFC matrix calibrated to ABARES/ABS/RBA/ACCC/AEMO",
+      "Publication-grade LaTeX source tree & camera-ready PDF proof"
+    ]
+  },
+  {
+    "id": "VPE-59",
+    "title": "Dedicated Zenodo Upload Package Folder: VPE-49 Thermodynamic State-Space Dynamics",
+    "category": "Zenodo Distribution Folder",
+    "group": "Zenodo Packages",
+    "scope": "Self-contained deposit directory containing camera-ready 36-page PDF proof, LaTeX source, state-space ODE solver, phase diagrams, test suite, manifest, and README upload guide for VPE-49.",
+    "status": "Complete / Deployed",
+    "notebooklm": "Synchronized",
+    "file_path": "deliverables/VPE-59_Dedicated_Zenodo_Upload_Package_Folder_V.zip",
+    "file_ext": "ZIP",
+    "file_size": "42 KB",
+    "associated_data": [
+      "Publication-grade LaTeX source tree & camera-ready PDF proof"
+    ]
+  },
+  {
+    "id": "VPE-60",
+    "title": "VPE-60: The Architecture of Autonomous Econophysics \u2014 The Project Manager Role, Multi-Agent Governance, and the Empirical Evolution of Value Physics via Gemini Spark Schedules",
+    "category": "Master Operational Treatise / Architecture & Methodology",
+    "group": "Theoretical Treatises",
+    "scope": "Formal documentation of PM role, 5-role multi-agent triad, Spark schedule execution engine, 6-phase evolution, 18-commodity RRP/D pricing pipeline, 4 Extraction Tiers, and epistemic audit governance.",
+    "status": "Complete / Living Control Deliverable",
+    "notebooklm": "Pending Ingestion",
+    "file_path": "deliverables/VPE-60_VPE_60_The_Architecture_of_Autonomous_Ec.pdf",
+    "file_ext": "PDF",
+    "file_size": "292 KB",
+    "associated_data": [
+      "Real-world commodity calibration microdata (CSV/XLSX)"
+    ]
+  }
+]

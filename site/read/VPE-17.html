@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-17: PREF Companion Treatise: Value Physics &amp; Macro Resolution — Value Physics Reader</title>
+  <meta name="description" content="Macro architecture integrating UPE, Cardinal Tokens, P_H, Foundational Dividend. OUTSIDE PRIMARY DIRECTORY.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-17</span>
+      <span class="doc-badge-cat">Macroeconomic Operating System</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-16.html" class="nav-arrow-btn">&larr; Prev (VPE-16)</a>
+      <a href="VPE-18.html" class="nav-arrow-btn">Next (VPE-18) &rarr;</a>
+      <a href="../deliverables/VPE-17_PREF_Companion_Treatise_Value_Physics_Ma.docx" target="_blank" class="nav-download-btn">Download DOCX (982 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">PREF Companion Treatise: Value Physics &amp; Macro Resolution</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Macro architecture integrating UPE, Cardinal Tokens, P_H, Foundational Dividend. OUTSIDE PRIMARY DIRECTORY.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Universal Price Equation (UPE) forward pricing formulation</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">The Paradise Reciprocity Economic Framework (PREF) v5.0: Comprehensive Resolution &amp; Systemic Expansion Architecture</h2>
+<h2 class="doc-h2">1. Executive Summary &amp; Foundational Synthesis</h2>
+<p class="doc-p">The Paradise Reciprocity Economic Framework (PREF) represents a synthesized macroeconomic model designed to resolve historical ideological failures and align individual and societal action with the Greater Good (+υ, +ψ) quadrant of the Psochic Hegemony.</p>
+<p class="doc-p">By integrating the Convergence Test, the <strong>Axiom of Objective Truth</strong>, <strong>Value Physics (Universal Price Equation &amp; Cardinal Tokens)</strong>, and the <strong>Escaped Hegemonic Spectrum</strong>, PREF v5.0 establishes an antifragile, mathematically grounded, and deployable macroeconomic operating system.</p>
+<h2 class="doc-h2">2. Core Axioms &amp; Epistemic Foundations</h2>
+<h3 class="doc-h3">2.1 The Convergence Test Protocol &amp; Truth Engine (NMBSD)</h3>
+<p class="doc-p">The Truth Engine (No More Bullshit Democracy) and Hegemonic Analysis Bureau (HAB) operate as a deterministic 7-interrogative convergence pipeline:</p>
+<ul class="doc-ul">
+<li class="doc-li">WHO (Agency): Evaluates identity, sovereign beneficiary, and true intent.</li>
+<li class="doc-li">WHERE (Locus): Maps geographic boundaries, logistics, and spatial containment.</li>
+<li class="doc-li">WHAT (Substance): Quantifies material resource flows and primary exergy destruction ($P_e$).</li>
+<li class="doc-li">WHY (Motive): Analyzes the volitional direction within the Psochic Hegemony.</li>
+<li class="doc-li">HOW (Mechanism): Verifies internal logical syntax, accounting rules, and consistency.</li>
+<li class="doc-li">CAUSE (Origin): Traces historical lineage, prerequisite debts, and baseline conditions.</li>
+<li class="doc-li">EFFECT (Result): Measures real-world thermodynamic and biological consequences.</li>
+</ul>
+<p class="doc-p">The Diagnostic Invariant: If a policy or claim diverges across 4+ axes, it is classified as a Plane Misidentification Error, immediately halting recursion to prevent rhetorical obfuscation.</p>
+<h3 class="doc-h3">2.2 Proof by Resonance (PbR) and Truth Conservation</h3>
+<p class="doc-p">Every claim or policy $S$ is evaluated against the verified physical target state $Q$:</p>
+<p class="doc-p">$$\text{Res}(S, Q) = 1 - |</p>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>S - Q|M = 1.0 \iff \ker(\Phi{S \to Q}) = {0} \land \text{Im}(\Phi_{S \to Q}) = Q$$</th>
+</tr>
+<tr>
+<th>Under the invariant truth conservation law:</th>
+</tr>
+</table></div>
+<p class="doc-p">$$\Sigma_{\text{Truth}} = |\text{True}| + |\text{Lie}| = 2.0$$</p>
+<p class="doc-p">The HAB measures the Hypocrisy Gap ($\Delta H$) to detect covert extraction and &quot;Greed Zone&quot; cover stories.</p>
+<h3 class="doc-h3">2.3 The Pi-Limit Coherence Metric ($\kappa$)</h3>
+<p class="doc-p">Institutional and economic convergence quality is measured against the universal standard of process $\Pi(n)$:</p>
+<p class="doc-p">$$\kappa = \text{Limit}_\Pi\big(f(n)\big)$$</p>
+<p class="doc-p">Processes with $\kappa \approx 1.0$ operate with minimal thermodynamic friction and maximum harmonic efficiency.</p>
+<h2 class="doc-h2">3. The Substrate: Value Physics &amp; The Universal Price Tensor</h2>
+<h3 class="doc-h3">3.1 The Universal Price Equation (UPE)</h3>
+<p class="doc-p">All economic transactions are grounded in the spatiotemporal scarcity and urgency tensor:</p>
+<p class="doc-p">$$P(x, t) = m_1 \cdot R(x, t, c) \cdot m_2 \cdot \gamma(v_{\text{rel}}) + P_e + P_b$$</p>
+<p class="doc-p">where the Dimensionless Reality Tensor is:</p>
+<p class="doc-p">$$R(x, t, c) = \frac{S(x, t, c) \cdot U(x, t)}{R_n(x, t) \cdot (1 - R_a(x, t))}$$</p>
+<p class="doc-p">and $P_t = P_e + P_b + P_m$ decomposes total cost across thermodynamic exergy ($P_e$ in MJ), biomechanical labor ($P_b$ in METs and skill $s$), and nominal market clearing ($P_m$).</p>
+<h3 class="doc-h3">3.2 The Relativistic Lorentz Coercion Factor ($\gamma$)</h3>
+<p class="doc-p">Under acute survival precarity, an individual&#x27;s relative velocity of desperation approaches unity ($v_{\text{rel}} \to 1.0$), causing the coercion factor to diverge:</p>
+<p class="doc-p">$$\gamma(v_{\text{rel}}) = \frac{1}{\sqrt{1 - v_{\text{rel}}^2}} \to \infty$$</p>
+<p class="doc-p">This collapses price elasticity ($\epsilon \to 0$), enabling predatory rentier extraction ($R_a \to 1.0$).</p>
+<p class="doc-p">PREF Resolution: The unconditional Foundational Dividend (FD) permanently collapses survival urgency ($U \to 0$), forcing $v_{\text{rel}} \to 0$ and $\gamma \to 1.0$, thereby restoring genuine transaction agency.</p>
+<h3 class="doc-h3">3.3 The Cardinal Token Matrix (WEST, EAST, BEST, WORST)</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>WEST (Work-Effort-Skill/Time)</strong>: $\text{WEST} = \int_0^T s(t) \cdot e(t) \cdot [1 + d(t)] \cdot [1 + c(t)] dt$ (Upstream physical difficulty floor).</li>
+<li class="doc-li"><strong>EAST (Effect-Actual-Service/Time)</strong>: $\text{EAST} = \int \Delta U_{\text{relief}}(t) \cdot N_x(t) \cdot \psi(t) dt$ (Realized biological urgency relief).</li>
+<li class="doc-li"><strong>BEST (Beneficent-Ecological-Social/Time)</strong>: $\text{BEST} = \int (\frac{dR_n}{dt} + \Delta \text{Commons} + I_a - D_a) dt$ (Regenerative surplus expanding substrate capacity $R_n \uparrow$).</li>
+<li class="doc-li"><strong>WORST (Waste-Overload-Rent/Scarcity-Toll)</strong>: $\text{WORST} = \int [R_a \cdot P_m + (\gamma - 1)P_H + \frac{d\Delta R}{dt}] dt$ (Quantifies systemic extraction and usury).</li>
+</ul>
+<h3 class="doc-h3">3.4 The Invariant Base Price ($P_H$) &amp; Distortion Quotient ($DQ$)</h3>
+<p class="doc-p">$$DQ = \frac{% \text{ Share of Nominal Market Price } (P_m)}{% \text{ Share of WEST Difficulty Tokens}}$$</p>
+<p class="doc-p">Natural monopolies and Public Works Guilds are mandated to clear essential goods at the Invariant Geometric Base Price:</p>
+<p class="doc-p">$$P_H = \text{WEST} \cdot \left[ \frac{\kappa_{\text{energy}} \cdot P_e + \kappa_{\text{labor}} \cdot P_b}{R_n} \right]$$</p>
+<p class="doc-p">achieving $DQ \equiv 1.0$ and eliminating unearned rentier tolling ($WORST = 0$).</p>
+<h2 class="doc-h2">4. The Volitional Core: Paradósis Systema &amp; The Psochic Hegemony</h2>
+<h3 class="doc-h3">4.1 The Hegemonic Force Equation &amp; Limiters</h3>
+<p class="doc-p">$$\frac{dL_i}{dt} = -\psi \cdot \Omega(\υ, i) + k_i$$</p>
+<p class="doc-p">By setting $\Omega = 1$ universally, the PREF state acts as a kinetic engine reducing systemic limiters ($L_i \to 0$).</p>
+<h3 class="doc-h3">4.2 Expanding the Horizon of Possibility ($H_i$)</h3>
+<p class="doc-p">$$H_i(t) = \int_t^{t+\Delta t} \frac{P_i(\tau)}{1 + L_i(\tau)} d\tau$$</p>
+<p class="doc-p">Eliminating baseline survival precarity unlocks the individual&#x27;s full latent potential ($P_i$), converting survival panic into proactive creative will ($+\psi$).</p>
+<h3 class="doc-h3">4.3 Anti-Collusion Graph &amp; Proof-of-Physical-Impact (PoPI)</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>EigenDecay Algorithm</strong>:$$T_{i \to j} = \sum_{k \in \text{Paths}(i,j)} \left( \prod_{e \in k} w_e \right) \cdot e^{-\lambda \cdot d(k)}$$Circular endorsement rings are mathematically dampened.</li>
+<li class="doc-li"><strong>Proof-of-Physical-Impact (PoPI)</strong>: Physical infrastructure, environmental restoration, and maintenance bounties require cryptographically signed telemetry (IoT sensors, mass-balance verification).</li>
+<li class="doc-li"><strong>Sortition-Based Civic Juries</strong>: High-tier disputes are adjudicated by sortition-selected citizen juries using Schelling-point consensus incentives.</li>
+</ul>
+<h2 class="doc-h2">5. Macroeconomic Engine &amp; Sovereign Venture Capital Circuit</h2>
+<h3 class="doc-h3">5.1 Three-Phase Sovereign Capitalization Bridge &amp; Jubilee Buffer Fund</h3>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Phase 1 (Years 0–5)</strong>: Retain simplified economic rent taxes while implementing the Opt-In Sovereign Equity Swap (SES), enabling corporations to trade tax liabilities for dividend equity shares held by the public trust.</li>
+<li class="doc-li"><strong>Phase 2 (Years 5–12)</strong>: Dividends from maturing equity grants begin funding the Foundational Dividend, phasing out personal income taxes from the bottom up.</li>
+<li class="doc-li"><strong>Phase 3 (Year 12+)</strong>: Full transition to 100% ROI-funded state operations and complete tax obsolescence.</li>
+<li class="doc-li"><strong>Counter-Cyclical Jubilee Buffer Fund</strong>: A reserve capitalized at 15–20% of GDP that absorbs expansionary surpluses to protect dividend stability during downturns.</li>
+</ul>
+<h3 class="doc-h3">5.2 Dynamic Velocity-Adjusted Monetary Equation</h3>
+<p class="doc-p">$$\Delta M(t) = \frac{P^* \cdot Y(t)}{V(t)} - M(t-1) + S_{\text{buffer}}(t)$$</p>
+<p class="doc-p">Calibrating new money issuance to real Net National Product ($Y$), target price stability ($P^*$), and real-time velocity ($V$).</p>
+<h3 class="doc-h3">5.3 Public Works Guilds &amp; Stewardship Charters</h3>
+<p class="doc-p">Essential infrastructure (Energy, Water, Rail, Healthcare) operates under performance-audited Stewardship Franchises, delivering services at $P_H$ with zero extractive profit margins.</p>
+<h2 class="doc-h2">6. Master Geopolitical Architecture: MANN(MMOM(DAD(BOD(GOD(...)))))</h2>
+<ul class="doc-ul">
+<li class="doc-li"><strong>GOD(...) (Global Organisation Direction)</strong>: The universal telos toward flourishing and zero extraction (+1.0υ, +1.0ψ).</li>
+<li class="doc-li"><strong>BOD(...) (Bioregional Operational Directive)</strong>: Grounding economic throughput in local ecological carrying capacity and mass-energy balances.</li>
+<li class="doc-li"><strong>DAD(...) (Desire Assured Development / The Father Archetype)</strong>: Proactive technological innovation, R&amp;D, and permanent progress.</li>
+<li class="doc-li"><strong>MMOM(...) (Multi-EcoCultural Merger Oversight Model / The Mother Archetype)</strong>: Transnational pooling of sovereign equity and infrastructure allocation.</li>
+<li class="doc-li"><strong>MANN(...) (Mutually Assured Neutrality &amp; Nationality)</strong>: Foundational constitutional treaty guaranteeing cultural sovereignty, individual rights, and voluntary federation.</li>
+</ul>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-16.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-16: Orthodox Linker Treatise</div>
+</a>
+
+        
+<a href="VPE-18.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-18: Statutory Model Charter &amp; Sovereign Credit Union Bylaws</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

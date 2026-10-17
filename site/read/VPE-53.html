@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-53: UPE Real-World Pricing &amp; RRP/D Fairness Engine — Value Physics Reader</title>
+  <meta name="description" content="Standalone Python module computing UPE forward pricing, reverse engineering retail RRPs, solving for extractive drag (Ra), and determining Recommended Retail Price / Difficulty (RRP/D) benchmarks across Australian commodities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-53</span>
+      <span class="doc-badge-cat">Executable Python Engine (.py)</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-52.html" class="nav-arrow-btn">&larr; Prev (VPE-52)</a>
+      <a href="VPE-54.html" class="nav-arrow-btn">Next (VPE-54) &rarr;</a>
+      <a href="../deliverables/VPE-53_UPE_Real_World_Pricing_RRP_D_Fairness_En.py" target="_blank" class="nav-download-btn">Download PY (5 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Computational Engines &amp; Code</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">UPE Real-World Pricing &amp; RRP/D Fairness Engine</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Standalone Python module computing UPE forward pricing, reverse engineering retail RRPs, solving for extractive drag (Ra), and determining Recommended Retail Price / Difficulty (RRP/D) benchmarks across Australian commodities.
+          </div>
+          <div class="article-data-pills"><span class="data-pill">Universal Price Equation (UPE) forward pricing formulation</span></div>
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        
+<div class="code-container">
+  <div class="code-header">
+    <span>VPE-53_UPE_Real_World_Pricing_RRP_D_Fairness_En.py (PYTHON)</span>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-content').innerText); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy Code', 2000);">Copy Code</button>
+  </div>
+  <pre class="code-block"><code id="code-content">&quot;&quot;&quot;
+Universal Price Equation (UPE) Real-World Pricing &amp; RRP/D Engine
+Alethekanon Research Institute — Division 2: Societal Economics &amp; Macro-Micro Simulation
+
+This module provides standalone tools to:
+1. Compute forward prices from direct physical, energy, and labor difficulty inputs.
+2. Reverse engineer commercial Recommended Retail Prices (RRP) to isolate extractive drag (Ra).
+3. Derive the Recommended Retail Price based on Difficulty (RRP/D) and compute fairness metrics.
+&quot;&quot;&quot;
+
+import math
+from typing import Dict, Any, List
+
+def calculate_gamma(v_rel: float, eps: float = 1e-16) -&gt; float:
+    &quot;&quot;&quot;Calculates relativistic urgency factor gamma(v_rel).&quot;&quot;&quot;
+    v_capped = min(max(v_rel, 0.0), 1.0 - eps)
+    return 1.0 / math.sqrt(1.0 - v_capped**2)
+
+def calculate_forward_upe(
+    P_e: float,
+    P_b: float,
+    U: float,
+    S: float = 1.0,
+    R_n: float = 1.0,
+    R_a: float = 0.0,
+    m1: float = 1.0,
+    m2: float = 1.0,
+    v_rel: float = 0.0,
+    eps: float = 1e-16
+) -&gt; float:
+    &quot;&quot;&quot;
+    Computes forward price:
+    P = m1 * m2 * gamma(v_rel) * [(S * U) / (R_n * (1 - R_a))] + P_e + P_b
+    &quot;&quot;&quot;
+    gamma = calculate_gamma(v_rel, eps)
+    denom = max(R_n * (1.0 - min(R_a, 1.0 - eps)), eps)
+    metabolic_tier = m1 * m2 * gamma * ((S * U) / denom)
+    return metabolic_tier + P_e + P_b
+
+def reverse_engineer_rrp(
+    P_retail: float,
+    P_e: float,
+    P_b: float,
+    U: float,
+    S: float = 1.0,
+    R_n: float = 1.0,
+    m1: float = 1.0,
+    m2: float = 1.0,
+    v_rel: float = 0.0,
+    eps: float = 1e-16
+) -&gt; Dict[str, Any]:
+    &quot;&quot;&quot;
+    Reverse engineers observed retail price (RRP) to solve for:
+    1. Implied extractive drag (R_a)
+    2. Recommended Retail Price / Difficulty (RRP/D) where R_a = 0 (or fair baseline)
+    3. Fairness metrics: Extractive spread and Fairness Index
+    &quot;&quot;&quot;
+    gamma = calculate_gamma(v_rel, eps)
+    spread = P_retail - (P_e + P_b)
+    
+    if spread &lt;= eps:
+        implied_Ra = 0.0
+    else:
+        numerator = m1 * m2 * gamma * S * U
+        ratio = numerator / (R_n * spread)
+        implied_Ra = max(0.0, min(1.0 - ratio, 1.0))
+        
+    # Baseline RRP/D with fair operational reserve Ra = 0.02 (2% non-extractive contingency)
+    rrp_d = calculate_forward_upe(
+        P_e=P_e,
+        P_b=P_b,
+        U=U,
+        S=S,
+        R_n=R_n,
+        R_a=0.02,
+        m1=1.0,
+        m2=1.0,
+        v_rel=v_rel,
+        eps=eps
+    )
+    
+    extractive_premium = max(0.0, P_retail - rrp_d)
+    fairness_index = min(1.0, rrp_d / max(P_retail, eps))
+    
+    return {
+        &quot;P_retail_observed&quot;: round(P_retail, 2),
+        &quot;P_energy_Pe&quot;: round(P_e, 2),
+        &quot;P_base_Pb&quot;: round(P_b, 2),
+        &quot;Metabolic_U&quot;: round(U, 2),
+        &quot;RRP_D_recommended&quot;: round(rrp_d, 2),
+        &quot;Implied_Extractive_Drag_Ra&quot;: round(implied_Ra, 4),
+        &quot;Extractive_Premium_AUD&quot;: round(extractive_premium, 2),
+        &quot;Fairness_Index_Percent&quot;: round(fairness_index * 100.0, 1)
+    }
+
+def run_benchmark_case_studies() -&gt; List[Dict[str, Any]]:
+    &quot;&quot;&quot;Runs empirical calibration benchmarks across essential goods.&quot;&quot;&quot;
+    cases = [
+        {
+            &quot;commodity&quot;: &quot;Commercial Sliced White Bread (680g)&quot;,
+            &quot;unit&quot;: &quot;loaf&quot;,
+            &quot;P_retail&quot;: 4.10,
+            &quot;P_e&quot;: 0.38,   # Bakery electricity, oven gas, delivery diesel
+            &quot;P_b&quot;: 0.45,   # Farm-gate flour, yeast, salt, packaging film
+            &quot;U&quot;: 2.15,     # Direct metabolic labor (farm + milling + bakery + retail shelf)
+            &quot;S&quot;: 1.00,
+            &quot;R_n&quot;: 1.00,
+            &quot;v_rel&quot;: 0.05
+        },
+        {
+            &quot;commodity&quot;: &quot;Milling Wheat (APW1 / ASW1)&quot;,
+            &quot;unit&quot;: &quot;tonne&quot;,
+            &quot;P_retail&quot;: 365.00,
+            &quot;P_e&quot;: 104.40, # Tractor diesel, crop drying, fuel
+            &quot;P_b&quot;: 82.00,  # Certified seed, crop protection, soil minerals
+            &quot;U&quot;: 95.00,   # Operational labor hours across broadacre cycle
+            &quot;S&quot;: 1.05,
+            &quot;R_n&quot;: 0.98,
+            &quot;v_rel&quot;: 0.02
+        },
+        {
+            &quot;commodity&quot;: &quot;Automotive Diesel Fuel (Ultra-Low Sulphur)&quot;,
+            &quot;unit&quot;: &quot;litre&quot;,
+            &quot;P_retail&quot;: 2.15,
+            &quot;P_e&quot;: 0.32,   # Refining electricity &amp; process thermal energy
+            &quot;P_b&quot;: 0.92,   # Crude oil feedstock at terminal import parity
+            &quot;U&quot;: 0.35,     # Terminal operations, tanker driver, service station attendant
+            &quot;S&quot;: 1.08,
+            &quot;R_n&quot;: 0.90,
+            &quot;v_rel&quot;: 0.12
+        },
+        {
+            &quot;commodity&quot;: &quot;Residential Grid Electricity (Single-Rate Flat)&quot;,
+            &quot;unit&quot;: &quot;kWh&quot;,
+            &quot;P_retail&quot;: 0.36,
+            &quot;P_e&quot;: 0.08,   # Wholesale generation fuel &amp; thermal loss
+            &quot;P_b&quot;: 0.07,   # Poles, wires, network maintenance capital base
+            &quot;U&quot;: 0.09,     # Lineworkers, grid engineering, customer service
+            &quot;S&quot;: 1.15,
+            &quot;R_n&quot;: 0.92,
+            &quot;v_rel&quot;: 0.08
+        }
+    ]
+    
+    results = []
+    for c in cases:
+        audit = reverse_engineer_rrp(
+            P_retail=c[&quot;P_retail&quot;],
+            P_e=c[&quot;P_e&quot;],
+            P_b=c[&quot;P_b&quot;],
+            U=c[&quot;U&quot;],
+            S=c[&quot;S&quot;],
+            R_n=c[&quot;R_n&quot;],
+            v_rel=c[&quot;v_rel&quot;]
+        )
+        audit[&quot;commodity&quot;] = c[&quot;commodity&quot;]
+        audit[&quot;unit&quot;] = c[&quot;unit&quot;]
+        results.append(audit)
+    return results
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;=== Universal Price Equation (UPE) Real-World Pricing &amp; RRP/D Benchmark ===&quot;)
+    results = run_benchmark_case_studies()
+    for r in results:
+        print(f&quot;\nGood: {r[&#x27;commodity&#x27;]} (per {r[&#x27;unit&#x27;]})&quot;)
+        print(f&quot;  Observed Retail RRP:  ${r[&#x27;P_retail_observed&#x27;]:.2f}&quot;)
+        print(f&quot;  Energy Base (Pe):     ${r[&#x27;P_energy_Pe&#x27;]:.2f}&quot;)
+        print(f&quot;  Physical Base (Pb):   ${r[&#x27;P_base_Pb&#x27;]:.2f}&quot;)
+        print(f&quot;  Metabolic Labor (U):  ${r[&#x27;Metabolic_U&#x27;]:.2f}&quot;)
+        print(f&quot;  Fair RRP/D Benchmark: ${r[&#x27;RRP_D_recommended&#x27;]:.2f}&quot;)
+        print(f&quot;  Extractive Drag (Ra): {r[&#x27;Implied_Extractive_Drag_Ra&#x27;] * 100:.1f}%&quot;)
+        print(f&quot;  Extractive Premium:   ${r[&#x27;Extractive_Premium_AUD&#x27;]:.2f}&quot;)
+        print(f&quot;  Fairness Index:       {r[&#x27;Fairness_Index_Percent&#x27;]:.1f}%&quot;)
+</code></pre>
+</div>
+
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-52.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-52: Zenodo Release v2.7.0 Open-Source Replication Manifest</div>
+</a>
+
+        
+<a href="VPE-54.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-54: Executable Code: RRP Fairness Audit &amp; Benchmarking Engine (rrp_fairness_audit.py)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-41: README.md — Value Physics Reader</title>
+  <meta name="description" content="Standalone repository architecture guide and test execution manual">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-41</span>
+      <span class="doc-badge-cat">Navigation &amp; Architecture Index</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-40.html" class="nav-arrow-btn">&larr; Prev (VPE-40)</a>
+      <a href="VPE-42.html" class="nav-arrow-btn">Next (VPE-42) &rarr;</a>
+      <a href="../deliverables/VPE-41_README_md.md" target="_blank" class="nav-download-btn">Download MD (9 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">README.md</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Standalone repository architecture guide and test execution manual
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">Value Physics</h2>
+<p class="doc-p">[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1755001.svg)](https://zenodo.org)</p>
+<p class="doc-p">[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)</p>
+<p class="doc-p">[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)</p>
+<p class="doc-p">[![Python: 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)</p>
+<p class="doc-p">Computational replication archives, empirical pricing solvers, non-linear state-space ODE models, and publication LaTeX manuscripts for **Value Physics** — developed at the **Alethekanon Research Institute**, Division 2: Societal Economics &amp; Macro-Micro Simulation.</p>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h3 class="doc-h3">Repository Structure</h3>
+<div class="code-container"><pre class="code-block"><code>value-physics/
+├── 01_Empirical_Pricing_Audit_VPE55/       # VPE-55: Empirical RRP/D Fairness Audit (Ecological Economics)
+│   ├── manuscript_vpe55.tex                # Elsevier elsarticle camera-ready LaTeX manuscript
+│   ├── manuscript_vpe55.pdf                # Pre-compiled publication proof (11 pages)
+│   ├── rrp_fairness_audit.py               # Standalone UPE forward &amp; reverse pricing solver
+│   ├── empirical_calibration_data_14_...   # 14-commodity empirical Australian parameter dataset
+│   ├── figure1_biophysical_breakdown.png   # 300 DPI cost decomposition figure
+│   ├── figure2_sclerosis_spectrum.png      # 300 DPI Extractive Drag vs. Fairness index figure
+│   ├── vpe55_latex_package.zip             # Self-contained submission archive
+│   └── zenodo_vpe55_manifest.json          # Zenodo deposit manifest
+│
+├── 02_Physics_of_Economic_Value_VPE21/     # VPE-21: Foundational Theory &amp; SFC Modeling
+│   ├── manuscript_vpe21.tex                # 15-page publication LaTeX manuscript
+│   ├── sfc_model.py                        # 156-week Stock-Flow Consistent dynamic simulation
+│   ├── test_value_physics.py               # Master automated verification test suite
+│   ├── finite_boundary_stress_test.py      # Monte Carlo finite boundary exhaustion solver
+│   ├── vpe21_latex_package.zip             # Self-contained LaTeX submission archive
+│   └── zenodo_vpe21_manifest.json          # Zenodo deposit manifest
+│
+├── 03_Thermodynamic_State_Space_VPE49/     # VPE-49: Non-Linear State-Space Mechanics (JEDC)
+│   ├── manuscript_vpe49.tex                # 37-page comprehensive theoretical treatise
+│   ├── work_antiwork_dynamics.py           # Core ODE simulation and Lyapunov stability solver
+│   ├── phase_portrait.png                  # Diamond Phase Space (P, A) vector field
+│   ├── bifurcation_diagram.png             # Transcritical bifurcation and leverage boundary
+│   ├── vpe49_latex_package.zip             # Self-contained LaTeX submission bundle
+│   └── zenodo_v2.7.0_manifest.json         # Zenodo deposit manifest
+│
+├── 04_Autonomous_Econophysics_VPE60/      # VPE-60: Multi-Agent Governance &amp; Autonomous Methodology
+│   ├── VPE-60_Autonomous_Econophysics.pdf  # 15-page operational treatise &amp; methodology proof
+│   ├── VPE-60_Autonomous_Econophysics.md   # Markdown edition
+│   └── zenodo_vpe60_manifest.json          # Zenodo deposit manifest
+│
+├── .zenodo.json                            # Zenodo automated GitHub Release metadata
+├── CITATION.cff                            # Citation File Format (CFF)
+└── README.md                               # This file</code></pre></div>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h3 class="doc-h3">Research Packages Overview</h3>
+<h4 class="doc-h4">1. VPE-55: Empirical Pricing &amp; RRP/D Fairness Audit</h4>
+<li class="doc-li">**Target Journal:** *Ecological Economics* (Elsevier)</li>
+<li class="doc-li">**Deliverable ID:** `VPE-55` / `ARI-VPE-EMP-2026-03`</li>
+<li class="doc-li">**What it does:** Operationalizes the Universal Price Equation (UPE) against official Australian datasets (ABARES, ABS, AEMO, ACCC, NHVR) across 14 essential commodities (bread, wheat, milk, beef cattle, diesel, electricity, LPG, water cartage, waste collection, antibiotics, timber, concrete, steel mesh, and road freight). It calculates forward biophysical baseline prices (Recommended Retail Price based on Difficulty, RRP/D), reverse-engineers observed commercial prices to quantify institutional extractive drag ($R_a$), and establishes an ungameable fairness metric ($\Phi_{\text{fairness}}$).</li>
+<p class="doc-p">**Run the empirical audit:**</p>
+<div class="code-container"><pre class="code-block"><code>python 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py</code></pre></div>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h4 class="doc-h4">2. VPE-21: The Physics of Economic Value</h4>
+<li class="doc-li">**Target Journal:** *Ecological Economics*</li>
+<li class="doc-li">**Deliverable ID:** `VPE-21` / `ARI-VPE-JRNL-2026-01`</li>
+<li class="doc-li">**What it does:** Establishes the foundational micro-macro theory of Value Physics. Decomposes price into a three-layer substrate ($P_t = P_e + P_b + P_m$), derives the Lorentz Urgency Factor $\gamma(v_{\text{rel}})$ from Stone-Geary utility, formalizes the 56-cell supply chain matrix, and couples the equations to a 156-week Stock-Flow Consistent (SFC) dynamic simulation of an Australian regional agricultural collective under severe climate and interest-rate shocks.</li>
+<p class="doc-p">**Run the verification suite:**</p>
+<div class="code-container"><pre class="code-block"><code>python 02_Physics_of_Economic_Value_VPE21/test_value_physics.py</code></pre></div>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h4 class="doc-h4">3. VPE-49: Thermodynamic State-Space Dynamics</h4>
+<li class="doc-li">**Target Journal:** *Journal of Economic Dynamics and Control* (Elsevier)</li>
+<li class="doc-li">**Deliverable ID:** `VPE-49` / `ARI-VPE-TH-2026-02`</li>
+<li class="doc-li">**What it does:** Develops the non-linear state-space mechanics of Value Physics. Separates instantaneous kinetic fluxes ($W_a, A_a$) from accumulated structural floors ($W_p, A_p$). Proves Theorem 1 (Norm Isometry under $45^\circ$ Diamond Phase Space Rotation), Theorem 2 (Fundamental Law of Passivity Asymmetry), and Theorem 3 (Autonomous Sclerosis Finite-Time Blowup), and formulates Unscented Kalman Filter state decouplers to separate biophysical carrying capacity ($R_n$) from monopoly toll extraction ($R_a$).</li>
+<p class="doc-p">**Run the ODE simulation:**</p>
+<div class="code-container"><pre class="code-block"><code>python 03_Thermodynamic_State_Space_VPE49/work_antiwork_dynamics.py</code></pre></div>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h4 class="doc-h4">4. VPE-60: The Architecture of Autonomous Econophysics</h4>
+<li class="doc-li">**Deliverable ID:** `VPE-60` / `ARI-VPE-TREATISE-2026-60`</li>
+<li class="doc-li">**What it does:** Master operational treatise and methodology specification documenting the development protocols of Value Physics. Analyzes the five-role division of cognitive labor (Project Manager, Lead Researcher, Epistemic Auditor / Checker, Computational Engineer, and Literature Linker), asynchronous Gemini Spark scheduled execution triggers, the single canonical spreadsheet ledger, the 15-point Epistemic Audit Sign-Off Protocol, and the historical evolution of the Universal Price Equation (UPE).</li>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h3 class="doc-h3">Zenodo Integration &amp; Deposition</h3>
+<p class="doc-p">This repository supports two seamless deposition routes to [Zenodo](https://zenodo.org):</p>
+<h4 class="doc-h4">Route A: Native GitHub Releases (Automatic Minting)</h4>
+<p class="doc-p">1. Link your GitHub account to Zenodo at [https://zenodo.org/account/settings/github/](https://zenodo.org/account/settings/github/).</p>
+<p class="doc-p">2. Flip the switch next to the `value-physics` repository.</p>
+<p class="doc-p">3. Every time you publish a release or push a tag (e.g. `git tag -a v1.0.0 -m &quot;Release v1.0.0&quot; &amp;&amp; git push --tags`), Zenodo automatically takes a snapshot, archives the repository, reads `.zenodo.json`, and mints a permanent, citable DOI.</p>
+<h4 class="doc-h4">Route B: Direct API Upload CLI (`tools/zenodo`)</h4>
+<p class="doc-p">To deposit individual package drafts or replication bundles directly to Zenodo via API:</p>
+<div class="code-container"><pre class="code-block"><code># Dry-run validation:
+python tools/zenodo/zenodo_uploader.py &quot;01_Empirical_Pricing_Audit_VPE55&quot; --dry-run
+
+# Upload draft to Zenodo Sandbox:
+python tools/zenodo/zenodo_uploader.py &quot;01_Empirical_Pricing_Audit_VPE55&quot; --sandbox --token &lt;YOUR_TOKEN&gt;
+
+# Upload draft to Zenodo Production:
+python tools/zenodo/zenodo_uploader.py &quot;01_Empirical_Pricing_Audit_VPE55&quot; --production --token &lt;YOUR_TOKEN&gt;</code></pre></div>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h3 class="doc-h3">Author Epistemic Disclaimer &amp; Methodology</h3>
+<h4 class="doc-h4">1. Conceptual Ownership &amp; Author Positionality</h4>
+<p class="doc-p">The foundational equations, ontological definitions, and core theoretical principles of the **Universal Price Equation (UPE)** and **Value Physics** are the original intellectual work of **Jarrod Lyndsay Hamilton**.</p>
+<p class="doc-p">The author holds **no formal background or academic credentials in economics**. The theoretical frameworks were developed independently through self-directed study, reading, and synthesizing what literature was accessible. Furthermore, due to documented cognitive memory impairment, the author may not actively retain specific textual details, academic citations, or literature specifics from the research and writing process. Readers and reviewers are explicitly encouraged to treat secondary economic literature interpretations with a grain of salt and evaluate the underlying mathematical formulations, computational simulations, and empirical derivations directly on their own intrinsic merits.</p>
+<h4 class="doc-h4">2. AI Assistance Disclosure</h4>
+<p class="doc-p">AI tooling (**Google Gemini / Gemini Spark**) was utilized as an assistive technology for computational implementation, automated unit testing, script verification, code translation, and LaTeX typesetting under the author&#x27;s direct supervision and conceptual guidance.</p>
+<hr style="border: none; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+<h3 class="doc-h3">Citation</h3>
+<div class="code-container"><pre class="code-block"><code>@software{hamilton2026valuephysics,
+  author       = {Hamilton, Jarrod Lyndsay},
+  title        = {Value Physics: Computational Replication Archive, Empirical Pricing Audits, and Theoretical Foundations},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.1755001},
+  url          = {https://github.com/alisru/value-physics}
+}</code></pre></div>
+<h3 class="doc-h3">License</h3>
+<li class="doc-li">**Manuscripts, Figures, and Datasets:** [Creative Commons Attribution 4.0 International (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/)</li>
+<li class="doc-li">**Software and Simulation Code:** [MIT License](https://opensource.org/licenses/MIT)</li>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-40.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-40: Master Automated Unit Test Suite (test_value_physics.py)</div>
+</a>
+
+        
+<a href="VPE-42.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-42: CHANGELOG.md</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>
