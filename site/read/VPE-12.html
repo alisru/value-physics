@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -604,7 +607,7 @@ body {
 <p class="doc-p">We present four central mathematical theorems:</p>
 <ul class="doc-ul">
 <li class="doc-li"><strong>The Theorem of Irreducibility:</strong> We prove via linear algebra, differential topology, and category theory that the 7 interrogative planes form a linearly independent, functorially irreducible basis of $\mathbf{Info}$. No plane $\mathcal{Q}_i$ can be reconstructed as a linear, affine, or topological transformation of the remaining six planes without infinite information loss (Catastrophic Projection Loss).</li>
-<li class="doc-li"><strong>The Simplex Minimal Vertex Theorem in 42-Dimensional Base Space:</strong> We prove that cross-evaluating the 7 planes across 6 internal axes of inquiry yields a 42-dimensional Base Information Space ($\mathcal{I}<em>{42}$). Under affine measure theory, enclosing a non-zero $42$-dimensional semantic Lebesgue volume ($\operatorname{Vol}</em>{42}(\mathcal{P}) &gt; 0$) strictly requires a minimal simplex of $v_{\min} = d + 1 = 43$ vertices, where the 43rd vertex represents the emergent Observer anchor ($n$). Any representation with fewer than 42 resolved nodes or lacking the observer coordinate collapses to a measure-zero hyperplane—representing unintegrated data devoid of semantic substance.</li>
+<li class="doc-li"><strong>The Simplex Minimal Vertex Theorem in 42-Dimensional Base Space:</strong> We prove that cross-evaluating the 7 planes across 6 internal axes of inquiry yields a 42-dimensional Base Information Space ($\mathcal{I}{42}$). Under affine measure theory, enclosing a non-zero $42$-dimensional semantic Lebesgue volume ($\operatorname{Vol}{42}(\mathcal{P}) &gt; 0$) strictly requires a minimal simplex of $v_{\min} = d + 1 = 43$ vertices, where the 43rd vertex represents the emergent Observer anchor ($n$). Any representation with fewer than 42 resolved nodes or lacking the observer coordinate collapses to a measure-zero hyperplane—representing unintegrated data devoid of semantic substance.</li>
 <li class="doc-li"><strong>The Holographic Tri-Layer Extrusion and Cardinality Theorem:</strong> We formalize the macro-context ($\mathbf{Q}$), meso-lens ($\mathbf{q}$), and micro-action ($\mathbf{c}$) simplicial tensor product $\mathbf{Q} \otimes \mathbf{q} \otimes \mathbf{c}$, proving that complete holographic definition requires an iterated simplicial complex of $43^3 = 79,507$ vertices, whose core invariants project onto the 343 ($7 \times 7 \times 7$) canonical state combinations.</li>
 <li class="doc-li"><strong>The Spatiotemporal Completion Theorem:</strong> We construct the 4-dimensional temporal <strong>Totality Event Frame (TEF)</strong> ($\text{TEF}[t] = \langle \text{past}, \text{present}, \text{future} \rangle$), proving that dynamic spatiotemporal definition requires $126+n$ resolved nodes across a multi-plane relativistic Lorentz velocity stack ($c_1 \dots c_7$), governed by $c^2$ as the universal compilation constant converting infinitesimal potential into physical manifestation.</li>
 </ul>
@@ -727,7 +730,7 @@ body {
 <p class="doc-p">Let $(\mathcal{M}_I, g_I)$ be the 7-dimensional Riemannian smooth manifold representing the Interrogative Base Space. The tangent space $T_p \mathcal{M}_I$ at any point $p$ is spanned by the orthonormal basis:$$\mathcal{B}_{\mathcal{Q}} = \{e_1, e_2, e_3, e_4, e_5, e_6, e_7\}$$The metric tensor $g_I$ satisfies:$$g_I(e_i, e_j) = \delta_{ij} = \begin{cases} 1 &amp; \text{if } i = j \\ 0 &amp; \text{if } i \neq j \end{cases}$$The metric line element across the seven base planes is strictly Pythagorean:$$d\sigma_{\mathcal{Q}}^2 = \sum_{i=1}^7 (dq_i)^2$$</p>
 <h2 class="doc-h2">4. Mathematical Proof of Irreducibility</h2>
 <h3 class="doc-h3">4.1 Linear and Affine Independence of the 7 Planar Bases</h3>
-<p class="doc-p"><strong>Theorem 4.1 (Linear and Affine Irreducibility)</strong>Let $\mathcal{H}<em>7$ be the 7-dimensional Hilbert space spanned by the orthonormal basis $\mathcal{B}</em>{\mathcal{Q}} = {e_1, \dots, e_7}$ corresponding to the planes ${\mathcal{Q}_1, \dots, \mathcal{Q}_7}$. For every $i \in {1, \dots, 7}$:$$\mathcal{Q}<em>i \cap \operatorname{span}\left( \bigcup</em>{j \neq i} \mathcal{Q}_j \right) = {\mathbf{0}}$$No plane $\mathcal{Q}_i$ can be expressed as a linear or affine combination of the remaining 6 planes.</p>
+<p class="doc-p"><strong>Theorem 4.1 (Linear and Affine Irreducibility)</strong>Let $\mathcal{H}7$ be the 7-dimensional Hilbert space spanned by the orthonormal basis $\mathcal{B}{\mathcal{Q}} = {e_1, \dots, e_7}$ corresponding to the planes ${\mathcal{Q}_1, \dots, \mathcal{Q}_7}$. For every $i \in {1, \dots, 7}$:$$\mathcal{Q}i \cap \operatorname{span}\left( \bigcup{j \neq i} \mathcal{Q}_j \right) = {\mathbf{0}}$$No plane $\mathcal{Q}_i$ can be expressed as a linear or affine combination of the remaining 6 planes.</p>
 <p class="doc-p"><strong>Proof</strong></p>
 <ul class="doc-ul">
 <li class="doc-li">By Definition 3.3, the metric inner product satisfies $\langle e_i, e_j \rangle = \delta_{ij}$.</li>
@@ -743,7 +746,7 @@ body {
 <li class="doc-li"><strong>Monoidal Product:</strong> $\otimes$ (Relational synthesis) with unit object $\mathbf{1}_{\mathbb{I}}$.</li>
 <li class="doc-li">Morphisms: Information-preserving, entropy-non-increasing transformations ($f: A \to B$ such that $H(B) \le H(A)$).</li>
 </ul>
-<p class="doc-p"><strong>Theorem 4.2 (Functorial Irreducibility)</strong>Let $\mathbf{Info}_{\setminus {i}}$ be the full subcategory of $\mathbf{Info}$ spanned by the objects ${\mathcal{Q}<em>j \mid j \neq i}$. There exists no functor $\mathcal{F}: \mathbf{Info}</em>{\setminus {i}} \to \mathbf{Info}$ such that:$$\mathcal{F}\left( \prod_{j \neq i} \mathcal{Q}_j \right) \cong \mathcal{Q}_i$$Each $\mathcal{Q}_i$ is a categorically simple and independent generator of $\mathbf{Info}$.</p>
+<p class="doc-p"><strong>Theorem 4.2 (Functorial Irreducibility)</strong>Let $\mathbf{Info}_{\setminus {i}}$ be the full subcategory of $\mathbf{Info}$ spanned by the objects ${\mathcal{Q}j \mid j \neq i}$. There exists no functor $\mathcal{F}: \mathbf{Info}{\setminus {i}} \to \mathbf{Info}$ such that:$$\mathcal{F}\left( \prod_{j \neq i} \mathcal{Q}_j \right) \cong \mathcal{Q}_i$$Each $\mathcal{Q}_i$ is a categorically simple and independent generator of $\mathbf{Info}$.</p>
 <p class="doc-p"><strong>Proof</strong></p>
 <ul class="doc-ul">
 <li class="doc-li">Consider the Hom-functor $h^{\mathcal{Q}_i} = \operatorname{Hom}_{\mathbf{Info}}(-, \mathcal{Q}_i)$.</li>
@@ -1042,5 +1045,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

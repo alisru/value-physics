@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -1101,7 +1104,7 @@ body {
 <li class="doc-li"><em>Multi-Village Regional Network Simulation: Decentralized Mutual Credit, Asymmetric Shock Resilience, and Inter-Sovereign Trade Tensor Clearing</em> (NEW MASTER DELIVERABLE):</li>
 <li class="doc-li">Authored complete empirical simulation treatise (ARI-VPE-SIM-2026-01) modeling a 10-node regional grid (6,000 citizens, 2,000 households, 100 broadacre enterprises, 40,000 ha) across regional NSW (Regional NSW, Gilgandra, Gunnedah, Narrabri, Dubbo, Mudgee, Tamworth, Warren, Walgett, Moree).</li>
 <li class="doc-li">Simulated 156 weeks of compound asymmetric climate stress (70-week severe drought causing an 85% crop yield collapse in northern broadacre nodes) alongside macro rate (+425 bps) and diesel ($2.25/L) shocks.</li>
-<li class="doc-li">Proved that the Value Physics Cohesive Grid linearly reduces regional debt from $180.0M to <strong>$148.92M AUD</strong> (-$31.08M principal amortized at 0% usury), maintains invariant retail bread at <strong>$1.15 AUD</strong>, and executes <strong>340 bilateral physical commodity transfers (3,708.2 tonnes grain)</strong> counter-settled in solar MWh and clinical care hours via Ξ_{trade} with 100% regional solvency.</li>
+<li class="doc-li">Proved that the Value Physics Cohesive Grid linearly reduces regional debt from $180.0M to $148.92M AUD</strong> (-$31.08M principal amortized at 0% usury), maintains invariant retail bread at $1.15 AUD</strong>, and executes <strong>340 bilateral physical commodity transfers (3,708.2 tonnes grain)</strong> counter-settled in solar MWh and clinical care hours via Ξ_{trade} with 100% regional solvency.</li>
 </ul>
 <h3 class="doc-h3">17. Epistemic Auditor &amp; Checker Verification Log: Sprint 5.5 Verification Pass (10-Node Regional Network Simulation ARI-VPE-SIM-2026-01 &amp; Spatial Shock Balancing)</h3>
 <h4 class="doc-h4">17.1 Verification Assessment &amp; System Health Overview</h4>
@@ -1159,5 +1162,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

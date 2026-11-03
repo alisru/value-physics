@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -603,8 +606,8 @@ body {
 <p class="doc-p">This treatise presents a 10-node dynamic network simulation of interconnected regional communities across a 156-week operational horizon, modeling 6,500 total citizens across the Warrumbungle-Orana bioregion in New South Wales, Australia. We formalize the continuous-time Dynamic Leontief-Differential System ($\frac{d\mathbf{x}(t)}{dt} = (\mathbf{I} - \mathbf{A}(t))\mathbf{x}(t) - \mathbf{c}(t)$) and the Inter-Sovereign Trade Tensor ($\mathbf{\Xi}_{\text{trade}}$) to govern multi-commodity resource exchanges (Food, Energy, Water, Shelter, Care).</p>
 <p class="doc-p">Under compound stressors—including a 30-week severe drought localized to northern agrarian nodes (50% yield reduction), a +65% global diesel fuel shock ($2.40/L), and a +425 bps central bank interest rate hike—the simulation demonstrates:</p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Neoclassical Debt Fragility:</strong> Centralized commercial banking mechanisms trigger widespread municipal and farm insolvencies ($10.0 / 10.0$ default rate), expanding cumulative debt to <strong>$179.5M AUD</strong> and causing <strong>$878.7k in unhedged ecological carrying capacity ($R_n$) destruction</strong>.</li>
-<li class="doc-li"><strong>Value Physics Network Solvency:</strong> Operating under Theorem 5 (Statutory Debt Bifurcation at 0.0% interest), statutory disaster amortization pauses, and Book 2 shared strategic reserve transfers, the network maintains <strong>100% solvency ($P_{\text{default}} = 0.000$)</strong>, steadily pays down principal debt linearly to <strong>$147.0M AUD</strong>, accumulates <strong>$42.0M WEST equivalents in collective emergency reserves</strong>, and expands regional carrying capacity by <strong>$+8.79M units</strong>.</li>
+<li class="doc-li"><strong>Neoclassical Debt Fragility:</strong> Centralized commercial banking mechanisms trigger widespread municipal and farm insolvencies ($10.0 / 10.0$ default rate), expanding cumulative debt to <strong>$179.5M AUD and causing $878.7k in unhedged ecological carrying capacity ($R_n$) destruction</strong>.</li>
+<li class="doc-li"><strong>Value Physics Network Solvency:</strong> Operating under Theorem 5 (Statutory Debt Bifurcation at 0.0% interest), statutory disaster amortization pauses, and Book 2 shared strategic reserve transfers, the network maintains <strong>100% solvency ($P_{\text{default}} = 0.000$)</strong>, steadily pays down principal debt linearly to <strong>$147.0M AUD, accumulates $42.0M WEST equivalents in collective emergency reserves</strong>, and expands regional carrying capacity by <strong>$+8.79M units</strong>.</li>
 </ul>
 <h2 class="doc-h2">1. Regional Network Topology &amp; Node Parameterization</h2>
 <p class="doc-p">The simulation models a heterogeneous 10-node regional network cluster representing specialized production hubs across an integrated bioregion:</p>
@@ -691,7 +694,7 @@ body {
 <h2 class="doc-h2">2. Inter-Sovereign Trade Tensor &amp; Dynamic Leontief Equations</h2>
 <h3 class="doc-h3">2.1 The Regularized Inter-Sovereign Trade Tensor ($\mathbf{\Xi}_{\text{trade}}$)</h3>
 <p class="doc-p">When Node $i$ exports physical commodities to Node $j$, the bilateral exchange rate is governed strictly by relative difficulty and ecological replenishment well-depth:</p>
-<p class="doc-p">$$\mathbf{\Xi}<em>{\text{trade}}(i, j, t) = \frac{\text{WEST}</em>{\text{exported}}(i, t)}{\text{WEST}<em>{\text{imported}}(j, t)} \cdot \left[ \frac{R</em>{n,i}(t) + \Delta R_{n,i}(t)}{R_{n,j}(t) + \Delta R_{n,j}(t)} \right] \cdot \exp\left( -\frac{d_{ij}}{L_0} \cdot \frac{P_{3}(t)}{P_{3,0}} \right)$$</p>
+<p class="doc-p">$$\mathbf{\Xi}{\text{trade}}(i, j, t) = \frac{\text{WEST}{\text{exported}}(i, t)}{\text{WEST}{\text{imported}}(j, t)} \cdot \left[ \frac{R{n,i}(t) + \Delta R_{n,i}(t)}{R_{n,j}(t) + \Delta R_{n,j}(t)} \right] \cdot \exp\left( -\frac{d_{ij}}{L_0} \cdot \frac{P_{3}(t)}{P_{3,0}} \right)$$</p>
 <p class="doc-p">Where:</p>
 <ul class="doc-ul">
 <li class="doc-li">$d_{ij}$ is the spatial Euclidean distance between nodes (ranging from $15\text{ km}$ to $136\text{ km}$).</li>
@@ -792,5 +795,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

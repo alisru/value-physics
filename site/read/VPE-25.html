@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -601,8 +604,8 @@ body {
 <p class="doc-p">Executive Simulation Highlights</p>
 <p class="doc-p">This computational simulation models a closed-loop 8-stage micro-economy over 100 timesteps, subjecting the supply chain to a compound sequence of exogenous shocks: a <strong>300 bps RBA cash rate hike</strong> (t=20), a <strong>100% diesel fuel price spike</strong> (t=40), and a <strong>40% harvest drought</strong> (t=60–75).</p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Neoclassical Duopoly Regime:</strong> Retail loaf prices escalate from $4.00 to <strong>$5.23 AUD</strong> (+30.8%). Supermarket profits surge to <strong>$13.67M AUD</strong> via unearned rentier tolling ($R_a \approx 0.40$), while the systemic Reality Gap accumulates <strong>$12.73M AUD</strong> in uncompensated upstream strain ($DQ = 1.369$).</li>
-<li class="doc-li"><strong>Value Physics Fair-Pricing Protocol:</strong> Enforces Statutory Debt Bifurcation (0% compound usury on productive capital), a National Strategic Grain Reserve ($TS_0$ Buffer), and capped retail margins ($R_a \le 0.12$). Retail prices stabilize at <strong>$1.35–$1.39 AUD per loaf</strong>, 100% supply continuity is preserved during the drought, and farmer cash reserves grow to <strong>$1.44M AUD</strong> ($DQ = 1.000, \Delta R = \$0.00$).</li>
+<li class="doc-li"><strong>Neoclassical Duopoly Regime:</strong> Retail loaf prices escalate from $4.00 to $5.23 AUD</strong> (+30.8%). Supermarket profits surge to <strong>$13.67M AUD via unearned rentier tolling ($R_a \approx 0.40$), while the systemic Reality Gap accumulates $12.73M AUD</strong> in uncompensated upstream strain ($DQ = 1.369$).</li>
+<li class="doc-li"><strong>Value Physics Fair-Pricing Protocol:</strong> Enforces Statutory Debt Bifurcation (0% compound usury on productive capital), a National Strategic Grain Reserve ($TS_0$ Buffer), and capped retail margins ($R_a \le 0.12$). Retail prices stabilize at <strong>$1.35–$1.39 AUD per loaf</strong>, 100% supply continuity is preserved during the drought, and farmer cash reserves grow to <strong>$1.44M AUD ($DQ = 1.000, \Delta R = \$0.00$).</li>
 </ul>
 <h3 class="doc-h3">1. Mathematical Formalization of Identified Theoretical Gaps</h3>
 <p class="doc-p">To transition the Universal Price Equation (UPE) into an operational multi-agent simulation, four core theoretical gaps were formalized mathematically:</p>
@@ -678,7 +681,7 @@ body {
 </table></div>
 <h3 class="doc-h3">4. Deep-Dive Analytical Insights</h3>
 <h4 class="doc-h4">4.1 The Myth of the &quot;$2.50 Cheap Loaf&quot;</h4>
-<p class="doc-p">The neoclassical regime demonstrates how supermarket private-label pricing ($2.50–$2.70 AUD) functions as a simulacrum under The Cover. Supermarkets extract over <strong>$13.67M AUD</strong> in excess profits by tolling branded bread and dairy lines while forcing grain farmers to sell at $360/t (below long-term capital replacement costs). The unpaid difference accumulates as the <strong>Reality Gap Integral ($\Delta R = \$12.73\text{M AUD}$)</strong>, which manifests in real life as rural bank debt, neglected tractor maintenance, and unreplenished soil minerals.</p>
+<p class="doc-p">The neoclassical regime demonstrates how supermarket private-label pricing ($2.50–$2.70 AUD) functions as a simulacrum under The Cover. Supermarkets extract over <strong>$13.67M AUD in excess profits by tolling branded bread and dairy lines while forcing grain farmers to sell at $360/t (below long-term capital replacement costs). The unpaid difference accumulates as the <strong>Reality Gap Integral ($\Delta R = \$12.73\text{M AUD}$)</strong>, which manifests in real life as rural bank debt, neglected tractor maintenance, and unreplenished soil minerals.</p>
 <h4 class="doc-h4">4.2 Drought Resilience via the Strategic Grain Reserve ($TS_0$ Buffer)</h4>
 <p class="doc-p">During the simulated 40% harvest drought (t=60 to 75):</p>
 <ul class="doc-ul">
@@ -721,5 +724,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

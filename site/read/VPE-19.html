@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -677,7 +680,7 @@ body {
 <p class="doc-p">In dynamic 156-week Stock-Flow Consistent (SFC) modeling of broadacre agricultural shires under compound rate, fuel, and climate shocks:</p>
 <ul class="doc-ul">
 <li class="doc-li"><strong>Neoclassical Debt Trap:</strong> Farm debt expanded from $18.0M to $18.4M AUD despite constant production, FMD cash reserves collapsed to $0.00, and retail bread rose to $5.65 AUD ($DQ = 1.369$).</li>
-<li class="doc-li"><strong>Value Physics Protocol (Theorem 5):</strong> Amortized <strong>$2.16M of principal debt linearly</strong>, expanded farm reserves to <strong>$6.18M AUD</strong>, preserved 100% solvency through severe droughts, and stabilized local shelf bread at <strong>$1.15 AUD</strong> ($DQ = 1.000, \Delta R = $0.00$).</li>
+<li class="doc-li"><strong>Value Physics Protocol (Theorem 5):</strong> Amortized <strong>$2.16M of principal debt linearly, expanded farm reserves to $6.18M AUD</strong>, preserved 100% solvency through severe droughts, and stabilized local shelf bread at <strong>$1.15 AUD ($DQ = 1.000, \Delta R = $0.00$).</li>
 </ul>
 <h2 class="doc-h2">4. Operational Implementation Plan for Government Shires &amp; Mutuals</h2>
 <p class="doc-p">┌────────────────────────────────────────────────────────────────────────────────────────┐</p>
@@ -731,5 +734,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

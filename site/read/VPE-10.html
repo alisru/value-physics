@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -699,7 +702,7 @@ body {
 <h4 class="doc-h4">Structural Deconstruction by Market Tier</h4>
 <p class="doc-p">1. Tier 1: Private-Label Supermarket Bread ($2.40 – $2.80 AUD)</p>
 <p class="doc-p">Private-label bread is manufactured using the Chorleywood Bread Process (CBP) inside massive, continuous-flow automated baking plants. It consumes minimal direct human labor (~ 110 seconds per loaf across all 8 stages).</p>
-<p class="doc-p">While consumers view $2.50 white bread as an economic bargain, Value Physics demonstrates that it sells <strong>below its long-run physical reproduction cost</strong> (P_H ≈ $2.85 AUD), yielding a Distortion Quotient of DQ = 0.796. Supermarkets deploy cheap bread as an essential caloric hook under <strong>&quot;The Cover&quot;</strong>. The discount is not funded by supermarket profit surrender; rather, it is extracted by squeezing farmgate wheat acquisition prices down to DQ = 0.134. The unpaid real cost accumulates as the <strong>Reality Gap Integral (Δ R)</strong>, accelerating rural insolvency and soil degradation.</p>
+<p class="doc-p">While consumers view $2.50 white bread as an economic bargain, Value Physics demonstrates that it sells below its long-run physical reproduction cost (P_H ≈ $2.85 AUD), yielding a Distortion Quotient of DQ = 0.796. Supermarkets deploy cheap bread as an essential caloric hook under <strong>&quot;The Cover&quot;</strong>. The discount is not funded by supermarket profit surrender; rather, it is extracted by squeezing farmgate wheat acquisition prices down to DQ = 0.134. The unpaid real cost accumulates as the <strong>Reality Gap Integral (Δ R)</strong>, accelerating rural insolvency and soil degradation.</p>
 <p class="doc-p">2. Tier 2: National Commercial Branded Bread ($4.60 – $5.20 AUD)</p>
 <p class="doc-p">National commercial brands (Tip Top, Wonder White, Helga&#x27;s) are produced on the very same industrial automated lines as private-label bread, often in the exact same Goodman Fielder or George Weston Foods facilities.</p>
 <p class="doc-p">The physical difficulty increment is marginal: adding specialty bran, seed mixes, or synthetic vitamin sprays adds only +0.08 WEST tokens (≈ 15–20 cents of physical ingredients and sorting effort). Yet the retail shelf price jumps by <strong>$1.90 to $2.50 AUD</strong>. This entire price delta represents:</p>
@@ -722,7 +725,7 @@ body {
 <p class="doc-p">Modern broadacre grain farming in Australia is one of the most capital-intensive industries in the world. According to data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES), total Australian farm business debt exceeds <strong>$110 Billion AUD</strong>, with 5% of broadacre farms carrying over 52% of the debt burden.</p>
 <p class="doc-p">When the RBA raised the cash rate from 0.10% to 4.35%:</p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Term Debt Servicing Escalation:</strong> A representative broadacre grain farmer carrying $2.0 Million AUD in land expansion and combine harvester debt saw annual interest bills jump from <strong>$70,000 AUD (at 3.5%) to over $130,000–$160,000 AUD (at 6.5%–8.5%)</strong>.</li>
+<li class="doc-li"><strong>Term Debt Servicing Escalation:</strong> A representative broadacre grain farmer carrying $2.0 Million AUD in land expansion and combine harvester debt saw annual interest bills jump from $70,000 AUD (at 3.5%) to over $130,000–$160,000 AUD (at 6.5%–8.5%)</strong>.</li>
 <li class="doc-li"><strong>Working Capital Overdrafts:</strong> Grain farming requires massive upfront working capital months before harvest to fund seed, diesel, and nitrogen fertilizer. Agricultural overdraft rates rose from 5% to over 8.5%–9.0%.</li>
 <li class="doc-li"><strong>Cost-Push Transmission:</strong> Debt servicing expenses increased from 8% of gross farm cash income to <strong>12%–22%</strong>. Because grain farmers cannot operate at a continuous cash loss, this debt load directly inflates the required farmgate breakeven price (P_6 ↑).</li>
 </ul>
@@ -848,7 +851,7 @@ body {
 </tr>
 </table></div>
 <h4 class="doc-h4">Simulation Findings</h4>
-<p class="doc-p">1. <strong>$0.78 AUD Loaf Price Surge (+19.4%):</strong> A 300 bps rate hike drives an immediate ~ $0.78 AUD increase in the nominal retail price of a commercial loaf.</p>
+<p class="doc-p">1. <strong>$0.78 AUD Loaf Price Surge (+19.4%): A 300 bps rate hike drives an immediate ~ $0.78 AUD increase in the nominal retail price of a commercial loaf.</p>
 <p class="doc-p">2. <strong>Interest Sunk Cost Component (43.2 cents):</strong> Direct debt servicing and working capital interest account for <strong>$0.432 AUD (55.4% of the total price hike)</strong>.</p>
 <p class="doc-p">3. <strong>Retail Margin Expansion (28.0 cents):</strong> Exploiting captive demand (γ ↑), retail duopolies expand absolute dollar margins by $0.28 AUD per loaf, proving that monetary tightening fuels corporate margin defense at the expense of household nutrition.</p>
 <h3 class="doc-h3">Structural Distortions and Systemic Risks: &quot;The Cover&quot; under High Interest Rates</h3>
@@ -915,5 +918,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>

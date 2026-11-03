@@ -730,6 +730,9 @@ table.data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Value Physics — Master Research Repository & Portal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 {SHARED_CSS}
   </style>
@@ -1251,7 +1254,10 @@ function switchTab(tabId) {{
   document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
   
   const target = document.getElementById('tab-' + tabId);
-  if (target) target.classList.add('active');
+  if (target) {{
+    target.classList.add('active');
+    setTimeout(() => renderMathInPage(target), 50);
+  }}
   
   document.querySelectorAll('.nav-link').forEach(el => {{
     if (el.getAttribute('href').includes(tabId)) el.classList.add('active');
@@ -1373,7 +1379,9 @@ function openPaperModal(id) {{
     fileEl.style.display = 'none';
   }}
   
-  document.getElementById('paper-modal').classList.add('active');
+  const modalEl = document.getElementById('paper-modal');
+  modalEl.classList.add('active');
+  renderMathInPage(modalEl);
 }}
 
 function closePaperModal() {{
@@ -1581,6 +1589,22 @@ function exportCommoditiesCSV() {{
   window.open('data/commodities.json', '_blank');
 }}
 
+function renderMathInPage(targetEl) {{
+  if (typeof renderMathInElement === 'function') {{
+    renderMathInElement(targetEl || document.body, {{
+      delimiters: [
+        {{left: '$$', right: '$$', display: true}},
+        {{left: '$', right: '$', display: false}},
+        {{left: '\\(', right: '\\)', display: false}},
+        {{left: '\\[', right: '\\]', display: true}}
+      ],
+      throwOnError: false
+    }});
+  }}
+}}
+
+window.renderMathInPage = renderMathInPage;
+
 window.addEventListener('DOMContentLoaded', () => {{
   const presetSelect = document.getElementById('calc-preset-select');
   COMMODITIES.forEach(c => {{
@@ -1602,6 +1626,7 @@ window.addEventListener('DOMContentLoaded', () => {{
   renderChangelog();
   renderUpdates();
   runCalculator();
+  setTimeout(() => renderMathInPage(), 100);
 }});
 </script>
 </body>

@@ -602,6 +602,10 @@ def parse_docx_to_html(fpath):
             p_text = ''.join(runs_html).strip()
             if not p_text:
                 continue
+            # Strip formatting HTML tags embedded within LaTeX math delimiters so KaTeX parses them cleanly
+            def _clean_math_delims(m):
+                return re.sub(r'</?(?:strong|em|b|i|span)[^>]*>', '', m.group(0))
+            p_text = re.sub(r'(\$\$[^\$]+\$\$|\$[^\$\n]+\$|\\\[.+?\\\]|\\\(.+?\\\))', _clean_math_delims, p_text)
                 
             num_el = elem.find('.//w:numPr', ns)
             is_bullet = ('List' in style) or ('bullet' in style.lower()) or (num_el is not None)
@@ -895,6 +899,9 @@ def build_reader_page(paper, prev_p, next_p, base_dir):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 {READER_CSS}
   </style>
@@ -954,6 +961,25 @@ def build_reader_page(paper, prev_p, next_p, base_dir):
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {{
+  if (typeof renderMathInElement === 'function') {{
+    renderMathInElement(targetEl || document.body, {{
+      delimiters: [
+        {{left: '$$', right: '$$', display: true}},
+        {{left: '$', right: '$', display: false}},
+        {{left: '\\(', right: '\\)', display: false}},
+        {{left: '\\[', right: '\\]', display: true}}
+      ],
+      throwOnError: false
+    }});
+  }}
+}}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {{
+  setTimeout(() => renderMathInPage(), 100);
+}});
+  </script>
 </body>
 </html>
 """

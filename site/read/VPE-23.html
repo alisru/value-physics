@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInPage()"></script>
   <style>
 
 :root {
@@ -1560,7 +1563,7 @@ body {
 <li class="doc-li">Sawmill Direct Labor &amp; Milling Overheads: $0.95 AUD/m.</li>
 <li class="doc-li"><em>Mill-Gate Cost:</em> <strong>$3.00 AUD/m</strong>.</li>
 <li class="doc-li">Wholesale Distributor Markup: Wholesale timber brokers apply a 35% gross markup ⇒ $4.05 AUD/m.</li>
-<li class="doc-li">Retail Merchant Chain Margin: Commercial building material suppliers apply a <strong>43%–45% gross margin</strong>, adding $3.15 AUD/m ⇒ <strong>Shelf RRP = $7.20 AUD/m</strong>.</li>
+<li class="doc-li">Retail Merchant Chain Margin: Commercial building material suppliers apply a <strong>43%–45% gross margin</strong>, adding $3.15 AUD/m ⇒ Shelf RRP = $7.20 AUD/m</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b): Stumpage royalty and silviculture seedling replacement = <strong>$1.20 AUD/m</strong>.</li>
 <li class="doc-li">Thermodynamic Exergy (P_e): Harvester diesel, kiln drying thermal exergy, transport fuel = <strong>$0.85 AUD/m</strong>.</li>
@@ -1625,7 +1628,7 @@ body {
 </ul>
 <p class="doc-p">R_{a,\text{commercial}} = 1 - \frac{\gamma \cdot S \cdot U}{R_n \cdot (\Delta_{\text{spread}} - \text{Taxes})} = 1 - \frac{1.0073 \cdot 1.08 \cdot 0.35}{0.90 \cdot 0.210} = \mathbf{18.2\%}</p>
 <ul class="doc-ul">
-<li class="doc-li">The true commercial rent toll is <strong>$0.210 AUD/L</strong>, not $0.48 AUD/L. We instruct the Researcher to update Case Study 3 in VPE-55 with this tax-segregated decomposition.</li>
+<li class="doc-li">The true commercial rent toll is <strong>$0.210 AUD/L, not $0.48 AUD/L. We instruct the Researcher to update Case Study 3 in VPE-55 with this tax-segregated decomposition.</li>
 </ul>
 <p class="doc-p"><strong>2. Net Biological Labor ($U$) vs. Total Integrated Difficulty ($D$) (Directive 2)</strong></p>
 <ul class="doc-ul">
@@ -1639,8 +1642,8 @@ body {
 <ul class="doc-ul">
 <li class="doc-li"><em>Issue:</em> In Bulk Wheat (R_a = 43.0\%) and Ready-Mix Concrete (R_a = 48.3\%), heavy machinery wear must be distinguished from pure financialized usury.</li>
 <li class="doc-li"><em>Calibration:</em></li>
-<li class="doc-li">In Bulk Wheat, silo conveyor belts and rail hopper maintenance account for <strong>$18.50 AUD/tonne</strong> (P_{\text{cap-dep}}), adjusting net unearned trade rent to <strong>$56.22 AUD/tonne</strong>.</li>
-<li class="doc-li">In Ready-Mix Concrete, agitator truck fleet depreciation accounts for <strong>$22.00 AUD/m³</strong> (P_{\text{cap-dep}}), adjusting net corporate extraction to <strong>$51.28 AUD/m³</strong>.</li>
+<li class="doc-li">In Bulk Wheat, silo conveyor belts and rail hopper maintenance account for <strong>$18.50 AUD/tonne (P_{\text{cap-dep}}), adjusting net unearned trade rent to $56.22 AUD/tonne</strong>.</li>
+<li class="doc-li">In Ready-Mix Concrete, agitator truck fleet depreciation accounts for <strong>$22.00 AUD/m³ (P_{\text{cap-dep}}), adjusting net corporate extraction to $51.28 AUD/m³</strong>.</li>
 </ul>
 <h4 class="doc-h4"><strong>53.4 Consolidated Multi-Commodity Benchmarking Matrix</strong></h4>
 <div class="table-container"><table class="doc-table">
@@ -2706,7 +2709,7 @@ body {
 <li class="doc-li">Soddy&#x27;s Virtual Wealth and the Thermodynamic Impossibility of Compound Debt: Mapped to Nobel laureate Frederick Soddy (1926, 1933, <em>Wealth, Virtual Wealth and Debt</em>). Section 7.2 formalizes Soddy&#x27;s core insight into the exact differential Soddy Divergence Ratio: Ω(t) ≡ A_p(t)/W_p(t) = (A_p(0)/W_p(0)) exp[(r + δ_p)t] proving that because physical dissipative structures decay at entropic rate δ_p &gt; 0 while nominal legal claims expand at contractual rate r &gt; 0, lim_{t → ∞} Ω(t) = ∞, rendering compound interest regimes mathematically impossible on a finite biophysical substrate without periodic debt cancellation or catastrophic collapse.</li>
 <li class="doc-li">The Double-Entry Bookkeeping Category Error: Mapped to Luca Pacioli (1494), Wynne Godley &amp; Marc Lavoie (2007, <em>Monetary Economics</em>), and biophysical economics (Georgescu-Roegen 1971; Odum 1996; Ayres &amp; Warr 2009). Section 7.1 exposes the fundamental category error of GAAP/IFRS commercial banking accounting: recording nominal legal claims on future labor (A_p) on the asset ledger symmetrically with real physical exergy dissipative capital (W_p). Value Physics formalizes loan origination physical invariance: Δ W_p = 0.00 Joules, Δ A_p = L_0 &gt; 0 and defines systemic impedance Z_{sys} = ∂ A_p/∂ W_p + (μ A_p^ν)/(W_a - A_a + ε).</li>
 <li class="doc-li">Multi-Sector Sraffa-Leontief Duality &amp; Hawkins-Simon Solvency: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960, <em>Production of Commodities by Means of Commodities</em>), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output technical coefficients matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), proving that all 5 leading principal minors are strictly positive (D_1 = 1.000, D_2 = 0.99995, D_3 = 0.999495, D_4 = 0.990877, D_5 = 0.988015) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, guaranteeing strictly positive net output and uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^{-1} = ∑_{k=0}^∞ <strong>A</strong>^k.</li>
-<li class="doc-li">Transpose Drag Propagation in Basic Sectors: Mapped to Piero Sraffa (1960) and Luigi Pasinetti (1977). Appendix A.4 (Theorem A.1) formally proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (<strong>I</strong> - <strong>A</strong>)^{-T} into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
+<li class="doc-li">Transpose Drag Propagation in Basic Sectors: Mapped to Piero Sraffa (1960) and Luigi Pasinetti (1977). Appendix A.4 (Theorem A.1) formally proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (I - A)^{-T} into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
 <li class="doc-li">Kramers Barrier Crossing &amp; Stochastic Climatological Escape: Mapped to Hendrik A. Kramers (1940, <em>Physica</em>), Paul Langevin (1908), Peter Hänggi, Peter Talkner &amp; Michal Borkovec (1990), and the Unified Colored Noise Approximation (UCNA; Fox 1986; Jung &amp; Risken 1987). Appendix B projects the stochastic 2D Work-Antiwork SDE onto the 1D transversal reaction coordinate u = (W_p - L_{crit} A_p)/√(1 + L_{crit}^2), solving the Fokker-Planck probability flux across the separatrix potential barrier U(u) = &amp;frac{1}{2} δ_p u^2 to derive the exact analytical mean first-passage escape time: τ_{escape} = (2π/√1.5 δ_p) exp(Δ U_{barrier}/D_{eff}) with colored noise penalty under Ornstein-Uhlenbeck memory (τ_{env} = 2.5 yr).</li>
 <li class="doc-li">2. Pre-Explored Avenues in Economic History:</li>
 <li class="doc-li">Soddy&#x27;s Century-Old Virtual Wealth Warning: While Frederick Soddy accurately identified the mathematical contradiction between compound interest and entropy in 1926, his work was dismissed by orthodox economists who lacked the non-linear dynamical systems language, phase-space Lyapunov methods, and stock-flow consistent matrices necessary to model it rigorously. Value Physics completes Soddy&#x27;s program by formulating the non-linear bifurcation equations and the Tri-Fold Ledger.</li>
@@ -2840,7 +2843,7 @@ body {
 <li class="doc-li">1. Pre-Existing Concepts:</li>
 <li class="doc-li">Kramers Barrier Crossing &amp; Langevin Dynamics: Mapped to Hendrik A. Kramers (1940, <em>Physica</em>), Paul Langevin (1908), and Peter Hänggi, Peter Talkner &amp; Michal Borkovec (1990, <em>Rev. Mod. Phys.</em>). Appendix B projects the stochastic 2D Work-Antiwork dynamical system across the separatrix to a 1D Fokker-Planck equation along the transversal reaction coordinate u = (W_p - L_crit A_p) / sqrt(1 + L_crit^2), solving the quasi-stationary probability current J across the separatrix barrier U(u) = 0.5 * delta_p * u^2 to derive the analytical escape time: tau_escape = (2 * pi / (sqrt(1.5) * delta_p)) * exp(delta_U_barrier / D_eff). This is isomorphic to Kramers&#x27; classical reaction-rate escape in the moderate-to-strong friction limit, where systemic depreciation (delta_p) functions as friction and effective variance D_eff ≈ 0.5 * [(alpha * sigma_W)^2 + sigma_A^2] represents thermal agitation.</li>
 <li class="doc-li">Colored Noise Memory &amp; The UCNA Approximation: Mapped to Robert Fox (1986), Peter Jung &amp; H. Risken (1987), and Peter Hänggi et al. (1985). Theorem 5.3 (Colored Noise Penalty) models multi-year environmental memory (tau_env = 2.5 yr) under an Ornstein-Uhlenbeck process, proving that environmental persistence scales the effective potential barrier, drastically shortening the expected time to economic insolvency.</li>
-<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius rho(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (<strong>I</strong> - <strong>A</strong>)^-T into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
+<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius rho(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (I - A)^-T into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
 <li class="doc-li">Soddy’s Virtual Wealth &amp; Biophysical Accounting Invariance: Mapped to Nobel laureate Frederick Soddy (1926, 1933), Michael Hudson (2018), and Wynne Godley &amp; Marc Lavoie (2007). Section 7 exposes the foundational category error of Luca Pacioli&#x27;s (1494) double-entry bookkeeping (GAAP/IFRS), where bank loans create paper claims ex nihilo (delta_A_p = L_0 &gt; 0) without generating physical exergy (delta_W_p = 0). The Soddy Divergence Ratio Omega(t) ≡ A_p(t) / W_p(t) = (A_p(0) / W_p(0)) * exp((r + delta_p)t) diverges to infinity (lim Omega(t) = infinity), proving the thermodynamic inevitability of periodic debt jubilees or systemic collapse.</li>
 <li class="doc-li">2. Pre-Explored Avenues in Economic History:</li>
 <li class="doc-li">The Sraffian Critique vs. Neoclassical Production Functions: Sraffa (1960) and Joan Robinson (1953) proved the fatal circularity of aggregate neoclassical capital K, but neoclassical economics bypassed this via representative-agent DSGE models that ignored physical exergy carrying capacity. Value Physics operationalizes Sraffa&#x27;s basic commodity matrices into an empirical dynamic state-space model with physical unit-scale concordance.</li>
@@ -2945,14 +2948,14 @@ body {
 <p class="doc-p">\text{Retail Shelf Price } P_{\text{retail}} = \frac{\text{Unit Factory Cost} + \text{Inbound Freight}}{1 - \text{Retail Gross Margin \%}}</p>
 <ul class="doc-ul">
 <li class="doc-li">Empirical Cost Breakdown:</li>
-<li class="doc-li">Raw Agricultural Inputs: ~580g milling wheat yields ~450g flour. At $340 AUD/tonne delivered mill, raw grain represents <strong>$0.197 AUD</strong> per loaf. Flour milling, yeast, emulsifiers, vegetable oil, and salt add $0.175 AUD ⇒ Total ingredient cost = <strong>$0.372 AUD</strong>.</li>
+<li class="doc-li">Raw Agricultural Inputs: ~580g milling wheat yields ~450g flour. At $340 AUD/tonne delivered mill, raw grain represents $0.197 AUD</strong> per loaf. Flour milling, yeast, emulsifiers, vegetable oil, and salt add $0.175 AUD ⇒ Total ingredient cost = $0.372 AUD</strong>.</li>
 <li class="doc-li">Direct Industrial Baking &amp; Packaging: Automated Chorleywood Bread Process (CBP) tunnel oven electricity/gas ($0.160 AUD), plant labor ($0.110 AUD), plastic bagging/clip ($0.080 AUD), plant maintenance ($0.055 AUD) ⇒ Factory Gate Cost = <strong>$0.777 AUD</strong>.</li>
 <li class="doc-li">Wholesale Logistics &amp; Distribution: Primary palletized linehaul freight and route delivery to supermarket distribution centers (DCs) adds <strong>$0.245 AUD</strong>.</li>
 <li class="doc-li">Factory-to-Wholesale Cost = <strong>$1.022 AUD</strong>.</li>
 <li class="doc-li">Commercial Baker Markups &amp; Corporate Overhead: Corporate SG&amp;A, brand marketing amortization, factory equipment leasehold debt, and wholesale margin add $0.85–$1.20 AUD ⇒ Wholesale Sell-In Price to Supermarket = <strong>$1.87–$2.25 AUD</strong>.</li>
 <li class="doc-li">Retail Supermarket Margin:</li>
 <li class="doc-li">On National Brands ($4.60–$4.90 AUD shelf price): Supermarkets apply a gross margin of <strong>38%–45%</strong> ($R_a \approx 0.40$), capturing <strong>$1.75–$2.20 AUD per loaf</strong> in retail gross profit.</li>
-<li class="doc-li">On Private-Label ($2.70 AUD shelf price): Supermarkets compress gross margin to <strong>10%–15%</strong> ($0.27–$0.40 AUD), using bread as an everyday traffic driver (&quot;The Cover&quot;).</li>
+<li class="doc-li">On Private-Label ($2.70 AUD shelf price): Supermarkets compress gross margin to 10%–15% ($0.27–$0.40 AUD), using bread as an everyday traffic driver (&quot;The Cover&quot;).</li>
 <li class="doc-li">Failure of Cost-Plus: Conventional cost-plus treats debt servicing on corporate leveraged buyouts, eye-level shelf listing fees, brand litigation, and retail property rental yields as legitimate &quot;costs,&quot; building them directly into consumer prices while masking real biophysical cost floors.</li>
 </ul>
 <p class="doc-p"><strong>2. Marginal Cost Pricing ($P = MC$)</strong></p>
@@ -3046,7 +3049,7 @@ body {
 <ul class="doc-ul">
 <li class="doc-li">Key Epistemological Insights:</li>
 <li class="doc-li">1. <strong>The Paradox of Private-Label &quot;The Cover&quot;:</strong> At $2.70 AUD, private-label supermarket bread superficially matches the UPE RRP/D figure ($2.70 AUD), but does so through structural parasitism. Supermarkets achieve the $2.70 shelf price not by eliminating debt and unearned rent, but by depressing farmgate wheat prices to $DQ = 0.134$ ($320/tonne vs. fair physical cost $420/tonne), externalizing soil depletion, and underpaying contract distribution drivers.</li>
-<li class="doc-li">2. <strong>The $1.75 Branded Rent Toll ($R_a = 0.42$):</strong> Commercial branded bread ($4.90 AUD) exceeds the UPE RRP/D benchmark ($3.15 AUD) by <strong>$1.75 AUD per loaf (+55.6%)</strong>. UPE mathematically demonstrates that this gap contains zero additional human metabolic effort ($P_b$) and zero physical exergy ($P_e$). It consists entirely of:</li>
+<li class="doc-li">2. <strong>The $1.75 Branded Rent Toll ($R_a = 0.42$): Commercial branded bread ($4.90 AUD) exceeds the UPE RRP/D benchmark ($3.15 AUD) by $1.75 AUD per loaf (+55.6%)</strong>. UPE mathematically demonstrates that this gap contains zero additional human metabolic effort ($P_b$) and zero physical exergy ($P_e$). It consists entirely of:</li>
 <li class="doc-li">Supermarket shelf placement and slotting fees ($P_1$): $0.85 AUD.</li>
 <li class="doc-li">Financialized corporate debt service on leveraged baking assets ($P_6$): $0.45 AUD.</li>
 <li class="doc-li">Pure oligopoly pricing power enabled by captive consumer urgency ($\gamma(v_{\text{rel}}) &gt; 1.0$): $0.45 AUD.</li>
@@ -3065,7 +3068,7 @@ body {
 <li class="doc-li">Seed, Soil Testing &amp; Agronomy Base: $45.00 AUD.</li>
 <li class="doc-li">Ecological Substrate Replenishment $R_n$ (lime, soil organic carbon, water retention): $80.00 AUD.</li>
 <li class="doc-li"><strong>UPE RRP/D Farmgate Floor:</strong> <strong>$420.00 AUD/tonne</strong>.</li>
-<li class="doc-li"><strong>Market Squeeze Delta:</strong> Current market price ($325 AUD) underpays real biophysical reproduction costs by <strong>$95.00 AUD/tonne (-22.6%)</strong>, forcing broadacre farmers to accumulate farm debt (&gt; $110B national total).</li>
+<li class="doc-li"><strong>Market Squeeze Delta:</strong> Current market price ($325 AUD) underpays real biophysical reproduction costs by $95.00 AUD/tonne (-22.6%)</strong>, forcing broadacre farmers to accumulate farm debt (&gt; $110B national total).</li>
 </ul>
 <p class="doc-p"><strong>Data Feed 2: Commercial Bakery Electricity Tariffs (NSW Ausgrid / Endeavour)</strong></p>
 <ul class="doc-ul">
@@ -3087,7 +3090,7 @@ body {
 <li class="doc-li">Shipping &amp; Physical Pipeline/Tanker Transport: $0.12 AUD.</li>
 <li class="doc-li">Distribution Depot Labor &amp; Pumping Floor: $0.08 AUD.</li>
 <li class="doc-li">Environmental Remediation &amp; Carbon Sequestration $R_n$: $0.35 AUD.</li>
-<li class="doc-li"><strong>UPE RRP/D Fuel Floor (Pre-Excise):</strong> <strong>$1.40 AUD/L</strong> (vs. $2.10 commercial retail, isolating $0.70/L in fuel tax excise, refinery oligopoly margins, and terminal slotting rents).</li>
+<li class="doc-li"><strong>UPE RRP/D Fuel Floor (Pre-Excise):</strong> <strong>$1.40 AUD/L (vs. $2.10 commercial retail, isolating $0.70/L in fuel tax excise, refinery oligopoly margins, and terminal slotting rents).</li>
 </ul>
 <h4 class="doc-h4"><strong>52.5 Actionable Recommendations for Project Manager &amp; Outbound Submission</strong></h4>
 <ul class="doc-ul">
@@ -3287,7 +3290,7 @@ body {
 <ul class="doc-ul">
 <li class="doc-li">This is isomorphic to Kramers&#x27; reaction-rate escape in the moderate-to-strong friction limit, where systemic depreciation (δ_p) functions as hydrodynamic drag/friction and effective variance D_{\text{eff}} ≈ 0.5 * [(α σ_W)^2 + σ_A^2] represents stochastic environmental and institutional excitation.</li>
 <li class="doc-li">Colored Noise Memory &amp; The UCNA Approximation: Mapped to Robert Fox (1986), Peter Jung &amp; H. Risken (1987), and Peter Hänggi et al. (1985). Theorem 5.3 (Colored Noise Penalty) models multi-year environmental memory (τ_{\text{env}} = 2.5 yr) under an Ornstein-Uhlenbeck process, proving that environmental persistence scales the effective potential barrier, drastically reducing the expected time to economic insolvency during compound climatic shocks.</li>
-<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of \$1.00 in basic Energy cascades downstream along (<strong>I</strong> - <strong>A</strong>)^-T into \$18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
+<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of \$1.00 in basic Energy cascades downstream along (I - A)^-T into \$18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
 <li class="doc-li">Soddy’s Virtual Wealth &amp; Biophysical Accounting Invariance: Mapped to Nobel laureate Frederick Soddy (1926, 1933), Michael Hudson (2018), and Wynne Godley &amp; Marc Lavoie (2007). Section 7 exposes the foundational category error of Luca Pacioli&#x27;s (1494) double-entry bookkeeping (GAAP/IFRS), where bank loans create paper claims ex nihilo (Δ A_p = L_0 &gt; 0) without generating physical exergy (Δ W_p = 0). The Soddy Divergence Ratio Ω(t) ≡ A_p(t) / W_p(t) = (A_p(0) / W_p(0)) * exp((r + δ_p)t) diverges to infinity (lim Ω(t) = infinity), proving the thermodynamic inevitability of periodic debt jubilees or systemic collapse.</li>
 <li class="doc-li">2. Pre-Explored Avenues in Economic History:</li>
 <li class="doc-li">The Sraffian Critique vs. Neoclassical Growth Models: Sraffa (1960) and Joan Robinson (1953) proved the fatal circularity of aggregate neoclassical capital K, but neoclassical economics bypassed this via representative-agent DSGE models that ignored physical exergy carrying capacity. Value Physics operationalizes Sraffa&#x27;s basic commodity matrices into an empirical dynamic state-space model with physical unit-scale concordance.</li>
@@ -3447,7 +3450,7 @@ body {
 <ul class="doc-ul">
 <li class="doc-li">This is isomorphic to Kramers&#x27; reaction-rate escape in the moderate-to-strong friction limit, where systemic depreciation (δ_p) functions as hydrodynamic drag/friction and effective variance D_eff ≈ 0.5 * [(alpha * sigma_W)^2 + sigma_A^2] represents stochastic environmental and institutional excitation.</li>
 <li class="doc-li">Colored Noise Memory &amp; The UCNA Approximation: Mapped to Robert Fox (1986), Peter Jung &amp; H. Risken (1987), and Peter Hänggi et al. (1985). Theorem 5.3 (Colored Noise Penalty) models multi-year environmental memory (τ_env = 2.5 yr) under an Ornstein-Uhlenbeck process, proving that environmental persistence scales the effective potential barrier, drastically shortening the expected time to economic insolvency during compound climatic shocks.</li>
-<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (<strong>I</strong> - <strong>A</strong>)^-T into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
+<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of $1.00 in basic Energy cascades downstream along (I - A)^-T into $18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
 <li class="doc-li">Soddy’s Virtual Wealth &amp; Biophysical Accounting Invariance: Mapped to Nobel laureate Frederick Soddy (1926, 1933), Michael Hudson (2018), and Wynne Godley &amp; Marc Lavoie (2007). Section 7 exposes the foundational category error of Luca Pacioli&#x27;s (1494) double-entry bookkeeping (GAAP/IFRS), where bank loans create paper claims ex nihilo (Δ A_p = L_0 &gt; 0) without generating physical exergy (Δ W_p = 0). The Soddy Divergence Ratio Ω(t) ≡ A_p(t) / W_p(t) = (A_p(0) / W_p(0)) e^((r + δ_p)t) diverges to infinity (lim Ω(t) = infinity), proving the thermodynamic inevitability of periodic debt jubilees or systemic collapse.</li>
 <li class="doc-li">2. Pre-Explored Avenues in Economic History:</li>
 <li class="doc-li">The Sraffian Critique vs. Neoclassical Growth Models: Sraffa (1960) and Joan Robinson (1953) proved the fatal circularity of aggregate neoclassical capital K, but neoclassical economics bypassed this via representative-agent DSGE models that ignored physical exergy carrying capacity. Value Physics operationalizes Sraffa&#x27;s basic commodity matrices into an empirical dynamic state-space model with physical unit-scale concordance.</li>
@@ -3614,7 +3617,7 @@ body {
 <h4 class="doc-h4"><strong>58.2 Comparative Pricing Methodology: Merino Wool &amp; NBN Broadband</strong></h4>
 <p class="doc-p"><strong>Case 1: Australian Merino Greasy Wool (19-Micron Fleece, per kg Clean Yield)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Auction Price:</strong> <strong>$15.50 AUD / kg clean</strong> (AWEX Eastern Market Indicator benchmark at regional wool auction exchanges; ~4.2 kg clean fleece per sheep = <strong>$65.10 AUD / head</strong>).</li>
+<li class="doc-li"><strong>Observed Commercial Auction Price:</strong> <strong>$15.50 AUD / kg clean (AWEX Eastern Market Indicator benchmark at regional wool auction exchanges; ~4.2 kg clean fleece per sheep = $65.10 AUD / head</strong>).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal chemical sheep drench &amp; flystrike prevention ($0.65), shearing handpiece comb/cutter wear ($0.35), nylon wool pack bags ($0.25), transport to wool store ($0.45) ⇒ MC \approx \mathbf{\$1.70 AUD/kg clean}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC treats fleece production as instantaneous, completely ignoring the 12-month biological fleece growth cycle, breeding ewe flock capital maintenance, shearing shed stand capital depreciation, pasture soil nutrient replacement, and pastoralist biological labor.</li>
@@ -4119,7 +4122,7 @@ body {
 <h4 class="doc-h4">40.3 Identified LaTeX Syntax Vulnerabilities in manuscript_vpe21.tex</h4>
 <p class="doc-p">A compiler stress-test of manuscript_vpe21.tex revealed five specific compilation issues:</p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>1. Escaped Square Brackets in Math Mode (</strong><strong>\[</strong><strong> and </strong><strong>\]</strong><strong>):</strong></li>
+<li class="doc-li"><strong>1. Escaped Square Brackets in Math Mode (</strong><strong>\[ and \]</strong><strong>):</strong></li>
 <li class="doc-li">Multiple instances of \[ and \] appear inside inline math ($ ... $) and display math ($$ ... $$), which in LaTeX trigger ! LaTeX Error: Bad math environment delimiter.</li>
 <li class="doc-li"><strong>2. Subscript Corruption from Table Pipe Replacement (</strong><strong>\mathbf{P}_{t &amp; t}</strong><strong>):</strong></li>
 <li class="doc-li">In Line 252, table pipe regex replacement corrupted posterior error covariance subscript from \mathbf{P}_{t|t} to \mathbf{P}_{t &amp; t}, triggering ! Misplaced alignment tab character &amp;. inside inline math mode.</li>
@@ -4161,7 +4164,7 @@ body {
 <ul class="doc-ul">
 <li class="doc-li">This is isomorphic to Kramers&#x27; reaction-rate escape in the moderate-to-strong friction limit, where systemic depreciation (δ_p) functions as hydrodynamic drag/friction and effective variance D_eff ≈ 0.5 * [(alpha * sigma_W)^2 + sigma_A^2] represents stochastic environmental and institutional excitation.</li>
 <li class="doc-li">Colored Noise Memory &amp; The UCNA Approximation: Mapped to Robert Fox (1986), Peter Jung &amp; H. Risken (1987), and Peter Hänggi et al. (1985). Theorem 5.3 (Colored Noise Penalty) models multi-year environmental memory (τ_env = 2.5 yr) under an Ornstein-Uhlenbeck process, proving that climatic persistence scales the effective potential barrier, drastically shortening the expected time to economic insolvency during compound shocks.</li>
-<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of \$1.00 in basic Energy cascades downstream along (<strong>I</strong> - <strong>A</strong>)^-T into \$18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
+<li class="doc-li">Sraffa-Leontief Input-Output Viability &amp; Transpose Contagion: Mapped to Wassily Leontief (1941, 1970), Piero Sraffa (1960), and David Hawkins &amp; Herbert A. Simon (1949). Appendix A validates the 5-sector input-output matrix <strong>A</strong> across Food, Energy, Water, Shelter, and Care (calibrated to ABS Cat. 5209.0.55.001), demonstrating that all 5 leading principal minors are strictly positive (D_1 ... D_5 &gt; 0) and spectral radius ρ(<strong>A</strong>) = 0.129355 &lt; 1, ensuring uniform Neumann series convergence (<strong>I</strong> - <strong>A</strong>)^-1 = sum(<strong>A</strong>^k). Theorem A.1 proves that an upstream extractive markup of \$1.00 in basic Energy cascades downstream along (I - A)^-T into \$18.73 of cumulative nominal price inflation across subsistence provisioning.</li>
 <li class="doc-li">Soddy’s Virtual Wealth &amp; Biophysical Accounting Invariance: Mapped to Nobel laureate Frederick Soddy (1926, 1933), Michael Hudson (2018), and Wynne Godley &amp; Marc Lavoie (2007). Section 7 exposes the foundational category error of Luca Pacioli&#x27;s (1494) double-entry bookkeeping (GAAP/IFRS), where bank loans create paper claims ex nihilo (Δ A_p = L_0 &gt; 0) without generating physical exergy (Δ W_p = 0). The Soddy Divergence Ratio Ω(t) ≡ A_p(t) / W_p(t) = (A_p(0) / W_p(0)) e^((r + δ_p)t) diverges to infinity (lim Ω(t) = infinity), proving the thermodynamic inevitability of periodic debt jubilees or systemic collapse.</li>
 <li class="doc-li">Stone-Geary Subsistence Exhaustion &amp; Coercion Collapse: Mapped to J.R.N. Stone (1954), R.C. Geary (1950), and Ariel Rubinstein (1982). Appendix B in VPE-21 derives the demand price elasticity collapse ε(v_rel) → 0 when consumption approaches biological subsistence floors, collapsing consumer bargaining power and enabling monopolistic toll extraction R_a → 1.0 without reduction in unit volume.</li>
 <li class="doc-li">2. Pre-Explored Avenues in Economic History:</li>
@@ -4380,7 +4383,7 @@ body {
 <li class="doc-li">Farm Grower &amp; Processing Abattoir Labor: $0.98 AUD/kg.</li>
 <li class="doc-li">Abattoir Capital Amortization &amp; Biosecurity Overhead: $0.33 AUD/kg.</li>
 <li class="doc-li"><em>Wholesale Production Cost:</em> <strong>$3.45 AUD/kg</strong>.</li>
-<li class="doc-li">Processor-Supermarket Duopoly Markup: Inghams and Baiada process and distribute under contracts with major supermarket chains, which apply an unearned <strong>45.8% extractive margin</strong> (\Delta = \$1.05 AUD/kg) ⇒ <strong>Retail RRP = $4.50 AUD / kg</strong>.</li>
+<li class="doc-li">Processor-Supermarket Duopoly Markup: Inghams and Baiada process and distribute under contracts with major supermarket chains, which apply an unearned <strong>45.8% extractive margin</strong> (\Delta = \$1.05 AUD/kg) ⇒ Retail RRP = $4.50 AUD / kg</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$1.68 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$0.46 AUD).</li>
@@ -4396,11 +4399,11 @@ body {
 <li class="doc-li">Implied Extractive Drag (R_a): <strong>45.8%</strong>.</li>
 <li class="doc-li">Extractive Markup Premium (\Delta P_{\text{extractive}}): <strong>$1.05 AUD per kg (+30.4% above biophysical difficulty)</strong>.</li>
 <li class="doc-li">Biophysical Fairness Index: <strong>76.6%</strong>.</li>
-<li class="doc-li"><em>Contract Grower Asymmetry Diagnosis:</em> The ACCC Supermarket Inquiry reveals that contract chicken growers operate under strict fee-for-service contracts receiving only ~$0.85–$0.95 per bird (~$0.45/kg liveweight), absorbing almost all capital debt and disease risk. The processing duopoly and supermarket retail gateway extract <strong>$1.05/kg</strong> in financialized tolls, using discounted poultry as an advertised retail foot-traffic driver.</li>
+<li class="doc-li"><em>Contract Grower Asymmetry Diagnosis:</em> The ACCC Supermarket Inquiry reveals that contract chicken growers operate under strict fee-for-service contracts receiving only ~$0.85–$0.95 per bird (~$0.45/kg liveweight), absorbing almost all capital debt and disease risk. The processing duopoly and supermarket retail gateway extract $1.05/kg</strong> in financialized tolls, using discounted poultry as an advertised retail foot-traffic driver.</li>
 </ul>
 <p class="doc-p"><strong>Case 2: Standard Extruded Clay Facing Bricks (Common Structural Masonry, per 1,000 bricks)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$1,150.00 AUD / 1,000 bricks</strong> ($1.15 / brick; standard 230x110x76mm modular clay face brick delivered site-gate; Austral Bricks / PGH Bricks).</li>
+<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$1,150.00 AUD / 1,000 bricks ($1.15 / brick; standard 230x110x76mm modular clay face brick delivered site-gate; Austral Bricks / PGH Bricks).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Raw alluvial clay and shale quarrying fee ($45.00), marginal kiln natural gas combustion ($145.00), extrusion pug mill electricity ($35.00), flatbed transport fuel ($35.00) ⇒ MC \approx \mathbf{\$260.00 AUD / 1,000 bricks}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC ignores multi-decade continuous tunnel kiln capital amortization, quarry environmental rehabilitation bonds, automated robotic setting/packaging arms, and bricklayer site crane offloading labor.</li>
@@ -4410,7 +4413,7 @@ body {
 <li class="doc-li">Plant Direct Labor &amp; Automated Production Shifts: $125.00 AUD / 1,000 bricks.</li>
 <li class="doc-li">Heavy Industrial Capital Sunk Depreciation: $137.12 AUD / 1,000 bricks.</li>
 <li class="doc-li"><em>Operating Cost Floor:</em> <strong>$722.12 AUD / 1,000 bricks</strong>.</li>
-<li class="doc-li">Manufacturer Duopoly &amp; Merchant Distribution Margin: Brickworks (Austral) and CSR (PGH) leverage market consolidation and builder fixed-specification contracts, applying an unearned <strong>62.8% extractive drag</strong> (\Delta = \$427.88 AUD / 1,000 bricks) ⇒ <strong>Delivered Trade Price = $1,150.00 AUD / 1,000 bricks</strong>.</li>
+<li class="doc-li">Manufacturer Duopoly &amp; Merchant Distribution Margin: Brickworks (Austral) and CSR (PGH) leverage market consolidation and builder fixed-specification contracts, applying an unearned <strong>62.8% extractive drag</strong> (\Delta = \$427.88 AUD / 1,000 bricks) ⇒ Delivered Trade Price = $1,150.00 AUD / 1,000 bricks</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$182.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$278.00 AUD).</li>
@@ -4428,7 +4431,7 @@ body {
 <li class="doc-li">Biophysical Fairness Index: <strong>62.8%</strong> (The second lowest fairness index in physical manufacturing after NBN broadband).</li>
 <li class="doc-li"><em>Residential Building Envelope Coupled Sclerosis:</em></li>
 <li class="doc-li">An average detached 200 m² brick-veneer home requires ~10,000 face bricks. The brick manufacturing duopoly extracts <strong>$4,278.80 AUD in unearned markup</strong> per single dwelling.</li>
-<li class="doc-li">Combined with ready-mix concrete foundations ($3,297.60 AUD rent on 45 m³), steel mesh ($770.50 AUD rent on 25 sheets), and structural timber framing ($3,726.00 AUD rent on 1,800m), the building materials oligopoly extracts over <strong>$12,072.90 AUD in unearned tolls per home</strong> before interior trades, plumbing, or roofing commence. This provides empirical proof that the Australian housing crisis is driven by structural upstream supplier cartels rather than worker wage inflation.</li>
+<li class="doc-li">Combined with ready-mix concrete foundations ($3,297.60 AUD rent on 45 m³), steel mesh ($770.50 AUD rent on 25 sheets), and structural timber framing ($3,726.00 AUD rent on 1,800m), the building materials oligopoly extracts over $12,072.90 AUD in unearned tolls per home</strong> before interior trades, plumbing, or roofing commence. This provides empirical proof that the Australian housing crisis is driven by structural upstream supplier cartels rather than worker wage inflation.</li>
 </ul>
 <h4 class="doc-h4"><strong>61.3 Consolidated 20-Commodity Master Multi-Sector Benchmarking Matrix</strong></h4>
 <p class="doc-p">The table below synthesizes the complete empirical pricing benchmark across all 6 vital provisioning sectors:</p>
@@ -5573,7 +5576,7 @@ body {
 <li class="doc-li">Processing Direct Labor &amp; Overheads: $0.18 AUD/L.</li>
 <li class="doc-li"><em>Factory-Gate Cost:</em> <strong>$1.10 AUD/L</strong>.</li>
 <li class="doc-li">Processor Oligopsony Markup: Processors apply a 25% gross markup ⇒ $1.38 AUD/L.</li>
-<li class="doc-li">Supermarket Duopoly Gross Margin: Major supermarket chains target a <strong>34%–36% gross margin</strong> on refrigerated daily dairy staples, adding $0.72 AUD/L ⇒ <strong>Shelf RRP = $2.10 AUD/L</strong> (with specialty brands reaching $3.20 AUD/L).</li>
+<li class="doc-li">Supermarket Duopoly Gross Margin: Major supermarket chains target a <strong>34%–36% gross margin</strong> on refrigerated daily dairy staples, adding $0.72 AUD/L ⇒ Shelf RRP = $2.10 AUD/L</strong> (with specialty brands reaching $3.20 AUD/L).</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b): $0.68 AUD/L.</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e): $0.24 AUD/L.</li>
@@ -5593,7 +5596,7 @@ body {
 </ul>
 <p class="doc-p"><strong>Case 2: Bulk Potable Water Cartage (Regional NSW, per kL / 1,000 Litres)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Delivery Trade RRP:</strong> <strong>$15.50 AUD / kL</strong> (Standard 10,000 L / 10 kL truckload delivered within a 25 km radius: <strong>$155.00 AUD</strong>).</li>
+<li class="doc-li"><strong>Observed Commercial Delivery Trade RRP:</strong> <strong>$15.50 AUD / kL (Standard 10,000 L / 10 kL truckload delivered within a 25 km radius: $155.00 AUD</strong>).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Warrumbungle Shire Council bulk standpipe raw water fee ($3.20 AUD/kL) + marginal truck diesel per kL roundtrip ($2.80 AUD/kL) ⇒ MC \approx \mathbf{\$6.00 AUD/kL}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> Excludes heavy rigid truck chassis amortization, tank baffling maintenance, high-pressure pump wear, unsealed gravel road tire degradation, and driver metabolic exertion.</li>
@@ -5945,7 +5948,7 @@ body {
 <li class="doc-li">Capital Amortization &amp; EPA Environmental Reserves: $8.50 AUD/sheet.</li>
 <li class="doc-li"><em>Mill-Gate Cost:</em> <strong>$88.00 AUD/sheet</strong>.</li>
 <li class="doc-li">Domestic Steel Monopoly Markup: Domestic steel manufacturers (InfraBuild / BlueScope) operate behind anti-dumping tariff walls, pricing steel via Import Parity Pricing (IPP), adding an unearned 22% margin ⇒ $107.36 AUD/sheet.</li>
-<li class="doc-li">Fabricator &amp; Trade Merchant Margin: Commercial reinforcing fabricators (ARC, Best Bar) apply a <strong>16%–19% distribution margin</strong>, pricing walk-in trade mesh at <strong>$128.00 AUD/sheet</strong> (with retail hardware merchants charging up to $155.00 AUD/sheet).</li>
+<li class="doc-li">Fabricator &amp; Trade Merchant Margin: Commercial reinforcing fabricators (ARC, Best Bar) apply a <strong>16%–19% distribution margin</strong>, pricing walk-in trade mesh at <strong>$128.00 AUD/sheet (with retail hardware merchants charging up to $155.00 AUD/sheet).</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b): $36.80 AUD/sheet.</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e): $28.50 AUD/sheet.</li>
@@ -5961,11 +5964,11 @@ body {
 <li class="doc-li">Implied Extractive Drag (R_a): <strong>50.2%</strong>.</li>
 <li class="doc-li">Extractive Markup Premium (\Delta P_{\text{extractive}}): <strong>$30.82 AUD per sheet (+31.7% above biophysical difficulty)</strong>.</li>
 <li class="doc-li">Biophysical Fairness Index: <strong>75.9%</strong>.</li>
-<li class="doc-li"><em>Slab Foundation Coupled Drag:</em> An average detached 200 m² residential raft slab requires ~25 sheets of SL82 mesh (accounting for laps). The domestic steel oligopoly extracts <strong>$770.50 AUD</strong> in pure distribution and import-parity rent. Combined with ready-mix concrete ($3,297.60 AUD rent across 45 m³), the Australian slab foundation oligopoly captures over <strong>$4,068 AUD in unearned tolls</strong> before framing begins.</li>
+<li class="doc-li"><em>Slab Foundation Coupled Drag:</em> An average detached 200 m² residential raft slab requires ~25 sheets of SL82 mesh (accounting for laps). The domestic steel oligopoly extracts <strong>$770.50 AUD in pure distribution and import-parity rent. Combined with ready-mix concrete ($3,297.60 AUD rent across 45 m³), the Australian slab foundation oligopoly captures over <strong>$4,068 AUD in unearned tolls</strong> before framing begins.</li>
 </ul>
 <p class="doc-p"><strong>Case 2: Domestic Waste Collection (Regional NSW, per weekly 240L bin lift)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Tariff RRP:</strong> <strong>$9.33 AUD / weekly 240L MGB lift</strong> (Derived from Warrumbungle Shire Council 2025/2026 annual Domestic Waste Management Charge of $485.00 AUD / 52 weeks).</li>
+<li class="doc-li"><strong>Observed Commercial Tariff RRP:</strong> <strong>$9.33 AUD / weekly 240L MGB lift (Derived from Warrumbungle Shire Council 2025/2026 annual Domestic Waste Management Charge of $485.00 AUD / 52 weeks).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Compactor truck diesel consumed per stop ($1.20 AUD) + landfill leachate compliance marginal cost ($0.65 AUD) ⇒ MC \approx \mathbf{\$1.85 AUD/lift}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC ignores heavy compactor truck capital depreciation, robotic lifting arm hydraulic repairs, landfill liner construction amortization, EPA environmental rehabilitation bonds, and collection driver biological labor.</li>
@@ -6218,7 +6221,7 @@ body {
 <h4 class="doc-h4"><strong>56.2 Comparative Pricing Methodology: Regional Bottled Gas &amp; Road Freight Logistics</strong></h4>
 <p class="doc-p"><strong>Case 1: LPG Bottled Gas (45kg Domestic Cylinder)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Retail RRP:</strong> <strong>$165.00 AUD / 45kg cylinder</strong> ($120.00–$140.00 refill fee + annual cylinder rental/maintenance charges amortized; Elgas, Origin Energy).</li>
+<li class="doc-li"><strong>Observed Commercial Retail RRP:</strong> <strong>$165.00 AUD / 45kg cylinder ($120.00–$140.00 refill fee + annual cylinder rental/maintenance charges amortized; Elgas, Origin Energy).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal wholesale propane/butane ($38.00 AUD), bulk depot decanting exergy ($2.40 AUD), delivery truck diesel per cylinder drop ($4.50 AUD) ⇒ MC \approx \mathbf{\$44.90 AUD/cylinder}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC ignores cylinder pressure vessel 10-year testing and requalification amortization, automated filling carousel depreciation, dangerous goods compliance bonds, and driver biological labor.</li>
@@ -6228,7 +6231,7 @@ body {
 <li class="doc-li">Driver Dangerous Goods Labor &amp; Handling: $18.50 AUD/cylinder.</li>
 <li class="doc-li">Cylinder Capital Amortization &amp; Test Sunk Cost: $10.00 AUD/cylinder.</li>
 <li class="doc-li"><em>Operating Cost Floor:</em> <strong>$116.26 AUD/cylinder</strong>.</li>
-<li class="doc-li">Retail Bottled Gas Duopoly Margin: Elgas and Origin Energy exploit geographic captive lock-in across non-gas-reticulated regional areas, targeting a <strong>29%–35% gross operating margin</strong>, pricing delivered 45kg cylinders at <strong>$165.00 AUD</strong> (with remote areas exceeding $190.00 AUD).</li>
+<li class="doc-li">Retail Bottled Gas Duopoly Margin: Elgas and Origin Energy exploit geographic captive lock-in across non-gas-reticulated regional areas, targeting a <strong>29%–35% gross operating margin</strong>, pricing delivered 45kg cylinders at <strong>$165.00 AUD (with remote areas exceeding $190.00 AUD).</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b): $58.36 AUD/cylinder.</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e): $29.40 AUD/cylinder.</li>
@@ -6244,11 +6247,11 @@ body {
 <li class="doc-li">Implied Extractive Drag (R_a): <strong>51.1%</strong>.</li>
 <li class="doc-li">Extractive Markup Premium (\Delta P_{\text{extractive}}): <strong>$38.74 AUD per cylinder (+30.7% above biophysical difficulty)</strong>.</li>
 <li class="doc-li">Biophysical Fairness Index: <strong>76.5%</strong>.</li>
-<li class="doc-li"><em>Diagnosis:</em> Regional off-grid households pay an unearned toll of <strong>$38.74 per cylinder</strong> (~$155/year for an average 4-cylinder household) directly to the bottled gas duopoly, which exploits the physical absence of reticulated gas alternatives.</li>
+<li class="doc-li"><em>Diagnosis:</em> Regional off-grid households pay an unearned toll of <strong>$38.74 per cylinder (~$155/year for an average 4-cylinder household) directly to the bottled gas duopoly, which exploits the physical absence of reticulated gas alternatives.</li>
 </ul>
 <p class="doc-p"><strong>Case 2: Bulk Road Freight Transport (Newell Highway B-Double Corridor)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Freight Tariff RRP:</strong> <strong>$0.1200 AUD / net tonne-km</strong> ($120.00 AUD per 1,000 t-km; standard pallet freight rates ~$3.60/km for a 30-tonne payload B-Double).</li>
+<li class="doc-li"><strong>Observed Commercial Freight Tariff RRP:</strong> <strong>$0.1200 AUD / net tonne-km ($120.00 AUD per 1,000 t-km; standard pallet freight rates ~$3.60/km for a 30-tonne payload B-Double).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal diesel fuel consumption (0.55 L/km @ $1.60 net ex-tax ≈ $0.88/km / 30t ≈ $0.0293/t-km) + highway tolls / permit marginal fees ($0.003/t-km) ⇒ MC \approx \mathbf{\$0.0323 AUD/t-km}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC ignores prime mover and B-double trailer capital depreciation, tire wear (34 wheels), NHVR fatigue compliance costs, engine rebuild sinking funds, and long-haul driver metabolic exhaustion.</li>
@@ -6520,7 +6523,7 @@ body {
 <h4 class="doc-h4"><strong>57.2 Comparative Pricing Methodology: Pastoral Livestock &amp; Prescription Antibiotics</strong></h4>
 <p class="doc-p"><strong>Case 1: Farmgate Beef Cattle Weaners (British Breed Steers, per kg Liveweight)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Auction Price:</strong> <strong>$3.85 AUD / kg liveweight</strong> (MLA Eastern States Young Cattle Indicator benchmark at regional saleyards, ~280 kg weaner steer = <strong>$1,078.00 AUD / head</strong>).</li>
+<li class="doc-li"><strong>Observed Commercial Auction Price:</strong> <strong>$3.85 AUD / kg liveweight (MLA Eastern States Young Cattle Indicator benchmark at regional saleyards, ~280 kg weaner steer = $1,078.00 AUD / head</strong>).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal cattle drench / tick vaccine ($0.15 AUD/kg), supplementary lick block ($0.12 AUD/kg), saleyard transit diesel ($0.18 AUD/kg), and NLIS tag fee ($0.10 AUD/kg) ⇒ MC \approx \mathbf{\$0.55 AUD/kg}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> P = MC treats biological breeding as instantaneous, completely ignoring the 9-month bovine gestation and 7-month suckling maternal care cycle, breeding cow replacement capital depreciation, pastoral pasture maintenance, farm perimeter fencing amortisation, and pastoralist biological labor. Neoclassical marginal cost pricing during drought liquidation drives farmgate prices below the biological cost-of-being.</li>
@@ -6550,7 +6553,7 @@ body {
 </ul>
 <p class="doc-p"><strong>Case 2: Prescription Antibiotic Amoxicillin (500mg, 20 Capsules Course)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Retail Price:</strong> <strong>$16.50 AUD / 20 capsules course</strong> (Private non-subsidized retail prescription at community pharmacies; PBS statutory general co-payment ceiling: <strong>$31.60 AUD</strong>).</li>
+<li class="doc-li"><strong>Observed Commercial Retail Price:</strong> <strong>$16.50 AUD / 20 capsules course (Private non-subsidized retail prescription at community pharmacies; PBS statutory general co-payment ceiling: $31.60 AUD</strong>).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Chemical API reagents ex-India/China ($0.45 AUD), empty gelatin capsules ($0.15 AUD), blister foil &amp; carton ($0.25 AUD) ⇒ MC \approx \mathbf{\$0.85 AUD/course}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC completely excludes cleanroom HVAC HEPA continuous filtration, sterile autoclave validation, TGA Good Manufacturing Practice auditing, pharmaceutical quality control assaying, and clinical dispensing pharmacist labor.</li>
@@ -6559,7 +6562,7 @@ body {
 <li class="doc-li">Cleanroom HVAC, Sterilization &amp; Tableting Exergy (P_e): $2.10 AUD/course (deep refrigeration, steam sterilisation, air handlers, blister heat-sealing).</li>
 <li class="doc-li">TGA Compliance &amp; Regulatory Overhead: $1.20 AUD/course.</li>
 <li class="doc-li">Wholesaler Margin (Symbion, Sigma): $1.10 AUD/course.</li>
-<li class="doc-li">Community Pharmacy Dispensing Fee &amp; Professional Margin: Pharmacists charge an $8.37 AUD dispensing/handling fee + retail markup ⇒ <strong>Private Retail Price = $16.50 AUD</strong>.</li>
+<li class="doc-li">Community Pharmacy Dispensing Fee &amp; Professional Margin: Pharmacists charge an $8.37 AUD dispensing/handling fee + retail markup ⇒ Private Retail Price = $16.50 AUD</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b): $3.20 AUD/course.</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e): $2.10 AUD/course.</li>
@@ -6577,7 +6580,7 @@ body {
 <li class="doc-li">Biophysical Fairness Index: <strong>81.0%</strong>.</li>
 <li class="doc-li"><em>Critical Healthcare Policy Discovery — PBS Co-Payment Distortion:</em></li>
 <li class="doc-li">Under the Australian Pharmaceutical Benefits Scheme (PBS), the general patient co-payment ceiling is set at <strong>$31.60 AUD</strong> per prescription.</li>
-<li class="doc-li">The true biophysical cost-of-being for amoxicillin is <strong>$13.37 AUD</strong>, and the unsubsidized private commercial pharmacy price is <strong>$16.50 AUD</strong>.</li>
+<li class="doc-li">The true biophysical cost-of-being for amoxicillin is <strong>$13.37 AUD, and the unsubsidized private commercial pharmacy price is $16.50 AUD</strong>.</li>
 <li class="doc-li">Consequently, the statutory PBS co-payment ceiling ($31.60 AUD) represents a <strong>136% markup above biophysical difficulty</strong> and nearly double the unsubsidized private retail price!</li>
 <li class="doc-li"><em>Policy Diagnosis:</em> Value Physics proves that statutory PBS co-payments on off-patent generic antibiotics do not function as a protective subsidy, but rather as an institutionalized fiscal tax on sickness, cross-subsidizing expensive patented biologicals while extracting unearned premiums from patients with acute infections.</li>
 </ul>
@@ -6820,7 +6823,7 @@ body {
 <h4 class="doc-h4"><strong>62.2 Comparative Pricing Methodology: Solar Sea Salt &amp; Raw Cane Sugar</strong></h4>
 <p class="doc-p"><strong>Case 1: Coarse Solar Sea Salt (Unrefined Food &amp; Livestock Grade, 25kg Bag)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Retail Price:</strong> <strong>$14.50 AUD / 25kg bag</strong> ($0.58 AUD / kg; unrefined evaporated solar sea salt for agricultural livestock supplements, butchery brine, and food curing; Nutrien Ag Solutions, Elders, rural retail merchants).</li>
+<li class="doc-li"><strong>Observed Commercial Retail Price:</strong> <strong>$14.50 AUD / 25kg bag ($0.58 AUD / kg; unrefined evaporated solar sea salt for agricultural livestock supplements, butchery brine, and food curing; Nutrien Ag Solutions, Elders, rural retail merchants).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Seawater intake pumping electricity ($0.08 AUD), pan crystallizer brine recirculation ($0.12 AUD), heavy front-end loader harvesting fuel ($0.25 AUD), multi-wall woven polypropylene valve bag ($0.45 AUD) ⇒ MC \approx \mathbf{\$0.90 AUD / 25kg bag}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC completely excludes multi-thousand-hectare coastal crystallizer pan levee bank maintenance, seawater canal dredging capital depreciation, bulk optical sorter amortization, and rural freight linehaul.</li>
@@ -6849,7 +6852,7 @@ body {
 <li class="doc-li">Biophysical Fairness Index: <strong>58.2%</strong> (One of the lowest fairness scores among agricultural goods, falling into the 50% range!).</li>
 <li class="doc-li"><em>Diagnostic Discovery — Elemental Mineral Packaging &amp; Merchant Toll:</em></li>
 <li class="doc-li">Solar sea salt is chemically and energetically one of the cheapest commodities to produce on earth because over 98% of the enthalpy of vaporization is provided directly by solar radiation and coastal winds.</li>
-<li class="doc-li">However, once unrefined bulk salt (~$30/tonne ex-pan) is packaged into 25kg consumer bags and routed through rural merchant retail monopolies, the price escalates to <strong>$580/tonne ($14.50/bag)</strong>.</li>
+<li class="doc-li">However, once unrefined bulk salt (~$30/tonne ex-pan) is packaged into 25kg consumer bags and routed through rural merchant retail monopolies, the price escalates to $580/tonne ($14.50/bag)</strong>.</li>
 <li class="doc-li">Over <strong>57% of the purchase price</strong> represents packaging, distributor tollbooths, and brand margins rather than thermodynamic or metabolic production difficulty.</li>
 </ul>
 <p class="doc-p"><strong>Case 2: Raw Centrifugal Cane Sugar (Bulk Crystal Milling Feedstock, per Tonne)</strong></p>
@@ -6864,7 +6867,7 @@ body {
 <li class="doc-li">Mill Direct Operating Labor &amp; Shift Crews: $125.00 AUD / tonne.</li>
 <li class="doc-li">Capital Maintenance Sunk Reserve: $52.77 AUD / tonne.</li>
 <li class="doc-li"><em>Milling Co-Op / Processor Cost Floor:</em> <strong>$487.77 AUD / tonne</strong>.</li>
-<li class="doc-li">Milling Monopsony &amp; Trade Markups: Foreign milling conglomerates (Wilmar, MSF Sugar) and export trading syndicates extract a <strong>43.8% drag</strong> (\Delta = \$132.23 AUD / tonne) ⇒ <strong>Wholesale Benchmark = $620.00 AUD / tonne</strong>.</li>
+<li class="doc-li">Milling Monopsony &amp; Trade Markups: Foreign milling conglomerates (Wilmar, MSF Sugar) and export trading syndicates extract a <strong>43.8% drag</strong> (\Delta = \$132.23 AUD / tonne) ⇒ Wholesale Benchmark = $620.00 AUD / tonne</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$168.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$142.00 AUD).</li>
@@ -7240,7 +7243,7 @@ body {
 <h4 class="doc-h4"><strong>63.2 Comparative Pricing Methodology: HDPE Water Pipe &amp; Canola Grain</strong></h4>
 <p class="doc-p"><strong>Case 1: Commercial HDPE Rural Water Reticulation Pipe (32mm PN12.5, 100m Coil)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$245.00 AUD / 100m coil</strong> ($2.45 AUD / metre; 32mm OD, PN12.5 / SDR13.6 pressure rating, PE100 virgin black polymer; Vinidex, Iplex, Philmac; sold via Nutrien Ag, Elders, rural trade stores).</li>
+<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$245.00 AUD / 100m coil ($2.45 AUD / metre; 32mm OD, PN12.5 / SDR13.6 pressure rating, PE100 virgin black polymer; Vinidex, Iplex, Philmac; sold via Nutrien Ag, Elders, rural trade stores).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal HDPE resin pellets (0.28 kg/m @ $2.10/kg ≈ $0.59/m), high-torque single-screw extrusion electricity ($0.12/m), vacuum cooling tank pumping ($0.04/m), packaging strap ($0.03/m) ⇒ MC \approx \mathbf{\$0.78 AUD / \text{metre}} (or <strong>$78.00 AUD / 100m coil</strong>).</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC completely excludes continuous pipe extrusion line capital depreciation, vacuum sizing sleeve maintenance, AS/NZS 4130 pressure testing laboratory certification, carbon black UV stabilizer compounding, and flatbed transport freight.</li>
@@ -7249,9 +7252,9 @@ body {
 <li class="doc-li">Polymer Melting, Vacuum Extrusion &amp; Cooling Exergy (P_e): $48.50 AUD / coil (barrel heater bands, motor drive torque, vacuum pumps, refrigerated chiller water loops, flatbed linehaul diesel).</li>
 <li class="doc-li">Extrusion Line Operators &amp; Quality Testing Labor: $32.00 AUD / coil.</li>
 <li class="doc-li">Pipe Mill Capital Amortization &amp; Die Tooling: $17.10 AUD / coil.</li>
-<li class="doc-li"><em>Factory-Gate Operating Floor:</em> <strong>$165.60 AUD / coil</strong> ($1.66 / metre).</li>
+<li class="doc-li"><em>Factory-Gate Operating Floor:</em> <strong>$165.60 AUD / coil ($1.66 / metre).</li>
 <li class="doc-li">Manufacturer Duopoly Markup: Vinidex and Iplex dominate domestic plastic pipe manufacturing, applying an oligopolistic wholesale margin (+22% ⇒ $202.00).</li>
-<li class="doc-li">Rural Merchant Trade Margin: Rural agricultural distributors (Nutrien Ag, Elders, trade irrigation depots) apply a <strong>21%–25% distribution margin</strong>, pricing 100m coils at <strong>$245.00 AUD</strong> (with single-metre cut lengths reaching $3.50/m).</li>
+<li class="doc-li">Rural Merchant Trade Margin: Rural agricultural distributors (Nutrien Ag, Elders, trade irrigation depots) apply a <strong>21%–25% distribution margin</strong>, pricing 100m coils at <strong>$245.00 AUD (with single-metre cut lengths reaching $3.50/m).</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$68.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$48.50 AUD).</li>
@@ -7281,7 +7284,7 @@ body {
 <li class="doc-li">Broadacre Agronomic Management &amp; Harvest Labor: $88.50 AUD / tonne.</li>
 <li class="doc-li">Machinery Fleet Depreciation &amp; Sunk Overhead: $45.77 AUD / tonne.</li>
 <li class="doc-li"><em>Grower Production Cost Floor:</em> <strong>$467.77 AUD / tonne</strong>.</li>
-<li class="doc-li">International Grain Cartel Trading Toll: Global agribusiness trading houses (Glencore / Viterra, Cargill, Bunge, ADM) and port terminal operators (GrainCorp) control bulk export elevators, levying an unearned <strong>62.6% extractive margin</strong> (\Delta = \$217.23 AUD / tonne) ⇒ <strong>Silo Cash Price = $685.00 AUD / tonne</strong>.</li>
+<li class="doc-li">International Grain Cartel Trading Toll: Global agribusiness trading houses (Glencore / Viterra, Cargill, Bunge, ADM) and port terminal operators (GrainCorp) control bulk export elevators, levying an unearned <strong>62.6% extractive margin</strong> (\Delta = \$217.23 AUD / tonne) ⇒ Silo Cash Price = $685.00 AUD / tonne</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$215.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$118.50 AUD).</li>
@@ -7692,7 +7695,7 @@ body {
 <li class="doc-li">Mill Operations, Process Engineering &amp; Logistics Labor: $45.00 AUD / tonne.</li>
 <li class="doc-li">Kiln Capital Amortization &amp; Heavy Sunk Depreciation: $37.99 AUD / tonne.</li>
 <li class="doc-li"><em>Factory-Gate Operating Floor:</em> <strong>$278.99 AUD / tonne</strong>.</li>
-<li class="doc-li">Domestic Cement Cartel Markup: Boral, Adbri, and Holcim control domestic clinker production behind anti-dumping import barriers, applying an unearned <strong>45.4% extractive drag</strong> (\Delta = \$66.01 AUD / tonne) ⇒ <strong>Bulk Wholesale Cash Price = $345.00 AUD / tonne</strong>.</li>
+<li class="doc-li">Domestic Cement Cartel Markup: Boral, Adbri, and Holcim control domestic clinker production behind anti-dumping import barriers, applying an unearned <strong>45.4% extractive drag</strong> (\Delta = \$66.01 AUD / tonne) ⇒ Bulk Wholesale Cash Price = $345.00 AUD / tonne</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$84.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$112.00 AUD).</li>
@@ -7710,7 +7713,7 @@ body {
 <li class="doc-li">Biophysical Fairness Index: <strong>80.9%</strong> (Relatively high fairness due to extreme thermodynamic exergy and capital intensity).</li>
 <li class="doc-li"><em>Upstream Clinker Transpose Contagion Diagnosis:</em></li>
 <li class="doc-li">In ready-mix concrete (Case 12), the observed trade price is $295.00/m³ with Fair RRP/D $221.72/m³ and R_a = 48.3\%.</li>
-<li class="doc-li">Because Bulk Portland Cement is the primary chemical binder in concrete (~300–350 kg cement per m³ of N20 concrete), the <strong>$66.01/t upstream clinker markup</strong> directly accounts for <strong>~$22.00/m³</strong> of the downstream concrete extractive premium!</li>
+<li class="doc-li">Because Bulk Portland Cement is the primary chemical binder in concrete (~300–350 kg cement per m³ of N20 concrete), the <strong>$66.01/t upstream clinker markup directly accounts for ~$22.00/m³</strong> of the downstream concrete extractive premium!</li>
 <li class="doc-li">This provides empirical proof of Theorem A.1 (Transpose Contagion): upstream extractive tolls in basic energy and mineral clinker cascade downstream along (\mathbf{I} - \mathbf{A})^{-T}, compounding nominal inflation across residential and civil construction.</li>
 </ul>
 <p class="doc-p"><strong>Case 2: Commercial FIBC Polypropylene Bulk Bags (1-Tonne Container)</strong></p>
@@ -7725,7 +7728,7 @@ body {
 <li class="doc-li">Heavy Industrial Cutting, Sewing &amp; Baling Labor: $3.80 AUD / bag.</li>
 <li class="doc-li">Packaging Plant Sunk Amortization: $2.12 AUD / bag.</li>
 <li class="doc-li"><em>Factory Gate Production Cost:</em> <strong>$16.02 AUD / bag</strong>.</li>
-<li class="doc-li">Industrial Packaging Import Cartel &amp; Rural Merchant Margin: Importers and agricultural supply merchants (Nutrien Ag, Elders) leverage captive rural grain/seed packaging demand, applying an unearned <strong>59.7% extractive markup</strong> (\Delta = \$8.48 AUD / bag) ⇒ <strong>Retail Farm Price = $24.50 AUD / bag</strong>.</li>
+<li class="doc-li">Industrial Packaging Import Cartel &amp; Rural Merchant Margin: Importers and agricultural supply merchants (Nutrien Ag, Elders) leverage captive rural grain/seed packaging demand, applying an unearned <strong>59.7% extractive markup</strong> (\Delta = \$8.48 AUD / bag) ⇒ Retail Farm Price = $24.50 AUD / bag</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$5.90 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$4.20 AUD).</li>
@@ -8152,7 +8155,7 @@ body {
 <h4 class="doc-h4"><strong>65.2 Comparative Pricing Methodology: Corrugated Steel Roofing &amp; Agricultural Urea Fertilizer</strong></h4>
 <p class="doc-p"><strong>Case 1: Corrugated Galvanized Steel Roofing Sheets (Custom Orb 0.42mm BMT, per Lineal Metre)</strong></p>
 <ul class="doc-ul">
-<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$21.50 AUD / lineal metre</strong> ($28.22 AUD / m² based on 762mm effective cover width; 0.42mm BMT, high-tensile G550 steel, hot-dip zinc-aluminum alloy coating; BlueScope Lysaght, Stramit, Stratco, Steeline).</li>
+<li class="doc-li"><strong>Observed Commercial Trade/Retail Price:</strong> <strong>$21.50 AUD / lineal metre ($28.22 AUD / m² based on 762mm effective cover width; 0.42mm BMT, high-tensile G550 steel, hot-dip zinc-aluminum alloy coating; BlueScope Lysaght, Stramit, Stratco, Steeline).</li>
 <li class="doc-li"><strong>1. Neoclassical Marginal Cost (P = MC):</strong></li>
 <li class="doc-li">Marginal galvanized steel strip coil (3.25 kg/m @ $2.20/kg ≈ $7.15 AUD), roll-former electrical motor power ($0.15 AUD), shear blade wear and coolant ($0.08 AUD), flatbed truck linehaul ($0.65 AUD) ⇒ MC \approx \mathbf{\$8.03 AUD / \text{metre}}.</li>
 <li class="doc-li"><em>Neoclassical Blindspot:</em> MC completely excludes continuous rolling mill roll-forming stand amortization, heavy coil uncoiler depreciation, automated flying shear maintenance, Colorbond paint line infrared curing oven amortization, and merchant building depot floor overhead.</li>
@@ -8162,7 +8165,7 @@ body {
 <li class="doc-li">Roll-Forming Plant Labor &amp; Quality Control: $2.40 AUD / metre.</li>
 <li class="doc-li">Tooling Capital Amortization &amp; Roll Sunk Reserve: $2.89 AUD / metre.</li>
 <li class="doc-li"><em>Roll-Former Factory Cost:</em> <strong>$16.34 AUD / metre</strong>.</li>
-<li class="doc-li">Roll-Former Manufacturer &amp; Merchant Chain Margin: BlueScope Lysaght, Stramit, and roofing distribution merchants apply an unearned <strong>50.4% extractive markup</strong> (\Delta = \$5.16 AUD / metre) ⇒ <strong>Retail Trade Price = $21.50 AUD / lineal metre</strong>.</li>
+<li class="doc-li">Roll-Former Manufacturer &amp; Merchant Chain Margin: BlueScope Lysaght, Stramit, and roofing distribution merchants apply an unearned <strong>50.4% extractive markup</strong> (\Delta = \$5.16 AUD / metre) ⇒ Retail Trade Price = $21.50 AUD / lineal metre</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$6.20 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$4.85 AUD).</li>
@@ -8202,7 +8205,7 @@ body {
 <li class="doc-li">Chemical Plant Process Operators &amp; Shift Engineering Labor: $65.00 AUD / tonne.</li>
 <li class="doc-li">Synthesis Loop Sunk Capital Depreciation: $44.25 AUD / tonne.</li>
 <li class="doc-li"><em>Synthesis Terminal Cost Floor:</em> <strong>$589.25 AUD / tonne</strong>.</li>
-<li class="doc-li">Fertilizer Importer &amp; Regional Distribution Oligopoly Margin: Incitec Pivot and regional agricultural chemical merchants leverage extreme farmer seasonal captive demand, applying an unearned <strong>58.8% extractive drag</strong> (\Delta = \$150.75 AUD / tonne) ⇒ <strong>Depot Cash Price = $740.00 AUD / tonne</strong>.</li>
+<li class="doc-li">Fertilizer Importer &amp; Regional Distribution Oligopoly Margin: Incitec Pivot and regional agricultural chemical merchants leverage extreme farmer seasonal captive demand, applying an unearned <strong>58.8% extractive drag</strong> (\Delta = \$150.75 AUD / tonne) ⇒ Depot Cash Price = $740.00 AUD / tonne</strong>.</li>
 <li class="doc-li"><strong>3. UPE Forward Pricing &amp; RRP/D Baseline:</strong></li>
 <li class="doc-li">Physical Base (P_b = \$165.00 AUD).</li>
 <li class="doc-li">Thermodynamic Exergy Base (P_e = \$315.00 AUD).</li>
@@ -8661,5 +8664,24 @@ body {
     <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
   </footer>
 
+  <script>
+function renderMathInPage(targetEl) {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(targetEl || document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\(', right: '\)', display: false},
+        {left: '\[', right: '\]', display: true}
+      ],
+      throwOnError: false
+    });
+  }
+}
+window.renderMathInPage = renderMathInPage;
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMathInPage(), 100);
+});
+  </script>
 </body>
 </html>
