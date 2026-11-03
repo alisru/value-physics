@@ -1,0 +1,398 @@
+Command exited with code 0.
+
+Command output:
+2026/11/03 15:45:40 NOTICE: 01_Empirical_Pricing_Audit_VPE55: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: 02_Physics_of_Economic_Value_VPE21: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: 03_Thermodynamic_State_Space_VPE49: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: 04_Cohesive_Village_and_Regional_Logistics: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: 05_Foundations_and_Theory: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: 06_Archive: Skipped set directory modification time as --dry-run is set (size 0)
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: bifurcation_diagram.png: Skipped copy as --dry-run is set (size 428.507Ki)
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: cover_letter_jedc.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: cover_letter_ecolecon.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: CHANGELOG.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: cover_letter_vpe55.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: figure1_biophysical_breakdown.png: Skipped copy as --dry-run is set (size 228.378Ki)
+2026/11/03 15:45:40 NOTICE: figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: figure2_sclerosis_spectrum.png: Skipped copy as --dry-run is set (size 351.373Ki)
+2026/11/03 15:45:40 NOTICE: manuscript_vpe21.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe21.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe21.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe21.tex: Skipped copy as --dry-run is set (size 37.077Ki)
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Skipped copy as --dry-run is set (size 116.688Ki)
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe49.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe55.tex: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: manuscript_vpe55.tex: Skipped copy as --dry-run is set (size 22.345Ki)
+2026/11/03 15:45:40 NOTICE: phase_portrait.png: Skipped copy as --dry-run is set (size 1.024Mi)
+2026/11/03 15:45:40 NOTICE: Project Management Master Log (Volume 2) — Universal Price Equation, Value Physics, and Cohesive Village Architecture.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: Reality_Tensor_Air_Matrix.md: Skipped copy as --dry-run is set (size 18.390Ki)
+2026/11/03 15:45:40 NOTICE: Reality_Tensor_Debt_Matrix.md: Skipped copy as --dry-run is set (size 28.582Ki)
+2026/11/03 15:45:40 NOTICE: rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: references.bib: Skipped copy as --dry-run is set (size 9.507Ki)
+2026/11/03 15:45:40 NOTICE: rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: rrp_fairness_audit.py: Skipped copy as --dry-run is set (size 16.376Ki)
+2026/11/03 15:45:40 NOTICE: rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: references_vpe21.bib: Skipped copy as --dry-run is set (size 5.876Ki)
+2026/11/03 15:45:40 NOTICE: sfc_model.py: Skipped copy as --dry-run is set (size 2.845Ki)
+2026/11/03 15:45:40 NOTICE: README.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: sfc_model.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_rrp_fairness_audit.py: Skipped copy as --dry-run is set (size 8.238Ki)
+2026/11/03 15:45:40 NOTICE: test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Skipped copy as --dry-run is set (size 28.926Ki)
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: Project Management Master Log: Universal Price Equation, Value Physics, and Cohesive Village Architecture.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: Thermodynamic Work-Antiwork State-Space Dynamics: Kinetic Resolution, Passive Floor Accumulation, and Structural Bifurcations in Value Physics.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: Thermodynamic Work-Antiwork State-Space Dynamics: Kinetic Resolution, Passive Floor Accumulation, and Structural Bifurcations in Value Physics.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: upe_pricing_engine.py: Skipped copy as --dry-run is set (size 5.972Ki)
+2026/11/03 15:45:40 NOTICE: Universal_Price_Equation_Formal_Paper.md: Skipped copy as --dry-run is set (size 55.199Ki)
+2026/11/03 15:45:40 NOTICE: value_physics_engine.py: Skipped copy as --dry-run is set (size 4.411Ki)
+2026/11/03 15:45:40 NOTICE: value_physics_html_site_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe21_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe21_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: VPE-61: Quantum States of Observer-Dependent Items & Services — Multi-Stage Leontief Superpositions and Relational Value Tensors.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: vpe21_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe21_latex_package.zip: Skipped copy as --dry-run is set (size 16.272Ki)
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Skipped copy as --dry-run is set (size 42.155Ki)
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe49_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: vpe55_latex_package.zip: Skipped copy as --dry-run is set (size 1.016Mi)
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Skipped copy as --dry-run is set (size 17.037Ki)
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: VPE-60: The Architecture of Autonomous Econophysics — Multi-Agent Governance and the Empirical Evolution of Value Physics via Spark Schedules.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: work_antiwork_dynamics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:40 NOTICE: Zenodo_Publications_Master_Tracking_Index.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: zenodo_v2.7.0_manifest.json: Skipped copy as --dry-run is set (size 5.021Ki)
+2026/11/03 15:45:40 NOTICE: zenodo_vpe55_manifest.json: Skipped copy as --dry-run is set (size 4.079Ki)
+2026/11/03 15:45:40 NOTICE: 03_Supermarket_Price_Gouging_VPE62/supermarket_price_gouging_basket_audit.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: 03_Supermarket_Price_Gouging_VPE62/Supermarket_Duopoly_Price_Gouging_Forensic_Audit.pdf: Skipped copy as --dry-run is set (size 210.172Ki)
+2026/11/03 15:45:40 NOTICE: 03_Supermarket_Price_Gouging_VPE62/VPE-62: Supermarket Duopoly Price Gouging — An Empirical Value Physics Forensic Audit of Australia's Food Retail Sector (Coles & Woolworths).docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:40 NOTICE: 03_Supermarket_Price_Gouging_VPE62/vpe62_latex_package.zip: Skipped copy as --dry-run is set (size 211.408Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/manuscript_vpe49.tex: Skipped copy as --dry-run is set (size 116.688Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/Thermodynamic_Work_Antiwork_State_Space_Dynamics_v1_archive.pdf: Skipped copy as --dry-run is set (size 488.069Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/test_value_physics.py: Skipped copy as --dry-run is set (size 26.374Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/Thermodynamic_Work_Antiwork_State_Space_Dynamics.pdf: Skipped copy as --dry-run is set (size 488.033Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/zenodo_v2.7.0_manifest.json: Skipped copy as --dry-run is set (size 5.021Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/vpe49_latex_package.zip: Skipped copy as --dry-run is set (size 42.155Ki)
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/cover_letter_jedc.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/Thermodynamic Work-Antiwork State-Space Dynamics: Kinetic Resolution, Passive Floor Accumulation, and Structural Bifurcations in Value Physics.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/Thermodynamic Work-Antiwork State-Space Dynamics: Kinetic Resolution, Passive Floor Accumulation, and Structural Bifurcations in Value Physics (University Submission Edition).docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 03_Thermodynamic_State_Space_VPE49/README_ZENODO_INSTRUCTIONS.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 06_Archive/CHANGELOG.md.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/multi_village_simulation.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/closed_loop_logistics.py: Skipped copy as --dry-run is set (size 11.123Ki)
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/hvnl_fatigue_dispatch_v1_archive.py: Skipped copy as --dry-run is set (size 8.007Ki)
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/multi_village_simulation.py: Skipped copy as --dry-run is set (size 1.639Ki)
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/multi_commodity_dispatch.py: Skipped copy as --dry-run is set (size 7.513Ki)
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/spatial_trade_optimizer.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 04_Cohesive_Village_and_Regional_Logistics/spatial_trade_optimizer_v1_archive.py: Skipped copy as --dry-run is set (size 7.906Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/finite_boundary_stress_test.py: Skipped copy as --dry-run is set (size 8.474Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/manuscript_vpe21.tex: Skipped copy as --dry-run is set (size 37.077Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Skipped copy as --dry-run is set (size 27.098Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/test_value_physics_v1_archive.py: Skipped copy as --dry-run is set (size 26.374Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/cover_letter_ecolecon.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/README_ZENODO_INSTRUCTIONS.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/The_Physics_of_Economic_Value_v1_archive.pdf: Skipped copy as --dry-run is set (size 347.741Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/The_Physics_of_Economic_Value.pdf: Skipped copy as --dry-run is set (size 347.486Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/vpe21_latex_package.zip: Skipped copy as --dry-run is set (size 16.272Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/zenodo_vpe21_manifest.json: Skipped copy as --dry-run is set (size 2.958Ki)
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/The Physics of Economic Value: Thermodynamic Exergy, Metabolic Labor, and Stock-Flow Consistent Dynamic Modeling.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 02_Physics_of_Economic_Value_VPE21/The Physics of Economic Value: Thermodynamic Exergy, Metabolic Labor, and Stock-Flow Consistent Dynamic Modeling of Subsistence Supply Chains.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical Case Study: Real-World Pricing & RRP／D Fairness Audit — Food, Fuel, Energy, and Shelter Materials.docx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/big4_bank_loan_spread_fairness_audit_5_scales.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_50_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_36_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_52_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_38_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_40_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_54_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_42_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_56_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_60_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_44_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_46_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_62_commodities.xlsx: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_50_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_52_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/cover_letter_vpe55.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_48_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical Case Study: Real-World Pricing & RRP／D Fairness Audit — Food, Fuel, Energy, and Shelter Materials.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_54_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_56_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_58_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_60_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_62_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_66_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_70_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_71_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_64_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/empirical_calibration_data_73_commodities.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Skipped copy as --dry-run is set (size 1.494Mi)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Empirical_Case_Study_Real_World_Pricing_RRPD_Fairness_Audit.pdf: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Skipped copy as --dry-run is set (size 353.798Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure1_biophysical_breakdown.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Skipped copy as --dry-run is set (size 508.297Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/figure2_sclerosis_spectrum.png: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/mathematical_derivations_log.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/manuscript_vpe55.tex: Skipped copy as --dry-run is set (size 22.345Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Skipped copy as --dry-run is set (size 101.533Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/README_ZENODO_INSTRUCTIONS.md.docx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/rrp_fairness_audit_v1_archive.py: Skipped copy as --dry-run is set (size 16.376Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Skipped copy as --dry-run is set (size 52.782Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/test_rrp_fairness_audit.py: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Skipped copy as --dry-run is set (size 2.342Mi)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/vpe55_latex_package.zip: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Skipped copy as --dry-run is set (size 5.877Ki)
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/Value Physics — Empirical UPE Pricing & RRP／D Cost-Breakdown Sheet.xlsx: Skipped copy as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 01_Empirical_Pricing_Audit_VPE55/zenodo_vpe55_manifest.json: Duplicate object found in source - ignoring
+2026/11/03 15:45:41 NOTICE: 03_Supermarket_Price_Gouging_VPE62: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: Local file system at //?/e:/Vector Field Theory/value-physics: Skipped set directory modification time as --dry-run is set
+2026/11/03 15:45:41 NOTICE: 
+Transferred:   	   10.711 MiB / 10.711 MiB, 100%, 0 B/s, ETA -
+Checks:                99 / 99, 100%, Listed 595
+Transferred:          100 / 100, 100%
+Elapsed time:         1.9s
+

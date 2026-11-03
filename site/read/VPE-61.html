@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPE-61: Quantum States of Observer-Dependent Items &amp; Services — Multi-Stage Leontief Superpositions and Relational Value Tensors — Value Physics Reader</title>
+  <meta name="description" content="Quantum superpositions of upstream input processes affordance decoherence and relational value tensors under poverty constraints">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #121824;
+  --bg-card: #111827;
+  --bg-card-subtle: #1a2234;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.4);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #00d4ff;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-purple: #a855f7;
+  --accent-red: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Navigation Header */
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reader-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-back-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.doc-badge-id {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(37, 99, 235, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.doc-badge-cat {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.doc-badge-status {
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.reader-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(.disabled) {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-arrow-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-download-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.reader-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* Article Card */
+.article-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    padding: 1.5rem;
+  }
+  .reader-nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Article Header */
+.article-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.article-author-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.article-author-inst {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.article-scope-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.article-data-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.data-pill {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Document Typography & Elements */
+.doc-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+.doc-h1, .doc-h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.doc-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-p {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.doc-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.doc-p em {
+  color: #cbd5e1;
+}
+
+.doc-ul, .doc-ol {
+  margin: 1rem 0 1.5rem 1.8rem;
+  color: #e2e8f0;
+}
+
+.doc-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.doc-li strong {
+  color: #ffffff;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-cyan);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.doc-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+.doc-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Code & Pre */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.code-block {
+  background: #0d131f;
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* PDF Viewer Frame */
+.pdf-viewer-wrap {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.pdf-toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  background: #ffffff;
+}
+
+/* Slide Cards for PPTX */
+.slide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Image container */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.doc-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Archive file list */
+.archive-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Reader Footer Navigation */
+.reader-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.footer-nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.footer-nav-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="reader-nav">
+    <div class="reader-nav-left">
+      <a href="../papers.html" class="nav-back-link">&larr; Deliverables Registry</a>
+      <span class="doc-badge-id">VPE-61</span>
+      <span class="doc-badge-cat">Theoretical Physics Treatise</span>
+      <span class="doc-badge-status">Complete</span>
+    </div>
+    <div class="reader-nav-right">
+      <a href="VPE-60.html" class="nav-arrow-btn">&larr; Prev (VPE-60)</a>
+      <a href="VPE-62.html" class="nav-arrow-btn">Next (VPE-62) &rarr;</a>
+      <a href="../deliverables/VPE-61_Quantum_States_of_Observer_Dependent_Items_and_Services.docx" target="_blank" class="nav-download-btn">Download DOCX (897 KB)</a>
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="reader-container">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="article-header-meta">
+          <span class="data-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">Theoretical Treatises</span>
+          <span style="color: var(--text-dim); font-size: 0.8rem;">Alethekanon Research Institute</span>
+        </div>
+        <h1 class="article-title">Quantum States of Observer-Dependent Items &amp; Services — Multi-Stage Leontief Superpositions and Relational Value Tensors</h1>
+        
+        <div class="article-author-box">
+          <div class="article-author-name">Jarrod Lyndsay Hamilton</div>
+          <div class="article-author-inst">Alethekanon Research Institute &middot; Division 2: Societal Economics &amp; Macro-Micro Simulation &middot; Australia</div>
+          <div class="article-scope-box">
+            <strong>Theoretical &amp; Empirical Scope:</strong> Quantum superpositions of upstream input processes affordance decoherence and relational value tensors under poverty constraints
+          </div>
+          
+        </div>
+      </header>
+
+      <!-- Document Body Content -->
+      <div class="doc-content">
+        <h2 class="doc-h2">VPE-61: Quantum States of Observer-Dependent Items &amp; Services — Multi-Stage Leontief Superpositions and Relational Value Tensors</h2>
+<p class="doc-p"><strong>Jarrod Lyndsay Hamilton</strong><em>Alethekanon Research Institute — Division 2: Econophysics &amp; Value Physics Research Unit</em><em>Regional NSW, Australia</em><em>Deliverable ID: VPE-61 | License: Creative Commons Attribution 4.0 International (CC-BY 4.0)</em></p>
+<h2 class="doc-h2">Abstract</h2>
+<p class="doc-p">Orthodox neoclassical economics treats economic commodities and consumer prices as static, observer-independent scalars resulting from intersecting supply and demand curves ($P = f(S, D)$), enforcing the &quot;law of one price&quot; where a physical good costs an identical dollar amount regardless of the transacting agent&#x27;s economic position. This treatise formalizes the transition from classical scalar pricing to the <strong>Quantum Universal Price Equation (Q-UPE)</strong> and <strong>Relational Value Tensors</strong>, establishing that an economic good or service is an entangled bipartite density operator $\hat{\rho}_{\text{item}}(Y)$ defined over the tensor product of an upstream physical transformation state space and an observer&#x27;s financial state space.</p>
+<p class="doc-p">First, we define the <strong>Upstream Process Superposition Vector</strong> $|\text{Good}<em>{\text{process}}\rangle = \sum</em>{k=1}^N \sqrt{w_k} e^{i \phi_k} |\text{Stage}<em>k\rangle$, decomposing a commodity across its Leontief supply chain into conserved thermodynamic exergy destruction ($P_e^{(k)}$), non-energy physical substrate replacement ($P_b^{(k)}$), metabolic human labor exertion ($U^{(k)}$, in WEST tokens), and institutional extractive rentier markups ($R_a^{(k)}$). Using the empirical benchmark of a 680g commercial sliced white loaf ($P</em>{\text{retail}} = $4.10$, Fair RRP/D = $$3.03$), we formulate the <strong>Distortion Quotient</strong> ($\text{DQ}<em>k = (P_k / P</em>{\text{total}}) / (U_k / U_{\text{total}})$), proving that agricultural producers perform 56.7% of all real human labor while receiving only 14.6% of the final retail price ($\text{DQ} \approx 0.23\text{--}0.30$), whereas financialized supermarket shelf slotting and commercial REIT land rents capture 45.1% of the price while contributing only 3.4% of the human work ($\text{DQ} = 13.42$).|---|Second, we formulate the <strong>Observer-Relative State Collapse</strong>, proving that an item&#x27;s observable difficulty eigenvalue is parameterized by the observer&#x27;s weekly disposable income ($Y$), budget exhaustion velocity ($v_{\text{rel}}(Y) = C_{\text{subsistence}} / Y$), and Lorentz coercion factor $\gamma(v_{\text{rel}}(Y)) = (1 - v_{\text{rel}}^2)^{-1/2}$. Across the full Australian statutory welfare and wage ladder (from Youth Allowance at $$241.20/\text{wk}$ to Full-Time AWOTE at $$1,635.00/\text{wk}$ and high-net-worth benchmarks), we demonstrate that purchasing a single loaf of bread consumes 1.70% of total life and 38.76 minutes of labor for an unemployed youth ($\gamma = 22.37$, experienced metabolic burden = 48.09 Dilated-WEST), but collapses to 0.25% of income and 5.72 minutes for an average full-time worker ($\gamma = 1.02$), and just 11 seconds of labor for an ultra-high-net-worth earner ($\gamma = 1.00$).</p>
+<p class="doc-p">Finally, we establish the <strong>Functional Affordance Decoherence Theorem</strong>: poverty accelerates $v_{\text{rel}} \to 1$, collapsing the quantum superposition of life options into a coercive survival struggle, while institutional rent extraction ($R_a$) acts as an open thermal bath driving environmental decoherence across civic supply chains.</p>
+<h2 class="doc-h2">1. Introduction &amp; The Scalar Price Fallacy</h2>
+<p class="doc-p">Standard microeconomic doctrine asserts that a price tag ($P \in \mathbb{R}^+$) is an objective scalar conveying costless information about relative scarcity. In this paradigm, when a supermarket labels a loaf of bread at $$4.10$, this price represents an identical mathematical value across all buyers.</p>
+<p class="doc-p">This formulation suffers from two fatal epistemological blind spots:</p>
+<ul class="doc-ul">
+<li class="doc-li"><strong>Upstream Incommensurability (The Erased Process):</strong> The scalar $$4.10$ conceals the complex multi-stage biophysical history of how the item was brought into being—conflating genuine thermodynamic exergy destruction and agricultural field labor with unearned monopolistic shelf-slotting fees and speculative commercial property rents.</li>
+<li class="doc-li"><strong>Observer Invariance Fallacy:</strong> An exchange is fundamentally a physical measurement interaction between an agent and an item. For a citizen surviving below the physical subsistence threshold on Youth Allowance or the Disability Support Pension (DSP = $$618.85/\text{wk}$), paying $$4.10$ exerts a severe metabolic drag that threatens biological homeostasis. For a corporate executive earning $$6,500/\text{wk}$, the same transaction produces zero measurable disturbance on their balance sheet.</li>
+</ul>
+<p class="doc-p">Value Physics resolves these pathologies by modeling economic items through the formalism of <strong>Relational Quantum Mechanics</strong> and <strong>Non-Archimedean State Coalgebras</strong> (established in Formal Paper 14).</p>
+<h2 class="doc-h2">2. The Upstream Process Superposition: Tracing the Complete Supply Chain</h2>
+<p class="doc-p">An economic commodity is a multi-stage Leontief process vector:</p>
+<p class="doc-p">$$|\text{Item}<em>{\text{process}}\rangle = \sum</em>{k=1}^N \sqrt{w_k} e^{i \phi_k} |\text{Stage}_k\rangle$$</p>
+<p class="doc-p">where each basis state $|\text{Stage}_k\rangle$ represents a discrete transformation stage carrying four conserved physical and institutional coordinates:</p>
+<ul class="doc-ul">
+<li class="doc-li">$P_e^{(k)}$: Thermodynamic energy exergy consumed (electricity, natural gas, diesel fuel).</li>
+<li class="doc-li">$P_b^{(k)}$: Sunk physical substrate mass and machinery depreciation.</li>
+<li class="doc-li">$U^{(k)}$: Direct metabolic human difficulty, quantified in WEST difficulty tokens (1 WEST $\approx$ 1 hour of normalized biological labor).</li>
+<li class="doc-li">$R_a^{(k)}$: Institutional extractive drag fraction pocketed by financialized intermediaries.</li>
+</ul>
+<h3 class="doc-h3">The 8 Upstream Stages of a 680g Sliced White Bread Loaf</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Stage &amp; Sector</th>
+<th>Stage Price Added ($P_k$)</th>
+<th>Energy Exergy ($P_e$)</th>
+<th>Physical Base ($P_b$)</th>
+<th>Human Work ($U_k$)</th>
+<th>Drag ($R_a$)</th>
+<th>Distortion Quotient ($\text{DQ}_k$)</th>
+<th>Physical &amp; Institutional Action</th>
+</tr>
+<tr>
+<th>1. Soil Prep &amp; Seeding (Ag)</th>
+<th>$0.14 (3.4%)</th>
+<th>$0.05</th>
+<th>$0.05</th>
+<th>0.35 (14.7%)</th>
+<th>15.0%</th>
+<th>0.23</th>
+<th>Tractor diesel, seed wheat, superphosphate fertilizer, direct-drill seeding</th>
+</tr>
+<tr>
+<th>2. In-Crop Agronomy (Ag)</th>
+<th>$0.18 (4.4%)</th>
+<th>$0.04</th>
+<th>$0.07</th>
+<th>0.45 (18.9%)</th>
+<th>18.0%</th>
+<th>0.23</th>
+<th>Crop protection chemistries, urea top-dressing, biological soil renewal</th>
+</tr>
+<tr>
+<th>3. Harvest &amp; Silos (Logistics)</th>
+<th>$0.28 (6.8%)</th>
+<th>$0.08</th>
+<th>$0.06</th>
+<th>0.55 (23.1%)</th>
+<th>32.0%</th>
+<th>0.30</th>
+<th>Combine harvester diesel, chaser bin logistics, upcountry grain receival</th>
+</tr>
+<tr>
+<th>4. Flour Milling (Processing)</th>
+<th>$0.35 (8.5%)</th>
+<th>$0.06</th>
+<th>$0.04</th>
+<th>0.30 (12.6%)</th>
+<th>38.0%</th>
+<th>0.68</th>
+<th>Industrial roller mills, bran separation, pneumatic conveying electricity</th>
+</tr>
+<tr>
+<th>5. Yeast &amp; Leavening (Biochem)</th>
+<th>$0.20 (4.9%)</th>
+<th>$0.03</th>
+<th>$0.06</th>
+<th>0.18 (7.6%)</th>
+<th>35.0%</th>
+<th>0.64</th>
+<th>Baker&#x27;s yeast fermentation, salt, emulsifiers, proofing chamber heat</th>
+</tr>
+<tr>
+<th>6. Tunnel Baking (Manufacture)</th>
+<th>$0.65 (15.9%)</th>
+<th>$0.12</th>
+<th>$0.08</th>
+<th>0.25 (10.5%)</th>
+<th>42.0%</th>
+<th>1.51</th>
+<th>Continuous gas tunnel oven @ 230°C, depanning, ambient cooler conveyor</th>
+</tr>
+<tr>
+<th>7. Slicing &amp; Transport (Logistics)</th>
+<th>$0.45 (11.0%)</th>
+<th>$0.07</th>
+<th>$0.09</th>
+<th>0.22 (9.2%)</th>
+<th>45.0%</th>
+<th>1.19</th>
+<th>Rotary slicer, polypropylene bag/clip, Newell Highway B-Double linehaul</th>
+</tr>
+<tr>
+<th>8. Retail Slotting &amp; Rent (Oligopoly)</th>
+<th>$1.85 (45.1%)</th>
+<th>$0.03</th>
+<th>$0.00</th>
+<th>0.08 (3.4%)</th>
+<th>78.0%</th>
+<th>13.42</th>
+<th>Commercial REIT land rent, duopoly shelf markups, bank interchange tollbooths</th>
+</tr>
+<tr>
+<th>Total Loaf State Vector</th>
+<th>$4.10 (100%)</th>
+<th>$0.48</th>
+<th>$0.45</th>
+<th>2.38 WEST</th>
+<th>34.2%</th>
+<th>1.00</th>
+<th>Soil-to-Shelf Biophysical &amp; Institutional Production Chain</th>
+</tr>
+</table></div>
+<p class="doc-p">The <strong>Distortion Quotient ($\text{DQ}</strong><em><strong>k \equiv \frac{P_k / P</strong></em><strong>{\text{total}}}{U_k / U_{\text{total}}}$)</strong> proves that:</p>
+<ul class="doc-ul">
+<li class="doc-li">The biophysical agricultural production stages (Stages 1–3) perform <strong>56.7% of all real human metabolic labor</strong>, yet receive only <strong>14.6% ($0.60)</strong> of the final retail price ($\text{DQ} \approx 0.23\text{--}0.30$).</li>
+<li class="doc-li">Stage 8 (supermarket shelf slotting, commercial lease yields, and banking credit card interchange fees) performs only <strong>3.4% of the human work</strong>, yet captures <strong>45.1% ($1.85)</strong> of the retail price—an extractive distortion of $\mathbf{\text{DQ} = 13.42}$.</li>
+</ul>
+<h2 class="doc-h2">3. The Relational Bipartite Density Matrix: Observer-Dependent Value Tensors</h2>
+<p class="doc-p">Under the Quantum Universal Price Equation, the total economic system is represented by the bipartite density matrix:</p>
+<p class="doc-p">$$\hat{\rho}<em>{\text{system}} = \hat{\rho}</em>{\text{item}} \otimes \hat{\rho}_{\text{observer}}$$</p>
+<p class="doc-p">An observer is characterized by their state vector $|\text{Observer}(Y, \tau, v_{\text{rel}})\rangle$:</p>
+<ul class="doc-ul">
+<li class="doc-li">$Y$: Weekly net disposable income.</li>
+<li class="doc-li">$C_{\text{subsistence}}$: Weekly non-discretionary subsistence cost bundle ($$285.02/\text{wk}$ across the 14-item necessity basket).</li>
+<li class="doc-li">$v_{\text{rel}} \equiv \min(0.999, C_{\text{subsistence}} / Y) \in [0, 1)$: Budget exhaustion velocity.</li>
+<li class="doc-li">$\gamma(v_{\text{rel}}) \equiv (1 - v_{\text{rel}}^2)^{-1/2}$: Relativistic Lorentz survival coercion factor.</li>
+</ul>
+<p class="doc-p">When the observer encounters the item, the observable measurement operator $\hat{\Omega}_{\text{INDEX}}$ yields the <strong>Income Normalised Difficulty Examination (INDEX)</strong> eigenvalue:</p>
+<p class="doc-p">$$\langle \hat{\Omega}<em>{\text{INDEX}} \rangle_Y = \left( \frac{P</em>{\text{retail}}}{Y} \right) \times 100%$$</p>
+<p class="doc-p">The stolen working life operator $\hat{\mathcal{T}}{\text{confiscate}}$ projects the unearned extractive premium $\Delta P = P{\text{retail}} - \text{RRP/D}$ into confiscated metabolic labor minutes:</p>
+<p class="doc-p">$$\langle \hat{\mathcal{T}}<em>{\text{confiscate}} \rangle_Y = \left( \frac{\Delta P}{w</em>{\text{net}}(Y)} \right) \times 60 \text{ minutes}$$</p>
+<h3 class="doc-h3">The Quantum Unit of Bread Across Australian Wealth &amp; Income Brackets</h3>
+<div class="table-container"><table class="doc-table">
+<tr>
+<th>Observer Wealth Bracket</th>
+<th>Weekly Net Income ($Y$)</th>
+<th>Survival Velocity ($v_{\text{rel}}$)</th>
+<th>Lorentz Coercion ($\gamma$)</th>
+<th>Bread INDEX Share ($P/Y$)</th>
+<th>Total Labor Time to Buy Loaf</th>
+<th>Extractive Time Stolen ($\Delta P$)</th>
+<th>Experienced Metabolic Burden</th>
+</tr>
+<tr>
+<th>Youth Allowance (At Home)</th>
+<th>$241.20/wk</th>
+<th>0.999</th>
+<th>22.37</th>
+<th>1.700%</th>
+<th>38.76 min</th>
+<th>10.11 min</th>
+<th>48.09 Dilated-WEST</th>
+</tr>
+<tr>
+<th>Youth Allowance (Independent)</th>
+<th>$338.60/wk</th>
+<th>0.842</th>
+<th>1.85</th>
+<th>1.211%</th>
+<th>27.61 min</th>
+<th>7.20 min</th>
+<th>3.98 Dilated-WEST</th>
+</tr>
+<tr>
+<th>JobSeeker Payment (Single)</th>
+<th>$412.45/wk</th>
+<th>0.691</th>
+<th>1.38</th>
+<th>0.994%</th>
+<th>22.66 min</th>
+<th>5.91 min</th>
+<th>2.97 Dilated-WEST</th>
+</tr>
+<tr>
+<th>Disability Support Pension (DSP Floor)</th>
+<th>$618.85/wk</th>
+<th>0.461</th>
+<th>1.13</th>
+<th>0.663%</th>
+<th>15.11 min</th>
+<th>3.94 min</th>
+<th>2.42 Dilated-WEST</th>
+</tr>
+<tr>
+<th>National Minimum Wage (Net 38hr)</th>
+<th>$888.90/wk</th>
+<th>0.321</th>
+<th>1.06</th>
+<th>0.461%</th>
+<th>9.30 min</th>
+<th>2.43 min</th>
+<th>2.27 Dilated-WEST</th>
+</tr>
+<tr>
+<th>All-Employees Average (Net)</th>
+<th>$1,285.00/wk</th>
+<th>0.222</th>
+<th>1.03</th>
+<th>0.319%</th>
+<th>7.27 min</th>
+<th>1.90 min</th>
+<th>2.20 Dilated-WEST</th>
+</tr>
+<tr>
+<th>Full-Time Adult AWOTE (Net)</th>
+<th>$1,635.00/wk</th>
+<th>0.174</th>
+<th>1.02</th>
+<th>0.251%</th>
+<th>5.72 min</th>
+<th>1.49 min</th>
+<th>2.18 Dilated-WEST</th>
+</tr>
+<tr>
+<th>Top Decile Executive</th>
+<th>$6,500.00/wk</th>
+<th>0.044</th>
+<th>1.00</th>
+<th>0.063%</th>
+<th>1.44 min</th>
+<th>0.38 min</th>
+<th>2.15 Dilated-WEST</th>
+</tr>
+<tr>
+<th>Ultra-High Net Worth</th>
+<th>$50,000.00/wk</th>
+<th>0.006</th>
+<th>1.00</th>
+<th>0.008%</th>
+<th>0.19 min (11 sec)</th>
+<th>0.05 min (3 sec)</th>
+<th>2.15 Dilated-WEST</th>
+</tr>
+</table></div>
+<h2 class="doc-h2">4. The Functional Affordance Decoherence Theorem</h2>
+<p class="doc-p">In classical microeconomics, utility is static. In quantum value physics, prior to a transaction, an economic necessity exists in a coherent superposition of functional affordances:</p>
+<p class="doc-p">$$|\text{Commodity}\rangle = c_1 |\text{Biological Nutrition}\rangle + c_2 |\text{Social / Cultural Comfort}\rangle + c_3 |\text{Productive Metabolic Fuel}\rangle + c_4 |\text{Emergency Storage Reserve}\rangle$$</p>
+<p class="doc-p">We establish two fundamental econophysical theorems:</p>
+<h3 class="doc-h3">Theorem 1: The Coercive Wavefunction Collapse of Poverty</h3>
+<p class="doc-p">As an observer&#x27;s income approaches the statutory subsistence floor ($Y \to C_{\text{subsistence}}$), budget velocity approaches unity ($v_{\text{rel}} \to 1$), driving the Lorentz coercion factor toward singularity ($\gamma \to \infty$).</p>
+<p class="doc-p">Under extreme relativistic coercion, the density matrix $\hat{\rho}_{\text{item}}$ undergoes rapid non-unitary collapse: all higher-order cultural, productive, and buffer affordances are annihilated ($c_2, c_3, c_4 \to 0$). The item is projected entirely into a single brutal eigenstate: <strong>immediate biological survival triage</strong>. The buyer has no freedom to delay purchase, negotiate price, or allocate funds to education or health.</p>
+<h3 class="doc-h3">Theorem 2: Institutional Rent Extraction as Environmental Decoherence</h3>
+<p class="doc-p">In non-extractive mutual credit systems ($R_a \to 0.02$), transaction channels maintain phase coherence: human metabolic difficulty directly balances physical replenishment without interest accumulation.</p>
+<p class="doc-p">When commercial banking cartels and monopoly landlords intervene (e.g., credit cards @ 20.99% p.a., commercial retail leases, and duopoly grocery margins), they couple the physical supply chain to an uncoordinated, high-entropy financial debt reservoir. This coupling induces continuous phase decoherence: the multi-dimensional biophysical and social value of goods is stripped away, forcing all economic interactions to collapse into the single, unidimensional channel of compound nominal debt service.</p>
+<h2 class="doc-h2">5. Conclusion &amp; Forward Research Agenda</h2>
+<p class="doc-p">This treatise demonstrates that the &quot;price of things&quot; is neither an arbitrary subjective preference nor a static scalar number. A physical good or service is a multi-stage Leontief process state entangled with the observer&#x27;s wealth coordinate.</p>
+<p class="doc-p">By modeling economic goods through Relational Value Tensors and Quantum UPE equations, Value Physics provides a rigorous physical foundation for understanding why inflation and rent extraction are experienced as violent, existential compressions by low-income citizens, while remaining mathematically and psychologically imperceptible to high-wealth capital owners.</p>
+<h3 class="doc-h3">Immediate Research Horizons</h3>
+<ul class="doc-ul">
+<li class="doc-li">Formulating the non-Abelian gauge connection $\mathcal{A}_\mu$ governing price propagation across multi-tier regional supply networks.</li>
+<li class="doc-li">Developing the open-source solver quantum_upe_solver.py to simulate affordance decoherence and Leontief process collapse in real time.</li>
+<li class="doc-li">Expanding empirical quantum state matrices across municipal water, liquid fuels, structural building materials, and prescription pharmaceuticals.</li>
+</ul>
+<p class="doc-p"><em>Permanent repository record maintained under the governance of Alethekanon Research Institute, Division 2.</em></p>
+      </div>
+
+      <!-- Footer Navigation Between Papers -->
+      <footer class="reader-footer">
+        
+<a href="VPE-60.html" class="footer-nav-card">
+  <div class="footer-nav-label">&larr; Previous Document</div>
+  <div class="footer-nav-title">VPE-60: VPE-60: The Architecture of Autonomous Econophysics — The Project Manager Role, Multi-Agent Governance, and the Empirical Evolution of Value Physics via Gemini Spark Schedules</div>
+</a>
+
+        
+<a href="VPE-62.html" class="footer-nav-card" style="text-align: right;">
+  <div class="footer-nav-label">Next Document &rarr;</div>
+  <div class="footer-nav-title">VPE-62: Supermarket Duopoly Price Gouging — An Empirical Value Physics Forensic Audit of Australia&#x27;s Food Retail Sector (Coles &amp; Woolworths)</div>
+</a>
+
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Value Physics Research Repository &middot; Alethekanon Research Institute &middot; CC-BY 4.0 International License</p>
+    <p style="margin-top: 0.4rem;"><a href="../index.html">&larr; Return to Master Portal</a> &middot; <a href="../papers.html">All 60 Deliverables</a> &middot; <a href="../data.html">34-Commodity Pricing Matrix</a></p>
+  </footer>
+
+</body>
+</html>

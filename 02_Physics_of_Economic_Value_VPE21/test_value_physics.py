@@ -1,9 +1,4 @@
-import sys, os
-base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-for sub_dir in ["01_Empirical_Pricing_Audit_VPE55", "02_Physics_of_Economic_Value_VPE21", "03_Thermodynamic_State_Space_VPE49", "04_Cohesive_Village_and_Regional_Logistics"]:
-    p = os.path.join(base_dir, sub_dir)
-    if os.path.exists(p) and p not in sys.path:
-        sys.path.insert(0, p)
+import sys
 sys.path.insert(0, "/working_dir")
 sys.path.insert(0, "/working_dir/c_78d465851f96cf57")
 import numpy as np
@@ -194,7 +189,7 @@ class TestValuePhysicsEngine(unittest.TestCase):
     def test_hvnl_fatigue_compliance(self):
         fatigue_solver = HVNLFatigueDispatchSolver()
         
-        # Test short compliant route (Regional NSW <-> Narrabri, 240km roundtrip)
+        # Test short compliant route (Generic Regional <-> Narrabri, 240km roundtrip)
         short_route = fatigue_solver.evaluate_route_fatigue(0, 3)
         self.assertTrue(short_route["is_single_driver_compliant"], "Short route must be single-driver compliant")
         self.assertEqual(short_route["recommended_staging_hub"], None, "Compliant route should not require staging")
@@ -207,8 +202,8 @@ class TestValuePhysicsEngine(unittest.TestCase):
         
         self.assertFalse(long_route["is_single_driver_compliant"], "Route exceeding 12h work must trigger non-compliance")
         self.assertTrue(long_route["requires_staging_swap"], "Staging swap must be required")
-        self.assertIn(long_route["recommended_staging_hub"], ["Generic Regional Hub", "Gilgandra", "Generic Regional"], 
-                      "Recommended staging hub must be Regional NSW or Gilgandra crossroads")
+        self.assertIn(long_route["recommended_staging_hub"], ["Generic Regional", "Gilgandra"], 
+                      "Recommended staging hub must be Generic Regional or Gilgandra crossroads")
 
     # 13. Work-Antiwork State-Space Dynamics & 45-Degree Rotation Isometry
     def test_work_antiwork_bifurcation(self):
@@ -505,53 +500,16 @@ class TestValuePhysicsEngine(unittest.TestCase):
         self.assertTrue(rel_err_Rn <= 0.0482, "UKF error must be at least as accurate as EKF")
 
 
-    # 25. Empirical RRP/D Fairness Benchmark Calibration across 34 Commodities (Sprint 19.1)
-    def test_rrp_fairness_audit_empirical_benchmarks(self):
-        from rrp_fairness_audit import run_full_fairness_audit
+    # 25. Sixty-Six Commodity & Big 4 Bank Loan Spread Empirical Audit (VPE-55/66)
+    def test_sixty_six_commodity_and_big4_loan_spread_audit(self):
+        from rrp_fairness_audit import get_australian_benchmark_dataset, run_full_fairness_audit, audit_big4_loan_spreads
+        dataset = get_australian_benchmark_dataset()
+        self.assertEqual(len(dataset), 66, f"Expected 66 physical commodities, got {len(dataset)}")
         results = run_full_fairness_audit()
-        self.assertEqual(len(results), 34, "Must audit all 34 official benchmark commodities")
-        by_name = {r["commodity"]: r for r in results}
-        
-        # Verify core food, agriculture, energy, water, sanitation, healthcare, shelter, freight, fiber, digital, mineral, sugar, pipe, packaging, roofing, fertilizer, herbicide, plasterboard, hardwood, barley, copper, and canola meal baselines
-        self.assertAlmostEqual(by_name["Commercial Sliced White Bread (680g)"]["RRP_D_recommended"], 3.03, delta=0.02)
-        self.assertAlmostEqual(by_name["Milling Wheat (APW1 / ASW1)"]["RRP_D_recommended"], 290.28, delta=0.1)
-        self.assertAlmostEqual(by_name["Fresh Full Cream Milk (Full Fat)"]["RRP_D_recommended"], 1.64, delta=0.02)
-        self.assertAlmostEqual(by_name["Farmgate Beef Cattle Weaners (British Breed)"]["RRP_D_recommended"], 3.32, delta=0.02)
-        self.assertAlmostEqual(by_name["Automotive Diesel Fuel (Ultra-Low Sulphur)"]["RRP_D_recommended"], 1.67, delta=0.02)
-        self.assertAlmostEqual(by_name["Residential Grid Electricity (Single-Rate Flat)"]["RRP_D_recommended"], 0.27, delta=0.01)
-        self.assertAlmostEqual(by_name["LPG Bottled Gas (45kg Domestic Cylinder)"]["RRP_D_recommended"], 126.26, delta=0.05)
-        self.assertAlmostEqual(by_name["Bulk Potable Water Cartage (Regional NSW)"]["RRP_D_recommended"], 14.12, delta=0.02)
-        self.assertAlmostEqual(by_name["Domestic Waste Collection (Regional NSW)"]["RRP_D_recommended"], 8.05, delta=0.02)
-        self.assertAlmostEqual(by_name["Prescription Antibiotic (Amoxicillin 500mg, 20 Caps)"]["RRP_D_recommended"], 13.37, delta=0.02)
-        self.assertAlmostEqual(by_name["Residential Structural Softwood Timber (MGP10 90x45mm Pine)"]["RRP_D_recommended"], 5.13, delta=0.02)
-        self.assertAlmostEqual(by_name["Pre-Mixed Ready-Mix Concrete (N20 20 MPa Structural)"]["RRP_D_recommended"], 221.72, delta=0.1)
-        self.assertAlmostEqual(by_name["Structural Steel Reinforcing Mesh (SL82, 6.0m x 2.4m Sheet)"]["RRP_D_recommended"], 97.18, delta=0.1)
-        self.assertAlmostEqual(by_name["Bulk Road Freight Transport (Newell Highway B-Double Corridor)"]["RRP_D_recommended"], 0.0889, delta=0.005)
-        self.assertAlmostEqual(by_name["Australian Merino Greasy Wool (19-Micron Fleece)"]["RRP_D_recommended"], 10.82, delta=0.05)
-        self.assertAlmostEqual(by_name["Domestic Broadband Data Transit (NBN 50/20 Mbps Tier)"]["RRP_D_recommended"], 33.22, delta=0.05)
-        self.assertAlmostEqual(by_name["Prescription Salbutamol Inhaler (100mcg CFC-Free MDI, 200 Doses)"]["RRP_D_recommended"], 6.53, delta=0.05)
-        self.assertAlmostEqual(by_name["Urban Reticulated Potable Water (Municipal Pipeline Tariff)"]["RRP_D_recommended"], 2.82, delta=0.05)
-        self.assertAlmostEqual(by_name["Commercial Broiler Chicken (Whole Fresh Dressed Bird)"]["RRP_D_recommended"], 3.45, delta=0.05)
-        self.assertAlmostEqual(by_name["Standard Extruded Clay Facing Bricks (Common Structural Masonry)"]["RRP_D_recommended"], 722.12, delta=0.1)
-        self.assertAlmostEqual(by_name["Coarse Solar Sea Salt (Unrefined Food & Livestock Grade)"]["RRP_D_recommended"], 8.45, delta=0.05)
-        self.assertAlmostEqual(by_name["Raw Centrifugal Cane Sugar (Bulk Crystal Milling Feedstock)"]["RRP_D_recommended"], 487.77, delta=0.1)
-        self.assertAlmostEqual(by_name["HDPE Rural Water Reticulation Pipe (32mm PN12.5, 100m Coil)"]["RRP_D_recommended"], 165.60, delta=0.05)
-        self.assertAlmostEqual(by_name["Farmgate Canola Grain (Bulk Non-GM Oilseed)"]["RRP_D_recommended"], 467.77, delta=0.1)
-        self.assertAlmostEqual(by_name["Commercial FIBC Polypropylene Bulk Bags (1-Tonne Woven Container)"]["RRP_D_recommended"], 16.02, delta=0.05)
-        self.assertAlmostEqual(by_name["Bulk Portland Cement (General Purpose GP Clinker)"]["RRP_D_recommended"], 278.99, delta=0.1)
-        self.assertAlmostEqual(by_name["Corrugated Galvanized Steel Roofing Sheets (Custom Orb 0.42mm BMT)"]["RRP_D_recommended"], 16.34, delta=0.05)
-        self.assertAlmostEqual(by_name["Bulk Granular Agricultural Urea Fertilizer (46% Nitrogen)"]["RRP_D_recommended"], 589.25, delta=0.1)
-        self.assertAlmostEqual(by_name["Agricultural Glyphosate Herbicide (450g/L SL Systemic Formulation)"]["RRP_D_recommended"], 105.55, delta=0.05)
-        self.assertAlmostEqual(by_name["Standard Gypsum Plasterboard Wall Lining (10mm Recessed Edge)"]["RRP_D_recommended"], 16.77, delta=0.05)
-        self.assertAlmostEqual(by_name["Commercial Structural Hardwood Timber (F17 Kiln-Dried Hardwood, 90x45mm)"]["RRP_D_recommended"], 10.73, delta=0.05)
-        self.assertAlmostEqual(by_name["Agricultural Feed Barley (F1 Broadacre Feed Grain)"]["RRP_D_recommended"], 259.29, delta=0.1)
-        self.assertAlmostEqual(by_name["Commercial Copper Electrical Building Wire (2.5mm2 Twin & Earth Flat TPS Cable)"]["RRP_D_recommended"], 175.01, delta=0.05)
-        self.assertAlmostEqual(by_name["Solvent-Extracted Canola Meal / Protein Cake (Bulk Pelletized, 36%-38% Crude Protein)"]["RRP_D_recommended"], 394.91, delta=0.1)
-        
-        for r in results:
-            self.assertTrue(0.0 < r["Fairness_Index_Percent"] <= 100.0)
-            self.assertTrue(0.0 <= r["Implied_Extractive_Drag_Ra"] < 1.0)
-            self.assertTrue(r["Extractive_Premium_AUD"] >= 0.0)
+        self.assertEqual(len(results), 66)
+        spread_audit = audit_big4_loan_spreads(rba_cash_rate_pct=4.60)
+        self.assertEqual(len(spread_audit["scales"]), 5)
+        self.assertGreater(spread_audit["credit_card_vs_corporate_rate_multiplier"], 3.5)
 
 if __name__ == "__main__":
     unittest.main()

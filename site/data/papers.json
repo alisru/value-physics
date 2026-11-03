@@ -858,5 +858,31 @@
     "associated_data": [
       "Real-world commodity calibration microdata (CSV/XLSX)"
     ]
+  },
+  {
+    "id": "VPE-61",
+    "title": "Quantum States of Observer-Dependent Items & Services \u2014 Multi-Stage Leontief Superpositions and Relational Value Tensors",
+    "category": "Theoretical Physics Treatise",
+    "group": "Theoretical Treatises",
+    "scope": "Quantum superpositions of upstream input processes affordance decoherence and relational value tensors under poverty constraints",
+    "status": "Complete / Master Draft",
+    "notebooklm": "Pending",
+    "file_path": "deliverables/VPE-61_Quantum_States_of_Observer_Dependent_Items_and_Services.docx",
+    "file_ext": "DOCX",
+    "file_size": "897 KB",
+    "associated_data": []
+  },
+  {
+    "id": "VPE-62",
+    "title": "Supermarket Duopoly Price Gouging \u2014 An Empirical Value Physics Forensic Audit of Australia's Food Retail Sector (Coles & Woolworths)",
+    "category": "Empirical Forensic Policy Whitepaper",
+    "group": "Empirical Case Studies",
+    "scope": "Forensic audit of Coles and Woolworths retail margins supply chain markups and biophysical cost floors under the Universal Price Equation",
+    "status": "Complete / Audit Whitepaper",
+    "notebooklm": "Pending",
+    "file_path": "deliverables/VPE-62_Supermarket_Duopoly_Price_Gouging_Forensic_Audit.pdf",
+    "file_ext": "PDF",
+    "file_size": "210 KB",
+    "associated_data": []
   }
 ]
